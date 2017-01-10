@@ -1,0 +1,172 @@
+--------------------------------------------------------------------------------
+Release 14.3 Trace  (nt)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\14.3\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -intstyle ise -v 3 -s 5 -n
+3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o
+Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf
+
+Design file:              Fulton_CPU_2016_XXXX.ncd
+Physical constraint file: Fulton_CPU_2016_XXXX.pcf
+Device,package,speed:     xc3s500e,pq208,-5 (PRODUCTION 1.27 2012-10-12)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+INFO:Timing:3390 - This architecture does not support a default System Jitter 
+   value, please add SYSTEM_JITTER constraint to the UCF to modify the Clock 
+   Uncertainty calculation.
+INFO:Timing:3389 - This architecture does not support 'Discrete Jitter' and 
+   'Phase Error' calculations, these terms will be zero in the Clock 
+   Uncertainty calculation.  Please make appropriate modification to 
+   SYSTEM_JITTER to account for the unsupported Discrete Jitter and Phase 
+   Error.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock reset
+---------------+------------+------------+------------------+--------+
+               |Max Setup to|Max Hold to |                  | Clock  |
+Source         | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+---------------+------------+------------+------------------+--------+
+fakeIOdatain<0>|   -0.138(R)|    2.136(R)|reset_IBUF        |   0.000|
+fakeIOdatain<1>|   -0.142(R)|    2.141(R)|reset_IBUF        |   0.000|
+fakeIOdatain<2>|   -1.010(R)|    2.833(R)|reset_IBUF        |   0.000|
+fakeIOdatain<3>|   -0.644(R)|    2.543(R)|reset_IBUF        |   0.000|
+fakeIOdatain<4>|   -0.792(R)|    2.668(R)|reset_IBUF        |   0.000|
+fakeIOdatain<5>|   -0.477(R)|    2.416(R)|reset_IBUF        |   0.000|
+fakeIOdatain<6>|   -0.595(R)|    2.512(R)|reset_IBUF        |   0.000|
+fakeIOdatain<7>|    0.229(R)|    1.853(R)|reset_IBUF        |   0.000|
+mdatabus<0>    |   -0.432(R)|    2.893(R)|reset_IBUF        |   0.000|
+mdatabus<1>    |    0.062(R)|    3.149(R)|reset_IBUF        |   0.000|
+mdatabus<2>    |   -0.061(R)|    2.486(R)|reset_IBUF        |   0.000|
+mdatabus<3>    |    0.601(R)|    2.468(R)|reset_IBUF        |   0.000|
+mdatabus<4>    |    0.532(R)|    3.475(R)|reset_IBUF        |   0.000|
+mdatabus<5>    |   -0.207(R)|    3.620(R)|reset_IBUF        |   0.000|
+mdatabus<6>    |   -0.051(R)|    3.374(R)|reset_IBUF        |   0.000|
+mdatabus<7>    |   -0.137(R)|    3.623(R)|reset_IBUF        |   0.000|
+mdatabus<8>    |    1.937(R)|    1.722(R)|reset_IBUF        |   0.000|
+mdatabus<9>    |    1.932(R)|    1.727(R)|reset_IBUF        |   0.000|
+mdatabus<10>   |    1.932(R)|    1.727(R)|reset_IBUF        |   0.000|
+mdatabus<11>   |    1.926(R)|    1.734(R)|reset_IBUF        |   0.000|
+mdatabus<12>   |    1.925(R)|    1.735(R)|reset_IBUF        |   0.000|
+mdatabus<13>   |    1.925(R)|    1.735(R)|reset_IBUF        |   0.000|
+mdatabus<14>   |    1.927(R)|    1.733(R)|reset_IBUF        |   0.000|
+mdatabus<15>   |    1.927(R)|    1.733(R)|reset_IBUF        |   0.000|
+---------------+------------+------------+------------------+--------+
+
+Clock clk to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+nBHE        |   10.138(R)|clk_BUFGP         |   0.000|
+nBLE        |   12.367(R)|clk_BUFGP         |   0.000|
+nMREQ       |   11.483(R)|clk_BUFGP         |   0.000|
+nRD         |   12.155(R)|clk_BUFGP         |   0.000|
+nWR         |    9.973(R)|clk_BUFGP         |   0.000|
+------------+------------+------------------+--------+
+
+Clock reset to Pad
+----------------+------------+-------------------------------------+--------+
+                | clk (edge) |                                     | Clock  |
+Destination     |   to PAD   |Internal Clock(s)                    | Phase  |
+----------------+------------+-------------------------------------+--------+
+fakeIOdataout<0>|   10.239(R)|reset_IBUF                           |   0.000|
+fakeIOdataout<1>|   10.303(R)|reset_IBUF                           |   0.000|
+fakeIOdataout<2>|   11.436(R)|reset_IBUF                           |   0.000|
+fakeIOdataout<3>|   10.720(R)|reset_IBUF                           |   0.000|
+fakeIOdataout<4>|   10.708(R)|reset_IBUF                           |   0.000|
+fakeIOdataout<5>|   10.525(R)|reset_IBUF                           |   0.000|
+fakeIOdataout<6>|   10.870(R)|reset_IBUF                           |   0.000|
+fakeIOdataout<7>|   10.425(R)|reset_IBUF                           |   0.000|
+maddrbus<0>     |   10.715(R)|reset_IBUF                           |   0.000|
+maddrbus<1>     |   10.944(R)|reset_IBUF                           |   0.000|
+maddrbus<2>     |   10.947(R)|reset_IBUF                           |   0.000|
+maddrbus<3>     |   10.471(R)|reset_IBUF                           |   0.000|
+maddrbus<4>     |   10.077(R)|reset_IBUF                           |   0.000|
+maddrbus<5>     |    9.781(R)|reset_IBUF                           |   0.000|
+maddrbus<6>     |    9.757(R)|reset_IBUF                           |   0.000|
+maddrbus<7>     |    9.127(R)|reset_IBUF                           |   0.000|
+maddrbus<8>     |   10.143(R)|reset_IBUF                           |   0.000|
+maddrbus<9>     |   10.594(R)|reset_IBUF                           |   0.000|
+maddrbus<10>    |   10.519(R)|reset_IBUF                           |   0.000|
+maddrbus<11>    |   10.728(R)|reset_IBUF                           |   0.000|
+maddrbus<12>    |   10.573(R)|reset_IBUF                           |   0.000|
+maddrbus<13>    |    9.678(R)|reset_IBUF                           |   0.000|
+maddrbus<14>    |    9.928(R)|reset_IBUF                           |   0.000|
+maddrbus<15>    |    9.907(R)|reset_IBUF                           |   0.000|
+mdatabus<0>     |   10.988(R)|reset_IBUF                           |   0.000|
+                |   13.666(F)|MEMO_PART/Mtrien_m_databus<4>_not0001|   0.000|
+mdatabus<1>     |   10.457(R)|reset_IBUF                           |   0.000|
+                |   13.534(F)|MEMO_PART/Mtrien_m_databus<4>_not0001|   0.000|
+mdatabus<2>     |   10.842(R)|reset_IBUF                           |   0.000|
+                |   13.534(F)|MEMO_PART/Mtrien_m_databus<4>_not0001|   0.000|
+mdatabus<3>     |   11.166(R)|reset_IBUF                           |   0.000|
+                |   13.514(F)|MEMO_PART/Mtrien_m_databus<4>_not0001|   0.000|
+mdatabus<4>     |   10.796(R)|reset_IBUF                           |   0.000|
+                |   13.514(F)|MEMO_PART/Mtrien_m_databus<4>_not0001|   0.000|
+mdatabus<5>     |   12.122(R)|reset_IBUF                           |   0.000|
+                |   13.568(F)|MEMO_PART/Mtrien_m_databus<4>_not0001|   0.000|
+mdatabus<6>     |   11.798(R)|reset_IBUF                           |   0.000|
+                |   13.568(F)|MEMO_PART/Mtrien_m_databus<4>_not0001|   0.000|
+mdatabus<7>     |    9.671(R)|reset_IBUF                           |   0.000|
+                |   13.590(F)|MEMO_PART/Mtrien_m_databus<4>_not0001|   0.000|
+----------------+------------+-------------------------------------+--------+
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    2.063|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock reset
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    9.725|         |    6.290|         |
+reset          |   10.489|   10.489|    4.032|    4.032|
+---------------+---------+---------+---------+---------+
+
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+reset          |nBHE           |   10.379|
+reset          |nBLE           |   13.640|
+reset          |nMREQ          |   12.756|
+reset          |nRD            |   14.729|
+reset          |nWR            |   12.060|
+---------------+---------------+---------+
+
+
+Analysis completed Thu Jul 28 17:22:56 2016 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 104 MB
+
+
+

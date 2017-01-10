@@ -1,0 +1,2 @@
+vhdl isim_temp "FetchInstr.vhd"
+vhdl isim_temp "TestFetchInstr.vhd"

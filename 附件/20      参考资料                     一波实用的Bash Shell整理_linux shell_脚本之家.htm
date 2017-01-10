@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=gbk"><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/pa_anti.js" async="" charset="utf-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/icon_3rd_part_dsp_winnotice.js" async="" charset="utf-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/pc_append_use_box.js" async="" charset="utf-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/pa_lu_nobtn_inviewshow.js" async="" charset="utf-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/changyan.js" charset="utf-8" type="text/javascript"></script>
+<meta charset="gb2312">
+<meta name="applicable-device" content="pc">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform">
+<title>一波实用的Bash Shell整理_linux shell_脚本之家</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<meta name="keywords" content="Bash,Shell">
+<meta name="description" content="这篇文章主要介绍了一波实用的Bash Shell整理,适用于Ubuntu等Debian系的Linux系统,需要的朋友可以参考下">
+<link rel="alternate" media="only screen and(max-width: 640px)" href="http://m.jb51.net/article/68580.htm">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://m.jb51.net/article/68580.htm">
+<meta http-equiv="mobile-agent" content="format=xhtml; url=http://m.jb51.net/article/68580.htm">
+<script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/hm.js"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/ca-pub-1247620132145618.js"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/ncjm" async="" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/ncjm_005" async="" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/ncjm_003" async="" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/ncjm_004" async="" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/push.js"></script><script type="text/javascript">
+var tougao="goldensun";var lmname="linux shell";var ourl="";
+(function(){var reWriteUrl=function(url){if(url){var Splits=url.split("/"),siteName=window.location.pathname;if(typeof siteName!=="undefined"){return"http://m.jb51.net"+siteName}}};if(/Android|webOS|iPhone|iPad|Windows Phone|iPod|BlackBerry|SymbianOS|Nokia|Mobile/i.test(navigator.userAgent)){var url=window.location.href;var pathname=window.location.pathname;if(url.indexOf("?pc")<0){try{window.location.href=reWriteUrl(url)}catch(e){}}}})();
+</script>
+<link type="text/css" href="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/base.css" rel="stylesheet">
+<link type="text/css" href="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/common.css" rel="stylesheet">
+<script type="text/javascript" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/jquery.js"></script>
+<script type="text/javascript" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/base.js"></script>
+<script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/c_qk2.js" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/c_qk2.js" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/c_qk2.js" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/c_qk2.js" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/version-v3.js" charset="UTF-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/cookie.js" charset="UTF-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/adapter.js" charset="UTF-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/cyrHH3dwi_002.js" charset="UTF-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/version.js" charset="UTF-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/cookie_002.js" charset="UTF-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/cyrHH3dwi.js" charset="UTF-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/event.js" charset="UTF-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/sea.js" charset="UTF-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/app-build.js" charset="UTF-8" type="text/javascript"></script><link href="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/upload-img.css" type="text/css" rel="stylesheet"><style id="changyanCss">#SOHUCS{clear:both;min-height:320;_height:320px;overflow:visible;}#SOHUCS iframe{width:100%;min-height:320px;_height:320px;}</style><link href="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/changyan2.css" rel="stylesheet" charset="utf-8"><link href="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/default.css" rel="stylesheet" charset="utf-8"><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/main.js" charset="UTF-8" type="text/javascript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/render-pc.js" charset="UTF-8" type="text/javascript"></script></head>
+<body><div style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;" id="BAIDU_DUP_fp_wrapper"><iframe style="width: 0px; height: 0px; visibility: hidden; display: none;" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/o.htm" id="BAIDU_DUP_fp_iframe"></iframe></div><div style="box-sizing: content-box; width: 131px; height: 301px; overflow: hidden; z-index: 2147483647; position: fixed; top: 150px; right: 2px;" id="BAIDU_SSP__wrapper_u480030_0_right"><div style="box-sizing: content-box;width:120px;height:270px;padding:4px;border:#acacac 1px solid;overflow:hidden;"><iframe id="BAIDU_SSP__wrapper_u480030_0_right_iframe" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/ncjm.htm" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border:0; vertical-align:bottom;margin:0;" allowtransparency="true" align="center,center" frameborder="0" height="270" width="120"></iframe></div><div id="BAIDU_SSP__wrapper_u480030_0_right_closebtn" style="box-sizing: content-box;position:absolute;width:131px;height:20px;top:NaNpx;left:0;cursor:pointer;background-color:#999999;color:#fff;font-size:12px;font-family: 微软雅黑;text-align:center;line-height:20px;">关闭</div></div><div style="box-sizing: content-box; width: 131px; height: 301px; overflow: hidden; z-index: 2147483647; position: fixed; top: 150px; left: 2px;" id="BAIDU_SSP__wrapper_u480030_0_left"><div style="box-sizing: content-box;width:120px;height:270px;padding:4px;border:#acacac 1px solid;overflow:hidden;"><iframe id="BAIDU_SSP__wrapper_u480030_0_left_iframe" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/ncjm_002.htm" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border:0; vertical-align:bottom;margin:0;" allowtransparency="true" align="center,center" frameborder="0" height="270" width="120"></iframe></div><div id="BAIDU_SSP__wrapper_u480030_0_left_closebtn" style="box-sizing: content-box; position: absolute; width: 131px; height: 20px; left: 0px; cursor: pointer; background-color: rgb(153, 153, 153); color: rgb(255, 255, 255); font-size: 12px; font-family: 微软雅黑; text-align: center; line-height: 20px;">关闭</div></div>
+<!--head Star -->
+<div id="head">
+  <div class="toolBar">
+  <div class="main">
+    <!--topNav Star -->
+    <div class="topNav clearfix">
+      <ul class="navList fl">
+        <li>
+          <div class="one"><a href="http://www.jb51.net/" target="_blank">脚本之家</a></div>
+        </li>
+        <li>
+          <div class="one"><a href="http://www.jb51.net/softs/" target="_blank">软件下载<i class="icon"></i></a></div>
+          <div class="two">
+<a href="http://www.jb51.net/softs/android.html" target="_blank">android软件</a> <a href="http://www.jb51.net/softs/mac.html" target="_blank">MAC软件</a> <a href="http://www.jb51.net/qudong/" target="_blank">驱动下载</a> <a href="http://www.jb51.net/fonts/" target="_blank">字体下载</a> <a href="http://www.jb51.net/dll/" target="_blank">DLL下载</a> </div>
+</li>
+        <li>
+          <div class="one"><a href="http://www.jb51.net/codes/" target="_blank">源码下载<i class="icon"></i></a></div>
+          <div class="two"> <a href="http://www.jb51.net/codes/asp.html" target="_blank">asp源码</a> <a href="http://www.jb51.net/codes/php.html" target="_blank">php源码</a> <a href="http://www.jb51.net/codes/aspnet.html" target="_blank">asp.net源码</a> <a href="http://www.jb51.net/codes/jsp.html" target="_blank">jsp源码</a> <a href="http://www.jb51.net/codes/editor.html" target="_blank">网页编辑器</a> <a href="http://www.jb51.net/codes/list123_1.html" target="_blank">数据库管理</a> <a href="http://www.jb51.net/codes/list124_1.html" target="_blank">常用组件</a> <a href="http://www.jb51.net/jiaoben/" target="_blank">脚本下载</a></div>
+        </li>
+        <li>
+          <div class="one"><a href="http://tools.jb51.net/" target="_blank">在线工具<i class="icon"></i></a></div>
+          <div class="two"> <a href="http://www.jb51.net/shouce/" target="_blank">在线手册</a> <a href="http://www.jb51.net/tools/cssyasuo.shtml" target="_blank">CSS格式化</a> <a href="http://tools.jb51.net/tools/js_geshihua.asp" target="_blank">JS格式化</a> <a href="http://www.jb51.net/tools/html-js.htm" target="_blank">Html转化为Js</a> <a href="http://tools.jb51.net/regex/javascript" target="_blank">js正则表达式</a>
+</div>
+        </li>
+        <li>
+          <div class="one"><a href="http://www.jb51.net/w3school/" target="_blank">网页教程基础</a></div>
+        </li>
+			<li>
+          <div class="one"><a href="http://s.jb51.net/" target="_blank">服务器常用软件</a></div>
+        </li>
+		<li>
+          <div class="one"><a href="http://m.jb51.net/" target="_blank">手机版</a></div>
+          <div class="two"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/m.png" data-baiduimageplus-ignore=""></div>     
+        </li>
+        <li class="watch">
+          <div class="one"><a href="http://weibo.com/jb51net" target="_blank" rel="nofollow"><i class="icon"></i>关注微信</a></div>
+          <div class="two"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/weixin_200.gif" data-baiduimageplus-ignore=""></div>
+        </li>
+      </ul>
+      <div class="navUser mt5 fr" id="jb51_topbar"> </div>
+    </div>
+    <!--topNav End -->
+  </div>
+</div>
+
+  <div class="main clearfix">
+    <div class="mtb10 clearfix">
+      <div class="logo"><a href="http://www.jb51.net/"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/logo.gif" title="脚本之家" alt="脚本之家"></a></div>
+      <div class="logom fl"><a href="http://www.zzidc.com/main/huodong/halfnewYear/pand_2331.html" target="_blank"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/jingan_370.gif" height="60" width="370"></a>
+</div>
+      <div class="logor fr"><a href="http://www.faisco.com/pro8.html?_ta=2157" target="_blank"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/fanke.gif" height="60" width="370"></a>
+</div>
+    </div>
+<!-- 导航-->
+<div class="nav_top clearfix">
+<ul>
+<li><a href="http://www.jb51.net/web/">网页制作</a></li>
+<li><a href="http://www.jb51.net/list/index_1.htm">网络编程</a></li>
+<li><a href="http://www.jb51.net/list/index_96.htm">脚本专栏</a></li>
+<li><a href="http://www.jb51.net/jiaoben/">脚本下载</a></li>
+<li><a href="http://www.jb51.net/list/index_104.htm">数据库</a></li>
+<li><a href="http://www.jb51.net/cms/">CMS教程</a></li>
+<li><a href="http://www.jb51.net/books/">电子书籍</a></li>
+<li><a href="http://www.jb51.net/pingmian/">平面设计</a></li>
+<li><a href="http://www.jb51.net/media/">媒体动画</a></li>
+<li><a href="http://www.jb51.net/os/">操作系统</a></li>
+<li><a href="http://www.jb51.net/yunying/">网站运营</a></li>
+<li><a href="http://www.jb51.net/hack/">网络安全</a></li>
+<li class="last"><a href="http://www.jb51.net/shouce/">在线手册</a></li>
+
+</ul>
+</div>
+
+<!--导航结束-->
+<div class="subnav clearfix">
+<ul><li><a href="http://www.jb51.net/list/list_114_1.htm" title="vbs">vbs</a></li>
+<li><a href="http://www.jb51.net/list/list_106_1.htm" title="DOS/BAT">DOS/BAT</a></li>
+<li><a href="http://www.jb51.net/list/list_110_1.htm" title="hta">hta</a></li>
+<li><a href="http://www.jb51.net/list/list_111_1.htm" title="htc">htc</a></li>
+<li><a href="http://www.jb51.net/list/list_97_1.htm" title="python">python</a></li>
+<li><a href="http://www.jb51.net/list/list_125_1.htm" title="perl">perl</a></li>
+<li><a href="http://www.jb51.net/list/list_138_1.htm" title="游戏相关">游戏相关</a></li>
+<li><a href="http://www.jb51.net/list/list_161_1.htm" title="VBA">VBA</a></li>
+<li><a href="http://www.jb51.net/list/list_163_1.htm" title="远程脚本">远程脚本</a></li>
+<li><a href="http://www.jb51.net/list/list_178_1.htm" title="ColdFusion">ColdFusion</a></li>
+<li><a href="http://www.jb51.net/list/list_201_1.htm" title="ruby专题">ruby专题</a></li>
+<li><a href="http://www.jb51.net/list/list_213_1.htm" title="autoit">autoit</a></li>
+<li><a href="http://www.jb51.net/list/list_214_1.htm" title="seraphzone">seraphzone</a></li>
+<li><a href="http://www.jb51.net/list/list_234_1.htm" title="PowerShell">PowerShell</a></li>
+<li><a href="http://www.jb51.net/list/list_235_1.htm" title="linux shell">linux shell</a></li>
+<li><a href="http://www.jb51.net/list/list_245_1.htm" title="Lua">Lua</a></li>
+<li><a href="http://www.jb51.net/list/list_246_1.htm" title="Golang">Golang</a></li>
+<li><a href="http://www.jb51.net/list/list_249_1.htm" title="Erlang ">Erlang </a></li>
+<li><a href="http://www.jb51.net/list/list_130_1.htm" title="其它">其它</a></li>
+</ul>
+</div>
+<div class="NavBar clearfix ptb10">
+<div class="fl w690">
+<div class="box mb15 mt10"><i class="icon"></i>您的位置：<a href="http://www.jb51.net/">首页</a> → <a href="http://www.jb51.net/list/index_96.htm" title="脚本专栏">脚本专栏</a> → <a href="http://www.jb51.net/list/list_235_1.htm" title="linux shell">linux shell</a> → 正文内容 实用Bash Shell</div>
+</div>
+<div class="fr w300"><div class="search">
+<form action="http://so.jb51.net/cse/search" target="_blank">
+    <input name="s" value="10520733385329581432" type="hidden">
+    <input name="ie" value="gbk" type="hidden">
+    <input name="q" class="key_input" placeholder="请输入关键词" type="text">
+    <input value="搜索" class="c_btn" type="submit">
+</form></div></div>
+  </div>
+</div>
+<!--head End -->
+<div class="main mb10 clearfix">
+<div class="clearfix"><div id="txtlink"><ul><li><a href="http://www.jsll.me/" target="_blank"><span style="color:red;">低价出售流量10000IP只需8元</span></a></li><li><a href="http://click.aliyun.com/m/4235/" target="_blank"><span style="color:red;">DDos高防IP</span></a></li><li><a href="http://www.99-idc.com/" target="_blank"><span style="color:red;">16核独服350/固态盘独服288/创梦网络</span></a></li><li><a href="http://www.zoneidc.com/chaozhi/" target="_blank"><span style="color:red;">美国云20元/香港云29元/韩国云55元</span></a></li><li><a href="http://js.50bang.org/?formType=7858" target="_blank"><span style="color:blue;">装软件赚钱，每台电脑秒赚6.3元</span></a></li><li><a href="http://www.ku86.com/" target="_blank"><span style="color:blue;">百兆 12核24线程 16G内存 2T 999/月</span></a></li><li><a href="http://www.vzidc.com/" target="_blank"><span style="color:blue;">微子网络 湛江双线高防 抗15G 700元起</span></a></li><li><a href="http://www.hostspaces.net/" target="_blank"><span style="color:blue;">HS美国服务器/无视DDoS/CN2直连/24小时运维</span></a></li><li><a href="http://www.021.net/" target="_blank"><span style="color:red;">众生网络 基于云计算的互联网基础服务运营商</span></a></li><li><a href="http://www.tuidc.com/" target="_blank"><span style="color:red;">服务器租用/托管-域名空间/认准腾佑科技</span></a></li><li><a href="http://www.enkj.com/special/20160315/" target="_blank"><span style="color:red;">BGP四线 亿恩1U服务器托管3999元/年</span></a></li><li><a href="http://www.jjidc.com/" target="_blank"><span style="color:red;">九九数据 — 工信部认可正规资质IDC接入商</span></a></li><li><a href="http://www.33ip.com/" target="_blank"><span style="color:blue;">枫信科技-江苏双线10M保证-399/元</span></a></li><li><a href="http://www.360jq.com/hkshuang.htm" target="_blank"><span style="color:blue;">【香港双高防】无视CC★DDOS/堪比广东！</span></a></li><li><a href="http://www.ssf.cc/" target="_blank"><span style="color:blue;">免备vps20/百独799/双线350/45互联</span></a></li><li><a href="http://www.xiaozhiyun.com/2016/" target="_blank"><span style="color:blue;">韩国香港美国站群服务器 巨牛网络</span></a></li><li><a href="http://www.139w.com/100m.asp" target="_blank"><span style="color:red;">鼎点网络百兆独享服务器仅需999元</span></a></li><li><a href="http://www.163cdn.com/" target="_blank"><span style="color:red;">免备案国内虚拟主机-163cdn</span></a></li><li><a href="http://www.cyidc.cc/" target="_blank"><span style="color:red;">畅游网络 百独服务器 包跑满 998元</span></a></li><li><a href="http://www.wdw6.com/" target="_blank"><span style="color:red;">服务器租用  199元起</span></a></li></ul><div class="clearfix"></div></div><div class="blank6"></div><div class="topimg"><ul><li><a href="http://www.west.cn/services/CloudHost/?ads=jb512014" target="_blank"><img alt="" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/west263_237.gif" height="60" width="237"></a></li><li><a href="http://click.aliyun.com/m/5123/" target="_blank"><img alt="" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/aliyun_237.gif" height="60" width="237"></a></li><li><a href="http://www.nas.net.cn/" target="_blank"><img alt="" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/nasnet_237.gif" height="60" width="237"></a></li><li><a href="http://www.7e.hk/" target="_blank"><img alt="" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/7ehk.gif" height="60" width="237"></a></li></ul></div><div class="blank6"></div><div class="mainlr"><a href="http://click.aliyun.com/m/5252/" target="_blank"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/aliyun1000.gif" alt="cdnoss" height="60" width="1000"></a></div><div class="blank5"></div><div class="mainlr"><a href="http://www.niaoyun.com/idc/buy.html?utm_source=jb51&amp;utm_medium=cpc&amp;utm_term=%E6%B8%A0%E9%81%93&amp;utm_content=jb51&amp;utm_campaign=jb51" target="_blank"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/niaoyun.gif" alt="小鸟云" height="60" width="1000"></a></div><div class="blank5"></div>
+</div>
+</div>
+
+<!--content Star -->
+<div id="contents">
+ <div class="main clearfix">
+      <div class="w690 fl">
+      <div class="article-content border">
+      <div class="title">
+            <h1 class="YaHei">一波实用的Bash Shell整理</h1>
+            <p>投稿：goldensun  字体：[<a href="javascript:turnbig()">增加</a> <a href="javascript:turnsmall()">减小</a>] 类型：转载 时间：2015-06-29<a href="#comments"> 我要评论</a></p>
+        </div>
+        <div class="art_desc mt10"><div id="art_demo">这篇文章主要介绍了一波实用的Bash Shell整理,适用于Ubuntu等Debian系的Linux系统,需要的朋友可以参考下</div></div>
+        <div class="lbd clearfix"><script type="text/javascript">var cpro_id="u2261530";(window["cproStyleApi"] = window["cproStyleApi"] || {})[cpro_id]={at:"3",rsi0:"680",rsi1:"200",pat:"6",tn:"baiduCustNativeAD",rss1:"#FFFFFF",conBW:"1",adp:"1",ptt:"0",titFF:"%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91",titFS:"14",rss2:"#000000",titSU:"0",ptbg:"90",piw:"0",pih:"0",ptp:"0"}</script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/c.js" type="text/javascript"></script>
+</div>
+        <div id="content">
+<p>作为一个命令行探索者，你或许发现你自己一遍又一遍重复同样的命令。如果你总是用ssh进入到同一台电脑，如果你总是将一连串命令连接起来，如果你总是用同样的参数运行一个程序，你也许希望在这种不断的重复中为你的生命节约下几秒钟。</p>
+<p>解决方案是使用一个别名（alias）。正如你可能知道的，别名用一种让你的shell记住一个特定的命令并且给它一个新的名字的方式。不管怎么
+样，别名有一些限制，它只是shell命令的快捷方式，不能传递或者控制其中的参数。所以作为补充，bash 
+也允许你创建你自己的函数，这可能更长一些和复杂一点，它允许任意数量的参数。</p>
+<p>当然，当你有美食时，比如某种汤，你要分享它给大家。我这里有一个列表，列出了一些最有用bash别名和函数的。注意“最有用的”只是个说法，别名的是否有用要看你是否每天都需要在 shell 里面用它。</p>
+<p>在你开始你的别名体验之旅前，这里有一个便于使用的小技巧：如果你的别名和原本的命令名字相同，你可以用如下技巧来访问原本的命令（LCTT 译注：你也可以直接原本命令的完整路径来访问它。）</p>
+<div class="jb51code">
+<div><div id="highlighter_751237" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">\</code><code class="bash functions">command</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>例如，如果有一个替换了ls命令的别名 ls。如果你想使用原本的ls命令而不是别名，通过调用它:</p>
+<div class="jb51code">
+<div><div id="highlighter_485483" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">\</code><code class="bash functions">ls</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p><strong>&nbsp;&nbsp;&nbsp; 提升生产力</strong></p>
+<p>这些别名真的很简单并且真的很短，但他们大多数是为了给你的生命节省几秒钟，最终也许为你这一辈子节省出来几年，也许呢。</p>
+<div class="jb51code">
+<div><div id="highlighter_529417" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash functions">ls</code><code class="bash plain">=</code><code class="bash string">"ls --color=auto"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>简单但非常重要。使ls命令带着彩色输出。</p>
+<div class="jb51code">
+<div><div id="highlighter_796142" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">ll=</code><code class="bash string">"ls --color -al"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>以彩色的列表方式列出目录里面的全部文件。</p>
+<div class="jb51code">
+<div><div id="highlighter_199663" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash functions">grep</code><code class="bash plain">=</code><code class="bash string">'grep --color=auto'</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>类似，只是在grep里输出带上颜色。</p>
+<div class="jb51code">
+<div><div id="highlighter_339853" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">mcd() { </code><code class="bash functions">mkdir</code> <code class="bash plain">-p </code><code class="bash string">"$1"</code><code class="bash plain">; </code><code class="bash functions">cd</code> <code class="bash string">"$1"</code><code class="bash plain">;} </code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>我的最爱之一。创建一个目录并进入该目录里： mcd [目录名]。</p>
+<div class="jb51code">
+<div><div id="highlighter_877179" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">cls() { </code><code class="bash functions">cd</code> <code class="bash string">"$1"</code><code class="bash plain">; </code><code class="bash functions">ls</code><code class="bash plain">;}</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>类似上一个函数，进入一个目录并列出它的的内容：cls[目录名]。</p>
+<div class="jb51code">
+<div><div id="highlighter_326091" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">backup() { </code><code class="bash functions">cp</code> <code class="bash string">"$1"</code><code class="bash plain">{,.bak};}</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>简单的给文件创建一个备份: backup [文件] 将会在同一个目录下创建 [文件].bak。</p>
+<div class="jb51code">
+<div><div id="highlighter_578792" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">md5check() { md5sum </code><code class="bash string">"$1"</code> <code class="bash plain">| </code><code class="bash functions">grep</code> <code class="bash string">"$2"</code><code class="bash plain">;}</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>因为我讨厌通过手工比较文件的md5校验值，这个函数会计算它并进行比较：md5check[文件][校验值]。<br>
+</p>
+<p><img alt="2015629113812972.jpg (517×57)" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/2015629113812972.jpg"></p>
+<div class="jb51code">
+<div><div id="highlighter_17053" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">makescript=</code><code class="bash string">"fc -rnl | head -1 &gt;"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>很容易用你上一个运行的命令创建一个脚本：makescript [脚本名字.sh]</p>
+<div class="jb51code">
+<div><div id="highlighter_691364" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">genpasswd=</code><code class="bash string">"strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>只是瞬间产生一个强壮的密码。<br>
+</p>
+<p><img alt="2015629113917494.jpg (283×57)" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/2015629113917494.jpg"></p>
+<div class="jb51code">
+<div><div id="highlighter_426997" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">c=</code><code class="bash string">"clear"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>清除你终端屏幕不能更简单了吧？</p>
+<div class="jb51code">
+<div><div id="highlighter_878901" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">histg=</code><code class="bash string">"history | grep"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>快速搜索你的命令输入历史：histg [关键字]</p>
+<div class="jb51code">
+<div><div id="highlighter_737368" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">..=</code><code class="bash string">'cd ..'</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>回到上层目录还需要输入 cd 吗？</p>
+<div class="jb51code">
+<div><div id="highlighter_556828" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">...=</code><code class="bash string">'cd ../..'</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>自然，去到上两层目录。</p>
+<p>&nbsp;&nbsp;</p>
+<div class="jb51code">
+<div><div id="highlighter_543041" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">extract() { </code></div><div class="line number2 index1 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">if</code> <code class="bash plain">[ -f $1 ] ; </code><code class="bash keyword">then</code></div><div class="line number3 index2 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">case</code> <code class="bash plain">$1 </code><code class="bash keyword">in</code></div><div class="line number4 index3 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.</code><code class="bash functions">tar</code><code class="bash plain">.bz2)&nbsp; </code><code class="bash functions">tar</code> <code class="bash plain">xjf $1&nbsp;&nbsp; ;; </code></div><div class="line number5 index4 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.</code><code class="bash functions">tar</code><code class="bash plain">.gz)&nbsp; </code><code class="bash functions">tar</code> <code class="bash plain">xzf $1&nbsp;&nbsp; ;; </code></div><div class="line number6 index5 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.bz2)&nbsp;&nbsp;&nbsp; bunzip2 $1&nbsp;&nbsp; ;; </code></div><div class="line number7 index6 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.rar)&nbsp;&nbsp;&nbsp; unrar e $1&nbsp;&nbsp; ;; </code></div><div class="line number8 index7 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.gz)&nbsp;&nbsp;&nbsp; gunzip $1&nbsp;&nbsp; ;; </code></div><div class="line number9 index8 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.</code><code class="bash functions">tar</code><code class="bash plain">)&nbsp;&nbsp;&nbsp; </code><code class="bash functions">tar</code> <code class="bash plain">xf $1&nbsp;&nbsp; ;; </code></div><div class="line number10 index9 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.tbz2)&nbsp;&nbsp; </code><code class="bash functions">tar</code> <code class="bash plain">xjf $1&nbsp;&nbsp; ;; </code></div><div class="line number11 index10 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.tgz)&nbsp;&nbsp;&nbsp; </code><code class="bash functions">tar</code> <code class="bash plain">xzf $1&nbsp;&nbsp; ;; </code></div><div class="line number12 index11 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.zip)&nbsp;&nbsp;&nbsp; unzip $1&nbsp;&nbsp;&nbsp; ;; </code></div><div class="line number13 index12 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.Z)&nbsp;&nbsp;&nbsp;&nbsp; uncompress $1 ;; </code></div><div class="line number14 index13 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.7z)&nbsp;&nbsp;&nbsp; 7z x $1&nbsp;&nbsp;&nbsp; ;; </code></div><div class="line number15 index14 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*)&nbsp;&nbsp; </code><code class="bash functions">echo</code> <code class="bash string">"'$1' cannot be extracted via extract()"</code> <code class="bash plain">;; </code></div><div class="line number16 index15 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">esac </code></div><div class="line number17 index16 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">else</code></div><div class="line number18 index17 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">echo</code> <code class="bash string">"'$1' is not a valid file"</code></div><div class="line number19 index18 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">fi</code></div><div class="line number20 index19 alt1"><code class="bash spaces">&nbsp;</code><code class="bash plain">}</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>很长，但是也是最有用的。解压任何的文档类型：extract: [压缩文件]<br>
+<strong>系统信息</strong></p>
+<p>想尽快地知道关于你的系统一切信息？</p>
+<div class="jb51code">
+<div><div id="highlighter_642649" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">cmount=</code><code class="bash string">"mount | column -t"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>按列格式化输出mount信息。<br>
+</p>
+<p><img alt="2015629113941637.jpg (640×344)" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/2015629113941637.jpg"><br><style id="s-f21ac82b21eeb7322631b6aa94e17f45141qs01" media="screen" type="text/css">.imageplus-append-lu-img-txt{overflow:hidden;margin:10px 0;font-family:Microsoft YaHei;line-height:normal}.imageplus-append-lu-img-txt .imageplus-append-content .imageplus-append-img-txt-ad-item{float:left;position:relative;height:90px;width:125px;box-sizing:border-box}.imageplus-append-lu-img-txt .imageplus-append-content .imageplus-append-img-txt-ad-item .imageplus-append-img-txt-ad-item-img img{height:100%;width:100%}.imageplus-append-lu-img-txt .imageplus-append-content .imageplus-append-img-txt-ad-item .imageplus-append-img-txt-ad-item-desc{position:absolute;bottom:0;left:0;width:100%;height:18px;line-height:18px;font-size:14px;text-align:center;color:#fff;background-color:#000;background-color:rgba(0,0,0,0.6);text-decoration:none}.imageplus-append-lu-img-txt .imageplus-append-content .imageplus-append-img-txt-ad-item .imageplus-append-img-txt-ad-item-desc span{color:#fff}
+.imageplus-append-lu-img-txt .imageplus-append-content .imageplus-append-img-txt-ad-item:hover .imageplus-append-img-txt-ad-item-img{border:2px solid #f60;*height:86px;*width:121px}.imageplus-append-close-btn{display:none}.imageplus-append{float:none;margin:0;padding:0;border:0;overflow:hidden;position:static;display:block;visibility:visible;text-align:left;background:transparent;-webkit-box-sizing:content-box;box-sizing:content-box;position:relative;text-indent:0;display:inline-block}.imageplus-append div{float:none;margin:0;padding:0;border:0;overflow:hidden;position:static;display:block;visibility:visible;text-align:left;background:transparent;-webkit-box-sizing:content-box;box-sizing:content-box;font-family:Microsoft YaHei;line-height:normal}.imageplus-append a,.imageplus-append img,.imageplus-append span{float:none;margin:0;padding:0;border:0;overflow:visible;position:static;display:inline;visibility:visible;text-align:left;background:transparent;-webkit-box-sizing:content-box;box-sizing:content-box;font-family:Microsoft YaHei;line-height:normal}</style><div data-rendered="true" id="f21ac82b21eeb7322631b6aa94e17f45141qs01" style="margin: 0px; padding: 0px; border: medium none; width: 644px;" class="imageplus-append"><div class="imageplus-append-append-lu-img-txt-box" id="w-bpx791">
+<div id="w-bpx791-widget-isolated-host" style="overflow:visible;box-sizing:content-box;position:static;display:block;padding:0;margin:0;border:none;"><iframe allowtransparency="true" scrolling="no" vspace="0" hspace="0" style="position:static;display:block;padding:0;margin:0;border:none;vertical-align:baseline;width: 100%; height: 112px;" frameborder="0"></iframe></div>
+</div></div><br></p>
+<div class="jb51code">
+<div><div id="highlighter_876505" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">tree=</code><code class="bash string">"ls -R | grep "</code><code class="bash plain">:$</code><code class="bash string">" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/&nbsp; /' -e 's/-/|/'"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>以树形结构递归地显示目录结构。</p>
+<div class="jb51code">
+<div><div id="highlighter_924450" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">sbs() { </code><code class="bash functions">du</code> <code class="bash plain">-b --max-depth 1 | </code><code class="bash functions">sort</code> <code class="bash plain">-nr | perl -pe </code><code class="bash string">'s{([0-9]+)}{sprintf "%.1f%s", $1&gt;=2**30? ($1/2**30, "G"): $1&gt;=2**20? ($1/2**20, "M"): $1&gt;=2**10? ($1/2**10, "K"): ($1, "")}e'</code><code class="bash plain">;} </code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>安装文件在磁盘存储的大小排序，显示当前目录的文件列表。</p>
+<div class="jb51code">
+<div><div id="highlighter_242191" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">intercept=</code><code class="bash string">"sudo strace -ff -e trace=write -e write=1,2 -p"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>接管某个进程的标准输出和标准错误。注意你需要安装了 strace。</p>
+<div class="jb51code">
+<div><div id="highlighter_404838" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">meminfo=</code><code class="bash string">'free -m -l -t'</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>查看你还有剩下多少内存。<br>
+</p>
+<p><img alt="2015629114001693.jpg (640×157)" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/2015629114001693.jpg"></p>
+<div class="jb51code">
+<div><div id="highlighter_926520" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash functions">ps</code><code class="bash plain">? = </code><code class="bash string">"ps aux | grep"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>可以很容易地找到某个进程的PID：ps? [名字]。</p>
+<div class="jb51code">
+<div><div id="highlighter_802301" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">volume=</code><code class="bash string">"amixer get Master | sed '1,4 d' | cut -d [ -f 2 | cut -d ] -f 1"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp; 显示当前音量设置。<br>
+</p>
+<p><img alt="2015629114043981.jpg (127×59)" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/2015629114043981.jpg"></p>
+<p><strong>&nbsp;&nbsp;&nbsp; 网络</strong></p>
+<p>对于所有用在互联网和本地网络的命令，也有一些神奇的别名给它们。</p>
+<div class="jb51code">
+<div><div id="highlighter_729904" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">websiteget=</code><code class="bash string">"wget --random-wait -r -p -e robots=off -U mozilla"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>下载整个网站：websiteget [URL]。</p>
+<div class="jb51code">
+<div><div id="highlighter_357609" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">listen=</code><code class="bash string">"lsof -P -i -n"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>显示出哪个应用程序连接到网络。<br>
+</p>
+<p><img alt="2015629114111928.jpg (640×158)" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/2015629114111928.jpg"></p>
+<div class="jb51code">
+<div><div id="highlighter_560429" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">port=</code><code class="bash string">'netstat -tulanp'</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>显示出活动的端口。</p>
+<div class="jb51code">
+<div><div id="highlighter_68232" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">gmail() { curl -u </code><code class="bash string">"$1"</code> <code class="bash plain">--silent </code><code class="bash string">"<a href="https://mail.google.com/mail/feed/atom">https://mail.google.com/mail/feed/atom</a>"</code> <code class="bash plain">| </code><code class="bash functions">sed</code> <code class="bash plain">-e </code><code class="bash string">'s/&lt;\/fullcount.*/\n/'</code> <code class="bash plain">| </code><code class="bash functions">sed</code> <code class="bash plain">-e </code><code class="bash string">'s/.*fullcount&gt;//'</code><code class="bash plain">}</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>大概的显示你的谷歌邮件里未读邮件的数量：gmail [用户名]</p>
+<div class="jb51code">
+<div><div id="highlighter_321348" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">ipinfo=</code><code class="bash string">"curl ifconfig.me &amp;&amp; curl ifconfig.me/host"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>获得你的公网IP地址和主机名。</p>
+<div class="jb51code">
+<div><div id="highlighter_982439" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">getlocation() { lynx -dump http:</code><code class="bash plain">//www</code><code class="bash plain">.ip-adress.com</code><code class="bash plain">/ip_tracer/</code><code class="bash plain">?QRY=$1|</code><code class="bash functions">grep</code> <code class="bash plain">address|</code><code class="bash functions">egrep</code> <code class="bash string">'city|state|country'</code><code class="bash plain">|</code><code class="bash functions">awk</code> <code class="bash string">'{print $3,$4,$5,$6,$7,$8}'</code><code class="bash plain">|</code><code class="bash functions">sed</code> <code class="bash string">'s\ip address flag \\'</code><code class="bash plain">|</code><code class="bash functions">sed</code> <code class="bash string">'s\My\\'</code><code class="bash plain">;} </code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>返回你的当前IP地址的地理位置。<br>
+<strong>也许无用</strong></p>
+<p>所以呢，如果一些别名并不是全都具有使用价值？它们可能仍然有趣。</p>
+<div class="jb51code">
+<div><div id="highlighter_214625" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">kernelgraph() { lsmod | perl -e </code><code class="bash string">'print "digraph \"lsmod\" {";&lt;&gt;;while(&lt;&gt;){@_=split/\s+/; print "\"$_[0]\" -&gt; \"$_\"\n" for split/,/,$_[3]}print "}"'</code> <code class="bash plain">| dot -Tpng | display -;}</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>绘制内核模块依赖曲线图。需要可以查看图片。</p>
+<div class="jb51code">
+<div><div id="highlighter_300950" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash functions">alias</code> <code class="bash plain">busy=</code><code class="bash string">"cat /dev/urandom | hexdump -C | grep 'ca fe'"</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p>在那些非技术人员的眼里你看起来是总是那么忙和神秘。<br>
+</p>
+<p><img alt="2015629114137208.jpg (640×442)" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/2015629114137208.jpg"><br><style id="s-f21ac82b21eeb7322631b6aa94e17f452sx7s6w" media="screen" type="text/css">.imageplus-append-lu-img-txt{overflow:hidden;margin:10px
+ 0;font-family:Microsoft 
+YaHei;line-height:normal}.imageplus-append-lu-img-txt 
+.imageplus-append-content 
+.imageplus-append-img-txt-ad-item{float:left;position:relative;height:90px;width:125px;box-sizing:border-box}.imageplus-append-lu-img-txt
+ .imageplus-append-content .imageplus-append-img-txt-ad-item 
+.imageplus-append-img-txt-ad-item-img 
+img{height:100%;width:100%}.imageplus-append-lu-img-txt 
+.imageplus-append-content .imageplus-append-img-txt-ad-item 
+.imageplus-append-img-txt-ad-item-desc{position:absolute;bottom:0;left:0;width:100%;height:18px;line-height:18px;font-size:14px;text-align:center;color:#fff;background-color:#000;background-color:rgba(0,0,0,0.6);text-decoration:none}.imageplus-append-lu-img-txt
+ .imageplus-append-content .imageplus-append-img-txt-ad-item 
+.imageplus-append-img-txt-ad-item-desc span{color:#fff}
+.imageplus-append-lu-img-txt .imageplus-append-content 
+.imageplus-append-img-txt-ad-item:hover 
+.imageplus-append-img-txt-ad-item-img{border:2px solid 
+#f60;*height:86px;*width:121px}.imageplus-append-close-btn{display:none}.imageplus-append{float:none;margin:0;padding:0;border:0;overflow:hidden;position:static;display:block;visibility:visible;text-align:left;background:transparent;-webkit-box-sizing:content-box;box-sizing:content-box;position:relative;text-indent:0;display:inline-block}.imageplus-append
+ 
+div{float:none;margin:0;padding:0;border:0;overflow:hidden;position:static;display:block;visibility:visible;text-align:left;background:transparent;-webkit-box-sizing:content-box;box-sizing:content-box;font-family:Microsoft
+ YaHei;line-height:normal}.imageplus-append a,.imageplus-append 
+img,.imageplus-append 
+span{float:none;margin:0;padding:0;border:0;overflow:visible;position:static;display:inline;visibility:visible;text-align:left;background:transparent;-webkit-box-sizing:content-box;box-sizing:content-box;font-family:Microsoft
+ YaHei;line-height:normal}</style><div data-rendered="true" id="f21ac82b21eeb7322631b6aa94e17f452sx7s6w" style="margin: 0px; padding: 0px; border: medium none; width: 644px;" class="imageplus-append"><div class="imageplus-append-append-lu-img-txt-box" id="w-uieot8">
+<div id="w-uieot8-widget-isolated-host" style="overflow:visible;box-sizing:content-box;position:static;display:block;padding:0;margin:0;border:none;"><iframe allowtransparency="true" scrolling="no" vspace="0" hspace="0" style="position:static;display:block;padding:0;margin:0;border:none;vertical-align:baseline;width: 100%; height: 112px;" frameborder="0"></iframe></div>
+</div></div><br></p>
+<p>做为奖励，这里有我提到的全部别名和函数的纯文本版本，随时可以复制粘贴到你的.bashrc。（如果你已经一行一行的复制到这里了，哈哈，你发现你又浪费了生命的几秒钟~）</p>
+<p>&nbsp;&nbsp;&nbsp;</p>
+<div class="jb51code">
+<div><div id="highlighter_703152" class="syntaxhighlighter  bash"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div><div class="line number40 index39 alt1">40</div><div class="line number41 index40 alt2">41</div><div class="line number42 index41 alt1">42</div><div class="line number43 index42 alt2">43</div><div class="line number44 index43 alt1">44</div><div class="line number45 index44 alt2">45</div><div class="line number46 index45 alt1">46</div><div class="line number47 index46 alt2">47</div><div class="line number48 index47 alt1">48</div><div class="line number49 index48 alt2">49</div><div class="line number50 index49 alt1">50</div><div class="line number51 index50 alt2">51</div><div class="line number52 index51 alt1">52</div><div class="line number53 index52 alt2">53</div><div class="line number54 index53 alt1">54</div><div class="line number55 index54 alt2">55</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash comments">#Productivity</code></div><div class="line number2 index1 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash functions">ls</code><code class="bash plain">=</code><code class="bash string">"ls --color=auto"</code></div><div class="line number3 index2 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">ll=</code><code class="bash string">"ls --color -al"</code></div><div class="line number4 index3 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash functions">grep</code><code class="bash plain">=</code><code class="bash string">'grep --color=auto'</code></div><div class="line number5 index4 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">mcd() { </code><code class="bash functions">mkdir</code> <code class="bash plain">-p </code><code class="bash string">"$1"</code><code class="bash plain">; </code><code class="bash functions">cd</code> <code class="bash string">"$1"</code><code class="bash plain">;}</code></div><div class="line number6 index5 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">cls() { </code><code class="bash functions">cd</code> <code class="bash string">"$1"</code><code class="bash plain">; </code><code class="bash functions">ls</code><code class="bash plain">;}</code></div><div class="line number7 index6 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">backup() { </code><code class="bash functions">cp</code> <code class="bash string">"$1"</code><code class="bash plain">{,.bak};}</code></div><div class="line number8 index7 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">md5check() { md5sum </code><code class="bash string">"$1"</code> <code class="bash plain">| </code><code class="bash functions">grep</code> <code class="bash string">"$2"</code><code class="bash plain">;}</code></div><div class="line number9 index8 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">makescript=</code><code class="bash string">"fc -rnl | head -1 &gt;"</code></div><div class="line number10 index9 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">genpasswd=</code><code class="bash string">"strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"</code></div><div class="line number11 index10 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">c=</code><code class="bash string">"clear"</code></div><div class="line number12 index11 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">histg=</code><code class="bash string">"history | grep"</code></div><div class="line number13 index12 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">..=</code><code class="bash string">'cd ..'</code></div><div class="line number14 index13 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">...=</code><code class="bash string">'cd ../..'</code></div><div class="line number15 index14 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">extract() {</code></div><div class="line number16 index15 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">if</code> <code class="bash plain">[ -f $1 ] ; </code><code class="bash keyword">then</code></div><div class="line number17 index16 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">case</code> <code class="bash plain">$1 </code><code class="bash keyword">in</code></div><div class="line number18 index17 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.</code><code class="bash functions">tar</code><code class="bash plain">.bz2)&nbsp; </code><code class="bash functions">tar</code> <code class="bash plain">xjf $1&nbsp;&nbsp; ;;</code></div><div class="line number19 index18 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.</code><code class="bash functions">tar</code><code class="bash plain">.gz)&nbsp; </code><code class="bash functions">tar</code> <code class="bash plain">xzf $1&nbsp;&nbsp; ;;</code></div><div class="line number20 index19 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.bz2)&nbsp;&nbsp;&nbsp; bunzip2 $1&nbsp;&nbsp; ;;</code></div><div class="line number21 index20 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.rar)&nbsp;&nbsp;&nbsp; unrar e $1&nbsp;&nbsp; ;;</code></div><div class="line number22 index21 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.gz)&nbsp;&nbsp;&nbsp; gunzip $1&nbsp;&nbsp; ;;</code></div><div class="line number23 index22 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.</code><code class="bash functions">tar</code><code class="bash plain">)&nbsp;&nbsp;&nbsp; </code><code class="bash functions">tar</code> <code class="bash plain">xf $1&nbsp;&nbsp; ;;</code></div><div class="line number24 index23 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.tbz2)&nbsp;&nbsp; </code><code class="bash functions">tar</code> <code class="bash plain">xjf $1&nbsp;&nbsp; ;;</code></div><div class="line number25 index24 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.tgz)&nbsp;&nbsp;&nbsp; </code><code class="bash functions">tar</code> <code class="bash plain">xzf $1&nbsp;&nbsp; ;;</code></div><div class="line number26 index25 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.zip)&nbsp;&nbsp;&nbsp; unzip $1&nbsp;&nbsp;&nbsp; ;;</code></div><div class="line number27 index26 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.Z)&nbsp;&nbsp;&nbsp;&nbsp; uncompress $1 ;;</code></div><div class="line number28 index27 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*.7z)&nbsp;&nbsp;&nbsp; 7z x $1&nbsp;&nbsp;&nbsp; ;;</code></div><div class="line number29 index28 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">*)&nbsp;&nbsp; </code><code class="bash functions">echo</code> <code class="bash string">"'$1' cannot be extracted via extract()"</code> <code class="bash plain">;;</code></div><div class="line number30 index29 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">esac</code></div><div class="line number31 index30 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">else</code></div><div class="line number32 index31 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">echo</code> <code class="bash string">"'$1' is not a valid file"</code></div><div class="line number33 index32 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">fi</code></div><div class="line number34 index33 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">}</code></div><div class="line number35 index34 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number36 index35 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash comments">#System info</code></div><div class="line number37 index36 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">cmount=</code><code class="bash string">"mount | column -t"</code></div><div class="line number38 index37 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">tree=</code><code class="bash string">"ls -R | grep "</code><code class="bash plain">:$</code><code class="bash string">" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/&nbsp; /' -e 's/-/|/'"</code></div><div class="line number39 index38 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">sbs(){ </code><code class="bash functions">du</code> <code class="bash plain">-b --max-depth 1 | </code><code class="bash functions">sort</code> <code class="bash plain">-nr | perl -pe </code><code class="bash string">'s{([0-9]+)}{sprintf "%.1f%s", $1&gt;=2**30? ($1/2**30, "G"): $1&gt;=2**20? ($1/2**20, "M"): $1&gt;=2**10? ($1/2**10, "K"): ($1, "")}e'</code><code class="bash plain">;}</code></div><div class="line number40 index39 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">intercept=</code><code class="bash string">"sudo strace -ff -e trace=write -e write=1,2 -p"</code></div><div class="line number41 index40 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">meminfo=</code><code class="bash string">'free -m -l -t'</code></div><div class="line number42 index41 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash functions">ps</code><code class="bash plain">?=</code><code class="bash string">"ps aux | grep"</code></div><div class="line number43 index42 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">volume=</code><code class="bash string">"amixer get Master | sed '1,4 d' | cut -d [ -f 2 | cut -d ] -f 1"</code></div><div class="line number44 index43 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number45 index44 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash comments">#Network</code></div><div class="line number46 index45 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">websiteget=</code><code class="bash string">"wget --random-wait -r -p -e robots=off -U mozilla"</code></div><div class="line number47 index46 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">listen=</code><code class="bash string">"lsof -P -i -n"</code></div><div class="line number48 index47 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">port=</code><code class="bash string">'netstat -tulanp'</code></div><div class="line number49 index48 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">gmail() { curl -u </code><code class="bash string">"$1"</code> <code class="bash plain">--silent </code><code class="bash string">"<a href="https://mail.google.com/mail/feed/atom">https://mail.google.com/mail/feed/atom</a>"</code> <code class="bash plain">| </code><code class="bash functions">sed</code> <code class="bash plain">-e </code><code class="bash string">'s/&lt;\/fullcount.*/\n/'</code> <code class="bash plain">| </code><code class="bash functions">sed</code> <code class="bash plain">-e </code><code class="bash string">'s/.*fullcount&gt;//'</code><code class="bash plain">}</code></div><div class="line number50 index49 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">ipinfo=</code><code class="bash string">"curl ifconfig.me &amp;&amp; curl ifconfig.me/host"</code></div><div class="line number51 index50 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">getlocation() { lynx -dump http:</code><code class="bash plain">//www</code><code class="bash plain">.ip-adress.com</code><code class="bash plain">/ip_tracer/</code><code class="bash plain">?QRY=$1|</code><code class="bash functions">grep</code> <code class="bash plain">address|</code><code class="bash functions">egrep</code> <code class="bash string">'city|state|country'</code><code class="bash plain">|</code><code class="bash functions">awk</code> <code class="bash string">'{print $3,$4,$5,$6,$7,$8}'</code><code class="bash plain">|</code><code class="bash functions">sed</code> <code class="bash string">'s\ip address flag \\'</code><code class="bash plain">|</code><code class="bash functions">sed</code> <code class="bash string">'s\My\\'</code><code class="bash plain">;}</code></div><div class="line number52 index51 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number53 index52 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash comments">#Funny</code></div><div class="line number54 index53 alt1"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash plain">kernelgraph() { lsmod | perl -e </code><code class="bash string">'print
+ "digraph \"lsmod\" {";&lt;&gt;;while(&lt;&gt;){@_=split/\s+/; print 
+"\"$_[0]\" -&gt; \"$_\"\n" for split/,/,$_[3]}print "}"'</code> <code class="bash plain">| dot -Tpng | display -;}</code></div><div class="line number55 index54 alt2"><code class="bash spaces">&nbsp;&nbsp;</code><code class="bash functions">alias</code> <code class="bash plain">busy=</code><code class="bash string">"cat /dev/urandom | hexdump -C | grep \"ca fe\""</code></div></div></td></tr></tbody></table></div></div>
+</div>
+<p></p>
+
+</div><!--endmain-->
+<div class="art_xg">
+<h4>您可能感兴趣的文章:</h4><ul><li><a href="http://www.jb51.net/article/48686.htm" title="bash shell命令行选项与修传入参数处理" target="_blank">bash shell命令行选项与修传入参数处理</a></li><li><a href="http://www.jb51.net/article/47375.htm" title="csh,tcsh,bash,sh等shell的区别" target="_blank">csh,tcsh,bash,sh等shell的区别</a></li><li><a href="http://www.jb51.net/article/40259.htm" title="Bash Shell中Shift用法分享" target="_blank">Bash Shell中Shift用法分享</a></li></ul>
+</div>
+<div class="lbd clearfix">
+<script type="text/javascript">var 
+cpro_id="u776243";(window["cproStyleApi"] = window["cproStyleApi"] || 
+{})[cpro_id]={at:"3",rsi0:"650",rsi1:"250",pat:"1",tn:"baiduCustNativeAD",rss1:"#FFFFFF",conBW:"0",adp:"1",ptt:"0",titFF:"%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91",titFS:"14",rss2:"#000000",titSU:"0",tft:"0",tlt:"1",ptbg:"90",piw:"0",pih:"0",ptp:"0"}</script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/c.js" type="text/javascript"></script>
+
+</div>
+<div id="shoucang"></div>
+<div class="tags mt10">
+<strong>Tags：</strong><a href="http://img.jb51.net/tag/Bash/1.htm" target="_blank" title="搜索关于Bash的文章">Bash</a> <a href="http://img.jb51.net/tag/Shell/1.htm" target="_blank" title="搜索关于Shell的文章">Shell</a> 
+</div>
+<div class="relatedarticle clearfix mt5">
+<h2>相关文章</h2>
+<ul><li><span>2013-02-02</span><a href="http://www.jb51.net/article/33930.htm" title="shell查找当前目录下大于1M的文件的三种方法分享" target="_blank">shell查找当前目录下大于1M的文件的三种方法分享</a></li><li><span>2013-02-02</span><a href="http://www.jb51.net/article/34376.htm" title="linux中mysql备份shell脚本代码" target="_blank">linux中mysql备份shell脚本代码</a></li><li><span>2013-02-02</span><a href="http://www.jb51.net/article/34322.htm" title="linux shell数组深入学习理解" target="_blank">linux shell数组深入学习理解</a></li><li><span>2015-07-07</span><a href="http://www.jb51.net/article/70313.htm" title="使用Bash Shell获取文件名和目录名的简单方法" target="_blank">使用Bash Shell获取文件名和目录名的简单方法</a></li><li><span>2015-02-02</span><a href="http://www.jb51.net/article/61057.htm" title="Shell脚本自动更新hosts实现免翻墙访问google" target="_blank">Shell脚本自动更新hosts实现免翻墙访问google</a></li><li><span>2014-11-11</span><a href="http://www.jb51.net/article/57951.htm" title="Shell函数的7种用法介绍" target="_blank">Shell函数的7种用法介绍</a></li><li><span>2015-05-05</span><a href="http://www.jb51.net/article/65818.htm" title="Shell脚本中的位置变量参数（特殊字符）实例讲解" target="_blank">Shell脚本中的位置变量参数（特殊字符）实例讲解</a></li><li><span>2015-06-06</span><a href="http://www.jb51.net/article/68423.htm" title="Linux bash Shell中的变量类型详解" target="_blank">Linux bash Shell中的变量类型详解</a></li><li><span>2014-04-04</span><a href="http://www.jb51.net/article/49177.htm" title="linux shell流程控制语句实例讲解（if、for、while、case语句实例）" target="_blank">linux shell流程控制语句实例讲解（if、for、while、case语句实例</a></li><li><span>2015-10-10</span><a href="http://www.jb51.net/article/73315.htm" title="Linux/Nginx如何查看搜索引擎蜘蛛爬虫的行为" target="_blank">Linux/Nginx如何查看搜索引擎蜘蛛爬虫的行为</a></li></ul>
+</div>
+<div class="lbd clearfix mt5">
+<script type="text/javascript">var 
+cpro_id="u2261530";(window["cproStyleApi"] = window["cproStyleApi"] || 
+{})[cpro_id]={at:"3",rsi0:"680",rsi1:"200",pat:"6",tn:"baiduCustNativeAD",rss1:"#FFFFFF",conBW:"1",adp:"1",ptt:"0",titFF:"%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91",titFS:"14",rss2:"#000000",titSU:"0",ptbg:"90",piw:"0",pih:"0",ptp:"0"}</script><div id="BAIDU_SSP__wrapper_u2261530_1"><iframe id="iframeu2261530_1" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/ncjm_003.htm" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border:0; vertical-align:bottom;margin:0;" allowtransparency="true" align="center,center" frameborder="0" height="200" width="680"></iframe></div><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/c.js" type="text/javascript"></script>
+
+</div>
+<a href="#comments"></a>
+<div id="comments">
+<h2>最新评论</h2>
+<div class="pd5"><div style="width: 100%; height: auto;" id="SOHUCS" sid="art_68580"><div id="SOHU_MAIN"><div id="SOHU-comment-main" class="sohu-comment-wrapper"><div id="article_info_sohu">        <div class="reset-g clear-g section-title-w  section-title-logoutStyle">
+            <div class="title-join-w">
+                <div class="join-wrap-w join-wrap-b"><strong class="wrap-name-w wrap-name-b">评论</strong><span class="wrap-join-w wrap-join-b">(<em class="join-strong-gw join-strong-bg">0</em><span node-type="involved">人参与</span><i class="gap-b">，</i><em class="join-strong-gw join-strong-bg">0</em><span node-type="comments">条评论</span>)</span></div>
+            </div>
+            <div class="title-user-w">
+                <div style="display: none;" node-type="sohu-pact" class="title-link-w"><a href="http://zt.pinglun.sohu.com/s2014/sljyhgy/index.shtml" target="_blank">搜狐“我来说两句”用户公约</a></div>
+            </div>
+        </div>
+        </div><div id="login_sohu"></div><div id="comment_sohu"><div node-type="cbox-wrapper" class="reset-g section-cbox-w"><div style="width:1px;height:1px;overflow:hidden;"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/vcode.jpg" style="visibility:hidden;width:1px;height:1px;"></div><div class="clear-g cbox-block-w">
+            <div class="block-head-w">
+                <div class="head-img-w">
+                                        <a node-type="user-avatar" href="javascript:void(0)" target="_self"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/pic42_null.gif" onerror="SOHUCS.isImgErr(this)" alt="" height="42" width="42"></a>
+                    </div>
+                <!--
+                -->
+            </div>
+        <div class="block-post-w block-post-default-e"><div class="post-wrap-w post-wrap-b"><div class="wrap-area-w"><div class="area-textarea-w" style="position:relative;zoom:1;z-index:9;"><textarea name="" class="textarea-fw textarea-bf">来说两句吧...</textarea></div></div><div class="clear-g wrap-action-w wrap-action-b"><div class="action-function-w action-function-b relative-z-w"><ul class="clear-g"><li class="function-face-w"><a href="javascript:void(0)" class="effect-w" title="表情"><i class="face-b"></i></a></li><li class="function-uploadimg-w"><a href="javascript:void(0)" class="effect-w" title="上传图片"><i class="uploadimg-b"></i></a><div class="uploadimg-file-w"><input class="file-fw" id="img_upload" name="file" accept="image/*" type="file"></div><div class="img-btn-cover" style="width:40px;height:40px;margin-top:-40px;z-index:-1;position: relative;"></div></li><!--<li class="function-at-w"><a href="javascript:void(0)" class="effect-w"><i class="at-b"></i></a></li>--></ul></div><div class="clear-g action-issue-w"><div class="issue-btn-w"><a href="javascript:void(0)"><button class="btn-fw btn-bf btn-fw-main">发布</button></a></div></div></div></div>
+                                    <div node-type="login-list" class="post-login-w">
+                <ul class="clear-g">
+                                                            <li style="display:block">
+                        <div class="login-wrap-w login-wrap-b">
+                            <a data-key="sina" target="_self" href="javascript:;" title="新浪微博" alt="新浪微博">
+                                <span class="wrap-icon-w icon30-sina-b"></span><span class="wrap-name-w wrap-name-b">微博登录</span>
+                            </a>
+                        </div>
+                    </li>
+                                        <li style="display:block">
+                        <div class="login-wrap-w login-wrap-b">
+                            <a data-key="qq" target="_self" href="javascript:;" title="QQ" alt="QQ">
+                                <span class="wrap-icon-w icon30-qq-b"></span><span class="wrap-name-w wrap-name-b">QQ登录</span>
+                            </a>
+                        </div>
+                    </li>
+                                        <li>
+                        <div class="login-wrap-w login-wrap-b login-wrap-phone-b">
+                            <a data-key="phone" target="_self" href="javascript:void(0)">
+                                <span class="wrap-icon-w icon30-phone-b"></span><span class="wrap-name-w wrap-name-b">手机登录</span>
+                            </a>
+                        </div>
+                    </li>
+                    </ul>
+            </div>
+            </div></div><div node-type="prompt-no-privilege" class="cbox-prompt-w" style="display: none;">
+            <span class="prompt-empty-w prompt-empty-b">等级不够，发表评论升至指定级别才能获得该特权。详情请参见<a node-type="privilege-intro" href="javascript:;">等级说明</a>。</span>
+        </div></div></div><div id="list_sort_sohu"></div><div topicid="649644071" id="list_sohu">
+        <div class="reset-g section-list-w">
+            <div class="list-comment-empty-w">
+                <div class="empty-prompt-w"><span class="prompt-null-w prompt-null-b">还没有评论，快来抢沙发吧！</span></div>
+            </div>
+        </div></div><div id="list_hot"></div><div id="page_sohu"></div><div id="more_list_sohu"></div><div id="powerby_sohu">        <div class="reset-g section-service-w">
+            <div class="service-wrap-w service-wrap-b"><a node-type="powered-by" href="http://changyan.sohu.com/?from=changyan" target="_blank">Powered by 畅言</a></div>
+        </div></div></div></div></div></div>
+</div>
+      </div><!--endborder-->
+      </div><!--end fl-->
+      
+<div class="w300 fr">
+<div class="r300 clearfix"><script async="" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/adsbygoogle.js"></script><ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-1247620132145618" data-ad-slot="2253650178" data-override-format="true" data-page-url="http://www.jb51.net"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;" frameborder="0" height="250" width="300"></iframe></ins></ins></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<div class="tabTitleBar mt10 bgf borderTblue">
+<div class="borderTnone pb10 YaHei">
+<h4 class="blue">大家感兴趣的内容</h4>
+<ul class="newsList newList-in">
+<li><em class="no1">1</em><a href="http://www.jb51.net/article/34332.htm" title="linux shell中 if else以及大于、小于、等于逻辑表达式介绍" target="_blank">linux shell中 if else以及大于、</a></li><li><em class="no2">2</em><a href="http://www.jb51.net/article/31172.htm" title="hbase shell基础和常用命令详解" target="_blank">hbase shell基础和常用命令详解</a></li><li><em class="no3">3</em><a href="http://www.jb51.net/article/45848.htm" title="linux命令详解之useradd命令使用方法" target="_blank">linux命令详解之useradd命令使用</a></li><li><em class="no4">4</em><a href="http://www.jb51.net/article/53924.htm" title="Linux中执行shell脚本的4种方法总结" target="_blank">Linux中执行shell脚本的4种方法总</a></li><li><em class="no5">5</em><a href="http://www.jb51.net/article/44209.htm" title="Linux shell脚本编程if语句的使用方法(条件判断)" target="_blank">Linux shell脚本编程if语句的使用</a></li><li><em class="no6">6</em><a href="http://www.jb51.net/article/56944.htm" title="Shell脚本中执行sql语句操作mysql的5种方法" target="_blank">Shell脚本中执行sql语句操作mysq</a></li><li><em class="no7">7</em><a href="http://www.jb51.net/article/31232.htm" title="shell 中数学计算总结" target="_blank">shell 中数学计算总结</a></li><li><em class="no8">8</em><a href="http://www.jb51.net/article/33971.htm" title="比较两个字符串是否相等的shell代码" target="_blank">比较两个字符串是否相等的shell代</a></li><li><em class="no9">9</em><a href="http://www.jb51.net/article/47529.htm" title="Shell字符串截取的详细方法" target="_blank">Shell字符串截取的详细方法</a></li><li><em class="no10">10</em><a href="http://www.jb51.net/article/45313.htm" title="linux查看目录的四种方法(ls只显示目录)" target="_blank">linux查看目录的四种方法(ls只显</a></li>
+</ul>
+</div>
+</div>
+<div class="r300 clearfix mt10"><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/kw.js"></script><div id="_3sat6rfxeev"></div><script charset="utf-8" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/ncjm_002"></script><script async="" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/adsbygoogle.js"></script>
+<!-- 300X250谷歌 -->
+<ins data-adsbygoogle-status="done" class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-8670926099387406" data-ad-slot="7987225535"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;" frameborder="0" height="250" width="300"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/os.js"></script><div class="blank10"></div><a href="http://click.aliyun.com/m/4670/" target="_blank"><img alt="" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/aliyun300.gif" height="100" width="300"></a><div class="blank10"></div><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/pos_112.js"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/yt_181.js"></script><script>
+var mediav_ad_pub = 'mRvQTi_1138998';
+var mediav_ad_width = '300';
+var mediav_ad_height = '250';
+
+if(navigator.userAgent.indexOf('Windows NT 5.1')>-1)
+ document.write('\<script type="text/javascript" language="javascript" 
+charset="utf-8"  
+src="http://static.mediav.com/js/mvf_g2.js">\<\/script>');
+else
+ document.write('\<script type="text/javascript" language="javascript" 
+charset="utf-8"  
+src="https://static-ssl.mediav.com/js/mvf_g2.js">\<\/script>');
+</script><script type="text/javascript" language="javascript" charset="utf-8" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/mvf_g2.js"></script><div id="mvdiv_1138998_holder" style="display:block;overflow:hidden;float:none;width:300px;height:250px"><div style="display:block;float:none;position:relative;z-index:4;width:300px;overflow:visible"><div id="mvdiv_1138998" style="display:block;float:none"></div><a id="mvlogo_1138998" target="_blank" style="display:none;position:absolute;z-index:4;right:0;top:232px" href="http://juxiao.mediav.com/" onmouseover="mediav.logo.over(this)" onmouseout="mediav.logo.out(this)"><img style="border:0;width:22px;height:18px" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/v1.png"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/mediav1.png" style="display:none;border:0;width:90px;height:18px"></a></div><iframe src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/s.htm" name="ifr1138998" scrolling="no" style="width: 300px; height: 250px;" frameborder="0"></iframe></div><iframe style="display:none;" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/yt_181_tj.htm"></iframe><iframe style="display:none;" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/pos_112_tj.htm"></iframe>
+</div>
+<div class="tabTitleBar mt10 bgf borderTblue">
+<div class="borderTnone pb10 YaHei">
+<h4 class="blue">最近更新的内容</h4>
+<ul class="newsListA">
+<ul><li><a href="http://www.jb51.net/article/61778.htm" title="Ubuntu、Linux Mint一键安装Chrome浏览器的Shell脚本分享" target="_blank">Ubuntu、Linux Mint一键安装Chrome浏览器</a></li><li><a href="http://www.jb51.net/article/64884.htm" title="Shell脚本逐行读取文本文件(不改变文本格式)" target="_blank">Shell脚本逐行读取文本文件(不改变文本格</a></li><li><a href="http://www.jb51.net/article/85914.htm" title="一天一个shell命令 linux文件操作系列-ln命令详解" target="_blank">一天一个shell命令 linux文件操作系列-ln</a></li><li><a href="http://www.jb51.net/article/52379.htm" title="Shell脚本字符串单引号和双引号的区别浅析" target="_blank">Shell脚本字符串单引号和双引号的区别浅析</a></li><li><a href="http://www.jb51.net/article/48080.htm" title="centos中mysql备份数据库脚本分享" target="_blank">centos中mysql备份数据库脚本分享</a></li><li><a href="http://www.jb51.net/article/55255.htm" title="Shell脚本批量重命名文件后缀的3种实现" target="_blank">Shell脚本批量重命名文件后缀的3种实现</a></li><li><a href="http://www.jb51.net/article/54956.htm" title="一个监控LINUX目录和文件变化的Shell脚本分享" target="_blank">一个监控LINUX目录和文件变化的Shell脚本</a></li><li><a href="http://www.jb51.net/article/33928.htm" title="查看某时间段到现在的系统日志的sed命令" target="_blank">查看某时间段到现在的系统日志的sed命令</a></li><li><a href="http://www.jb51.net/article/58875.htm" title="Shell创建用户并生成随机密码脚本分享" target="_blank">Shell创建用户并生成随机密码脚本分享</a></li><li><a href="http://www.jb51.net/article/58824.htm" title="Shell脚本实现上传zip压缩文件到FTP服务器" target="_blank">Shell脚本实现上传zip压缩文件到FTP服务器</a></li></ul>
+</ul>
+</div>
+</div>   
+<div class="r300 clearfix mt10"><a href="http://www.021.net/" target="_blank"><img alt="" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/zs_300.gif"></a><div class="blank10"></div><a href="http://tuidc.com/" target="_blank"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/tengyou300.gif" height="100" width="300"></a>
+</div>
+<div class="tabTitleBar mt10 bgf borderTblue">
+<div class="borderTnone pb10 YaHei">
+<h4 class="blue">常用在线小工具</h4>
+<ul class="newsListA"><li><a href="http://tools.jb51.net/aideddesign/picext" target="_blank"><font color="red">在线图片格式转换(jpg/bmp/gif/png)工具</font></a></li><li><a href="http://tools.jb51.net/code/js" target="_blank"><font color="red">JavaScript代码格式化工具</font></a></li><li><a href="http://tools.jb51.net/code/xmljson" target="_blank">在线XML/JSON互相转换工具</a></li><li><a href="http://tools.jb51.net/code/encodeTxt" target="_blank"><font color="red">JavaScript代码在线加密工具</font></a></li><li><a href="http://tools.jb51.net/code/jscompress" target="_blank">JavaScript压缩/格式化/加密工具</a></li><li><a href="http://tools.jb51.net/transcoding/jb51qrcode" target="_blank">在线生成二维码工具(加强版)</a></li><li><a href="http://tools.jb51.net/color/jPicker" target="_blank">RGB颜色查询对照表_配色工具</a></li><li><a href="http://tools.jb51.net/code/json" target="_blank">在线JSON代码检验/检验/美化/格式化</a></li><li><a href="http://tools.jb51.net/code/sqlcodeformat" target="_blank">sql代码在线格式化美化工具</a></li><li><a href="http://tools.jb51.net/code/json" target="_blank">JSON代码工具</a></li>
+</ul>
+</div>
+</div>
+<div class="r300 clearfix mt10" id="idctu2"><a href="http://www.33ip.com/" target="_blank"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/33ip_300.gif" height="100" width="300"></a><div class="blank10"></div><a href="http://www.enkj.com/encloud/" target="_blank"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/enkj_300.gif" alt="云服务器" height="100" width="300"></a>
+</div>
+<div style="position: absolute; top: 0px;" class="mt10 rFixedBox">
+<script type="text/javascript">var 
+cpro_id="u1397867";(window["cproStyleApi"] = window["cproStyleApi"] || 
+{})[cpro_id]={at:"3",rsi0:"300",rsi1:"380",pat:"6",tn:"baiduCustNativeAD",rss1:"#FFFFFF",conBW:"1",adp:"1",ptt:"0",titFF:"%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91",titFS:"14",rss2:"#000000",titSU:"0",ptbg:"90",piw:"0",pih:"0",ptp:"0"}</script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/c.js" type="text/javascript"></script>
+
+</div>
+      
+      
+      </div><!--end fr-->
+      </div>
+</div><!--end content-->
+<div id="footer">
+<div class="main clearfix">
+<p>
+<a href="http://www.jb51.net/about.htm" target="_blank">关于我们</a> - 
+<a href="http://www.jb51.net/support.htm" target="_blank">广告合作</a> - 
+<a href="http://www.jb51.net/linkus.htm" target="_blank">联系我们</a> -  
+<a href="http://www.jb51.net/sm.htm" target="_blank">免责声明</a> -  
+<a href="http://www.jb51.net/sitemap.htm" target="_blank">网站地图</a> - 
+<a href="tencent://message/?uin=461478385&amp;Site=http://www.jb51.net" target="_blank">投诉建议</a> - 
+<a href="http://www.jb51.net/up.htm" target="_blank">在线投稿</a>
+</p>
+<p>&#169;CopyRight 2006-2016 JB51.Net Inc All Rights Reserved. 脚本之家 版权所有</p>
+</div>
+</div><!--end footer-->
+<link type="text/css" rel="stylesheet" href="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/shCore.css">
+<link type="text/css" rel="Stylesheet" href="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/shThemeDefault.css">
+<script type="text/javascript" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/shCore.js"></script>
+<script type="text/javascript" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/shAutoloader.js"></script>
+<script type="text/javascript"> 
+if (top.location != self.location)top.location=self.location;
+$('#content').find('img').each(function(){
+        var img = this;
+        if (img.width >= 650){
+            img.style.width = "650px";
+            img.style.height = "auto";
+            //$(img).removeAttr('height');
+            var aTag = document.createElement('a');
+            aTag.href = img.src;
+			aTag.target="_blank";
+            $(aTag).addClass('bPic')
+            .insertAfter(img).append(img)
+          }
+    });
+ $(window).scroll(function()
+    {	
+    	//rFixedBox跟随滚动
+    	var h = $(window).height();
+        var top = $(window).scrollTop();
+    	var rFixedBox = $('.rFixedBox').prev().offset();
+        var fixedTop = rFixedBox.top;
+		
+        if(top>=fixedTop+344)
+        {
+			var h1 = parseInt($('#content').children('.main').height());
+			if(parseInt(top) + 340 < h1){
+				$('.rFixedBox').css({'position':'fixed','top': 0});
+			}else{
+				$('.rFixedBox').css({'position':'absolute','top': h1-510});
+			}
+        }
+        else
+        {
+            $('.rFixedBox').css({'position':'static', 'top':0});   
+        }	
+       /* return true;*/
+    });
+SyntaxHighlighter.autoloader(
+	'applescript			/jslib/syntaxhighlighter/scripts/shBrushAppleScript.js',
+	'actionscript3 as3		/jslib/syntaxhighlighter/scripts/shBrushAS3.js',
+	'bash shell				/jslib/syntaxhighlighter/scripts/shBrushBash.js',
+	'coldfusion cf			/jslib/syntaxhighlighter/scripts/shBrushColdFusion.js',
+	'cpp c					/jslib/syntaxhighlighter/scripts/shBrushCpp.js',
+	'obj-c objc				/jslib/syntaxhighlighter/scripts/shBrushObjC.js',
+	'c# c-sharp csharp		/jslib/syntaxhighlighter/scripts/shBrushCSharp.js',
+	'css					/jslib/syntaxhighlighter/scripts/shBrushCss.js',
+	'delphi pascal			/jslib/syntaxhighlighter/scripts/shBrushDelphi.js',
+	'diff patch pas			/jslib/syntaxhighlighter/scripts/shBrushDiff.js',
+	'erl erlang				/jslib/syntaxhighlighter/scripts/shBrushErlang.js',
+	'groovy					/jslib/syntaxhighlighter/scripts/shBrushGroovy.js',
+	'haxe hx				/jslib/syntaxhighlighter/scripts/shBrushHaxe.js',
+	'java					/jslib/syntaxhighlighter/scripts/shBrushJava.js',
+	'jfx javafx				/jslib/syntaxhighlighter/scripts/shBrushJavaFX.js',
+	'js jscript javascript	/jslib/syntaxhighlighter/scripts/shBrushJScript.js',
+	'perl pl				/jslib/syntaxhighlighter/scripts/shBrushPerl.js',
+	'php					/jslib/syntaxhighlighter/scripts/shBrushPhp.js',
+	'text plain				/jslib/syntaxhighlighter/scripts/shBrushPlain.js',
+	'py python				/jslib/syntaxhighlighter/scripts/shBrushPython.js',
+	'ruby rails ror rb		/jslib/syntaxhighlighter/scripts/shBrushRuby.js',
+	'scala					/jslib/syntaxhighlighter/scripts/shBrushScala.js',
+	'sql					/jslib/syntaxhighlighter/scripts/shBrushSql.js',
+	'vb vbnet				/jslib/syntaxhighlighter/scripts/shBrushVb.js',
+	'ps powershell			/jslib/syntaxhighlighter/scripts/shBrushPowerShell.js',
+	'xml xhtml xslt html	/jslib/syntaxhighlighter/scripts/shBrushXml.js'
+);
+SyntaxHighlighter.all();
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script type="text/javascript" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/jbLoader.js"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/f.js" type="text/javascript"></script><div id="BAIDU_SSP__wrapper_u480030_0"></div>
+<script>jbLoader();</script>
+<script>jbLoader();</script>
+<script>jbLoader();</script>
+<div id="BAIDU_SSP__wrapper_u2261530_0"><iframe id="iframeu2261530_0" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/ncjm_004.htm" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border:0; vertical-align:bottom;margin:0;" allowtransparency="true" align="center,center" frameborder="0" height="200" width="680"></iframe></div><script>jbLoader();</script>
+<div id="BAIDU_SSP__wrapper_u776243_0"><iframe id="iframeu776243_0" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/ncjm_005.htm" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" style="border:0; vertical-align:bottom;margin:0;" allowtransparency="true" align="center,center" frameborder="0" height="250" width="650"></iframe></div><script>jbLoader();</script>
+<script>jbLoader();</script>
+<script>jbLoader();</script>
+<script>jbLoader();</script>
+<script>jbLoader();</script>
+<script>jbLoader();</script>
+<script>jbLoader();</script>
+<script>jbLoader();</script>
+<div id="tongji">
+<script type="text/javascript" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/tongji.js"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/stat_002.php" language="JavaScript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/core_002.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=1585378" target="_blank" title="站长统计">站长统计</a><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/stat.php" language="JavaScript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=4180674" target="_blank" title="站长统计">站长统计</a><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/stat_003.php" language="JavaScript"></script><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/core_003.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=1254835430" target="_blank" title="站长统计">站长统计</a><script src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/i.js" type="text/javascript"></script>
+<script>
+(function(){
+var appid = 'cyrHH3dwi',
+conf = 'prod_1dc5dc80970106099d43fe242b7465fc';
+var doc = document,
+s = doc.createElement('script'),
+h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+s.type = 'text/javascript';
+s.charset = 'utf-8';
+s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+h.insertBefore(s,h.firstChild);
+window.SCS_NO_IFRAME = true;
+})();
+</script>
+</div>
+<script type="text/javascript" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/pl.htm"></script>
+<script type="text/javascript" charset="utf-8" src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/a.js"></script>
+
+
+
+</div><div style="display: none;" id="_uuid_im_3029_"></div><div style="position: absolute; border: 0px none; margin: 0px; padding: 0px; height: 0px; overflow: visible; text-align: left; top: 3029px; left: 159px; width: 644px;"><div id="f21ac82b21eeb7322631b6aa94e17f45hd6daw"><style media="screen" type="text/css">#f21ac82b21eeb7322631b6aa94e17f45hd6daw
+ 
+{position:absolute;top:0;left:0;right:auto;bottom:auto;margin:0;padding:0;border:0;width:200px;background:transparent;-webkit-box-sizing:content-box;box-sizing:content-box;}#f21ac82b21eeb7322631b6aa94e17f45hd6daw
+ div{float:left;width:144px;height:17px;line-height:17px;margin:3px 0 0 
+-2px;background:url(http://ecma.bdimg.com/public03/imageplus/tip-back.png)
+ 0 0 
+no-repeat;_background:0;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/tip-back.png');font-family:sans-serif;text-align:center;font-size:12px;color:#666;padding:8px
+ 
+10px;display:none;-webkit-box-sizing:content-box;box-sizing:content-box;}#f21ac82b21eeb7322631b6aa94e17f45hd6daw-icon
+ 
+{float:left;height:38px;width:38px;cursor:default;background:url(http://ecma.bdimg.com/public03/imageplus/tip.png)
+ 0 0 
+no-repeat;_background:0;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/tip.png');-webkit-box-sizing:content-box;box-sizing:content-box;}#f21ac82b21eeb7322631b6aa94e17f45hd6daw-icon:hover
+ 
+{float:left;height:38px;width:38px;}#f21ac82b21eeb7322631b6aa94e17f45hd6daw
+ #f21ac82b21eeb7322631b6aa94e17f45hd6daw-icon:hover 
+{background:url(http://ecma.bdimg.com/public03/imageplus/tip-hover.png) 0
+ 0 
+no-repeat;_background:0;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/tip-hover.png');}</style><a href="javascript:void(0);" id="f21ac82b21eeb7322631b6aa94e17f45hd6daw-icon"></a><div id="f21ac82b21eeb7322631b6aa94e17f45hd6daw-msg">查看标识获取更多信息</div></div><style id="s-f21ac82b21eeb7322631b6aa94e17f451qszuz6" media="screen" type="text/css">.baiduimageplus-s-pa{position:relative;width:100%;height:110px;overflow:hidden;cursor:default;-webkit-transition:top
+ .5s;-moz-transition:top .5s;-ms-transition:top .5s;-o-transition:top 
+.5s;transition:top .5s}.baiduimageplus-s-pa 
+p{background:none}.baiduimageplus-s-pa 
+a{outline:0;text-decoration:none}.baiduimageplus-s-pa 
+a:hover{text-decoration:underline}.baiduimageplus-s-pa 
+.baiduimageplus-s-pa-bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1}.baiduimageplus-s-pa
+ 
+.baiduimageplus-s-pa-ct{position:relative;z-index:2}.baiduimageplus-s-pa
+ 
+.baiduimageplus-s-pa-hd{height:26px;overflow:hidden;line-height:26px}.baiduimageplus-s-pa
+ .baiduimageplus-s-pa-hd 
+.baiduimageplus-s-pa-hd-title-cell{font-size:14px;color:#FFF;height:100%;text-align:center!important;float:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-right:1px
+ solid #FFF}
+.baiduimageplus-s-pa 
+.baiduimageplus-s-pa-bd-lu{position:relative;overflow:hidden;zoom:1;padding:0;margin:0}.baiduimageplus-s-pa
+ .baiduimageplus-s-pa-bd-lu 
+.baiduimageplus-s-pa-bd-lu-wrapper{width:90%;height:84px;float:left;overflow:hidden;position:relative;left:5px}.baiduimageplus-s-pa
+ .baiduimageplus-s-pa-bd-lu .baiduimageplus-s-pa-bd-lu-wrapper 
+.baiduimageplus-s-pa-bd-lu-outter{height:84px;overflow:hidden;position:absolute;left:0;-webkit-transition:all
+ .5s;-moz-transition:all .5s;-ms-transition:all .5s;-o-transition:all 
+.5s;transition:all .5s}.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu 
+.baiduimageplus-s-pa-bd-lu-wrapper .baiduimageplus-s-pa-bd-lu-outter 
+.cell{width:100px;height:72px;overflow:hidden;background-color:#FFF;margin:4px
+ 5px;padding:0;float:left;border:2px solid #000;position:relative}
+.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu 
+.baiduimageplus-s-pa-bd-lu-wrapper .baiduimageplus-s-pa-bd-lu-outter 
+.cell:hover{border-color:#d1111c}.baiduimageplus-s-pa 
+.baiduimageplus-s-pa-bd-lu .baiduimageplus-s-pa-bd-lu-wrapper 
+.baiduimageplus-s-pa-bd-lu-outter .cell:hover 
+.baiduimageplus-s-pa-bd-lu-title{background-color:#d1111c}.baiduimageplus-s-pa
+ .baiduimageplus-s-pa-bd-lu .baiduimageplus-s-pa-bd-lu-wrapper 
+.baiduimageplus-s-pa-bd-lu-outter .cell:hover 
+img{-webkit-transform:scale(1.2);-moz-transform:scale(1.2);-ms-transform:scale(1.2);-o-transform:scale(1.2);transform:scale(1.2)}.baiduimageplus-s-pa
+ .baiduimageplus-s-pa-bd-lu .baiduimageplus-s-pa-bd-lu-wrapper 
+.baiduimageplus-s-pa-bd-lu-outter .cell 
+img{width:100px;height:50px;display:block;border:0;-webkit-transition:transform
+ .5s;-moz-transition:transform .5s;-ms-transition:transform 
+.5s;-o-transition:transform .5s;transition:transform .5s}
+.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu 
+.baiduimageplus-s-pa-bd-lu-wrapper .baiduimageplus-s-pa-bd-lu-outter 
+.cell .baiduimageplus-s-pa-bd-lu-title{position:absolute;font:14px/1.5 
+arial,sans-serif;bottom:0;left:0;width:100%;height:22px;display:block;line-height:22px;background-color:#000;text-align:center;color:#FFF}.baiduimageplus-s-pa
+ .baiduimageplus-s-pa-bd-lu .baiduimageplus-s-pa-bd-lu-wrapper 
+.baiduimageplus-s-pa-bd-lu-outter 
+.cell:first-child{margin-left:0}.baiduimageplus-s-pa 
+.baiduimageplus-s-pa-bd-lu .baiduimageplus-s-pa-bd-lu-wrapper 
+.baiduimageplus-s-pa-bd-lu-outter 
+.cell:last-child{margin-right:0}.baiduimageplus-s-pa 
+.baiduimageplus-s-pa-bd-lu 
+.ad-widget-imgps-sticker-html-btn{margin-top:5px;height:75px;width:20px;cursor:pointer;-webkit-transition:background
+ .4s;-moz-transition:background .4s;-ms-transition:background 
+.4s;-o-transition:background .4s;transition:background .4s}
+.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu 
+.adwishbtn_left{width:20px;float:left;background:url(http://ecmb.bdimg.com/public03/imageplus/sticker/leftbtn.jpg)
+ no-repeat center center}.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu
+ .adwishbtn_left:hover{background:#20439d 
+url(http://ecmb.bdimg.com/public03/sticker/leftbtn_hover.jpg) no-repeat 
+center center}.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu 
+.adwishbtn_right{width:20px;float:right;background:url(http://ecmb.bdimg.com/public03/imageplus/sticker/rightbtn.jpg)
+ no-repeat center center}.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu
+ .adwishbtn_right:hover{background:#20439d 
+url(http://ecmb.bdimg.com/public03/sticker/rightbtn_hover.jpg) no-repeat
+ center center}.baiduimageplus-s-pa 
+.baiduimageplus-s-pa-logo{position:absolute;bottom:0;right:0;z-index:3;height:18px;width:18px;text-indent:-9999px;background:url(http://cpro.baidustatic.com/cpro/ui/noexpire/img/2.0.1/bg.png)
+ no-repeat left top;background-position:0 
+0;_filter:progid:dximagetransform.microsoft.alphaimageloader(enabled=true,src="http://cpro.baidustatic.com/cpro/ui/noexpire/img/2.0.1/bg.png",sizingMethod="crop");_background:none}
+.ad-widget-imageplus-sticker{font:12px/1.5
+ 
+arial,sans-serif;position:absolute;left:0;width:100%;display:none;overflow:hidden;color:#FFF;background:transparent;-webkit-transition:height
+ .5s,top .5s;transition:height .5s,top .5s}.ad-widget-imageplus-sticker 
+div{background:transparent}.ad-widget-imageplus-sticker-cut{display:block}.ad-widget-imageplus-sticker-bg{position:absolute;z-index:1;left:0;top:0;width:100%;height:100%;background:#000!important;box-shadow:2px
+ 2px 4px 
+#000}.ad-widget-imageplus-sticker-bd{position:relative;z-index:2;left:0;top:0;width:100%;overflow:hidden}.ad-widget-imageplus-sticker-close{position:absolute;z-index:3;right:0;top:5px;width:25px;height:25px;line-height:25px;text-decoration:none;text-align:center;font-size:18px;color:#FFF!important}.ad-widget-imageplus-sticker-close:hover{background-color:#000}
+.ad-widget-imageplus-sticker-theme-white{color:#333}.ad-widget-imageplus-sticker-theme-white
+ 
+.ad-widget-imageplus-sticker-bg{background:#FFF!important;box-shadow:2px
+ 2px 4px #FFF}.ad-widget-imageplus-sticker-theme-white 
+.ad-widget-imageplus-sticker-close{color:#666!important}.ad-widget-imageplus-sticker-theme-white
+ 
+.ad-widget-imageplus-sticker-close:hover{background-color:#FFF!important}.ad-widget-imageplus-sticker-theme-none{color:#333}.ad-widget-imageplus-sticker-theme-none
+ 
+.ad-widget-imageplus-sticker-bg{background:transparent!important;box-shadow:none}.ad-widget-imageplus-sticker-theme-none
+ 
+.ad-widget-imageplus-sticker-close{color:#666!important}.ad-widget-imageplus-sticker-theme-none
+ 
+.ad-widget-imageplus-sticker-close:hover{background-color:#FFF!important}.ad-widget-imageplus-sticker-theme-none-white{color:#333}
+.ad-widget-imageplus-sticker-theme-none-white
+ 
+.ad-widget-imageplus-sticker-bg{background:transparent!important;box-shadow:none}.ad-widget-imageplus-sticker-theme-none-white-2
+ 
+.ad-widget-imageplus-sticker-bg{background:transparent!important;box-shadow:none}.ad-widget-imageplus-sticker-theme-none-white-2
+ 
+.ad-widget-imageplus-sticker-close{top:0;text-indent:-9999px;background:url(http://ecma.bdimg.com/public03/imageplus/v2/dock/close.png)
+ no-repeat 0 0 transparent}.ad-widget-imageplus-sticker-theme-v2 
+.ad-big-title{position:relative;top:0;opacity:1;filter:alpha(opacity=100);-webkit-transition:top
+ .5s,opacity .6s;transition:top .5s,opacity 
+.6s}.ad-widget-imageplus-sticker-theme-v2 
+.ad-widget-imageplus-sticker-showing 
+.ad-big-title{position:relative;top:-36px;opacity:0;filter:alpha(opacity=0)}.ad-widget-imageplus-sticker-theme-v2
+ .ad-widget-imageplus-sticker-showing 
+.ad-widget-imageplus-sticker-bg{top:26px}
+.ad-widget-imageplus-sticker-theme-v2 
+.ad-widget-imageplus-sticker-close{top:0;text-indent:-9999px;background:url(http://ecma.bdimg.com/public03/imageplus/v2/dock/close.png)
+ no-repeat 0 0 
+transparent}.ad-widget-imageplus-sticker-thumbnail{font:12px/1.5 
+arial,sans-serif;position:absolute;right:0;top:0;height:20px;width:100px;overflow:hidden;background:transparent;-webkit-transition:height
+ .5s;-moz-transition:height .5s;-ms-transition:height 
+.5s;-o-transition:height .5s;transition:height 
+.5s;background-color:rgba(0,0,0,0.5);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000);-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000)}.ad-widget-imageplus-sticker-thumbnail
+ 
+a{float:right;width:100px;height:20px;line-height:20px;text-align:center;color:white;background:transparent;text-decoration:none}
+.ad-widget-imageplus-sticker-thumbnail
+ 
+i{width:12px;height:8px;margin-top:6px;margin-left:5px;display:block;float:left;background:url('http://ecma.bdimg.com/adtest/8e547549c94ab88c81b644d5ff63b0d3.png')
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/adtest/8e547549c94ab88c81b644d5ff63b0d3.png')\9}.ad-widget-imageplus-sticker-close-newstyle{top:0;text-indent:-9999px;background:url(http://ecmb.bdimg.com/public03/v2/dock/iconfont-close.png)
+ no-repeat 0 0 
+transparent!important}.ad-widget-imageplus-sticker-showing 
+.baiduimageplus-s-pa-hd{opacity:0;filter:alpha(opacity=0)}</style><div data-rendered="true" style="margin: 0px; padding: 0px; border: medium none; overflow: visible; text-align: left;" id="f21ac82b21eeb7322631b6aa94e17f451qszuz6"><div style="display: block; top: 239px; height: 109px;" class="ad-widget-imageplus-sticker ad-widget-imageplus-sticker-theme-v2 ad-widget-imageplus-sticker-cut" id="w-g70zlw">
+<div style="display: block; top: 83px; height: 26px;" class="ad-widget-imageplus-sticker ad-widget-imageplus-sticker-wrapper ad-widget-imageplus-sticker-box-showing" id="w-g70zlw-wrapper">
+<div class="ad-widget-imageplus-sticker-bg" id="w-g70zlw-background" style="opacity: 0.75;"></div>
+<div class="ad-widget-imageplus-sticker-bd" id="w-g70zlw-body">
+<div class="baiduimageplus-s-pa" id="w-q7infj">
+<div class="baiduimageplus-s-pa-bg" id="w-q7infj-background"></div>
+<div class="baiduimageplus-s-pa-ct">
+<div class="baiduimageplus-s-pa-hd">
+<div style="width: 128px ! important;" class="baiduimageplus-s-pa-hd-title-cell">千峰培训</div>
+<div style="width: 128px ! important;" class="baiduimageplus-s-pa-hd-title-cell">客户管理系统</div>
+<div style="width: 128px ! important;" class="baiduimageplus-s-pa-hd-title-cell">oa办公系统</div>
+<div style="width: 128px ! important;" class="baiduimageplus-s-pa-hd-title-cell">手机验证码平台</div>
+<div style="width: 128px ! important; border: medium none ! important;" class="baiduimageplus-s-pa-hd-title-cell">linux工程师</div>
+<div class="baiduimageplus-s-pa-hd-title-cell">短信平台</div>
+</div>
+<div class="baiduimageplus-s-pa-bd-lu">
+<div id="w-q7infj-left_btn" class="ad-widget-imgps-sticker-html-btn adwishbtn_left" style="display:none;"></div>
+<div style="width: 634px ! important;" id="w-q7infj-wrapper" class="baiduimageplus-s-pa-bd-lu-wrapper">
+<div style="width: 679px ! important;" id="w-q7infj-outter" class="baiduimageplus-s-pa-bd-lu-outter">
+<div class="cell">
+<a data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=8ae791bb1f9b2e2c&amp;k=%C7%A7%B7%E5%C5%E0%D1%B5&amp;k0=%C7%A7%B7%E5%C5%E0%D1%B5&amp;k1=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k2=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;k3=linux%B9%A4%B3%CC%CA%A6&amp;k4=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k5=%C7%B6%C8%EB%CA%BD%C5%E0%D1%B5&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=1&amp;mcpm=119954&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2c2e9b1fbb91e78a&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/u34945204404120228455fm76.jpg"></a>
+<a class="baiduimageplus-s-pa-bd-lu-title" data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=8ae791bb1f9b2e2c&amp;k=%C7%A7%B7%E5%C5%E0%D1%B5&amp;k0=%C7%A7%B7%E5%C5%E0%D1%B5&amp;k1=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k2=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;k3=linux%B9%A4%B3%CC%CA%A6&amp;k4=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k5=%C7%B6%C8%EB%CA%BD%C5%E0%D1%B5&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=1&amp;mcpm=119954&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2c2e9b1fbb91e78a&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0">千峰培训</a>
+</div>
+<div class="cell">
+<a data-log="2" data-mid="" target="_blank" href="http://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=1&amp;fv=9&amp;is_app=0&amp;jk=8ae791bb1f9b2e2c&amp;k=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k0=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k1=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k2=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;k3=linux%B9%A4%B3%CC%CA%A6&amp;k4=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k5=%C7%B6%C8%EB%CA%BD%C5%E0%D1%B5&amp;kdi0=1&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=2&amp;mcpm=8447&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2c2e9b1fbb91e78a&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/u5147576803152058626fm76.jpg"></a>
+<a class="baiduimageplus-s-pa-bd-lu-title" data-log="2" data-mid="" target="_blank" href="http://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=1&amp;fv=9&amp;is_app=0&amp;jk=8ae791bb1f9b2e2c&amp;k=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k0=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k1=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k2=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;k3=linux%B9%A4%B3%CC%CA%A6&amp;k4=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k5=%C7%B6%C8%EB%CA%BD%C5%E0%D1%B5&amp;kdi0=1&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=2&amp;mcpm=8447&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2c2e9b1fbb91e78a&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0">客户管理系统</a>
+</div>
+<div class="cell">
+<a data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=8ae791bb1f9b2e2c&amp;k=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k0=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k1=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;k2=linux%B9%A4%B3%CC%CA%A6&amp;k3=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k4=%C7%B6%C8%EB%CA%BD%C5%E0%D1%B5&amp;k5=%C7%A7%B7%E5%C5%E0%D1%B5&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=3&amp;mcpm=26981&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2c2e9b1fbb91e78a&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/u7254441224059237478fm76.jpg"></a>
+<a class="baiduimageplus-s-pa-bd-lu-title" data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=8ae791bb1f9b2e2c&amp;k=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k0=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k1=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;k2=linux%B9%A4%B3%CC%CA%A6&amp;k3=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k4=%C7%B6%C8%EB%CA%BD%C5%E0%D1%B5&amp;k5=%C7%A7%B7%E5%C5%E0%D1%B5&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=3&amp;mcpm=26981&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2c2e9b1fbb91e78a&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0">oa办公系统</a>
+</div>
+<div class="cell">
+<a data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=8ae791bb1f9b2e2c&amp;k=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;k0=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;k1=linux%B9%A4%B3%CC%CA%A6&amp;k2=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k3=%C7%B6%C8%EB%CA%BD%C5%E0%D1%B5&amp;k4=%C7%A7%B7%E5%C5%E0%D1%B5&amp;k5=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=4&amp;mcpm=18857&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2c2e9b1fbb91e78a&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/u9603031511557156837fm76.jpg"></a>
+<a class="baiduimageplus-s-pa-bd-lu-title" data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=8ae791bb1f9b2e2c&amp;k=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;k0=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;k1=linux%B9%A4%B3%CC%CA%A6&amp;k2=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k3=%C7%B6%C8%EB%CA%BD%C5%E0%D1%B5&amp;k4=%C7%A7%B7%E5%C5%E0%D1%B5&amp;k5=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=4&amp;mcpm=18857&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2c2e9b1fbb91e78a&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0">手机验证码平台</a>
+</div>
+<div class="cell">
+<a data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=8ae791bb1f9b2e2c&amp;k=linux%B9%A4%B3%CC%CA%A6&amp;k0=linux%B9%A4%B3%CC%CA%A6&amp;k1=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k2=%C7%B6%C8%EB%CA%BD%C5%E0%D1%B5&amp;k3=%C7%A7%B7%E5%C5%E0%D1%B5&amp;k4=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k5=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=5&amp;mcpm=36494&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2c2e9b1fbb91e78a&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/u19145962282799362480fm76.jpg"></a>
+<a class="baiduimageplus-s-pa-bd-lu-title" data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=8ae791bb1f9b2e2c&amp;k=linux%B9%A4%B3%CC%CA%A6&amp;k0=linux%B9%A4%B3%CC%CA%A6&amp;k1=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k2=%C7%B6%C8%EB%CA%BD%C5%E0%D1%B5&amp;k3=%C7%A7%B7%E5%C5%E0%D1%B5&amp;k4=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k5=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=5&amp;mcpm=36494&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2c2e9b1fbb91e78a&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0">linux工程师</a>
+</div>
+<div class="cell">
+<a data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=8ae791bb1f9b2e2c&amp;k=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k0=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k1=%C7%B6%C8%EB%CA%BD%C5%E0%D1%B5&amp;k2=%C7%A7%B7%E5%C5%E0%D1%B5&amp;k3=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k4=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;k5=linux%B9%A4%B3%CC%CA%A6&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=6&amp;mcpm=43757&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2c2e9b1fbb91e78a&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/u20048820462455696314fm76.jpg"></a>
+<a class="baiduimageplus-s-pa-bd-lu-title" data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=8ae791bb1f9b2e2c&amp;k=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k0=%B6%CC%D0%C5%C6%BD%CC%A8&amp;k1=%C7%B6%C8%EB%CA%BD%C5%E0%D1%B5&amp;k2=%C7%A7%B7%E5%C5%E0%D1%B5&amp;k3=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k4=%CA%D6%BB%FA%D1%E9%D6%A4%C2%EB%C6%BD%CC%A8&amp;k5=linux%B9%A4%B3%CC%CA%A6&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=6&amp;mcpm=43757&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2c2e9b1fbb91e78a&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0">短信平台</a>
+</div>
+</div>
+</div>
+<div id="w-q7infj-right_btn" class="ad-widget-imgps-sticker-html-btn adwishbtn_right" style="display:none;"></div>
+</div>
+</div>
+<a class="baiduimageplus-s-pa-logo" title="百度网盟推广" href="http://wangmeng.baidu.com/" target="_blank" data-ignore=""></a>
+<!-- 新增的推广提示 -->
+<div style="position:absolute;left:0px;bottom:0px;width:29px;height:16px;overflow:hidden;z-index:12;background: url(http://ecmb.bdimg.com/public03/imageplus/leftbottom.png) no-repeat;"></div>
+</div>
+</div>
+</div>
+<a style="display: none;" class="ad-widget-imageplus-sticker-close " href="#" id="w-g70zlw-close">X</a>
+</div>
+<div class="ad-widget-imageplus-sticker-thumbnail" id="w-g70zlw-thumbnail" style="display: none; top: 328px;">
+<a href="#" title="点击展开"><i>&nbsp;</i>图片相关信息</a>
+</div></div><style id="s-f21ac82b21eeb7322631b6aa94e17f451c8xqzc" media="screen" type="text/css">.ad-widget-imageplus-box{position:absolute;top:0;left:0;margin:0;padding:0;width:0;height:0;overflow:visible!important}.ad-widget-imageplus-box-icon{position:absolute;top:0;left:0;z-index:10;width:38px;height:38px;overflow:hidden;cursor:pointer;background:url("http://ecma.bdimg.com/public03/imageplus/pa.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa.png')\9}.ad-widget-imageplus-box-icon:hover{background:url("http://ecma.bdimg.com/public03/imageplus/pa-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-hover.png')\9}
+.ad-widget-imageplus-box-icon
+ 
+span{position:absolute;top:0;left:0;width:38px;height:38px;cursor:pointer;text-decoration:none;background-color:#FFF;opacity:0;filter:alpha(opacity=0)}span.ad-widget-imageplus-box-icon{cursor:default}.ad-widget-imageplus-box-icon-medical{background:url("http://ecma.bdimg.com/public03/imageplus/pa-medical.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-medical.png')\9}.ad-widget-imageplus-box-icon-medical:hover{background:url("http://ecma.bdimg.com/public03/imageplus/pa-medical-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-medical-hover.png')\9}
+.ad-widget-imageplus-box-icon-decoration{background:url("http://ecma.bdimg.com/public03/imageplus/pa-decoration.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-decoration.png')\9}.ad-widget-imageplus-box-icon-decoration:hover{background:url("http://ecma.bdimg.com/public03/imageplus/pa-decoration-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-decoration-hover.png')\9}.ad-widget-imageplus-box-icon-machine{background:url("http://ecma.bdimg.com/public03/imageplus/pa-machine.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-machine.png')\9}
+.ad-widget-imageplus-box-icon-machine:hover{background:url("http://ecma.bdimg.com/public03/imageplus/pa-machine-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-machine-hover.png')\9}.ad-widget-imageplus-box-icon-photo{background:url("http://ecma.bdimg.com/public03/imageplus/pa-photo.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-photo.png')\9}.ad-widget-imageplus-box-icon-photo:hover{background:url("http://ecma.bdimg.com/public03/imageplus/pa-photo-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-photo-hover.png')\9}
+.ad-widget-imageplus-box-icon-tourism{background:url("http://ecma.bdimg.com/public03/imageplus/pa-tourism.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-tourism.png')\9}.ad-widget-imageplus-box-icon-tourism:hover{background:url("http://ecma.bdimg.com/public03/imageplus/pa-tourism-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-tourism-hover.png')\9}.ad-widget-imageplus-box-icon-game{background:url("http://ecma.bdimg.com/public03/imageplus/game.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/game.png')\9}
+.ad-widget-imageplus-box-icon-game:hover{background:url("http://ecma.bdimg.com/public03/imageplus/game-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/game-hover.png')\9}.ad-widget-imageplus-box-bd{position:absolute;top:0;left:0;z-index:11;display:none;overflow:visible;background:#FFF}.ad-widget-imageplus-box-bg{position:absolute;top:0;left:0;z-index:11;width:100%;height:100%;background:#FFF;opacity:.95;filter:alpha(opacity=95);border-radius:2px;-webkit-box-shadow:2px
+ 2px 4px #000;-moz-box-shadow:2px 2px 4px #000;box-shadow:2px 2px 4px 
+#000}.ad-widget-imageplus{position:relative;top:0;left:0;z-index:12}.imageplus-icon-icon-iframe-box{position:relative;top:0;left:0;z-index:12}</style><div data-rendered="true" style="margin: 0px; padding: 0px; border: medium none; overflow: visible; text-align: left;" id="f21ac82b21eeb7322631b6aa94e17f451c8xqzc"><div style="left: 450.8px; top: 104.4px;" class="ad-widget-imageplus ad-widget-imageplus-box" id="w-ik2df0">
+<a class="ad-widget-imageplus-box-icon ad-widget-imageplus-box-icon-default" href="http://bzclk.baidu.com/eye.php?t=00000000000000000000000000000000w6000K3000jIdQKQa6000cJmkIHjJBy66haQNs00000.mLFW5Hfvnjbd0A-Vu1YdnWm4nW0knW6Lrjm4PjcdrHfd0AnqwRuanj7APbRLPYR4fYnknjKjnRwAPWcvnjTLnDNAnDc0IgF_5fKsTWY0UyNz5fK9IZw9mv6qnH0snaRzPWD3rHnsnHf0&amp;actionid=2&amp;attach=0" target="_blank" id="w-ik2df0-icon" data-log="2" data-attach="1" data-mid="" style="width: 38px; height: 38px; display: none;">
+<!-- span遮盖了整个a，故需要加data-log和data-attach -->
+<span data-log="2" data-attach="1">&nbsp;</span>
+</a>
+<div class="ad-widget-imageplus-box-bd" id="w-ik2df0-content" style="top: 38px; left: -132px; width: 302px; height: 252px;">
+<div class="ad-widget-imageplus-box-bg" style=""></div>
+<div class="imageplus-icon-icon-iframe-box" id="w-xes9x3">
+<div id="w-xes9x3-widget-isolated-host" style="overflow:visible;box-sizing:content-box;position:static;display:block;padding:0;margin:0;border:none;"><iframe allowtransparency="true" scrolling="no" vspace="0" hspace="0" style="position:static;display:block;padding:0;margin:0;border:none;vertical-align:baseline;width: 300px; height: 250px; " frameborder="0"></iframe></div>
+</div>
+</div>
+</div></div></div><div style="position: absolute; border: 0px none; margin: 0px; padding: 0px; height: 0px; overflow: visible; text-align: left; top: 5254px; left: 159px; width: 644px;"><div id="f21ac82b21eeb7322631b6aa94e17f454xcy1n"><style media="screen" type="text/css">#f21ac82b21eeb7322631b6aa94e17f454xcy1n
+ 
+{position:absolute;top:0;left:0;right:auto;bottom:auto;margin:0;padding:0;border:0;width:200px;background:transparent;-webkit-box-sizing:content-box;box-sizing:content-box;}#f21ac82b21eeb7322631b6aa94e17f454xcy1n
+ div{float:left;width:144px;height:17px;line-height:17px;margin:3px 0 0 
+-2px;background:url(http://ecma.bdimg.com/public03/imageplus/tip-back.png)
+ 0 0 
+no-repeat;_background:0;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/tip-back.png');font-family:sans-serif;text-align:center;font-size:12px;color:#666;padding:8px
+ 
+10px;display:none;-webkit-box-sizing:content-box;box-sizing:content-box;}#f21ac82b21eeb7322631b6aa94e17f454xcy1n-icon
+ 
+{float:left;height:38px;width:38px;cursor:default;background:url(http://ecma.bdimg.com/public03/imageplus/tip.png)
+ 0 0 
+no-repeat;_background:0;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/tip.png');-webkit-box-sizing:content-box;box-sizing:content-box;}#f21ac82b21eeb7322631b6aa94e17f454xcy1n-icon:hover
+ 
+{float:left;height:38px;width:38px;}#f21ac82b21eeb7322631b6aa94e17f454xcy1n
+ #f21ac82b21eeb7322631b6aa94e17f454xcy1n-icon:hover 
+{background:url(http://ecma.bdimg.com/public03/imageplus/tip-hover.png) 0
+ 0 
+no-repeat;_background:0;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/tip-hover.png');}</style><a href="javascript:void(0);" id="f21ac82b21eeb7322631b6aa94e17f454xcy1n-icon"></a><div id="f21ac82b21eeb7322631b6aa94e17f454xcy1n-msg">查看标识获取更多信息</div></div><style id="s-f21ac82b21eeb7322631b6aa94e17f452ykgikc" media="screen" type="text/css">.baiduimageplus-s-pa{position:relative;width:100%;height:110px;overflow:hidden;cursor:default;-webkit-transition:top
+ .5s;-moz-transition:top .5s;-ms-transition:top .5s;-o-transition:top 
+.5s;transition:top .5s}.baiduimageplus-s-pa 
+p{background:none}.baiduimageplus-s-pa 
+a{outline:0;text-decoration:none}.baiduimageplus-s-pa 
+a:hover{text-decoration:underline}.baiduimageplus-s-pa 
+.baiduimageplus-s-pa-bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1}.baiduimageplus-s-pa
+ 
+.baiduimageplus-s-pa-ct{position:relative;z-index:2}.baiduimageplus-s-pa
+ 
+.baiduimageplus-s-pa-hd{height:26px;overflow:hidden;line-height:26px}.baiduimageplus-s-pa
+ .baiduimageplus-s-pa-hd 
+.baiduimageplus-s-pa-hd-title-cell{font-size:14px;color:#FFF;height:100%;text-align:center!important;float:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-right:1px
+ solid #FFF}
+.baiduimageplus-s-pa 
+.baiduimageplus-s-pa-bd-lu{position:relative;overflow:hidden;zoom:1;padding:0;margin:0}.baiduimageplus-s-pa
+ .baiduimageplus-s-pa-bd-lu 
+.baiduimageplus-s-pa-bd-lu-wrapper{width:90%;height:84px;float:left;overflow:hidden;position:relative;left:5px}.baiduimageplus-s-pa
+ .baiduimageplus-s-pa-bd-lu .baiduimageplus-s-pa-bd-lu-wrapper 
+.baiduimageplus-s-pa-bd-lu-outter{height:84px;overflow:hidden;position:absolute;left:0;-webkit-transition:all
+ .5s;-moz-transition:all .5s;-ms-transition:all .5s;-o-transition:all 
+.5s;transition:all .5s}.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu 
+.baiduimageplus-s-pa-bd-lu-wrapper .baiduimageplus-s-pa-bd-lu-outter 
+.cell{width:100px;height:72px;overflow:hidden;background-color:#FFF;margin:4px
+ 5px;padding:0;float:left;border:2px solid #000;position:relative}
+.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu 
+.baiduimageplus-s-pa-bd-lu-wrapper .baiduimageplus-s-pa-bd-lu-outter 
+.cell:hover{border-color:#d1111c}.baiduimageplus-s-pa 
+.baiduimageplus-s-pa-bd-lu .baiduimageplus-s-pa-bd-lu-wrapper 
+.baiduimageplus-s-pa-bd-lu-outter .cell:hover 
+.baiduimageplus-s-pa-bd-lu-title{background-color:#d1111c}.baiduimageplus-s-pa
+ .baiduimageplus-s-pa-bd-lu .baiduimageplus-s-pa-bd-lu-wrapper 
+.baiduimageplus-s-pa-bd-lu-outter .cell:hover 
+img{-webkit-transform:scale(1.2);-moz-transform:scale(1.2);-ms-transform:scale(1.2);-o-transform:scale(1.2);transform:scale(1.2)}.baiduimageplus-s-pa
+ .baiduimageplus-s-pa-bd-lu .baiduimageplus-s-pa-bd-lu-wrapper 
+.baiduimageplus-s-pa-bd-lu-outter .cell 
+img{width:100px;height:50px;display:block;border:0;-webkit-transition:transform
+ .5s;-moz-transition:transform .5s;-ms-transition:transform 
+.5s;-o-transition:transform .5s;transition:transform .5s}
+.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu 
+.baiduimageplus-s-pa-bd-lu-wrapper .baiduimageplus-s-pa-bd-lu-outter 
+.cell .baiduimageplus-s-pa-bd-lu-title{position:absolute;font:14px/1.5 
+arial,sans-serif;bottom:0;left:0;width:100%;height:22px;display:block;line-height:22px;background-color:#000;text-align:center;color:#FFF}.baiduimageplus-s-pa
+ .baiduimageplus-s-pa-bd-lu .baiduimageplus-s-pa-bd-lu-wrapper 
+.baiduimageplus-s-pa-bd-lu-outter 
+.cell:first-child{margin-left:0}.baiduimageplus-s-pa 
+.baiduimageplus-s-pa-bd-lu .baiduimageplus-s-pa-bd-lu-wrapper 
+.baiduimageplus-s-pa-bd-lu-outter 
+.cell:last-child{margin-right:0}.baiduimageplus-s-pa 
+.baiduimageplus-s-pa-bd-lu 
+.ad-widget-imgps-sticker-html-btn{margin-top:5px;height:75px;width:20px;cursor:pointer;-webkit-transition:background
+ .4s;-moz-transition:background .4s;-ms-transition:background 
+.4s;-o-transition:background .4s;transition:background .4s}
+.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu 
+.adwishbtn_left{width:20px;float:left;background:url(http://ecmb.bdimg.com/public03/imageplus/sticker/leftbtn.jpg)
+ no-repeat center center}.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu
+ .adwishbtn_left:hover{background:#20439d 
+url(http://ecmb.bdimg.com/public03/sticker/leftbtn_hover.jpg) no-repeat 
+center center}.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu 
+.adwishbtn_right{width:20px;float:right;background:url(http://ecmb.bdimg.com/public03/imageplus/sticker/rightbtn.jpg)
+ no-repeat center center}.baiduimageplus-s-pa .baiduimageplus-s-pa-bd-lu
+ .adwishbtn_right:hover{background:#20439d 
+url(http://ecmb.bdimg.com/public03/sticker/rightbtn_hover.jpg) no-repeat
+ center center}.baiduimageplus-s-pa 
+.baiduimageplus-s-pa-logo{position:absolute;bottom:0;right:0;z-index:3;height:18px;width:18px;text-indent:-9999px;background:url(http://cpro.baidustatic.com/cpro/ui/noexpire/img/2.0.1/bg.png)
+ no-repeat left top;background-position:0 
+0;_filter:progid:dximagetransform.microsoft.alphaimageloader(enabled=true,src="http://cpro.baidustatic.com/cpro/ui/noexpire/img/2.0.1/bg.png",sizingMethod="crop");_background:none}
+.ad-widget-imageplus-sticker{font:12px/1.5
+ 
+arial,sans-serif;position:absolute;left:0;width:100%;display:none;overflow:hidden;color:#FFF;background:transparent;-webkit-transition:height
+ .5s,top .5s;transition:height .5s,top .5s}.ad-widget-imageplus-sticker 
+div{background:transparent}.ad-widget-imageplus-sticker-cut{display:block}.ad-widget-imageplus-sticker-bg{position:absolute;z-index:1;left:0;top:0;width:100%;height:100%;background:#000!important;box-shadow:2px
+ 2px 4px 
+#000}.ad-widget-imageplus-sticker-bd{position:relative;z-index:2;left:0;top:0;width:100%;overflow:hidden}.ad-widget-imageplus-sticker-close{position:absolute;z-index:3;right:0;top:5px;width:25px;height:25px;line-height:25px;text-decoration:none;text-align:center;font-size:18px;color:#FFF!important}.ad-widget-imageplus-sticker-close:hover{background-color:#000}
+.ad-widget-imageplus-sticker-theme-white{color:#333}.ad-widget-imageplus-sticker-theme-white
+ 
+.ad-widget-imageplus-sticker-bg{background:#FFF!important;box-shadow:2px
+ 2px 4px #FFF}.ad-widget-imageplus-sticker-theme-white 
+.ad-widget-imageplus-sticker-close{color:#666!important}.ad-widget-imageplus-sticker-theme-white
+ 
+.ad-widget-imageplus-sticker-close:hover{background-color:#FFF!important}.ad-widget-imageplus-sticker-theme-none{color:#333}.ad-widget-imageplus-sticker-theme-none
+ 
+.ad-widget-imageplus-sticker-bg{background:transparent!important;box-shadow:none}.ad-widget-imageplus-sticker-theme-none
+ 
+.ad-widget-imageplus-sticker-close{color:#666!important}.ad-widget-imageplus-sticker-theme-none
+ 
+.ad-widget-imageplus-sticker-close:hover{background-color:#FFF!important}.ad-widget-imageplus-sticker-theme-none-white{color:#333}
+.ad-widget-imageplus-sticker-theme-none-white
+ 
+.ad-widget-imageplus-sticker-bg{background:transparent!important;box-shadow:none}.ad-widget-imageplus-sticker-theme-none-white-2
+ 
+.ad-widget-imageplus-sticker-bg{background:transparent!important;box-shadow:none}.ad-widget-imageplus-sticker-theme-none-white-2
+ 
+.ad-widget-imageplus-sticker-close{top:0;text-indent:-9999px;background:url(http://ecma.bdimg.com/public03/imageplus/v2/dock/close.png)
+ no-repeat 0 0 transparent}.ad-widget-imageplus-sticker-theme-v2 
+.ad-big-title{position:relative;top:0;opacity:1;filter:alpha(opacity=100);-webkit-transition:top
+ .5s,opacity .6s;transition:top .5s,opacity 
+.6s}.ad-widget-imageplus-sticker-theme-v2 
+.ad-widget-imageplus-sticker-showing 
+.ad-big-title{position:relative;top:-36px;opacity:0;filter:alpha(opacity=0)}.ad-widget-imageplus-sticker-theme-v2
+ .ad-widget-imageplus-sticker-showing 
+.ad-widget-imageplus-sticker-bg{top:26px}
+.ad-widget-imageplus-sticker-theme-v2 
+.ad-widget-imageplus-sticker-close{top:0;text-indent:-9999px;background:url(http://ecma.bdimg.com/public03/imageplus/v2/dock/close.png)
+ no-repeat 0 0 
+transparent}.ad-widget-imageplus-sticker-thumbnail{font:12px/1.5 
+arial,sans-serif;position:absolute;right:0;top:0;height:20px;width:100px;overflow:hidden;background:transparent;-webkit-transition:height
+ .5s;-moz-transition:height .5s;-ms-transition:height 
+.5s;-o-transition:height .5s;transition:height 
+.5s;background-color:rgba(0,0,0,0.5);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000);-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000)}.ad-widget-imageplus-sticker-thumbnail
+ 
+a{float:right;width:100px;height:20px;line-height:20px;text-align:center;color:white;background:transparent;text-decoration:none}
+.ad-widget-imageplus-sticker-thumbnail
+ 
+i{width:12px;height:8px;margin-top:6px;margin-left:5px;display:block;float:left;background:url('http://ecma.bdimg.com/adtest/8e547549c94ab88c81b644d5ff63b0d3.png')
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/adtest/8e547549c94ab88c81b644d5ff63b0d3.png')\9}.ad-widget-imageplus-sticker-close-newstyle{top:0;text-indent:-9999px;background:url(http://ecmb.bdimg.com/public03/v2/dock/iconfont-close.png)
+ no-repeat 0 0 
+transparent!important}.ad-widget-imageplus-sticker-showing 
+.baiduimageplus-s-pa-hd{opacity:0;filter:alpha(opacity=0)}</style><div data-rendered="true" style="margin: 0px; padding: 0px; border: medium none; overflow: visible; text-align: left;" id="f21ac82b21eeb7322631b6aa94e17f452ykgikc"><div style="display: block; top: 337px; height: 109px;" class="ad-widget-imageplus-sticker ad-widget-imageplus-sticker-theme-v2 ad-widget-imageplus-sticker-cut" id="w-7qjgrq">
+<div style="display: block; top: 83px; height: 26px;" class="ad-widget-imageplus-sticker ad-widget-imageplus-sticker-wrapper ad-widget-imageplus-sticker-box-showing" id="w-7qjgrq-wrapper">
+<div class="ad-widget-imageplus-sticker-bg" id="w-7qjgrq-background" style="opacity: 0.75;"></div>
+<div class="ad-widget-imageplus-sticker-bd" id="w-7qjgrq-body">
+<div class="baiduimageplus-s-pa" id="w-2pcxz6">
+<div class="baiduimageplus-s-pa-bg" id="w-2pcxz6-background"></div>
+<div class="baiduimageplus-s-pa-ct">
+<div class="baiduimageplus-s-pa-hd">
+<div style="width: 128px ! important;" class="baiduimageplus-s-pa-hd-title-cell">p2p网贷系统</div>
+<div style="width: 128px ! important;" class="baiduimageplus-s-pa-hd-title-cell">客户管理系统</div>
+<div style="width: 128px ! important;" class="baiduimageplus-s-pa-hd-title-cell">oa办公系统</div>
+<div style="width: 128px ! important;" class="baiduimageplus-s-pa-hd-title-cell">linux入门</div>
+<div style="width: 128px ! important; border: medium none ! important;" class="baiduimageplus-s-pa-hd-title-cell">logo设计</div>
+<div class="baiduimageplus-s-pa-hd-title-cell">安卓app开发</div>
+</div>
+<div class="baiduimageplus-s-pa-bd-lu">
+<div id="w-2pcxz6-left_btn" class="ad-widget-imgps-sticker-html-btn adwishbtn_left" style="display:none;"></div>
+<div style="width: 634px ! important;" id="w-2pcxz6-wrapper" class="baiduimageplus-s-pa-bd-lu-wrapper">
+<div style="width: 679px ! important;" id="w-2pcxz6-outter" class="baiduimageplus-s-pa-bd-lu-outter">
+<div class="cell">
+<a data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=a10e2bfe5438222a&amp;k=p2p%CD%F8%B4%FB%CF%B5%CD%B3&amp;k0=p2p%CD%F8%B4%FB%CF%B5%CD%B3&amp;k1=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k2=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k3=linux%C8%EB%C3%C5&amp;k4=logo%C9%E8%BC%C6&amp;k5=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=1&amp;mcpm=109123&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2a223854fe2b0ea1&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/u15793668382077951752fm76.jpg"></a>
+<a class="baiduimageplus-s-pa-bd-lu-title" data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=a10e2bfe5438222a&amp;k=p2p%CD%F8%B4%FB%CF%B5%CD%B3&amp;k0=p2p%CD%F8%B4%FB%CF%B5%CD%B3&amp;k1=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k2=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k3=linux%C8%EB%C3%C5&amp;k4=logo%C9%E8%BC%C6&amp;k5=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=1&amp;mcpm=109123&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2a223854fe2b0ea1&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0">p2p网贷系统</a>
+</div>
+<div class="cell">
+<a data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=a10e2bfe5438222a&amp;k=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k0=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k1=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k2=linux%C8%EB%C3%C5&amp;k3=logo%C9%E8%BC%C6&amp;k4=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;k5=%D4%DA%CF%DF%BF%CD%B7%FE%CF%B5%CD%B3&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=2&amp;mcpm=16563&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2a223854fe2b0ea1&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/u5147576803152058626fm76.jpg"></a>
+<a class="baiduimageplus-s-pa-bd-lu-title" data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=a10e2bfe5438222a&amp;k=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k0=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k1=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k2=linux%C8%EB%C3%C5&amp;k3=logo%C9%E8%BC%C6&amp;k4=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;k5=%D4%DA%CF%DF%BF%CD%B7%FE%CF%B5%CD%B3&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=2&amp;mcpm=16563&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2a223854fe2b0ea1&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0">客户管理系统</a>
+</div>
+<div class="cell">
+<a data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=a10e2bfe5438222a&amp;k=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k0=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k1=linux%C8%EB%C3%C5&amp;k2=logo%C9%E8%BC%C6&amp;k3=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;k4=%D4%DA%CF%DF%BF%CD%B7%FE%CF%B5%CD%B3&amp;k5=p2p%CD%F8%B4%FB%CF%B5%CD%B3&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=3&amp;mcpm=33130&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2a223854fe2b0ea1&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/u7254441224059237478fm76.jpg"></a>
+<a class="baiduimageplus-s-pa-bd-lu-title" data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=a10e2bfe5438222a&amp;k=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k0=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k1=linux%C8%EB%C3%C5&amp;k2=logo%C9%E8%BC%C6&amp;k3=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;k4=%D4%DA%CF%DF%BF%CD%B7%FE%CF%B5%CD%B3&amp;k5=p2p%CD%F8%B4%FB%CF%B5%CD%B3&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=3&amp;mcpm=33130&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2a223854fe2b0ea1&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0">oa办公系统</a>
+</div>
+<div class="cell">
+<a data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=a10e2bfe5438222a&amp;k=linux%C8%EB%C3%C5&amp;k0=linux%C8%EB%C3%C5&amp;k1=logo%C9%E8%BC%C6&amp;k2=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;k3=%D4%DA%CF%DF%BF%CD%B7%FE%CF%B5%CD%B3&amp;k4=p2p%CD%F8%B4%FB%CF%B5%CD%B3&amp;k5=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=4&amp;mcpm=30710&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2a223854fe2b0ea1&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/u17548406562741043490fm76.jpg"></a>
+<a class="baiduimageplus-s-pa-bd-lu-title" data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=a10e2bfe5438222a&amp;k=linux%C8%EB%C3%C5&amp;k0=linux%C8%EB%C3%C5&amp;k1=logo%C9%E8%BC%C6&amp;k2=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;k3=%D4%DA%CF%DF%BF%CD%B7%FE%CF%B5%CD%B3&amp;k4=p2p%CD%F8%B4%FB%CF%B5%CD%B3&amp;k5=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=4&amp;mcpm=30710&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2a223854fe2b0ea1&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0">linux入门</a>
+</div>
+<div class="cell">
+<a data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=a10e2bfe5438222a&amp;k=logo%C9%E8%BC%C6&amp;k0=logo%C9%E8%BC%C6&amp;k1=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;k2=%D4%DA%CF%DF%BF%CD%B7%FE%CF%B5%CD%B3&amp;k3=p2p%CD%F8%B4%FB%CF%B5%CD%B3&amp;k4=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k5=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=5&amp;mcpm=40036&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2a223854fe2b0ea1&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/u12865775471460023999fm76.jpg"></a>
+<a class="baiduimageplus-s-pa-bd-lu-title" data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=a10e2bfe5438222a&amp;k=logo%C9%E8%BC%C6&amp;k0=logo%C9%E8%BC%C6&amp;k1=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;k2=%D4%DA%CF%DF%BF%CD%B7%FE%CF%B5%CD%B3&amp;k3=p2p%CD%F8%B4%FB%CF%B5%CD%B3&amp;k4=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k5=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=5&amp;mcpm=40036&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2a223854fe2b0ea1&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0">logo设计</a>
+</div>
+<div class="cell">
+<a data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=a10e2bfe5438222a&amp;k=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;k0=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;k1=%D4%DA%CF%DF%BF%CD%B7%FE%CF%B5%CD%B3&amp;k2=p2p%CD%F8%B4%FB%CF%B5%CD%B3&amp;k3=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k4=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k5=linux%C8%EB%C3%C5&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=6&amp;mcpm=24627&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2a223854fe2b0ea1&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0"><img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/u18523236192573008630fm76.jpg"></a>
+<a class="baiduimageplus-s-pa-bd-lu-title" data-log="2" data-mid="" target="_blank" href="https://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&amp;app_id=0&amp;c=news&amp;cf=41&amp;ch=0&amp;di=8&amp;fv=9&amp;is_app=0&amp;jk=a10e2bfe5438222a&amp;k=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;k0=%B0%B2%D7%BFapp%BF%AA%B7%A2&amp;k1=%D4%DA%CF%DF%BF%CD%B7%FE%CF%B5%CD%B3&amp;k2=p2p%CD%F8%B4%FB%CF%B5%CD%B3&amp;k3=%BF%CD%BB%A7%B9%DC%C0%ED%CF%B5%CD%B3&amp;k4=oa%B0%EC%B9%AB%CF%B5%CD%B3&amp;k5=linux%C8%EB%C3%C5&amp;kdi0=8&amp;kdi1=8&amp;kdi2=8&amp;kdi3=8&amp;kdi4=8&amp;kdi5=8&amp;luki=6&amp;mcpm=24627&amp;n=10&amp;p=baidu&amp;q=jb51_cpr&amp;rb=1&amp;rs=1&amp;seller_id=5&amp;sid=2a223854fe2b0ea1&amp;ssp2=1&amp;stid=22&amp;t=tpclicked3_hc&amp;td=&amp;tu=u1893014&amp;u=http%3A%2F%2Fwww%2Ejb51%2Enet%2Farticle%2F68580%2Ehtm&amp;urlid=0">安卓app开发</a>
+</div>
+</div>
+</div>
+<div id="w-2pcxz6-right_btn" class="ad-widget-imgps-sticker-html-btn adwishbtn_right" style="display:none;"></div>
+</div>
+</div>
+<a class="baiduimageplus-s-pa-logo" title="百度网盟推广" href="http://wangmeng.baidu.com/" target="_blank" data-ignore=""></a>
+<!-- 新增的推广提示 -->
+<div style="position:absolute;left:0px;bottom:0px;width:29px;height:16px;overflow:hidden;z-index:12;background: url(http://ecmb.bdimg.com/public03/imageplus/leftbottom.png) no-repeat;"></div>
+</div>
+</div>
+</div>
+<a style="display: none;" class="ad-widget-imageplus-sticker-close " href="#" id="w-7qjgrq-close">X</a>
+</div>
+<div class="ad-widget-imageplus-sticker-thumbnail" id="w-7qjgrq-thumbnail" style="display: none; top: 426px;">
+<a href="#" title="点击展开"><i>&nbsp;</i>图片相关信息</a>
+</div></div><style id="s-f21ac82b21eeb7322631b6aa94e17f4526ewgm" media="screen" type="text/css">.ad-widget-imageplus-box{position:absolute;top:0;left:0;margin:0;padding:0;width:0;height:0;overflow:visible!important}.ad-widget-imageplus-box-icon{position:absolute;top:0;left:0;z-index:10;width:38px;height:38px;overflow:hidden;cursor:pointer;background:url("http://ecma.bdimg.com/public03/imageplus/pa.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa.png')\9}.ad-widget-imageplus-box-icon:hover{background:url("http://ecma.bdimg.com/public03/imageplus/pa-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-hover.png')\9}
+.ad-widget-imageplus-box-icon
+ 
+span{position:absolute;top:0;left:0;width:38px;height:38px;cursor:pointer;text-decoration:none;background-color:#FFF;opacity:0;filter:alpha(opacity=0)}span.ad-widget-imageplus-box-icon{cursor:default}.ad-widget-imageplus-box-icon-medical{background:url("http://ecma.bdimg.com/public03/imageplus/pa-medical.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-medical.png')\9}.ad-widget-imageplus-box-icon-medical:hover{background:url("http://ecma.bdimg.com/public03/imageplus/pa-medical-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-medical-hover.png')\9}
+.ad-widget-imageplus-box-icon-decoration{background:url("http://ecma.bdimg.com/public03/imageplus/pa-decoration.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-decoration.png')\9}.ad-widget-imageplus-box-icon-decoration:hover{background:url("http://ecma.bdimg.com/public03/imageplus/pa-decoration-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-decoration-hover.png')\9}.ad-widget-imageplus-box-icon-machine{background:url("http://ecma.bdimg.com/public03/imageplus/pa-machine.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-machine.png')\9}
+.ad-widget-imageplus-box-icon-machine:hover{background:url("http://ecma.bdimg.com/public03/imageplus/pa-machine-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-machine-hover.png')\9}.ad-widget-imageplus-box-icon-photo{background:url("http://ecma.bdimg.com/public03/imageplus/pa-photo.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-photo.png')\9}.ad-widget-imageplus-box-icon-photo:hover{background:url("http://ecma.bdimg.com/public03/imageplus/pa-photo-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-photo-hover.png')\9}
+.ad-widget-imageplus-box-icon-tourism{background:url("http://ecma.bdimg.com/public03/imageplus/pa-tourism.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-tourism.png')\9}.ad-widget-imageplus-box-icon-tourism:hover{background:url("http://ecma.bdimg.com/public03/imageplus/pa-tourism-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/pa-tourism-hover.png')\9}.ad-widget-imageplus-box-icon-game{background:url("http://ecma.bdimg.com/public03/imageplus/game.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/game.png')\9}
+.ad-widget-imageplus-box-icon-game:hover{background:url("http://ecma.bdimg.com/public03/imageplus/game-hover.png")
+ no-repeat 0 0;background:none 
+\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='corp',src='http://ecma.bdimg.com/public03/imageplus/game-hover.png')\9}.ad-widget-imageplus-box-bd{position:absolute;top:0;left:0;z-index:11;display:none;overflow:visible;background:#FFF}.ad-widget-imageplus-box-bg{position:absolute;top:0;left:0;z-index:11;width:100%;height:100%;background:#FFF;opacity:.95;filter:alpha(opacity=95);border-radius:2px;-webkit-box-shadow:2px
+ 2px 4px #000;-moz-box-shadow:2px 2px 4px #000;box-shadow:2px 2px 4px 
+#000}.ad-widget-imageplus{position:relative;top:0;left:0;z-index:12}.ad-widget-imageplus-pa{font:12px/1.5
+ 
+arial,sans-serif;width:273px;height:131px;text-align:left;color:#333;background-color:#FFF}
+.ad-widget-imageplus-pa-title{padding:6px
+ 15px 
+4px;width:243px;height:15px;line-height:15px;overflow:hidden;text-decoration:none;text-overflow:ellipsis;white-space:nowrap;background-color:#f5f5f5}.ad-widget-imageplus-pa-default,.ad-widget-imageplus-pa-medical,.ad-widget-imageplus-pa-tourism,.ad-widget-imageplus-pa-machine,.ad-widget-imageplus-pa-photo,.ad-widget-imageplus-pa-decoration{display:inline-block;_zoom:1;width:15px;height:15px;background:url(http://ecma.bdimg.com/public03/imageplus/pa-icons.png)
+ no-repeat}.ad-widget-imageplus-pa-default{background-position:-97px 
+0}.ad-widget-imageplus-pa-medical{background-position:-32px 
+0}.ad-widget-imageplus-pa-tourism{background-position:-64px 
+0}.ad-widget-imageplus-pa-machine{background-position:-16px 
+0}.ad-widget-imageplus-pa-photo{background-position:-48px 0}
+.ad-widget-imageplus-pa-decoration{background-position:0 
+0}.ad-widget-imageplus-pa-bd{margin:10px 15px 
+0;height:75px;overflow:hidden;_zoom:1}.ad-widget-imageplus-pa-bd 
+img{position:static!important;cursor:auto!important;float:left;_display:inline;margin-right:16px;width:70px!important;height:70px!important;border:0}.ad-widget-imageplus-pa-text{overflow:hidden;_zoom:1}.ad-widget-imageplus-pa-desc{max-height:54px;overflow:hidden}.ad-widget-imageplus-pa-url{overflow:hidden;color:#666}.ad-widget-imageplus-pa-v{display:inline-block;width:16px;height:16px;background:url(http://ecma.bdimg.com/public03/imageplus/pa-icons.png)
+ no-repeat -80px 
+0}.ad-widget-imageplus-pa-ft{padding-right:10px;text-align:right;color:#999}.ad-widget-imageplus-pa-redirect{width:273px;height:131px;position:absolute;left:0;top:0;background-color:#FFF;opacity:0;filter:alpha(opacity=0)}
+.baiduimageplus-pa-logo{position:absolute;bottom:0;right:0;z-index:3;height:18px;width:18px;text-indent:-9999px;background:url(http://cpro.baidustatic.com/cpro/ui/noexpire/img/2.0.1/bg.png)
+ no-repeat left top;background-position:0 
+0;_filter:progid:dximagetransform.microsoft.alphaimageloader(enabled=true,src="http://cpro.baidustatic.com/cpro/ui/noexpire/img/2.0.1/bg.png",sizingMethod="crop");_background:none}#f21ac82b21eeb7322631b6aa94e17f4526ewgm{font:12px/1.5
+ arial,sans-serif}</style><div data-rendered="true" style="margin: 0px; padding: 0px; border: medium none; overflow: visible; text-align: left;" id="f21ac82b21eeb7322631b6aa94e17f4526ewgm"><div style="left: 450.8px; top: 133.8px;" class="ad-widget-imageplus ad-widget-imageplus-box" id="w-8ae40d">
+<a class="ad-widget-imageplus-box-icon ad-widget-imageplus-box-icon-default" href="http://www.baidu.com/cpro.php?2kRK000KV7LuLYAfod0-Q2IqymNk5ke4H8vFf_P7eqgwLkJQTtcvt1pHBT2DD0dRxNNyxR2vxqCZCMHeWkHyHv3K4tnXlbdgTcOcCO1QfAy_z497Y2nIJ4YAW37O.DY_a9nOA1Iqj3LHTbZlj_D13qrxNbLtIqxHLY_Nq5HbLqmtAP-eAHGo_Ld4r1_lk3nUrGWIg_vUQr1oZ6kYnU7My5KWklynVSlEsqmtA5V3A7BmzLeJSyZZn_nYQAiE_lIz6.IgF_5y9YIZ0lQzqLILT8phcdni48ugfEmgFYpyP_uitvrjR3na4CIAY0IAYqnH0vPH6sn6KYIHddnH64n10kP0KYujYs0ZI_5Hm0mv4YUWdJmWRkgvPsT6KWpAdb5HD0TvPCUyfqnfK1TjYkPfK-XZfqn0K9uAP_mgP15H00TvwogLmqn0KET1Ys0AFz5HDs0ZIGuZwC5Hnsn0KCuy-MpZfqnWRs0ZIG5HD0XA-s5fK1uykh5H00TvwogLu-TMPGUv3q0A49TLws5H00TMnqn0KWuWYs0APYUHdBmy-bIRPdTLw2Tvq80A49IZRqrfKGIA-b5H00pgwGUhuEpyfqn0KMTA-b5H00ThNhTA-b5H00mLKzUv-b5fKWUvdsUARqn0K9u7q15yw-mWfkPjDYrHcYnWb1mvm0UA7_5fK9IA-b5fK9IZw45fKLTLFW5H00myNxIA7z5fKGTdqoIADq0ZP_TLFW5H00TvkWp1Ys0ZP_pv-b5H00mMNbuvNYgvN3TA-b5H00my-s5yI3IMKsmY9hfYYv0ZNGTjdAuM9MHHKKUL9ggsKWpjYs0Zw9TWYz0AwYTjYk0ZP-UAk-T-qGujYd0A-1gv7sTjYs0A7sT7qGujYs0APdTLfq0A-1gLIGThN_ugP15H00Iv7sgLw4TARqn0KsUjYs0AdW5yDkuAR4rjbk0Adv5HD0UMus5H08nj0snj0snj00u1bqnfKhpgF1I7qzuyIGUv3qnHT0TvNWUv4bgLF-uv-EUWYzP1m0TLPs5HR0TLPsnWYk0ZwYTjYk0AwGTLws5H00mycqnfK9uZ6qnfKsuMwzmyw-5Hf0TZPYTh7buHYYnjD0TA-b5H00ILKGujYs0A7bIZ-suHYs0ZPGThN8uANz5H00mLwo5fK1Iv-b5H00TLw4TARqn0KWThnqPWcvrHn0" target="_blank" id="w-8ae40d-icon" data-log="2" data-attach="1" data-mid="32" style="width: 38px; height: 38px; display: none;">
+<!-- span遮盖了整个a，故需要加data-log和data-attach -->
+<span data-log="2" data-attach="1">&nbsp;</span>
+</a>
+<div class="ad-widget-imageplus-box-bd" id="w-8ae40d-content" style="top: 38px; left: -117.5px; width: 273px; height: 131px;">
+<div class="ad-widget-imageplus-box-bg" style=""></div>
+<div class="ad-widget-imageplus ad-widget-imageplus-pa" id="w-nejw88">
+<div class="ad-widget-imageplus-pa-title">
+<span class="ad-widget-imageplus-pa-default">&nbsp;</span>
+曼谷自由行，先看点评更安心
+</div>
+<div class="ad-widget-imageplus-pa-bd">
+<img src="20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E6%B3%A2%E5%AE%9E%E7%94%A8%E7%9A%84Bash%20Shell%E6%95%B4%E7%90%86_linux%20shell_%E8%84%9A%E6%9C%AC%E4%B9%8B%E5%AE%B6_files/0f000nY2aOR9wiT6jPksY0.jpg">
+<div class="ad-widget-imageplus-pa-text">
+<div class="ad-widget-imageplus-pa-desc">TripAdvisor猫途鹰,为您提供全球旅行者的 旅游点评。让出国旅游...</div>
+<div class="ad-widget-imageplus-pa-url">
+www.TripAdviso...
+</div>
+</div>
+</div>
+<!-- 新增的推广提示 -->
+<div style="position:absolute;left:0px;bottom:0px;width:29px;height:16px;overflow:hidden;z-index:12;background: url(http://ecmb.bdimg.com/public03/imageplus/leftbottom.png) no-repeat;"></div>
+<a class="ad-widget-imageplus-pa-redirect" href="http://www.baidu.com/cpro.php?2kRK000KV7LuLYAfod0-Q2IqymNk5ke4H8vFf_P7eqgwLkJQTtcvt1pHBT2DD0dRxNNyxR2vxqCZCMHeWkHyHv3K4tnXlbdgTcOcCO1QfAy_z497Y2nIJ4YAW37O.DY_a9nOA1Iqj3LHTbZlj_D13qrxNbLtIqxHLY_Nq5HbLqmtAP-eAHGo_Ld4r1_lk3nUrGWIg_vUQr1oZ6kYnU7My5KWklynVSlEsqmtA5V3A7BmzLeJSyZZn_nYQAiE_lIz6.IgF_5y9YIZ0lQzqLILT8phcdni48ugfEmgFYpyP_uitvrjR3na4CIAY0IAYqnH0vPH6sn6KYIHddnH64n10kP0KYujYs0ZI_5Hm0mv4YUWdJmWRkgvPsT6KWpAdb5HD0TvPCUyfqnfK1TjYkPfK-XZfqn0K9uAP_mgP15H00TvwogLmqn0KET1Ys0AFz5HDs0ZIGuZwC5Hnsn0KCuy-MpZfqnWRs0ZIG5HD0XA-s5fK1uykh5H00TvwogLu-TMPGUv3q0A49TLws5H00TMnqn0KWuWYs0APYUHdBmy-bIRPdTLw2Tvq80A49IZRqrfKGIA-b5H00pgwGUhuEpyfqn0KMTA-b5H00ThNhTA-b5H00mLKzUv-b5fKWUvdsUARqn0K9u7q15yw-mWfkPjDYrHcYnWb1mvm0UA7_5fK9IA-b5fK9IZw45fKLTLFW5H00myNxIA7z5fKGTdqoIADq0ZP_TLFW5H00TvkWp1Ys0ZP_pv-b5H00mMNbuvNYgvN3TA-b5H00my-s5yI3IMKsmY9hfYYv0ZNGTjdAuM9MHHKKUL9ggsKWpjYs0Zw9TWYz0AwYTjYk0ZP-UAk-T-qGujYd0A-1gv7sTjYs0A7sT7qGujYs0APdTLfq0A-1gLIGThN_ugP15H00Iv7sgLw4TARqn0KsUjYs0AdW5yDkuAR4rjbk0Adv5HD0UMus5H08nj0snj0snj00u1bqnfKhpgF1I7qzuyIGUv3qnHT0TvNWUv4bgLF-uv-EUWYzP1m0TLPs5HR0TLPsnWYk0ZwYTjYk0AwGTLws5H00mycqnfK9uZ6qnfKsuMwzmyw-5Hf0TZPYTh7buHYYnjD0TA-b5H00ILKGujYs0A7bIZ-suHYs0ZPGThN8uANz5H00mLwo5fK1Iv-b5H00TLw4TARqn0KWThnqPWcvrHn0" data-log="2" data-mid="32" target="_blank">&nbsp;</a>
+<a class="baiduimageplus-pa-logo" title="百度网盟推广" href="http://wangmeng.baidu.com/" target="_blank" data-ignore=""></a>
+</div>
+</div>
+</div></div></div><iframe style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_8911236580485"></iframe></body></html>
+<!-- published at 2016-6-17 1:26:05By dxycms qq:461478385  -->

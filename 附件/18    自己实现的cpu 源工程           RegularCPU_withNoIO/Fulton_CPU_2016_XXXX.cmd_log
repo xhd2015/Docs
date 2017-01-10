@@ -1,0 +1,533 @@
+vhdtdtfi -prj RegularCPU -o "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.tfi" -module Fulton_CPU_2016_XXXX -template D:/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror -lib work Fulton_CPU_2016_XXXX.vhd 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 "Fulton_CPU_2016_XXXX.ngc" Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 "Fulton_CPU_2016_XXXX.ngc" Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 "Fulton_CPU_2016_XXXX.ngc" Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 "Fulton_CPU_2016_XXXX.ngc" Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.xst" -ofn "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 "Fulton_CPU_2016_XXXX.ngc" Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+vhdtdtfi -lib work WriteBack.vhd -lib work StorageManager.vhd -lib work MemoryAccesssControl.vhd -lib work FetchInstr.vhd -lib work ClockManager.vhd -lib work ALU.vhd -lib work Fulton_CPU_2016_XXXX.vhd -prj RegularCPU -o Fulton_CPU_2016_XXXX.spl -module Fulton_CPU_2016_XXXX -template D:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e Fulton_CPU_2016_XXXX.spl H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.sym 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc UCF.ucf -p xc3s500e-pq208-5 Fulton_CPU_2016_XXXX.ngc Fulton_CPU_2016_XXXX.ngd  
+map -intstyle ise -p xc3s500e-pq208-5 -cm area -ir off -pr off -c 100 -o Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ngd Fulton_CPU_2016_XXXX.pcf 
+par -w -intstyle ise -ol high -t 1 Fulton_CPU_2016_XXXX_map.ncd Fulton_CPU_2016_XXXX.ncd Fulton_CPU_2016_XXXX.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Fulton_CPU_2016_XXXX.twx Fulton_CPU_2016_XXXX.ncd -o Fulton_CPU_2016_XXXX.twr Fulton_CPU_2016_XXXX.pcf -ucf UCF.ucf 
+bitgen -intstyle ise -f Fulton_CPU_2016_XXXX.ut Fulton_CPU_2016_XXXX.ncd 
+xst -intstyle ise -ifn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.xst" -ofn "H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.syr" 

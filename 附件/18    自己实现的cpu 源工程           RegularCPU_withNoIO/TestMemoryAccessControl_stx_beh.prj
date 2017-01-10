@@ -1,0 +1,2 @@
+vhdl isim_temp "MemoryAccesssControl.vhd"
+vhdl isim_temp "TestMemoryAccessControl.vhd"

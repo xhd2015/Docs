@@ -1,0 +1,401 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width" />
+<meta content="telephone=no" name="format-detection">
+<meta name="apple-mobile-web-app-capable">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="keywords" content="linux-grep&nbsp;详解_二少_二少_新浪博客,二少,it" />
+<meta name="description" content="linux-grep&nbsp;详解_二少_二少_新浪博客,二少,/< 和 /> 分别标注单词的开始与结尾。 例如： grep man * 会匹配 ‘Batman’、’manic’、’man’等， grep ‘/..." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.sina.cn/dpool/blog/s/blog_4fc7368a0100vi09.html" />
+<meta property="og:title" content="linux-grep&nbsp;详解_二少" />
+<meta property="og:description" content="linux-grep&nbsp;详解_二少_二少_新浪博客,二少,/< 和 /> 分别标注单词的开始与结尾。 例如： grep man * 会匹配 ‘Batman’、’manic’、’man’等， grep ‘/..." />
+<title>linux-grep&nbsp;详解_二少 </title>
+<script>
+var __sinacnPerformance__ = {
+    startTime : new Date().getTime(),
+    collect : function(name){
+        this[name] = new Date() - this.startTime;
+    }
+};
+var globalConfig = {
+    startTime : new Date().getTime(),
+    isLogin : false};
+var __sinaSudaConfig__ = {
+    uid : "",
+    url : "http://blog.sina.com.cn/s/blog_4fc7368a0100vi09.html",
+    startTime : new Date().getTime()
+};
+var __sinacnCollectConfig__ = {
+    uid:'',
+    url:'http://blog.sina.com.cn/s/blog_4fc7368a0100vi09.html',
+    cateid:'',
+    guid:'__172.16.193.9_1468605841_0.01130200'
+};
+</script>
+<link rel="apple-touch-icon-precomposed" href="http://img.mjs.sinajs.cn/mblog/v1/style/images/icon_touch.png?ver=106780">
+<script>__sinacnPerformance__.collect('icon');</script>
+<link rel="stylesheet" href="http://img.mjs.sinajs.cn/blog/ria/h5/v2/css/pages/pages.css?ver=106780">
+<script>__sinacnPerformance__.collect('css');</script>
+</head>
+<body>
+<div id="layout-root">
+<div id="layout-root-pllist">
+<div class="f-wraper" id="layout-base">
+    <div class="f-wrap bl-wrap" id="layout-base-pllist" data-box="init-view">
+
+<!--第一列start-->
+  <header id="pl-navigation" class="bl-header bl-usr-header" style="display: block; z-index: 60;">
+    <div class="usr-header-box clearfix">
+      <a href="http://blog.sina.cn/"><span class="bl-sinalogo"></span></a>
+      <a class="bl-prsn usr-info-tips" href="javascript:;"><span trace-code="38_01_56" data-role="user" class="usercnt b-ft-icon">.</span><i data-role="redtips" style="display:none;" class="bn-redtips"></i></a>
+      <div style="display:none;" data-role="logo" class="blog-logo"></div>
+      <div style="" data-role="info" class="user-sort">
+        <a trace-code="38_01_71" data-role="list-button" class="b-txt2" href="/dpool/blog/u/#type=-1"><span data-role="title" class="blog-nm b-ellipsis">二少</span></a>
+      </div>
+    </div>
+    <div style="display: none; position: absolute; z-index: 4; background: transparent none repeat scroll 0% 0%; width: 1366px; height: 422px; top: 0px; left: 0px;" data-role="link-mask"></div>
+    <div style="display:none;" data-role="link-box" class="l-blg-sort">
+      <div class="blg-sort" data-role="link-panel" style="overflow-y: auto;"></div>
+    </div>
+  </header>
+<!--第二列start-->
+<div id="layout-content">
+<div id="layout-content-pllist">
+<div class="bl-article bl-article-new" id="pl-blog-article">
+    <!-- 返回顶部 -->
+    <div id="j_toTop" class="j_topBtn" data-role="j_toTop" style=" z-index:999; position: fixed;right: 10px;bottom: 65px; width: 42px;height: 42px;text-align: center;font-size: 28px;z-index: 500;border-radius: 50%;background: rgba(0,0,0,.6);color: #fff; display: none;">
+        <span class="icon_top_1"><img src="http://img.mjs.sinajs.cn/blog/ria/h5/v2/images/top.png" style="margin-top: 6px;" /></span>
+    </div>
+    <!-- 返回顶部 -->
+    <div data-role="sax-wrap-articletop" style="display:none;"></div>
+    <!-- 文章主体 第一屏 -->
+    <article class="article" pagecount="6" data-blogid="4fc7368a0100vi09" data-pubdate="2011-08-06 15:49:05" data-role="article">
+        <h1>linux-grep&nbsp;详解</h1>
+        <div class="b-txt3 read-time">
+            <span class="time">2011-08-06 15:49</span><span class="reads">阅读：<span data-role="read-num"></span></span>
+        </div>
+        <div class="content b-txt1">
+                        /&lt; 和 /&gt; 分别标注单词的开始与结尾。<br />
+例如：<br />
+grep man * 会匹配 ‘Batman’、’manic’、’man’等，<br />
+grep ‘/&lt;man’ * 匹配’manic’和’man’，但不是’Batman’，<br />
+grep ‘/&lt;man/&gt;’ 只匹配’man’，而不是’Batman’或’manic’等其他的字符串。<br />
+‘^’：指匹配的字符串在行首，<br />
+‘$’：指匹配的字符串在行尾，<br />
+grep -r 搜索子目录<br />
+grep -d skip 或略子目录<br />
+grep正则表达式元字符集（基本集） ^<br />
+锚定行的开始 如：’^grep’匹配所有以grep开头的行。<br />
+$<br />
+锚定行的结束 如：’grep$’匹配所有以grep结尾的行。<br />
+.<br />
+匹配一个非换行符的字符 如：’gr.p’匹配gr后接一个任意字符，然后是p。<br />
+*<br />
+匹配零个或多个先前字符 如：’*grep’匹配所有一个或多个空格后紧跟grep的行。 .*一起用代表任意字符。<br />
+[]<br />
+匹配一个指定范围内的字符，如’[Gg]rep’匹配Grep和grep。<br />
+[^]<br />
+匹配一个不在指定范围内的字符，如：’[^A-FH-Z]rep’匹配不包含A-R和T-Z的一个字母开头，紧跟rep的行。<br />
+/(../)<br />
+标记匹配字符，如’/(love/)’，love被标记为1。<br />
+/&lt;<br />
+锚定单词的开始，如:'/<br />
+/&gt;<br />
+锚定单词的结束，如’grep/&gt;’匹配包含以grep结尾的单词的行。<br />
+x/{m/}<br />
+重复字符x，m次，如：’0/{5/}’匹配包含5个o的行。<br />
+x/{m,/}<br />
+重复字符x,至少m次，如：’o/{5,/}’匹配至少有5个o的行。<br />
+x/{m,n/}<br />
+重复字符x，至少m次，不多于n次，如：’o/{5,10/}’匹配5–10个o的行。<br />
+/w<br />
+匹配文字和数字字符，也就是[A-Za-z0-9]，如：’G/w*p’匹配以G后跟零个或多个文字或数字字符，然后        </div>
+    </article>
+    <!-- 余下全文 -->
+    <div class="item_hide">是p。<br />
+/W<br />
+/w的反置形式，匹配一个或多个非单词字符，如点号句号等。<br />
+/b<br />
+单词锁定符，如: ‘/bgrep/b’只匹配grep。<br />
+3. 用于egrep和 grep -E的元字符扩展集<br />
++<br />
+匹配一个或多个先前的字符。如：’[a-z]+able’，匹配一个或多个小写字母后跟able的串，如loveable,enable,disable等。<br />
+
+?<br />
+匹配零个或多个先前的字符。如：’gr?p’匹配gr后跟一个或没有字符，然后是p的行。<br />
+a|b|c<br />
+匹配a或b或c。如：grep|sed匹配grep或sed<br />
+()<br />
+分组符号，如：love(able|rs)ov+匹配loveable或lovers，匹配一个或多个ov。<br />
+x{m},x{m,},x{m,n}<br />
+作用同x/{m/},x/{m,/},x/{m,n/}<br />
+4. POSIX字符类<br />
+为了在不同国家的字符编码中保持一致，POSIX(The Portable Operating System
+Interface)增加了特殊的字符类，如[:alnum:]是A-Za-z0-9的另一个写法。要把它们放到[]号内才能成为正则表达式，如[A-
+Za-z0-9]或[[:alnum:]]。在linux下的grep除fgrep外，都支持POSIX的字符类。<br />
+[:alnum:]<br />
+文字数字字符<br />
+[:alpha:]<br />
+文字字符<br />
+[:digit:]<br />
+数字字符<br />
+[:graph:]<br />
+非空字符（非空格、控制字符）<br />
+[:lower:]<br />
+小写字符<br />
+[:cntrl:]<br />
+控制字符<br />
+[:print:]<br />
+非空字符（包括空格）<br />
+[:punct:]<br />
+标点符号<br />
+[:space:]<br />
+所有空白字符（新行，空格，制表符）<br />
+[:upper:]<br />
+大写字符<br />
+[:xdigit:]<br />
+十六进制数字（0-9，a-f，A-F）<br />
+5. Grep命令选项<br />
+-?<br />
+同时显示匹配行上下的？行，如：grep -2 pattern filename同时显示匹配行的上下2行。<br />
+-b，–byte-offset<br />
+打印匹配行前面打印该行所在的块号码。<br />
+-c,–count<br />
+只打印匹配的行数，不显示匹配的内容。<br />
+-f File，–file=File<br />
+从文件中提取模板。空文件中包含0个模板，所以什么都不匹配。<br />
+-h，–no-filename<br />
+当搜索多个文件时，不显示匹配文件名前缀。<br />
+-i，–ignore-case<br />
+忽略大小写差别。<br />
+-q，–quiet<br />
+取消显示，只返回退出状态。0则表示找到了匹配的行。<br />
+-l，–files-with-matches<br />
+打印匹配模板的文件清单。<br />
+-L，–files-without-match<br />
+打印不匹配模板的文件清单。<br />
+-n，–line-number<br />
+在匹配的行前面打印行号。<br />
+-s，–silent<br />
+不显示关于不存在或者无法读取文件的错误信息。<br />
+-v，–revert-match<br />
+反检索，只显示不匹配的行。<br />
+-w，–word-regexp<br />
+如果被/&lt;和/&gt;引用，就把表达式做为一个单词搜索。<br />
+-V，–version<br />
+显示软件版本信息。<br />
+6. 例子<br />
+grep huanxiangwu huanxiangwu.txt 显示包含huanxiangwu的文本行<br />
+grep 404 /var/log/httpd/access_log 搜索access_log文件里的404<br />
+ps auwx | grep init 显示包含init的ps命令输出行<br />
+ps auwx | grep “/[*/]” 显示ps命令输出里方括号包含的命令，可以找出ps无法显示其选项的命令<br />
+dmesg | grep “[ ]ata/|^ata” 检查内核环形输出链表，查找硬盘和光驱等ATA设备信息<br />
+grep -R VirtualHost /etc/httpd/conf* 递归查找字符串VirtualHost<br />
+grep -Rn VirtualHost /etc/httpd/conf*
+递归查找字符串VirtualHost并找出搜索目标具体所在行<br />
+grep –color -Rn VirtualHost /etc/httpd/conf*
+递归查找字符串VirtualHost并找出搜索目标具体所在行并显示为彩色<br />
+grep -h sshd /var/log/secure* 不显示文件名<br />
+grep -i selinux /var/log/messages 搜索selinux不区分大小写<br />
+grep -Rl VirtualHost /etc/httpd/conf* 只显示包含检索字符串的文件名<br />
+grep -v “200″ /var/log/httpd/access_log*
+搜索access_log文件不显示与搜索字符串不匹配的所有行<br />
+grep 192.168.56.1 /var/log/httpd/access_log | wc -l
+搜索Apache日志文件并统计来自192.168.56.1ip的访问量<br />
+======================================================================<br />
+
+要用好grep这个工具，其实就是要写好正则表达式，所以这里不对grep的所有功能进行实例讲解，只列几个例子，讲解一个正则表达式的写法。<br />
+
+$ ls -l | grep '^a'<br />
+通过管道过滤ls -l输出的内容，只显示以a开头的行。<br />
+$ grep 'test' d*<br />
+显示所有以d开头的文件中包含test的行。<br />
+$ grep 'test' aa bb cc<br />
+显示在aa，bb，cc文件中匹配test的行。<br />
+$ grep '[a-z]/{5/}' aa<br />
+显示所有包含每个字符串至少有5个连续小写字符的字符串的行。<br />
+$ grep 'w/(es/)t.*/1' aa<br />
+如果west被匹配，则es就被存储到内存中，并标记为1，然后搜索任意个字符（.*），这些字符后面紧跟着另外一个es（/1），找到就显示该行。如果用egrep或grep
+-E，就不用'/'号进行转义，直接写成'w(es)t.*/1'就可以了。(T002)<br />
+====================================================================<br />
+
+用‘grep’搜索文本文件<br />
+如果您要在几个文本文件中查找一字符串，可以使用‘grep’命令。‘grep’在文本中搜索指定的字符串。<br />
+假设您正在‘/usr/src/linux/Documentation’目录下搜索带字符串‘magic’的文件：<br />
+$ grep magic /usr/src/linux/Documentation/*<br />
+sysrq.txt:* How do I enable the magic SysRQ key?<br />
+sysrq.txt:* How do I use the magic SysRQ key?<br />
+其中文件‘sysrp.txt’包含该字符串，讨论的是 SysRQ 的功能。<br />
+默认情况下，‘grep’只搜索当前目录。如果此目录下有许多子目录，‘grep’会以如下形式列出：<br />
+grep: sound: Is a directory<br />
+这可能会使‘grep’的输出难于阅读。这里有两种解决的办法：<br />
+明确要求搜索子目录：grep -r<br />
+或忽略子目录：grep -d skip<br />
+当然，如果预料到有许多输出，您可以通过 管道 将其转到‘less’上阅读：<br />
+$ grep magic /usr/src/linux/Documentation/* | less<br />
+这样，您就可以更方便地阅读。<br />
+有一点要注意，您必需提供一个文件过滤方式（搜索全部文件的话用
+*）。如果您忘了，‘grep’会一直等着，直到该程序被中断。如果您遇到了这样的情况，按 &lt;CTRL c&gt;
+，然后再试。<br />
+下面是一些有意思的命令行参数：<br />
+grep -i pattern files ：不区分大小写地搜索。默认情况区分大小写，<br />
+grep -l pattern files ：只列出匹配的文件名，<br />
+grep -L pattern files ：列出不匹配的文件名，<br />
+grep -w pattern files
+：只匹配整个单词，而不是字符串的一部分（如匹配‘magic’，而不是‘magical’），<br />
+grep -C number pattern files ：匹配的上下文分别显示[number]行，<br />
+grep pattern1 | pattern2 files ：显示匹配 pattern1 或 pattern2 的行，<br />
+grep pattern1 files | grep pattern2 ：显示既匹配 pattern1 又匹配 pattern2
+的行。<br />
+这里还有些用于搜索的特殊符号：<br />
+/&lt; 和 /&gt; 分别标注单词的开始与结尾。<br />
+例如：<br />
+grep man * 会匹配 ‘Batman’、‘manic’、‘man’等，<br />
+grep '/&lt;man' * 匹配‘manic’和‘man’，但不是‘Batman’，<br />
+grep '/&lt;man/&gt;' 只匹配‘man’，而不是‘Batman’或‘manic’等其他的字符串。<br />
+'^'：指匹配的字符串在行首，<br />
+'$'：指匹配的字符串在行尾，<br />
+如果您不习惯命令行参数，可以试试图形界面的‘grep’，如 reXgrep 。这个软件提供 AND、OR、NOT
+等语法，还有漂亮的按钮 :-) 。如果您只是需要更清楚的输出，不妨试试 fungrep 。<br /></div>
+    <div class="bl-operation">
+        <div data-role="sax-wrap-1" style="display:none;"></div>
+        <div data-role="sax-wrap-2" style="display:none;"></div>
+        <div class="bl_share" id="bl_share_s" style="background: #fbfbfb;">
+            <h4 class="share_ttl"><span>分享</span><i></i></h4>
+            <style type="text/css">
+                .bl_share .share_lst li a {
+                    display: block;
+                }
+            </style>
+            <ul class="share_lst clearfix">
+                <li><a suda-uatrack="key=h5_blog_zwy_share&value=myblog" data-role="forward" trace-code="10_01_01" href="javascript:void(0);" class="b-txt2"><i class="shr_ico shr_sinablg"></i><span>我的博客</span></a></li>
+                <li><a suda-uatrack="key=h5_blog_zwy_share&value=weibo" data-role="weibo-link" trace-code="10_01_02" target="_blank" class="b-txt2" href=""><i class="shr_ico shr_wb"></i><span>微博</span></a></li>
+                <li style="display:none;"><a suda-uatrack="key=h5_blog_zwy_share&value=weixin" data-role="wechat-friend" trace-code="10_01_04" href="javascript:;" class="b-txt2"><i class="shr_ico shr_wx"></i><span>微信</span></a></li>
+                <li style="display:none;"><a suda-uatrack="key=h5_blog_zwy_share&value=friends" data-role="wechat-timeline" trace-code="10_01_05" href="javascript:;" class="b-txt2 "><i class="shr_ico shr_frnd"></i><span>朋友圈</span></a></li>
+            </ul>
+        </div>
+        
+       <!-- 评论判断 -->
+                <div class="blg_comment clearfix" id="pl-blog-mutual">
+            <div class="comment_box">
+                <input data-role="comment-text" disabled name="" type="text" class="comment_input" placeholder="我来说两句...">
+                <i class="ico_write"></i>
+            </div>
+            <div class="info_tips" data-role="comment-btn"><span class="tips_box"><i class="ico_tips"></i><a href="#"><b class="tips_numb"></b></a></span></div>
+        </div>
+                <!--写评论弹层-->
+        <div data-role="comment-mask" id="pl-bottom-mask" style="display: none;"></div>
+        <div class="mutual-mod wrt_mutual-mod" id="pl-bottom-comment" data-role="submit-row" style="display: none;" >
+            <div class="bl-comment">
+                <textarea name="" data-role="comment-textarea" id="" class="b-txtarea"></textarea>
+                <!--不转发到微博时 给 comment—box 增加 class="b-checkbox-frbdn"-->
+                <div class="comment—box clearfix">
+                    <div class="forward" data-role="share-checkbut" >
+                        <div data-role="share-checkbox" class="b-checkbox-active"><span class="b-ft-icon">N</span></div><i class="b-txt3">同时转发到微博</i></div>
+                    <div class="submint clearfix"><a data-role="comment-submit" href="javascript:;" class="publsh_btn">发送</a></div>
+                </div>
+            </div>
+        </div>
+        <!--/写评论弹层-->
+    <!-- 更多文章 -->
+    </div>
+</div>
+<div data-role="more-article"  id="pl-article-more"  ><div class="bl-related-more new-related-more"><h3 class="b-txt1"><span><a id="more-article-link" suda-uatrack="key=h5_zwy_sinablog&value=h5_zwy_moreblog">我的更多文章</a></span></h3><ul class="related-ls"><li class="b-ellipsis"><a href="http://blog.sina.cn/dpool/blog/s/blog_4fc7368a0100wkst.html?md=gd" trace-code="38_01_52" class="b-txt2" suda-uatrack="key=h5_zwy_sinablog&value=h5_zwy_blogarea" >vi-对比两个文件</a></li><li class="b-ellipsis"><a href="http://blog.sina.cn/dpool/blog/s/blog_4fc7368a0100vrub.html?md=gd" trace-code="38_01_52" class="b-txt2" suda-uatrack="key=h5_zwy_sinablog&value=h5_zwy_blogarea" >perl-seek&nbsp;指定文件位置</a></li><li class="b-ellipsis"><a href="http://blog.sina.cn/dpool/blog/s/blog_4fc7368a0100volr.html?md=gd" trace-code="38_01_52" class="b-txt2" suda-uatrack="key=h5_zwy_sinablog&value=h5_zwy_blogarea" >SecureCRT&nbsp;快捷键</a></li><li class="b-ellipsis"><a href="http://blog.sina.cn/dpool/blog/s/blog_4fc7368a0100vhyb.html?md=gd" trace-code="38_01_52" class="b-txt2" suda-uatrack="key=h5_zwy_sinablog&value=h5_zwy_blogarea" >svn-checkout&nbsp;single&nbsp;file&nbsp;from&nbsp;repos</a></li><li class="b-ellipsis"><a href="http://blog.sina.cn/dpool/blog/s/blog_4fc7368a0100veq9.html?md=gd" trace-code="38_01_52" class="b-txt2" suda-uatrack="key=h5_zwy_sinablog&value=h5_zwy_blogarea" >perl-遍历文件夹</a></li></ul></div></div>
+<div id="pl-blog-top" class="bl-sinaapp bl-sinaapp-patch" style="display:none;"></div>
+<div id="pl-blog-game" class="bl-sinaapp" style="display:none;">
+    <a data-role="link" href="http://dl.kjava.sina.cn/gamecenter/package/502571/502571_100010041000.apk" class="b-txt2" trace-code="12_01_06">
+        <span class="appimg game4-app"></span> 
+        <span class="b-btn-b app-download">打 开</span>
+        <h4 class="b-ellipsis">疯狂捕鱼</h4>
+        <p class="txt b-ellipsis">海底宝藏等你探寻！</p>
+    </a>
+</div><div id="pl-blog-tbyy">
+    <textarea data-type="ad-scripts" class="bl-tb-yy" style="display:none">
+
+%3Cscript%3E%28function%28%29%20%7Bdocument.write%28%22%3Ca%20style%3D%27display%3Anone%21important%27id%3D%27tanx-a-mm_15890324_8176878_28008044%27%3E%3C%2Fa%3E%22%29%3BsetTimeout%28function%28%29%7Bvar%20oImg%3Dnew%20Image%3BoImg.src%3D%27http%3A%2F%2Fsax.sina.com.cn%2Fview%3Ftype%3Dnonstd%26t%3DREowMDAxMDc3NQ%253D%253D%27%2B%28%27%26r%3D%27%2BMath.random%28%29%29.replace%28%27.%27%2C%27%27%29%3B%7D%2C300%29%7D%29%28%29%3B%3C%2Fscript%3E%3Cscript%20src%3D%22http%3A%2F%2Fd1.sina.com.cn%2Flitong%2Flijun%2F0525%2Fmm_15890324_8176878_28008044.js%3Fuuid%3Dblog_article_banner%22%3E%3C%2Fscript%3E    </textarea>
+</div>
+
+<div class="bl-blog-foot" id="pl-foot-opin">
+    <span class="back" data-role="foot-back"></span>
+    <a href="http://www.sina.cn/" class="b-txt1">手机新浪网</a>
+    <a href="http://news.sina.cn/?sa=t124d8889597v84&amp;pos=99&amp;vt=4" class="b-txt1">导航</a>
+    <a href="http://site.proc.sina.cn/search/index.php?search_kind=blog&amp;vt=4" class="b-txt1">搜索</a>
+    <a href="http://dp.sina.cn/dpool/messagev2/index.php?boardid=36" class="b-txt1">意见反馈</a>
+    <span class="home-up" data-role="gotop-btn"><em>回顶部</em></span>
+</div>
+<div id="pl-float-bar" class="bl-bar" style="display:none;">
+    <div class="bl_openApp" data-role="bottom-app" style="position:absolute;bottom:0px;">
+        <div class="bl_open_bar"><img src="http://img.mjs.sinajs.cn/blog/ria/h5/v1/images/blg_logo.png" width="47" height="47" class="bl_bar_logo">
+            <p class="bl_open_tit">新浪博客</p>
+            <p class="bl_bar_intrdc">最新版手机客户端</p>
+            <div class="bl_open_btn">打开</div>
+        </div>
+        <div class="bl_open_cls"><span class="bl_cls_bdr" data-role="ad-close"><i class="bl_open_cls_l"></i><i class="bl_open_cls_r"></i></span></div>
+    </div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="display:none">
+<script>__sinacnPerformance__.collect('html');</script>
+<script> 
+var scope = {
+    "pageid" : "article",
+    "serverRender":353,
+    "blogerUid" : "1338455690",
+    "blogerNick" : "二少",
+    "blogerHost" : "yelaixiang2009", 
+    "loginUid" : "",
+    "loginNick" : "",
+    "shareData" : {"title":"\u5206\u4eab\u81ea\u4e8c\u5c11\u300alinux-grep&nbsp;\u8be6\u89e3\u300b","content":"\/< \u548c \/> \u5206\u522b\u6807\u6ce8\u5355\u8bcd\u7684\u5f00\u59cb\u4e0e\u7ed3\u5c3e\u3002 \u4f8b\u5982\uff1a grep man * \u4f1a\u5339\u914d \u2018Batman\u2019\u3001\u2019manic\u2019\u3001\u2019man\u2019\u7b49\uff0c grep \u2018\/...  (\u6765\u81ea @\u5934\u6761\u535a\u5ba2)","url":"http:\/\/blog.sina.com.cn\/s\/blog_4fc7368a0100vi09.html","pic":""},
+    "loginHost" : "",
+    "url" : "http://blog.sina.com.cn/s/blog_4fc7368a0100vi09.html",
+    "cateid" : "" ,
+    "advType":0,
+    "guid" : "__172.16.193.9_1468605841_0.01130200"
+};
+</script>
+<script>__sinacnPerformance__.collect('script');</script>
+<script src="http://mjs.sinajs.cn/blog/ria/h5/v2/js/lithe.js?timestamp=106780" data-config="/config.js"></script>
+<script type="text/javascript">
+    lithe.use('conf/global', function(){
+        lithe.use('conf/page/main');    
+    });
+</script>
+<script>__sinacnPerformance__.collect('js');</script>
+<script type="text/javascript">
+var sudaLogConfig = {
+    uId : '',
+    url : 'http://blog.sina.com.cn/s/blog_4fc7368a0100vi09.html'
+}
+</script>
+<script src="http://mjs.sinajs.cn/blog/ria/h5/v2/js/suda-mobile.js"></script>
+<script type="text/javascript" src="http://www.sinaimg.cn/unipro/pub/suda_m_v629.js"></script>
+<script type="text/javascript">suds_init(3589,100.0000,1015,2);</script>
+<script type="text/javascript" src="http://www.sinaimg.cn/unipro/pub/suda_s_v851c.js"></script>
+<script src="http://mjs.sinaimg.cn/wap/public/suda/201607121400/suda_log.min.js"></script>
+<script src="http://mjs.sinaimg.cn/wap/public/collect/201601121730/collect_m.min.js"></script>
+<script>__sinacnPerformance__.collect('stat');</script>
+<script src="http://mjs.sinajs.cn/blog/ria/h5/v2/js/sj.js"></script>
+<!-- start dmp -->
+<script type="text/javascript">
+(function(d, s, id) {
+    var n = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    s = d.createElement(s);
+    s.id = id;
+    s.setAttribute('charset', 'utf-8');
+    s.src = '//cm.dmp.sina.cn/cm/sinaads_ck_wap.js';
+    n.parentNode.insertBefore(s, n);
+})(document, 'script', 'sinaads-ck-script');
+</script>
+<!-- end dmp -->
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+//! **************************************************************************
+// Written by: Map P.40xd on Thu Jul 28 17:22:24 2016
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "nRD" LOCATE = SITE "P139" LEVEL 1;
+COMP "nWR" LOCATE = SITE "P152" LEVEL 1;
+COMP "clk" LOCATE = SITE "P75" LEVEL 1;
+COMP "nBHE" LOCATE = SITE "P138" LEVEL 1;
+COMP "nBLE" LOCATE = SITE "P137" LEVEL 1;
+COMP "fakeIOdataout<0>" LOCATE = SITE "P102" LEVEL 1;
+COMP "fakeIOdataout<1>" LOCATE = SITE "P100" LEVEL 1;
+COMP "fakeIOdataout<2>" LOCATE = SITE "P99" LEVEL 1;
+COMP "fakeIOdataout<3>" LOCATE = SITE "P98" LEVEL 1;
+COMP "fakeIOdataout<4>" LOCATE = SITE "P83" LEVEL 1;
+COMP "fakeIOdataout<5>" LOCATE = SITE "P82" LEVEL 1;
+COMP "fakeIOdataout<6>" LOCATE = SITE "P77" LEVEL 1;
+COMP "fakeIOdataout<7>" LOCATE = SITE "P185" LEVEL 1;
+COMP "nMREQ" LOCATE = SITE "P168" LEVEL 1;
+COMP "maddrbus<0>" LOCATE = SITE "P179" LEVEL 1;
+COMP "maddrbus<1>" LOCATE = SITE "P178" LEVEL 1;
+COMP "maddrbus<2>" LOCATE = SITE "P177" LEVEL 1;
+COMP "maddrbus<3>" LOCATE = SITE "P172" LEVEL 1;
+COMP "maddrbus<4>" LOCATE = SITE "P171" LEVEL 1;
+COMP "maddrbus<5>" LOCATE = SITE "P151" LEVEL 1;
+COMP "maddrbus<6>" LOCATE = SITE "P150" LEVEL 1;
+COMP "maddrbus<7>" LOCATE = SITE "P147" LEVEL 1;
+COMP "maddrbus<8>" LOCATE = SITE "P146" LEVEL 1;
+COMP "maddrbus<9>" LOCATE = SITE "P113" LEVEL 1;
+COMP "reset" LOCATE = SITE "P51" LEVEL 1;
+PIN reset_pin<0> = BEL "reset" PINNAME PAD;
+PIN "reset_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "mdatabus<0>" LOCATE = SITE "P167" LEVEL 1;
+COMP "mdatabus<1>" LOCATE = SITE "P165" LEVEL 1;
+COMP "mdatabus<2>" LOCATE = SITE "P164" LEVEL 1;
+COMP "mdatabus<3>" LOCATE = SITE "P163" LEVEL 1;
+COMP "mdatabus<4>" LOCATE = SITE "P162" LEVEL 1;
+COMP "mdatabus<5>" LOCATE = SITE "P161" LEVEL 1;
+COMP "mdatabus<6>" LOCATE = SITE "P160" LEVEL 1;
+COMP "mdatabus<7>" LOCATE = SITE "P153" LEVEL 1;
+COMP "mdatabus<8>" LOCATE = SITE "P120" LEVEL 1;
+COMP "mdatabus<9>" LOCATE = SITE "P122" LEVEL 1;
+COMP "fakeIOdatain<0>" LOCATE = SITE "P154" LEVEL 1;
+COMP "fakeIOdatain<1>" LOCATE = SITE "P148" LEVEL 1;
+COMP "fakeIOdatain<2>" LOCATE = SITE "P142" LEVEL 1;
+COMP "fakeIOdatain<3>" LOCATE = SITE "P136" LEVEL 1;
+COMP "fakeIOdatain<4>" LOCATE = SITE "P130" LEVEL 1;
+COMP "fakeIOdatain<5>" LOCATE = SITE "P124" LEVEL 1;
+COMP "fakeIOdatain<6>" LOCATE = SITE "P118" LEVEL 1;
+COMP "fakeIOdatain<7>" LOCATE = SITE "P110" LEVEL 1;
+COMP "maddrbus<10>" LOCATE = SITE "P115" LEVEL 1;
+COMP "maddrbus<11>" LOCATE = SITE "P116" LEVEL 1;
+COMP "maddrbus<12>" LOCATE = SITE "P119" LEVEL 1;
+COMP "maddrbus<13>" LOCATE = SITE "P140" LEVEL 1;
+COMP "maddrbus<14>" LOCATE = SITE "P144" LEVEL 1;
+COMP "maddrbus<15>" LOCATE = SITE "P145" LEVEL 1;
+COMP "mdatabus<10>" LOCATE = SITE "P123" LEVEL 1;
+COMP "mdatabus<11>" LOCATE = SITE "P128" LEVEL 1;
+COMP "mdatabus<12>" LOCATE = SITE "P132" LEVEL 1;
+COMP "mdatabus<13>" LOCATE = SITE "P133" LEVEL 1;
+COMP "mdatabus<14>" LOCATE = SITE "P134" LEVEL 1;
+COMP "mdatabus<15>" LOCATE = SITE "P135" LEVEL 1;
+NET "clk_BUFGP/IBUFG" BEL "clk_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
+SCHEMATIC END;
+

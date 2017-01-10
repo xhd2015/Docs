@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="keywords" content="码迷,mamicode.com,互联网,软件开发,开源,asp,asp.net,android,apple,jsp,php,Windows,数据库,HTML,JS,CSS,技术文章,游戏,创业,手机相关" /><meta name="baidu-site-verification" content="TEj1q15lpz" /><meta name="description" content="1.常规函数与排序常用统计函数：求和：sum()、均值：mean()、标准差：std()、方差：var()、最小值：min()、最大值：max()、最大值与最小值之差：ptp()、最大值的下标：argmax()、最小值的下标：argmin()、中值：median()上述函数都可以指定axis，来沿着..." /><title>
+	python科学计算_numpy_函数库
+</title><link href="css/css.css" type="text/css" rel="stylesheet" />
+<script src="/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script><link rel="stylesheet" type="text/css" href="/kindeditor416/plugins/code/prettify.css" />
+    <script type="text/javascript" charset="utf-8" src="/kindeditor416/plugins/code/prettify.js"></script>
+</head>
+<body>
+    <div class="width100bi height20px divbackgroundcolor">
+    <div class="width1000px divmargin0auto">
+        <div class="divfloatleft">
+        </div>
+        <div class="divfloatright">
+            <div id="logintopdescription" class="paddingtop3">
+            </div>
+        </div>
+        <div class="divfloatclear">
+        </div>
+    </div>
+</div>
+<div class="width1000px divmargin0auto margintop20bottom20">
+    <div class="width120px divfloatleft">
+        <a href="/" title="码迷，mamicode.com">
+            <img src="/img/logo.png" alt="码迷，mamicode.com" width="109" height="60" border="0" />
+        </a>
+    </div>
+    <div class="width880px divfloatright">
+        <div class="menuDiv">
+            <ul>
+                <li class="bottomline width10px">&nbsp;</li>
+                <li id="default-aspx" class="title0"><a href="/" title="码迷，mamicode.com">首页</a></li>
+                <li id="infolist-2" class="title1"><a href="/info-list-2-1.html" title="Web开发">Web开发</a></li>
+                <li id="infolist-3" class="title1"><a href="/info-list-3-1.html" title="Windows程序">Windows程序</a></li>
+                <li id="infolist-4" class="title1"><a href="/info-list-4-1.html" title="编程语言">编程语言</a></li>
+                <li id="infolist-5" class="title1"><a href="/info-list-5-1.html" title="数据库">数据库</a></li>
+                <li id="infolist-6" class="title1"><a href="/info-list-6-1.html" title="移动开发">移动开发</a></li>
+                <li id="infolist-8" class="title1"><a href="/info-list-8-1.html" title="系统相关">系统相关</a></li>
+                <li id="infolist-9" class="title1"><a href="/info-list-9-1.html" title="微信">微信</a></li>
+                <li id="infolist-11" class="title1"><a href="/info-list-11-1.html" title="其他好文">其他好文</a></li>
+                <li id="memberhtml" class="title1"><a href="/member.html" title="会员">会员</a></li>
+                <li class="bottomline width10px">&nbsp;</li>
+            </ul>
+        </div>
+    </div>
+    <div class="divfloatclear">
+    </div>
+</div>
+<div style="margin: 0px auto; width:1000px;" class="margintop10bottom10">
+    <script type="text/javascript">
+        var cpro_id = "u2192072";
+        (window["cproStyleApi"] = window["cproStyleApi"] || {})[cpro_id] = { at: "3", rsi0: "1000", rsi1: "120", pat: "6", tn: "baiduCustNativeAD", rss1: "#FFFFFF", conBW: "1", adp: "1", ptt: "0", titFF: "%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91", titFS: "14", rss2: "#000000", titSU: "0", ptbg: "90", piw: "0", pih: "0", ptp: "0" }
+    </script>
+    <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+</div>
+
+    <div class="divdaohang">
+        <div class="divtitlefont">
+            <a href="/" title="码迷首页">首页</a>
+            <span id="lbltitle"> > <a href='/infolist-4-1.html'>编程语言</a> > 详细</span>
+        </div>
+    </div>
+    <div class="divmain">
+        <div class="width70bi divfloatleft" style="min-height:2000px;">
+            <div class="marginright20">
+                <div class="divtextaligncenter">
+    <script type="text/javascript">
+        var cpro_id = "u2391650";
+        (window["cproStyleApi"] = window["cproStyleApi"] || {})[cpro_id] = { at: "3", rsi0: "680", rsi1: "250", pat: "6", tn: "baiduCustNativeAD", rss1: "#FFFFFF", conBW: "1", adp: "1", ptt: "0", titFF: "%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91", titFS: "14", rss2: "#000000", titSU: "0", ptbg: "90", piw: "0", pih: "0", ptp: "0" }
+    </script>
+    <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+</div>
+
+                <div class="detailtitle divtextaligncenter divborderbottomdotted">
+                    <h1 id="Htitle" class="detailtitle">python科学计算_numpy_函数库</h1>
+                </div>
+                <div class="detail1 divtextaligncenter">
+                    时间：<span id="Label2" class="colorlv">2015-08-18 01:02:23</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 阅读：<span id="Label1" class="colorCheng">1371</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 评论：<span id="lblcommentcount" class="colorCheng">0</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 收藏：<span id="lblfavorite" class="colorCheng">0</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp; <a id="infofavorite" class="acursorpointer">[点我收藏+]</a>
+                </div>
+                
+                <div class="detailcontennt">
+                    <span id="Label3"><p>标签：</p><h3>1.常规函数与排序</h3>
+<p>常用统计函数：</p>
+<p>求和：sum()、均值：mean()、标准差：std()、方差：var()、最小值：min()、最大值：max()、最大值与最小值之差：ptp()、最大值的下标：argmax()、最小值的下标：argmin()、中值：median()</p>
+<p>上述函数都可以指定axis，来沿着某一轴操作；除了mean()函数求均值，还可以使用average()，并且可以指定weights参数来指定权值，计算加权平均；argmax()和argmin()如果不指定axis参数，则返回平坦化后的下标；</p>
+<p>排序函数：sort()、argsort()；数组的sort()方法会对数组本身进行改变，而sort()函数则不会；sort默认axis=-1，即沿着最后一个轴进行排序；sort()函数返回一个新的排序后的数组而argsort()则返回排序后的下标数组，如：</p>
+<p>import numpy as np<br />a = np.random.randint(0,10,size=(4,5))</p>
+<p>array([[8, 2, 0, 3, 7],<br /> [7, 0, 2, 7, 4],<br /> [1, 8, 1, 1, 2],<br /> [4, 6, 2, 1, 4]])</p>
+<p>a.sort() ? #此时a数组会改变为排序后的数组；</p>
+<p>a1 = np.sort(a) ? #此时a数组不变，得到的a1数组为:</p>
+<p>array([[0, 2, 3, 7, 8],<br /> [0, 2, 4, 7, 7],<br /> [1, 1, 1, 2, 8],<br /> [1, 2, 4, 4, 6]])</p>
+<p># 即沿着-1轴排序后的结果</p>
+<p>idx = np.argsort(a)?</p>
+<p>idx</p>
+<p>array([[2, 1, 3, 4, 0],<br /> [1, 2, 4, 0, 3],<br /> [0, 2, 3, 4, 1],<br /> [3, 2, 0, 4, 1]])</p>
+<p>此时，虽然idx.shape = (4,5)，但是并不能直接使用a[idx]得到排序后的数组，因为idx是数组，所以numpy会在后面补:，等效于：a[idx,:]，idx数组中的每个值访问a数组的0轴，当idx中的值超过a的0轴长度之后就会产生错误：IndexError: index 4 is out of bounds for axis 0 with size 4；所以使用idx来访问a得到排序后的数组，需要产生0轴的下标，通过np.ogrid对象可以生成：</p>
+<p>x,_ =?np.ogrid[:a.shape[0],:a.shape[1]]</p>
+<p>右边的表达式生成a数组的grid，即各个轴的下标数组，取第一个元素即得到a数组的0轴下标数组：</p>
+<p>array([[0],<br /> [1],<br /> [2],<br /> [3]])</p>
+<p>通过a[x,idx]可以正确访问到排序后的数组</p>
+<h3>2. 多项式函数</h3>
+<p>多项式函数是只包含加法和乘法，对一个变量的各次幂进行加法和乘法操作的函数：</p>
+<p>f(x) = a[n]*x^n + a[n-1]*x^(n-1) + … + a[2]*x^2 + a[1]*x + a[0]</p>
+<p>numpy中通过将变量x的各次幂（从高到底的顺序）系数即可表示一个多项式函数：</p>
+<p>a = np.array([1.0,0,-2,1])</p>
+<p>p = np.poly1d(a)</p>
+<p>p是一个poly1d对象，此对象可以像函数一样调用，并且返回多项式的值，并且是一个ufunc对象，即可以以数组作为参数，得到相应的多项式值的数组；</p>
+<p>poly1d对象可以进行四则运算，分别对应于多项式的四则运算，除法运算时，会返回包含两个值的元组，其中第一个值为商多项式（商式），第二个值为余数多项式（余式）；</p>
+<p>poly1d对象可以进行积分：deriv()和微分：integ()操作，得到新的多项式；</p>
+<p>使用np.roots()函数，可以对多项式进行求根：</p>
+<p>r = np.roots(p)</p>
+<p>array([-1.61803399, ?1. ? ? ? ?, ?0.61803399])</p>
+<p>使用np.poly()函数，可以将根转回多项式的系数：</p>
+<p>np.poly(r)</p>
+<p>array([ 1.00000000e+00, -1.22124533e-15, -2.00000000e+00,<br /> 1.00000000e+00])</p>
+<p>使用np.polyfit()函数，可以对一组数据进行多项式拟合：</p>
+<p>import matplotlib.pyplot as plt<br />plt.figure(figsize=(8,4))<br />for deg in [3,5,7]:<br />? ? a = np.polyfit(x,y,deg)<br />? ? error = np.abs(np.polyval(a,x)-y)<br />? ? plt.plot(error)<br />plt.ylim(0,0.0001)<br />plt.show()</p>
+<p><img alt="技术分享" title="NewImage.png" src="http://images0.cnblogs.com/blog/675510/201508/180024183782662.png" alt="NewImage" width="599" height="354" border="0" />?</p>
+<h3>3.分段函数</h3>
+<p>通过三个函数实现分段操作：where()、select()、piecewise()</p>
+<p>where(condition,x,y)函数类似于三目操作符，当condition为真时，返回x，否则返回y；如果x和y的形状不一致，则通过广播统一形状；</p>
+<p>当分段的数量比较多时，where()函数写起来就比较复杂，select(condlist, choicelist)函数，通过一个长度为N的布尔数组列表，choicelist则是一个长度为N的存储候选值的数组列表，其中所有数组长度为M；</p>
+<p>condlist可以形象地理解为多个分段的条件，N为分段的数量；choicelist则是每种条件下的取值，用if-elif-else表现为：</p>
+<p>if condlist[0] :<br />? ? choicelist[0]<br />elif condlist[1]:<br />? ? choicelist[1]<br />elif condlist[2]:<br />? ? choicelist[2]</p>
+<p>等；</p>
+<p>piecewise(x, condlist, funclist)函数是为了避免当分段比较多时，需要用很多的数组来存储分段结构，piecewise()函数可以直接通过分段列表计算出结果，而不需要中间的分段数组；和select()参数不同的是，funclist是一个函数列表，分别对应condlist中的条件执行；</p>
+<h3>4.统计函数</h3>
+<p>unique()函数返回参数数组中所有不同的值，并按照从小到大排序，相当于linux中的sort -u 命令；该函数有两个可选参数：</p>
+<p>return_index: True 表示同时返回原始数组的下标；</p>
+<p>return_inverse :True 表示同时返回重建原始数组用的下标数组；</p>
+<p>bincount()函数统计整数数组中各个元素出现的次数（参数数组中所有的元素必须为非负数），返回数组中的第i个元素表示整数i在参数数组中出现的个数。</p>
+<p>histogram(a, bins=10, range=None, normed=False, weights=None)函数对一维数组进行直方图统计；该函数返回两个一维数组：hist和bin_edges；</p>
+<p>histogram2d()、histogramdd()对二维数组和n维数组进行直方图统计</p>
+<p>?</p>
+<h3><br />?</h3>
+<h3>?</h3><p><a href="http://www.mamicode.com/info-detail-992832.html" title="python科学计算_numpy_函数库,mamicode.com" style="color:#ffffff"  target="_blank">python科学计算_numpy_函数库</a></p><p>标签：</p></span>
+                </div>
+                <div id="divcomment">
+                    <div>
+                        <div class=" divtextaligncenter">
+                            <div class="detailcai" id="infono">
+                                <div class="detailcai1 colorboldlan">
+                                    踩</div>
+                                <div class="detailcai2 colorboldlan">
+                                    (<span id="spanNo">0</span>)</div>
+                            </div>
+                            <div class="detailzan" id="infoyes">
+                                <div class="detailzan1 colorboldHong">
+                                    赞</div>
+                                <div class="detailzan2 colorboldHong">
+                                    (<span id="spanYes">0</span>)</div>
+                            </div>
+                            <div class="divfloatclear">
+                            </div>
+                        </div>
+                        <div class="divtextalignright margintop10">
+                            <div class="width100bi paddingleft10right10">
+                                <span id="spanYesContent" class="colorboldHong"></span>&nbsp; <span id="spanNoContent"
+                                    class="colorboldlan"></span>&nbsp; <span id="spanBadContent" class="colorboldHong">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divtextalignright margintop10">
+                        <span class="detailjubao" id="infobad">举报</span>
+                    </div>
+                    <div class="margintop20bottom20">
+    <div class="divfloatleft">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- mamicode-infodetail-336x280-1 -->
+        <ins class="adsbygoogle" style="display: inline-block; width: 336px; height: 280px"
+            data-ad-client="ca-pub-8616102841876629" data-ad-slot="6851602680"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <div class="divfloatright">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- mamicode-infodetail-336x280-2 -->
+        <ins class="adsbygoogle" style="display: inline-block; width: 336px; height: 280px"
+            data-ad-client="ca-pub-8616102841876629" data-ad-slot="8328335888"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <div class="divfloatclear">
+    </div>
+</div>
+
+                    <div id="comment" class="divtextalignleft margintop20">
+                        <div class="detailpinglun1">
+                            <span class="detailpinglun2 title6">评论</span> <span class="detailpinglun3">一句话评论（<span id="commentCount" class="colorboldHong">0</span>）</span>
+                        </div>
+                        <div class="paddingtop20">
+                            
+                            <div id="commentlistend" name="commentlistend" class="divtextaligncenter margintop20">
+                                <span id="lblpage">共<span class='pagecolorc'>0</span>条&nbsp;&nbsp;</span>
+                            </div>
+                        </div>
+                        <div class="margintop20">
+                            <form method="post" action="/ajaxjs/info_detail_commentadd.aspx">
+                            <div class="divtextalignleft paddingtop20">
+                                <div id="commenthf" class="divbackgroundcolor1">
+                                </div>
+                                <div>
+                                    <textarea name="tbcommentcontent" id="tbcommentcontent" class="tb" style="width: 680px;
+                                        height: 120px;"></textarea>
+                                </div>
+                            </div>
+                            <div class="divtextalignright paddingtop10 ">
+                                <span id="addCommentTishi" class="colorboldHong">登录后才能评论！</span>
+                                <span id="loginno"><input type="button" class="mbtn1" value="登录" onclick="location.href='http://member.mamicode.com/login.aspx?returnUrl=http://www.mamicode.com/infodetail.aspx?id=992832';" /></span>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="width30bi divfloatright">
+            
+            <div class="paddingbottom20">
+    <script type="text/javascript">        (function () { document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E')); var bdcs = document.createElement('script'); bdcs.type = 'text/javascript'; bdcs.async = true; bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=7490613033886828738' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date() / 3600000); var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(bdcs, s); })();</script>
+</div>
+<div class="paddingbottom10">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- 1-mamicode-right-300x600 -->
+    <ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 600px"
+        data-ad-client="ca-pub-8616102841876629" data-ad-slot="8947049888"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <script type="text/javascript">
+        /*mamicode-infodetail-zuoyouxuanfu-120*300 创建于 2015-03-13*/
+        var cpro_id = "u1987286";
+    </script>
+    <script src="http://cpro.baidustatic.com/cpro/ui/f.js" type="text/javascript"></script>
+    <script>
+        var baiduImagePlus = {
+            noLogo: true,
+            unionId: 'u2416663',
+            formList: [{ formId: 2}]
+        };
+    </script>
+    <script src="http://cpro.baidustatic.com/cpro/ui/i.js"></script>
+</div>
+<div class="paddingbottom10">
+<script type="text/javascript">
+var sogou_ad_id=547185;
+var sogou_ad_height=250;
+var sogou_ad_width=300;
+</script>
+<script type='text/javascript' src='http://images.sohu.com/cs/jsfile/js/c.js'></script>
+</div>
+
+<div class="width100bi divborder">
+    <div class="divtitle">
+        <div id="infofile1_div1" class="divfloatleft divtitlefont">
+            分享档案</div>
+        <div class="divfloatright">
+            <a href="/infotimemore.html" title="分享档案更多" class="colorCheng">更多></a>
+        </div>
+        <div class="divfloatclear">
+        </div>
+    </div>
+    <div class="divtextalignleft paddingleft10right10 margintop10bottom10 heightline30px">
+        
+                <a class="taga" href="/info-time-20160719-1.html" target="_blank" title="2016年07月19日技术分享文章">
+                        2016年07月19日
+                        (1628)</a><br />
+            
+                <a class="taga" href="/info-time-20160718-1.html" target="_blank" title="2016年07月18日技术分享文章">
+                        2016年07月18日
+                        (415)</a><br />
+            
+                <a class="taga" href="/info-time-20160717-1.html" target="_blank" title="2016年07月17日技术分享文章">
+                        2016年07月17日
+                        (735)</a><br />
+            
+                <a class="taga" href="/info-time-20160716-1.html" target="_blank" title="2016年07月16日技术分享文章">
+                        2016年07月16日
+                        (763)</a><br />
+            
+                <a class="taga" href="/info-time-20160715-1.html" target="_blank" title="2016年07月15日技术分享文章">
+                        2016年07月15日
+                        (1624)</a><br />
+            
+                <a class="taga" href="/info-time-20160714-1.html" target="_blank" title="2016年07月14日技术分享文章">
+                        2016年07月14日
+                        (1810)</a><br />
+            
+                <a class="taga" href="/info-time-20160713-1.html" target="_blank" title="2016年07月13日技术分享文章">
+                        2016年07月13日
+                        (2245)</a><br />
+            
+                <a class="taga" href="/info-time-20160712-1.html" target="_blank" title="2016年07月12日技术分享文章">
+                        2016年07月12日
+                        (1832)</a><br />
+            
+                <a class="taga" href="/info-time-20160711-1.html" target="_blank" title="2016年07月11日技术分享文章">
+                        2016年07月11日
+                        (1773)</a><br />
+            
+                <a class="taga" href="/info-time-20160710-1.html" target="_blank" title="2016年07月10日技术分享文章">
+                        2016年07月10日
+                        (1723)</a><br />
+            
+    </div>
+</div>
+
+            
+<div class="width100bi margintop20 divborder">
+    <div class="divtitle">
+        <div id="infotop2_divtitle" class="divfloatleft divtitlefont">周排行</div>
+        <div class="divfloatright">
+            <img src="/img/j01.jpg" width="14" height="14" alt="mamicode.com排行更多图片" /></div>
+        <div class="divfloatright">
+            <a href="/info-toplist-4-2-1.html" id="infotop2_amore" title="周排行更多">更多</a></div>
+        <div class="divfloatclear">
+        </div>
+    </div>
+    <div>
+        <ul>
+            <li class="divullititle heightline25px divtextalignleft"><a href="/info-detail-80041.html"
+                        title="Initializing Spring FrameworkServlet &#39;SpringMVC&#39;的解决" target="_blank">
+                        Initializing Spring FrameworkServlet &#39;SpringMVC&#39;的解决
+                        &nbsp;<span class="colorlan">2014-06-27</span> </a></li><li class="divullititle heightline25px divtextalignleft"><a href="/info-detail-99920.html"
+                        title="将安全证书导入到java的cacerts证书库" target="_blank">
+                        将安全证书导入到java的cacerts证书库
+                        &nbsp;<span class="colorlan">2014-07-12</span> </a></li><li class="divullititle heightline25px divtextalignleft"><a href="/info-detail-110033.html"
+                        title="Spring整合hibernate4：事务管理" target="_blank">
+                        Spring整合hibernate4：事务管理
+                        &nbsp;<span class="colorlan">2014-07-19</span> </a></li><li class="divullititle heightline25px divtextalignleft"><a href="/info-detail-308445.html"
+                        title="PYTHON编码处理-str与Unicode的区别" target="_blank">
+                        PYTHON编码处理-str与Unicode的区别
+                        &nbsp;<span class="colorlan">2014-11-12</span> </a></li><li class="divullititle heightline25px divtextalignleft"><a href="/info-detail-401441.html"
+                        title="MAC OSX安装多个版本的JAVA" target="_blank">
+                        MAC OSX安装多个版本的JAVA
+                        &nbsp;<span class="colorlan">2015-01-03</span> </a></li><li class="divullititle heightline25px divtextalignleft"><a href="/info-detail-404593.html"
+                        title="R语言做图plot参数" target="_blank">
+                        R语言做图plot参数
+                        &nbsp;<span class="colorlan">2015-01-04</span> </a></li><li class="divullititle heightline25px divtextalignleft"><a href="/info-detail-467301.html"
+                        title="Maven搭建SpringMVC+Hibernate项目详解" target="_blank">
+                        Maven搭建SpringMVC+Hibernate项目详解
+                        &nbsp;<span class="colorlan">2015-02-08</span> </a></li><li class="divullititle heightline25px divtextalignleft"><a href="/info-detail-471331.html"
+                        title="Swagger与SpringMVC项目整合" target="_blank">
+                        Swagger与SpringMVC项目整合
+                        &nbsp;<span class="colorlan">2015-02-10</span> </a></li><li class="divullititle heightline25px divtextalignleft"><a href="/info-detail-514466.html"
+                        title="密码算法详解——AES" target="_blank">
+                        密码算法详解——AES
+                        &nbsp;<span class="colorlan">2015-03-13</span> </a></li><li class="divullititle heightline25px divtextalignleft"><a href="/info-detail-517008.html"
+                        title="Java多线程学习（吐血超详细总结）" target="_blank">
+                        Java多线程学习（吐血超详细总结）
+                        &nbsp;<span class="colorlan">2015-03-14</span> </a></li>
+        </ul>
+    </div>
+</div>
+
+            <div id="xuanting" class="width300px">
+    <div class="margintop10">
+        <script type="text/javascript">
+            var cpro_id = "u2208973";
+            (window["cproStyleApi"] = window["cproStyleApi"] || {})[cpro_id] = { at: "3", rsi0: "300", rsi1: "300", pat: "17", tn: "baiduCustNativeAD", rss1: "#FFFFFF", conBW: "1", adp: "1", ptt: "0", titFF: "", titFS: "14", rss2: "#000000", titSU: "0" }
+        </script>
+        <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+    </div>
+    <div class="margintop10">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- mamicode-xuanting-300x250 -->
+        <ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px"
+            data-ad-client="ca-pub-8616102841876629" data-ad-slot="3583171088"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+</div>
+
+        </div>
+        <div class="divfloatclear">
+        </div>
+    </div>
+    <div class="width1000px divmargin0auto paddingtop20bottom20">
+    <div class="width1000px divborder margintop20">
+        <div class="youqingtitle">
+            <a title="友情链接">友情链接</a>
+        </div>
+        <div class="youqingcontent">
+            <a href='http://www.lightinit.com' target='_blank' title='互联网产品定制开发专家'>兰亭集智</a>&nbsp;&nbsp;<a
+                href='http://www.guozhihua.net/' target='_blank'>国之画</a>&nbsp;&nbsp;<a href='http://www.bubufx.com/'
+                    target='_blank'>布布分享</a>&nbsp;&nbsp;<a href='http://tongji.baidu.com' target='_blank'>百度统计</a>&nbsp;&nbsp;
+            <a href='http://www.cnzz.com/' target='_blank'>站长统计</a>&nbsp;&nbsp;<a href='http://www.aliyun.com/'
+                target='_blank'>阿里云</a>&nbsp;&nbsp;<a href='http://www.dongcoder.com/' target='_blank'>懂客</a>&nbsp;&nbsp;
+        </div>
+    </div>
+</div>
+<div class="bottomdiv">
+    <div class="width1000px divmargin0auto paddingtop20">
+        <div class="height30px divtextalignleft">
+            <a href="/about.html" title="mamicode.com关于我们">关于我们</a> - <a href="/contactus.html"
+                title="mamicode.com联系我们">联系我们</a> - <a href="/guest.html" title="mamicode.com留言反馈">留言反馈</a>
+        </div>
+        <div class="height30px divtextalignleft">
+            © 2014 <a href="http://www.mamicode.com" target="_blank" title="mamicode.com,技术分享">mamicode.com</a>
+            版权所有 京ICP备13008772号-2
+        </div>
+        <div class="divtextalignleft">
+            <span class="colorlan">迷上了代码！</span>
+        </div>
+        <div class="paddingtop20">
+            <script type="text/javascript">                var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1254666564'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1254666564%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <script type="text/javascript">
+                var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb65e01a9bac157f881c4d8cbac4b6995' type='text/javascript'%3E%3C/script%3E"));
+            </script>
+        </div>
+        <br />
+        <br />
+        <br />
+    </div>
+</div>
+<script type="text/javascript" src="/js/mamicodejs.js"></script>
+
+    <script type="text/javascript">        var mid = ''; var id = '992832'; var idm = '44b73f'; var commentitemcount = '0'; var memberhost = 'http://member.mamicode.com/'; prettyPrint(); </script>  
+    <script src="/js/infodetail.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/member.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

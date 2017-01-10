@@ -1,0 +1,61 @@
+V3 48
+FL "C:/Users/Fulton/ISE Project/RegularCPU/ALU.vhd" 2016/07/25.16:13:47 P.20131013
+FL "C:/Users/Fulton/ISE Project/RegularCPU/ClockManager.vhd" 2016/07/24.14:08:45 P.20131013
+FL "C:/Users/Fulton/ISE Project/RegularCPU/FetchInstr.vhd" 2016/07/25.16:31:47 P.20131013
+FL "C:/Users/Fulton/ISE Project/RegularCPU/Fulton_CPU_2016_XXXX.vhd" 2016/07/25.16:16:55 P.20131013
+FL "C:/Users/Fulton/ISE Project/RegularCPU/MemoryAccesssControl.vhd" 2016/07/25.10:56:39 P.20131013
+FL "C:/Users/Fulton/ISE Project/RegularCPU/StorageManager.vhd" 2016/07/25.16:14:56 P.20131013
+FL "C:/Users/Fulton/ISE Project/RegularCPU/WriteBack.vhd" 2016/07/24.11:03:26 P.20131013
+FL G:/RegularCPU/ALU.vhd 2016/07/24.13:57:28 P.20131013
+FL G:/RegularCPU/ClockManager.vhd 2016/07/24.14:08:45 P.20131013
+FL G:/RegularCPU/FetchInstr.vhd 2016/07/25.15:07:31 P.20131013
+FL G:/RegularCPU/Fulton_CPU_2016_XXXX.vhd 2016/07/25.14:59:26 P.20131013
+FL G:/RegularCPU/MemoryAccesssControl.vhd 2016/07/25.10:56:39 P.20131013
+FL G:/RegularCPU/StorageManager.vhd 2016/07/24.11:02:11 P.20131013
+FL G:/RegularCPU/WriteBack.vhd 2016/07/24.11:03:26 P.20131013
+FL G:/RegularCPU_withNoIO/ALU.vhd 2016/07/28.17:21:27 P.20131013
+FL G:/RegularCPU_withNoIO/ClockManager.vhd 2016/07/28.15:22:59 P.20131013
+FL G:/RegularCPU_withNoIO/FetchInstr.vhd 2016/07/28.17:21:58 P.20131013
+FL G:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.vhd 2016/07/27.10:51:26 P.20131013
+FL G:/RegularCPU_withNoIO/MemoryAccesssControl.vhd 2016/07/28.16:02:29 P.20131013
+FL G:/RegularCPU_withNoIO/StorageManager.vhd 2016/07/28.16:30:21 P.20131013
+FL G:/RegularCPU_withNoIO/WriteBack.vhd 2016/07/28.16:24:54 P.20131013
+FL H:/RegularCPU_withNoIO/ALU.vhd 2016/07/28.17:21:27 P.20131013
+EN work/ALU 1469726041 FL H:/RegularCPU_withNoIO/ALU.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/std_logic_arith 1350103244
+AR work/ALU/Behavioral 1469726042 \
+      FL H:/RegularCPU_withNoIO/ALU.vhd EN work/ALU 1469726041
+FL H:/RegularCPU_withNoIO/ClockManager.vhd 2016/07/29.00:36:10 P.20131013
+EN work/ClockManager 1469726037 FL H:/RegularCPU_withNoIO/ClockManager.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/ClockManager/Behavioral 1469726038 \
+      FL H:/RegularCPU_withNoIO/ClockManager.vhd EN work/ClockManager 1469726037
+FL H:/RegularCPU_withNoIO/FetchInstr.vhd 2016/07/28.17:21:58 P.20131013
+EN work/FetchInstr 1469726039 FL H:/RegularCPU_withNoIO/FetchInstr.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
+      PB ieee/std_logic_arith 1350103244
+AR work/FetchInstr/Behavioral 1469726040 \
+      FL H:/RegularCPU_withNoIO/FetchInstr.vhd EN work/FetchInstr 1469726039
+FL H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.vhd 2016/07/27.10:51:26 P.20131013
+EN work/Fulton_CPU_2016_XXXX 1469726049 \
+      FL H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.vhd PB ieee/std_logic_1164 1381692176
+AR work/Fulton_CPU_2016_XXXX/Behavioral 1469726050 \
+      FL H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.vhd \
+      EN work/Fulton_CPU_2016_XXXX 1469726049 CP ClockManager CP FetchInstr CP ALU \
+      CP StorageManager CP WriteBack CP MemoryAccessControl
+FL H:/RegularCPU_withNoIO/MemoryAccesssControl.vhd 2016/07/29.01:08:31 P.20131013
+EN work/MemoryAccessControl 1469726047 \
+      FL H:/RegularCPU_withNoIO/MemoryAccesssControl.vhd PB ieee/std_logic_1164 1381692176
+AR work/MemoryAccessControl/Behavioral 1469726048 \
+      FL H:/RegularCPU_withNoIO/MemoryAccesssControl.vhd \
+      EN work/MemoryAccessControl 1469726047
+FL H:/RegularCPU_withNoIO/StorageManager.vhd 2016/07/28.16:30:21 P.20131013
+EN work/StorageManager 1469726043 FL H:/RegularCPU_withNoIO/StorageManager.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/StorageManager/Behavioral 1469726044 \
+      FL H:/RegularCPU_withNoIO/StorageManager.vhd EN work/StorageManager 1469726043
+FL H:/RegularCPU_withNoIO/WriteBack.vhd 2016/07/28.16:24:54 P.20131013
+EN work/WriteBack 1469726045 FL H:/RegularCPU_withNoIO/WriteBack.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/WriteBack/Behavioral 1469726046 \
+      FL H:/RegularCPU_withNoIO/WriteBack.vhd EN work/WriteBack 1469726045

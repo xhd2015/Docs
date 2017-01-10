@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=H:\RegularCPU_withNoIO\impact.xsl
+OUTFILE=H:\RegularCPU_withNoIO\impact.xsl
+FAMILY=Multiple
+PART=Multiple
+WORKINGDIR=H:\RegularCPU_withNoIO
+LICENSE=iMPACT
+USER_INFO=iMPACT

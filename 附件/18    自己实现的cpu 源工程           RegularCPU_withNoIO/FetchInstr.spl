@@ -1,0 +1,13 @@
+[Inputs]
+cs
+cs_alu
+cs_writ
+reset
+pc_update
+=pc_rewrite[15:0]=
+=ir_in[15:0]=
+[Outputs]
+if_irread
+=pc_out[15:0]=
+=ir_out[15:0]=
+[BiDir]

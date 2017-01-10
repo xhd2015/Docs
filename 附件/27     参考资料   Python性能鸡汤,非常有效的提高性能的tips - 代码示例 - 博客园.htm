@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Python性能鸡汤,非常有效的提高性能的tips - 代码示例 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=umTYGJ1Xbo61obX_Gqsil3krUSBXOilTLax6nesdN401"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="/skins/SimpleBlue/bundle-SimpleBlue.css?v=jJERBFSojhmgst84aaRDal9S3q1WoO-WcNudmMzGJS81"/>
+<link type="text/css" rel="stylesheet" href="/blog/customcss/39490.css?v=e0EFKV9DZUzOimgRvQV97Bol2RA%3d"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/codemo/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/codemo/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/codemo/wlwmanifest.xml"/>
+<script src="//common.cnblogs.com/script/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'codemo', cb_enable_mathjax=false;</script>
+<script src="/bundles/blog-common.js?v=5U27mPu5I0KkEyh-j235bo21EbCO9CoRnrVjj5DiOjI1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/codemo/">代码示例[codemo]</a></div>
+<div class="subtitle"></div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li id="nav_myhome"><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/codemo/">首页</a></li>
+<li id="nav_newpost"><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li id="nav_contact"></li>
+<li id="nav_rss"><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/codemo/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/codemo/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li id="nav_admin"><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			
+<!--done-->
+随笔-79&nbsp;
+文章-4&nbsp;
+评论-90&nbsp;
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class = "post">
+		<h1 class = "postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/codemo/archive/2012/10/27/python_performance.html">Python性能鸡汤,非常有效的提高性能的tips</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p><span>第一部分</span><span>&nbsp;</span><br /><br /><span>阅读&nbsp;</span><a href="http://www.python.org/dev/peps/pep-0020/" rel="nofollow" target="_blank">Zen of Python</a><span>,在Python解析器中输入&nbsp;</span><span>import this</span><span>. 一个犀利的Python新手可能会注意到"解析"一词, 认为Python不过是另一门脚本语言. "它肯定很慢!"&nbsp;</span><br /><br /><span>毫无疑问:Python程序没有编译型语言高效快速. 甚至Python拥护者们会告诉你Python不适合这些领域. 然而,YouTube已用Python服务于每小时4千万视频的请求. 你所要做的就是编写高效的代码和需要时使用外部实现(C/C++)代码. 这里有一些建议,可以帮助你成为一个更好的Python开发者:&nbsp;</span><br /><br /></p>
+<p>1.&nbsp;<span>使用内建函数:</span></p>
+<p>&nbsp;&nbsp;&nbsp; 你可以用Python写出高效的代码,但很难击败内建函数. 经查证. 他们非常快速.</p>
+<p><a href="http://static.oschina.net/uploads/space/2012/0323/202425_H3MP_1579.png" target="_blank"><img src="http://static.oschina.net/uploads/space/2012/0323/202425_H3MP_1579.png" alt="" /></a></p>
+<p><span>&nbsp;</span></p>
+<p><span>2.使用join()连接字符串.</span></p>
+<p>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 你可以使用 "+" 来连接字符串. 但由于string在Python中是不可变的,每一个"+"操作都会创建一个新的字符串并复制旧内容. 常见用法是使用Python的数组模块单个的修改字符;当完成的时候,使用 join() 函数创建最终字符串.&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; #This is good to glue a large number of strings&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; for chunk in input():&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp; my_string.join(chunk)&nbsp;</span><br /><br /><span>3. 使用Python多重赋值，交换变量</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp; 这在Python中即优雅又快速:&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; x, y = y, x&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 这样很慢:&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; temp = x&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; x = y&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; y = temp&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br /><br /><span>4. 尽量使用局部变量</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp; Python 检索局部变量比检索全局变量快. 这意味着,避免 "global" 关键字.&nbsp;</span><br /><br /><span>5. 尽量使用 "in"</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 使用 "in" 关键字. 简洁而快速.&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; for key in sequence:&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp; print &ldquo;found&rdquo;&nbsp;</span><br /><br /><span>6. 使用延迟加载加速</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 將 "import" 声明移入函数中,仅在需要的时候导入. 换句话说,如果某些模块不需马上使用,稍后导入他们. 例如,你不必在一开使就导入大量模块而加速程序启动. 该技术不能提高整体性能. 但它可以帮助你更均衡的分配模块的加载时间.&nbsp;</span><br /><br /><span>7. 为无限循环使用 "while 1"</span><span>&nbsp;</span><br /><a href="http://static.oschina.net/uploads/space/2012/0323/203236_jpS5_1579.jpeg" target="_blank"><img src="http://static.oschina.net/uploads/space/2012/0323/203236_jpS5_1579.jpeg" alt="" width="80" height="80" align="right" /></a><span>&nbsp;&nbsp;&nbsp; 有时候在程序中你需一个无限循环.(例如一个监听套接字的实例) 尽管 "while true" 能完成同样的事, 但 "while 1" 是单步运算. 这招能提高你的Python性能.&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; while 1:&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp; #do stuff, faster with while 1&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; while True:&nbsp;</span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp; # do stuff, slower with wile True</p>
+<p>
+<br /><span>8.&nbsp;</span><span>使用list comprehension</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp; 从Python 2.0 开始,你可以使用 list comprehension 取代大量的 "for" 和 "while" 块. 使用List comprehension通常更快，Python解析器能在循环中发现它是一个可预测的模式而被优化.额外好处是，list comprehension更具可读性（函数式编程），并在大多数情况下，它可以节省一个额外的计数变量。例如，让我们计算1到10之间的偶数个数：&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; # the good way to iterate a range&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; evens = [ i for i in range(10) if i%2 == 0]&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; [0, 2, 4, 6, 8]&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; # the following is not so Pythonic&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; i = 0&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; evens = []&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; while i &lt; 10:&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp; if i %2 == 0: evens.append(i)&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp; i += 1&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; [0, 2, 4, 6, 8]&nbsp;</span><br /><br /><span>9. 使用xrange()处理长序列：</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp; 这样可为你节省大量的系统内存，因为xrange()在序列中每次调用只产生一个整数元素。而相反 range()，它將直接给你一个完整的元素列表，用于循环时会有不必要的开销。&nbsp;</span><br /><br /><span>10. 使用 Python generator：</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 这也可以节省内存和提高性能。例如一个视频流，你可以一个一个字节块的发送，而不是整个流。例如，&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; chunk = ( 1000 * i for i in xrange(1000))&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; chunk&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;generator object &lt;genexpr&gt; at 0x7f65d90dcaa0&gt;&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; chunk.next()&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; chunk.next()&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1000&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; chunk.next()&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2000&nbsp;</span><br /><br /><span>11. 了解itertools模块：</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 该模块对迭代和组合是非常有效的。让我们生成一个列表[1，2，3]的所有排列组合,仅需三行Python代码：&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; import itertools&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; iter = itertools.permutations([1,2,3])&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; list(iter)&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]&nbsp;</span><br /><br /><span>12. 学习bisect模块保持列表排序：</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 这是一个免费的二分查找实现和快速插入有序序列的工具。也就是说，你可以使用：&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; import bisect&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; bisect.insort(list, element)&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 你已將一个元素插入列表中, 而你不需要再次调用 sort() 来保持容器的排序, 因为这在长序列中这会非常昂贵.&nbsp;</span><br /><br /><span>13. 理解Python列表，实际上是一个数组：</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Python中的列表实现并不是以人们通常谈论的计算机科学中的普通单链表实现的。Python中的列表是一个数组。也就是说，你可以以常量时间O(1) 检索列表的某个元素，而不需要从头开始搜索。这有什么意义呢？ Python开发人员使用列表对象insert（）时, 需三思. 例如：&gt;&gt;&gt; list.insert（0，item）&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 在列表的前面插入一个元素效率不高, 因为列表中的所有后续下标不得不改变. 然而，您可以使用list.append()在列表的尾端有效添加元素. 挑先deque，如果你想快速的在两插入或时。它是快速的，因为在Python中的deque用双链表实现。不再多说。 :)&nbsp;</span><br /><br /></p>
+<p><span>14. 使用dict 和 set 测试成员：</span></p>
+<p><a href="http://static.oschina.net/uploads/space/2012/0323/203626_LOj4_1579.jpeg" target="_blank"><img src="http://static.oschina.net/uploads/space/2012/0323/203626_LOj4_1579.jpeg" alt="" width="140" height="140" align="right" /></a></p>
+<p>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 检查一个元素是在dicitonary或set是否存在 这在Python中非常快的。这是因为dict和set使用哈希表来实现。查找效率可以达到O(1)。因此，如果您需要经常检查成员，使用 set 或 dict做为你的容器.&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; mylist = ['a', 'b', 'c'] #Slower, check membership with list:&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; &lsquo;c&rsquo; in mylist&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; True&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; myset = set(['a', 'b', 'c']) # Faster, check membership with set:&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; &lsquo;c&rsquo; in myset:&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; True&nbsp;</span><br /><br /></p>
+<p><span>15. 使用Schwartzian Transform 的 sort():</span></p>
+<p><a href="http://static.oschina.net/uploads/space/2012/0323/203832_4IfS_1579.jpg" target="_blank"><img src="http://static.oschina.net/uploads/space/2012/0323/203832_4IfS_1579.jpg" alt="" width="140" height="220" align="right" /></a></p>
+<p>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 原生的list.sort（）函数是非常快的。 Python会按自然顺序排序列表。有时，你需要非自然顺序的排序。例如，你要根据服务器位置排序的IP地址。 Python支持自定义的比较，你可以使用list.sort（CMP（）），这会比list.sort（）慢，因为增加了函数调用的开销。如果性能有问 题，你可以申请Guttman-Rosler Transform,基于Schwartzian Transform. 它只对实际的要用的算法有兴趣，它的简要工作原理是，你可以变换列表，并调用Python内置list.sort（） - &gt; 更快，而无需使用list.sort（CMP（） ）-&gt;慢。&nbsp;</span><br /><br /><br /><span>16. Python装饰器缓存结果：</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &ldquo;@&rdquo;符号是Python的装饰语法。它不只用于追查，锁或日志。你可以装饰一个Python函数，记住调用结果供后续使用。这种技术被称为memoization的。下面是一个例子：&nbsp;</span><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; from functools import wraps&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; def memo(f):&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp; cache = { }&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp; @wraps(f)&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp; def&nbsp; wrap(*arg):&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if arg not in cache: cache['arg'] = f(*arg)&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return cache['arg']&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp; return wrap&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 我们也可以对 Fibonacci 函数使用装饰器:&nbsp;</span><a href="http://static.oschina.net/uploads/space/2012/0323/204055_JlqC_1579.jpeg" target="_blank"><img src="http://static.oschina.net/uploads/space/2012/0323/204055_JlqC_1579.jpeg" alt="" width="120" height="100" align="right" /></a><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; @memo&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt; def fib(i):&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp; if i &lt; 2: return 1&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;&gt;&gt;&nbsp;&nbsp;&nbsp; return fib(i-1) + fib(i-2)&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp; 这里的关键思想是:增强函数(装饰)函数,记住每个已经计算的Fibonacci值;如果它们在缓存中,就不需要再计算了.&nbsp;</span><br /><br /><span>17. 理解Python的GIL（全局解释器锁）：</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GIL是必要的，因为CPython的内存管理是非线程安全的。你不能简单地创建多个线程，并希望Python能在多核心的机器上运行得更快。这是因为 GIL將会防止多个原生线程同时执行Python字节码。换句话说，GIL將序列化您的所有线程。然而，您可以使用线程管理多个派生进程加速程序，这些程 序独立的运行于你的Python代码外。&nbsp;</span><br /><br /><span>18. 像熟悉文档一样的熟悉Python源代码：</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Python有些模块为了性能使用C实现。当性能至关重要而官方文档不足时，可以自由探索源代码。你可以找到底层的数据结构和算法。 Python的源码库就是一个很棒的地方：http://svn.python.org/view/python/trunk/Modules&nbsp;</span><br /><br /><span>结论：&nbsp;</span><br /><span>这些不能替代大脑思考. 打开引擎盖充分了解是开发者的职责,使得他们不会快速拼凑出一个垃圾设计. 本文的Python建议可以帮助你获得好的性能. 如果速度还不够快, Python將需要借助外力:分析和运行外部代码.我们將在本文的第二部分中涉及.&nbsp;</span><br /><br /><span>第二部分</span><span>&nbsp;</span><br /><br /></p>
+<p>有益的提醒,静态编译的代码仍然重要. 仅例举几例, Chrome,Firefox,MySQL,MS Office 和 <a href="http://www.oidea.cn" target="_blank">Photoshop</a>都是高度优化的软件,我们每天都在使用. Python作为解析语言,很明显不适合. 不能单靠Python来满足那些性能是首要指示的领域.&nbsp; 这就是为什么Python支持让你接触底层裸机基础设施的原因, 将更繁重的工作代理给更快的语言如C. 这高性能计算和嵌入式编程中是关键的功能. Python性能鸡汤第一部分讨论了怎样高效的使用Python. 在第二部分, 我们將涉及监控和扩展Python.</p>
+<p>1.&nbsp;<span>首先, 拒绝调优诱惑</span></p>
+<p><a href="http://static.oschina.net/uploads/space/2012/0326/004610_i9hd_1579.png" target="_blank"><img src="http://static.oschina.net/uploads/space/2012/0326/004610_i9hd_1579.png" alt="" /></a></p>
+<p>
+&nbsp;&nbsp;&nbsp; 调优给你的代码增加复杂性. 集成其它语言之前, 请检查下面的列表. 如果你的算法是"足够好", 优化就没那么迫切了.&nbsp;<br />&nbsp;&nbsp;&nbsp; 1. 你做了性能测试报告吗?&nbsp;<br />&nbsp;&nbsp;&nbsp; 2. 你能减少硬盘的 I/O 访问吗?&nbsp;<br />&nbsp;&nbsp;&nbsp; 3. 你能减少网络 I/O 访问吗?&nbsp;<br />&nbsp;&nbsp;&nbsp; 4. 你能升级硬件吗?&nbsp;<br />&nbsp;&nbsp;&nbsp; 5. 你是为其它开发者编译库吗?&nbsp;<br />&nbsp;&nbsp;&nbsp; 6.你的第三方库<a href="http://www.cnblogs.com/codemo/admin/codemo.cnblogs.com" target="_blank">软件</a>是最新版吗?&nbsp;<br /><br />2.&nbsp;使用工具监控代码, 而不是直觉&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 速度的问题可能很微妙, 所以不要依赖于直觉. 感谢 "cprofiles" 模块, 通过简单的运行你就可以监控Python代码&nbsp;<br />&ldquo;python -m cProfile myprogram.py&rdquo;&nbsp;<br /><a href="http://static.oschina.net/uploads/space/2012/0326/004627_qOTi_1579.png" target="_blank"><img src="http://static.oschina.net/uploads/space/2012/0326/004627_qOTi_1579.png" alt="" /></a>&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 我们写了个测试程序. 基于黑盒监控. 这里的瓶颈是 "very_slow()" 函数调用. 我们还可以看到 "fast()" 和 "slow()"都被调用200次. 这意味着, 如果我们可以改善 "fast()" 和 "slow()" 函数, 我们可以获得全面的性能提升. cprofiles 模块也可以在运行时导入. 这对于检查长时间运行的进程非常有用.</p>
+<p><a href="http://static.oschina.net/uploads/space/2012/0326/004641_nClP_1579.png" target="_blank"><img src="http://static.oschina.net/uploads/space/2012/0326/004641_nClP_1579.png" alt="" /></a></p>
+<p>
+<br /><span>3.&nbsp;</span><span>审查时间复杂度</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 控制以后, 提供一个基本的算法性能分析. 恒定时间是理想值. 对数时间复度是稳定的. 阶乘复杂度很难扩展.&nbsp;</span><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O(1) -&gt; O(lg n) -&gt; O(n lg n) -&gt; O(n^2) -&gt; O(n^3) -&gt; O(n^k) -&gt; O(k^n) -&gt; O(n!)&nbsp;</span><br /><br /><span>4.&nbsp;</span><span>使用第三方包</span><span>&nbsp;</span><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 有很多为Python设计的高性能的第三方库和工具. 下面是一些有用的加速包的简短列表.&nbsp;</span><br /><br /><span>&nbsp;&nbsp;&nbsp; 1.&nbsp;</span><a href="http://www.oschina.net/p/numpy" rel="nofollow" target="_blank">NumPy</a><span>: 一个开源的相当于MatLab的包&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp; 2.&nbsp;</span><a href="http://www.oschina.net/p/scipy" rel="nofollow" target="_blank">SciPy</a><span>: 另一个数值处理库&nbsp;</span><br /><span>&nbsp;&nbsp; &nbsp;3.&nbsp;</span><a href="http://www.oschina.net/p/gpulib" rel="nofollow" target="_blank">GPULib</a><span>: 使用GPUs加速代码&nbsp;</span><br /><span>&nbsp;&nbsp; &nbsp;4.&nbsp;</span><a href="http://www.oschina.net/p/pypy" rel="nofollow" target="_blank">PyPy</a><span>: 使用 just-in-time 编译器优化Python代码&nbsp;</span><br /><span>&nbsp;&nbsp; &nbsp;5.&nbsp;</span><a href="http://www.oschina.net/p/cython" rel="nofollow" target="_blank">Cython</a><span>: 將Python优码转成C&nbsp;</span></p>
+<p>&nbsp;&nbsp; &nbsp;6.&nbsp;<a href="http://www.oschina.net/p/shedskin" rel="nofollow" target="_blank">ShedSkin</a>: 將Python代码转成C++</p>
+<p><a href="http://static.oschina.net/uploads/space/2012/0326/004729_MwTI_1579.png" target="_blank"><img src="http://static.oschina.net/uploads/space/2012/0326/004729_MwTI_1579.png" alt="" /></a></p>
+<p>
+<br /><span>5.&nbsp;</span><span>使用multiprocessing模块实现真正的并发</span><span>&nbsp;</span><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 因为GIL会序列化线程, Python中的多线程不能在多核机器和集群中加速. 因此Python提供了multiprocessing模块, 可以派生额外的进程代替线程, 跳出GIL的限制. 此外, 你也可以在外部C代码中结合该建议, 使得程序更快.&nbsp;</span><br /><br /></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 注意, 进程的开销通常比线程昂贵, 因为线程自动共享内存地址空间和文件描述符. 意味着, 创建进程比创建线程会花费更多, 也可能花费更多内存. 这点在你计算使用多处理器时要牢记.</p>
+<p><a href="http://static.oschina.net/uploads/space/2012/0326/004911_O7Up_1579.png" target="_blank"><img src="http://static.oschina.net/uploads/space/2012/0326/004911_O7Up_1579.png" alt="" /></a></p>
+<p>
+<br /><span>6.&nbsp;</span><span>本地代码</span><span>&nbsp;</span><br /><br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 好了, 现在你决定为了性能使用本地代码. 在标准的ctypes模块中, 你可以直接加载已编程的二进制库(.dll 或 .so文件)到Python中, 无需担心编写C/C++代码或构建依赖. 例如, 我们可以写个程序加载libc来生成随机数.&nbsp;</span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 然而, 绑定ctypes的开销是非轻量级的. 你可以认为ctypes是一个粘合操作系库函数或者硬件设备驱动的胶水. 有几个如 SWIG, Cython和Boost 此类Python直接植入的库的调用比ctypes开销要低. Python支持面向对象特性, 如类和继承. 正如我们看到的例子, 我们可以保留常规的C++代码, 稍后导入. 这里的主要工作是编写一个包装器 (行 10~18).</p>
+<p><a href="http://static.oschina.net/uploads/space/2012/0326/004951_VAT0_1579.png" target="_blank"><img src="http://static.oschina.net/uploads/space/2012/0326/004951_VAT0_1579.png" alt="" /></a></p>
+<p>
+<br /><span>总结:&nbsp;</span><br /><br /></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; 我希望这些Python建议能让你成为一个更好的开发者. 最后, 我需要指出, 追求性能极限是一个有趣的游戏, 而过度优化就会变成嘲弄了. 虽然Python授予你与C接口无缝集成的能力, 你必须问自己你花数小时的艰辛优化工作用户是否买帐. 另一方面, 牺牲代码的可维护性换取几毫秒的提升是否值得. 团队中的成员常常会感谢你编写了简洁的代码. 尽量贴近Python的方式, 因为人生苦短. :)</p>
+<p>英文原文:<a href="http://blog.monitis.com/index.php/2012/02/13/python-performance-tips-part-1/" rel="nofollow" target="_blank">http://blog.monitis.com/index.php/2012/02/13/python-performance-tips-part-1/</a></p>
+<p>英文原文:<a href="http://blog.monitis.com/index.php/2012/03/21/python-performance-tips-part-2/" rel="nofollow" target="_blank">http://blog.monitis.com/index.php/2012/03/21/python-performance-tips-part-2/</a></p>
+<p>OSCHINA原创翻译，转载请注明出处：出处：<a href="http://blog.monitis.com/index.php/2012/03/21/python-performance-tips-part-2/" rel="nofollow" target="_blank">OSCHINA</a></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		</div>
+		<div class = "postDesc">posted @ <span id="post-date">2012-10-27 17:46</span> <a href='http://www.cnblogs.com/codemo/'>代码示例</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="http://i.cnblogs.com/EditPosts.aspx?postid=2742660" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2742660);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=39490,cb_entryId=2742660,cb_blogApp=currentBlogApp,cb_blogUserGuid='a243420b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2012/10/27 17:46:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='ad_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='ad_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright &copy;2016 代码示例
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+</body>
+</html>

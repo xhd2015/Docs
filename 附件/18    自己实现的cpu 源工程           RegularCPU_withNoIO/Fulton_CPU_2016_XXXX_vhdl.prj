@@ -1,0 +1,7 @@
+vhdl work "H:\RegularCPU_withNoIO\WriteBack.vhd"
+vhdl work "H:\RegularCPU_withNoIO\StorageManager.vhd"
+vhdl work "H:\RegularCPU_withNoIO\MemoryAccesssControl.vhd"
+vhdl work "H:\RegularCPU_withNoIO\FetchInstr.vhd"
+vhdl work "H:\RegularCPU_withNoIO\ClockManager.vhd"
+vhdl work "H:\RegularCPU_withNoIO\ALU.vhd"
+vhdl work "H:\RegularCPU_withNoIO\Fulton_CPU_2016_XXXX.vhd"

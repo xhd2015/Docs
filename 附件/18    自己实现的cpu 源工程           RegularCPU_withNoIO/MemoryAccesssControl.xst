@@ -1,0 +1,5 @@
+set -tmpdir "C:/Users/Fulton/ISE Project/RegularCPU/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/Fulton/ISE Project/RegularCPU/xst"
+elaborate
+-ifn MemoryAccesssControl.prj
+-ifmt mixed

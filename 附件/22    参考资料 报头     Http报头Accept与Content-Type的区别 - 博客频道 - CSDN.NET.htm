@@ -1,0 +1,846 @@
+<script type="text/javascript">
+    var username = "muzizongheng";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/muzizongheng";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+
+    var fileName = '46795243';
+    var commentscount = 1;
+    var islock = false
+
+   window.quickReplyflag = true;
+            
+             var isBole = false;
+            
+
+</script>
+
+<!DOCTYPE html>
+<html>
+  <head>    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+   
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <script type="text/javascript" src="http://c.csdnimg.cn/pubfooter/js/tracking.js" charset="utf-8"></script> 
+   <!-- <script type="text/javascript">
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </script>-->
+     <link rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico" />    
+     <link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/default.css" />
+
+
+    <script src="http://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+
+     <!-- ad begin -->
+         <script language="javascript" type="text/javascript" src="http://ads.csdn.net/js/tracking.js"></script>
+    <!-- ad end-->
+
+      <script src="//csdnimg.cn/rabbit/tracking-ad/main.js"></script>
+
+    <link rel="stylesheet" href="http://static.csdn.net/public/common/toolbar/css/index.css">
+    <link rel="stylesheet" href="http://csdnimg.cn/public/common/libs/bootstrap/css/bootstrap.css">
+ 	<link rel="stylesheet" href="http://csdnimg.cn/public/static/css/avatar.css">
+    <link rel="stylesheet" href="http://static.blog.csdn.net/skin/skin2-template/css/common.css">
+    <!-- [if IE 7]-->
+    <link rel="stylesheet" href="http://static.blog.csdn.net/skin/skin2-template/css/font-awesome.min.css">
+    <!-- [endif]-->
+    <link rel="stylesheet" href="http://static.blog.csdn.net/skin/skin2-template/css/main.css">
+    <!-- [if lt IE 9]-->
+    <script src="http://static.blog.csdn.net/skin/skin2-template/js/libs/html5shiv.min.js"></script>
+    <!-- [endif]-->
+	<script src="http://static.blog.csdn.net/scripts/skintemplatecommon.js" type="text/javascript"></script>
+
+    <script src="http://static.blog.csdn.net/scripts/skintemplateprovider.js" type="text/javascript"></script>      
+	<script src="http://static.blog.csdn.net/scripts/skintemplatecomment.js" type="text/javascript"></script>
+
+    <script src="http://c.csdnimg.cn/rabbit/cnick/cnick.js" type="text/javascript"></script>      
+   
+       
+    
+
+      <script type="text/javascript">
+          $(function () {
+              setTimeout(function () {
+                  $(".mess_name").each(function (index, item) {
+                      var u = $(this).text().split('：')[0].toString().replace("回复", "")
+                      var thisComment = $(this);
+                      if (u) {
+                          $.getJSON("https://passport.csdn.net/get/nick?callback=?", { users: u }, function (a) {
+                              if (a != null && a.data != null && a.data.length > 0) {
+                                  nick = a.data[0].n;
+                                  if (u != nick) {
+                                      thisComment.text(thisComment.text().replace(u, nick));
+                                  }
+                              }
+                          });
+                      }
+                  });
+
+                  $(".username").each(function (index, item) {
+                      var u = $(this).text().split('：')[0].toString().replace("回复", "")
+                      var thisComment = $(this);
+                      if (u) {
+                          $.getJSON("https://passport.csdn.net/get/nick?callback=?", { users: u }, function (a) {
+                              if (a != null && a.data != null && a.data.length > 0) {
+                                  nick = a.data[0].n;
+                                  if (u != nick) {
+                                      thisComment.text(thisComment.text().replace(u, nick));
+                                  }
+                              }
+                          });
+                      }
+                  });
+
+              }, 200);
+
+          });
+      </script>
+
+    <title>Http报头Accept与Content-Type的区别 - 博客频道 - CSDN.NET</title>	
+  </head>
+  <body>
+
+       <!-- 广告位开始 -->
+        <ins data-revive-zoneid="149" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+    <!-- 广告位结束 -->
+
+   <script id="toolbar-tpl-scriptId" fixed="true" prod="blog" skin="black" src="http://c.csdnimg.cn/public/common/toolbar/js/html.js" type="text/javascript"></script>
+    <div class="blog_left">
+      <div class="blog_l_c">
+        <h2 class="blog_l_t">muzizongheng的专栏</h2>
+        <h6 class="blog_l_sign">如果我们时时忙着展现自己的知识， 将何从忆起成长所需的无知?</h6>
+        <div class="item_wrap">
+          <dl class="item_l">
+            <dt class="item">242</dt>
+            <dd class="item_name">原创</dd>
+          </dl>
+          <dl class="item_l">
+            <dt class="item">1</dt>
+            <dd class="item_name">转载</dd>
+          </dl>
+          <dl class="item_l">
+            <dt class="item">1</dt>
+            <dd class="item_name">译文</dd>
+          </dl>
+          <dl class="item_l">
+            <dt class="item">233</dt>
+            <dd class="item_name">评论</dd>
+          </dl>
+          <dl class="item_l">
+            <dt class="item">403474</dt>
+            <dd class="item_name">访问</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="blog_copyright">
+        <p><span>京 ICP 证 070598 号</span><img src="http://static.blog.csdn.net/skin/skin2-template/images/copyright.png" alt="img"></p>
+        <p>
+          Copyright © 1999-2016,
+          <br/>
+          CSDN.NET, All Rights Reserved
+        </p>
+       </div>
+    </div>
+    <div id="skin_m" class="skin_m">
+      <div id="skin_center" class="skin_center">
+          <div class="skin_center_t">
+                <h2 class="mod_most"></h2>
+                <!--include ../modules/mod_list.jade-->
+                <div class="skin_list">
+                  <dl class="list_c clearfix detail_list">
+                    <dt>
+                      <div class="date">
+                        <div class="date_t"><span>2015</span><em>七月</em></div>
+                        <div class="date_b">07</div>
+                      </div>
+                    </dt>
+                    <dd>
+                      <div class="skin_icon"><a href="javascript:;" class="set_old">原</a></div>
+                      <h3 class="list_c_t"><a href="/muzizongheng/article/details/46795243">Http报头Accept与Content-Type的区别</a></h3>  
+                        <div class="list_c_Title">
+                          <p class="detail_p">
+                            <label><span>分类：</span><em onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">自我心的</em></label>
+                         </p>
+                         <p class="read_r">
+                            <label><i class="fa fa-eye" style="cursor:default"></i><span style="cursor:default"> （7580）</span></label>
+                            <label><i class="fa fa-comment-o"style="cursor:default"></i><span  style="cursor:default"> （1）</span></label>
+                             
+                             
+
+                             
+                          </p>
+                        </div>
+                      <div class="skin_detail" id="article_content">
+                        <div class="markdown_views"><p>1.Accept属于请求头， Content-Type属于实体头。 <br>
+Http报头分为通用报头，请求报头，响应报头和实体报头。 <br>
+请求方的http报头结构：通用报头|请求报头|实体报头 <br>
+响应方的http报头结构：通用报头|响应报头|实体报头</p>
+
+<p>2.Accept代表发送端（客户端）希望接受的数据类型。 <br>
+比如：Accept：text/xml; <br>
+代表客户端希望接受的数据类型是xml类型</p>
+
+<p>Content-Type代表发送端（客户端|服务器）发送的实体数据的数据类型。 <br>
+比如：Content-Type：text/html; <br>
+代表发送端发送的数据格式是html。</p>
+
+<p>二者合起来， <br>
+Accept:text/xml； <br>
+Content-Type:text/html <br>
+即代表希望接受的数据类型是xml格式，本次请求发送的数据的数据格式是html。</p></div><link rel="stylesheet" href="http://static.blog.csdn.net/public/res-min/markdown_views.css?v=1.0" />
+                      </div>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="skin_nav">        
+                     <div class="skin_edit"><i class="fa fa-th-list"></i>
+                     <div class="nav_list nav_list_edit"><a href="/muzizongheng">文章列表</a></div>
+                  </div>
+                     
+                </div>
+                <div class="rssFix">
+        	        <a href="http://blog.csdn.net/muzizongheng/rss/list" class="column"  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])"><i class="fa fa-rss"></i></a>
+                </div>        
+
+                <div id="goTopBtn" class="skin_backTop"><i class="fa fa-chevron-up"></i></div>
+        </div>
+        <div class="detail_b">
+          <p class="reprint_copy" style="display:none" id="copyright">版权声明：本文为博主原创文章，欢迎转载，仅请署名</p>  
+		   <!--      
+          <div class="bole" style="display:none">
+            <h2 class="bole_t clearfix"><span>伯乐推荐</span>
+              <label>一共有<em>{bolecount}</em>位博乐进行推荐</label>
+            </h2>
+           {bolecomment}              
+          </div>		
+          -->  
+           <!-- style=""style=""-->
+          <h2 class="praise" >
+            <label id="digg" ArticleId="46795243" onclick="btndigga();" ><span id="btnDigg">顶</span><em>4</em></label>
+            <label id="bury" onclick="btnburya();"><span id="btnBury"   >踩</span><em>0</em></label>
+          </h2>           
+                <div class="tracking-ad" data-mod="popu_222"><a href="javascript:void(0);" >&nbsp;</a>   </div>
+                <div class="tracking-ad" data-mod="popu_223"> <a href="javascript:void(0);" >&nbsp;</a></div>
+           
+             <script type="text/javascript">
+                 function btndigga() {
+                     $(".tracking-ad[data-mod='popu_222'] a").click();
+                 }
+                 function btnburya() {
+                     $(".tracking-ad[data-mod='popu_223'] a").click();
+                 }
+
+                 $(function () {
+                     if ($(".markdown_views").length > 0) {
+                         $('pre.prettyprint code').each(function () {
+                             var lines = $(this).text().split('\n').length;
+                             var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                             $(this).addClass('has-numbering').parent().append($numbering);
+                             for (i = 1; i <= lines; i++) {
+                                 $numbering.append($('<li/>').text(i));
+                             };
+                             $numbering.fadeIn(1700);
+                         });
+                     }
+                     else {
+                         $("#article_content pre").each(function () {
+                             var $this = $(this);
+                             if ($this.attr("class") != undefined) {
+                                 if ($this.attr("class").indexOf("brush:") != -1) {
+                                     var lang = $this.attr("class").split(';')[0].split(':')[1];
+                                     $this.attr('name', 'code');
+                                     $this.attr('class', lang);
+                                 }
+                                 if ($this.attr("class")) {
+                                     $this.attr('name', 'code');
+                                 }
+                             }
+                         });
+                         $('#article_content textarea[name=code]').each(function () {
+                             var $this = $(this);
+                             if ($this.attr("class").indexOf(":") != -1) {
+                                 $this.attr("class", $this.attr("class").split(':')[0]);
+                             }
+                         });
+                         dp.SyntaxHighlighter.HighlightAll('code');
+                         $('.highlighter').addClass('dp-highlighter');
+                         if (!window.clipboardData) {
+                             setTimeout("setCopyBtn()", 500);
+                         }
+
+                         function __get_code_toolbar(snippet_id) {
+                             return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                                     + snippet_id
+                                     + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                                     + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                                     + snippet_id
+                                     + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+                         }
+
+                         $("[code_snippet_id]").each(function () {
+                             __s_id = $(this).attr("code_snippet_id");
+                             if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                                 __code_tool = __get_code_toolbar(__s_id);
+                                 $(this).prev().find(".tools").append(__code_tool);
+                             }
+                         });
+
+                         $(".bar").show();
+                     }
+                 });
+            </script>
+          <div class="blog_share">
+              <!--<i class="fa fa-qq"></i><i class="fa fa-weixin"></i><i class="fa fa-weibo"></i><i class="fa fa-renren"></i><i class="fa fa-qq"></i><i class="fa fa-weixin"></i>
+              <i class="fa fa-weibo"></i><i class="fa fa-renren"></i>-->                
+               <div class="bdsharebuttonbox tracking-ad" style="float: right;" data-mod="popu_172">
+                <a href="#" class="bds_more" data-cmd="more" style="background-position:0 0 !important; background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important"></a>
+                <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"  style="background-position:0 -52px !important"></a>
+                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"style="background-position:0 -104px !important"></a>
+                <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"style="background-position:0 -260px !important"></a>
+                <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"style="background-position:0 -208px !important"></a>
+                <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"style="background-position:0 -1612px !important" ></a>
+                </div>
+                <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+                <!-- Baidu Button END -->
+          </div>
+          <div class="forward_back">
+            <div class="back fl"><a href="javascript:void(0);" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/muzizongheng/article/details/44174977';"><span><i class="fa fa-arrow-left"></i></span><em>安装chrome插件Advanced Rest Client来调试RESTFul</em></a></div><div class="forward fr"><a href="javascript:void(0);" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/muzizongheng/article/details/46795267';"><em>WebAPI中路由参数中包含字符-点‘.’, 比如：http://localhost:30695/api/studies/1.1.1.1.1</em><span><i class="fa fa-arrow-right"></i></span></a></div>
+          </div>
+            <div>
+                <!-- 广告位开始 -->
+<ins data-revive-zoneid="71" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+<!-- 广告位结束 -->
+            </div>            
+        <!--  
+		{articleinsamecategory}
+            -->
+          <div class="comment" id="comment_form">
+              <div id="commentsbmitarear">
+                    <h2 class="comment_t">发表评论</h2>
+                    <dl class="publish_comment clearfix" id="commentbox">
+                      <dt><a href="http://my.csdn.net/"><img src=""></a></dt>
+                      <dd>                 
+			          <form action="/muzizongheng/comment/submit?id=46795243" method="post" onsubmit="return subform(this);" id="commentform">
+					        <textarea class="publish_txt" id="comment_content"></textarea>
+					        <div class="publish clearfix">
+					
+					          <div class="publish_l"><i class="fa fa-code J_code"></i></div>
+
+					          <input type="hidden" id="comment_replyId" name="comment_replyId">
+					          <input type="hidden" id="comment_userId" name="comment_userId" value="">
+					          <input type="hidden" id="commentId" name="commentId" value="">
+					  
+					          <a href="javascript:void(0);" class="publish_btn"> 发表评论</a>&nbsp;&nbsp;<span id="tip_comment" style="color: Red; display: none;"></span>
+					
+					          <div class="comment-code-pop J_lang_list" id="lang_list" code="code"><a href="#html" style="width:95px;" class="long_name">HTML/XML</a><a href="#objc" style="width:95px;" class="long_name">objective-c</a><a href="#delphi" style="width:58px;" class="zhong_name">Delphi</a><a href="#ruby" class="zhong_name">Ruby</a><a href="#php">PHP</a><a href="#csharp" class="duan_name">C#</a><a style=" border-right: none;" href="#cpp" class="duan_name">C++</a><a style=" border-bottom:none;width:95px;" href="#javascript" class="long_name">JavaScript</a><a style=" border-bottom:none;width:95px;" href="#vb" class="long_name">Visual Basic</a><a style=" border-bottom:none;" href="#python" class="zhong_name">Python</a><a style=" border-bottom:none;" href="#java" class="zhong_name">Java</a><a style="border-bottom:none;" href="#css" class="duan_name">CSS</a><a style="border-bottom:none;" href="#sql" class="duan_name">SQL</a><a style="border:none; " href="#plain" class="duan_name">其它</a><span class="arrb"></span></div>
+					        </div>
+			         </form>
+                      </dd>
+                    </dl>
+               </div>
+              <a name="comments"></a>
+            <div class="comment_list" id="comment_list"></div>
+            <div  style="height:60px">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="skin_right">
+      <div id="skin_r_wrap" class="skin_r_wrap">
+        <div id="skin_r" class="skin_r"><i id="arrow_r" class="fa fa-arrow-right"></i>
+          <div class="mess"><a href="http://my.csdn.net/muzizongheng"><img src="http://avatar.csdn.net/E/4/A/1_muzizongheng.jpg" alt="img" class="head"></a>
+            <p class="mess_name">muzizongheng</p>
+            <div class="grade">
+                <p  title="积分：6475"><span>等级：</span><img src="http://c.csdnimg.cn/jifen/images/xunzhang/jianzhang/blog6.png"></p>
+                <p><span>排名：</span><span>第2423名</span></p>
+            </div>
+            <div class="blog_medal"><a href="http://blog.csdn.net/experts/rule.html"><img src="http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/bokezhuanjiamiddle.png" alt="img" class="medal_img"></a>
+              <div class="medal_c"><a href='javascript:void(0);'><img src='http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/zhuanlandaren.png' alt='img'></a><a href='javascript:void(0);'><img src='http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/chizhiyiheng.png' alt='img'></a></div>
+              <div class="attention">
+			  <a href="javascript:void(0);" id="span_add_follow"><i class="fa fa-plus"></i><span>加关注</span></a>
+			  <a href="javascript:void(0);" onClick="window.open('http://msg.csdn.net/letters/model?receiver=muzizongheng','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])"><i class="fa fa-envelope-o"></i><span>发私信</span></a>			  			 
+			  </div>   
+			   <div class="contact"></div>         
+            </div>
+          </div>
+          <div class="classify">     
+             <!--
+            <dl class="classify_list js_list">
+	             <dt>
+	                  <div class="js_column"><i class="fa fa-th"></i><a href="#" class="column">文章分类</a></div>
+	            </dt>
+            </dl>
+
+                  <dl class="classify_list">
+              <dt><i class="fa fa-play-circle"></i><a  href="/muzizongheng/blog/course" class="column">我的课程</a></dt>
+            </dl> 
+		    -->	    	
+            
+            
+                
+               
+               <dl class="classify_list">
+                     <div class="article_search">
+                         <div class="article_search_c">
+                            <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+                                <input type="text" id="inputSearch" placeholder="文章搜索"><i class="fa fa-search" id="btnSubmit"></i>
+                            </form>
+                         </div>
+                     </div>
+               </dl>  
+            
+                   <dl class="classify_list js_list">
+                      <dt>
+                        <div class="js_column_wrap"><i class="fa fa-cube"></i><span class="column">我的其他资源</span></div>
+                        <ul class="article_list">
+                         
+<ul>
+<li><a href="https://www.evernote.com/pub/muzizongheng/eeb43022-0fd4-4c29-894b-03e3d5fa2f45/" target="_blank">自我心的（Evernote共享笔记本）</a></li></ul>
+<ul>
+<li><a href="https://www.evernote.com/pub/muzizongheng/muzizongheng/" target="_blank">网摘收集（Evernote共享笔记本）</a></li></ul>
+<ul>
+<li><a href="http://gist.github.com/muzizongheng/" target="_blank">代码片段（我的Gist）</a></li></ul>
+<ul>
+<li><a href="https://github.com/muzizongheng/" target="_blank">代码库 （我的Github）</a></li></ul>
+
+                        </ul>
+                      </dt>
+                    </dl>
+                
+                   <dl class="classify_list js_list">
+                      <dt>
+                        <div class="js_column_wrap"><i class="fa fa-cube"></i><span class="column">微信公众号：WPF编程之路</span></div>
+                        <ul class="article_list">
+                         <ul class="panel_body">
+<img style="width: 95%;" src="http://img.blog.csdn.net/20160422201952729">
+</ul>
+                        </ul>
+                      </dt>
+                    </dl>
+                        
+            <dl class="classify_list">
+              <dt><i class="fa fa-file-text"></i><a  href="/muzizongheng/blog/column" class="column">博客专栏</a> </dt>
+            </dl>  
+            
+            <dl class="classify_list js_list">
+              <dt>
+                <div class="js_column_wrap"><i class="fa fa-calendar"></i><span class="column">文章存档</span></div>
+                <ul id="article_list1" class="article_list">
+                 
+                    <li><a href="/muzizongheng/article/month/2016/05">2016年05月</a><span>(3)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2016/04">2016年04月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2016/03">2016年03月</a><span>(2)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2016/02">2016年02月</a><span>(4)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2016/01">2016年01月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2015/11">2015年11月</a><span>(2)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2015/08">2015年08月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2015/07">2015年07月</a><span>(13)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2015/03">2015年03月</a><span>(4)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2015/01">2015年01月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2014/12">2014年12月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2014/10">2014年10月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2014/09">2014年09月</a><span>(2)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2014/06">2014年06月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2014/05">2014年05月</a><span>(3)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2014/04">2014年04月</a><span>(2)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2014/02">2014年02月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2014/01">2014年01月</a><span>(2)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2013/11">2013年11月</a><span>(11)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2013/10">2013年10月</a><span>(2)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2013/08">2013年08月</a><span>(9)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2013/07">2013年07月</a><span>(150)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2011/03">2011年03月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2011/02">2011年02月</a><span>(3)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2010/12">2010年12月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2010/11">2010年11月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2010/07">2010年07月</a><span>(2)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2010/06">2010年06月</a><span>(2)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2010/05">2010年05月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2010/04">2010年04月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2010/03">2010年03月</a><span>(3)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2010/02">2010年02月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2009/12">2009年12月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2009/10">2009年10月</a><span>(3)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2009/09">2009年09月</a><span>(8)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2009/05">2009年05月</a><span>(1)</span></li>
+                
+                    <li><a href="/muzizongheng/article/month/2008/11">2008年11月</a><span>(1)</span></li>
+                
+                </ul>
+              </dt>
+            </dl>
+                 
+            <dl class="classify_list js_list">
+              <dt>
+                <div class="js_column_wrap"><i class="fa fa-eye"></i><span class="column">阅读排行</span></div>
+                <ul class="article_list">
+                
+                 <li><a href="/muzizongheng/article/details/9376119">python中print的几种用法</a><span>（28068）</span></li>
+                 
+                 <li><a href="/muzizongheng/article/details/5565170">MFC中调用WPF教程</a><span>（19065）</span></li>
+                 
+                 <li><a href="/muzizongheng/article/details/44174977">安装chrome插件Advanced Rest Client来调试RESTFul</a><span>（16830）</span></li>
+                 
+                 <li><a href="/muzizongheng/article/details/9368409">python中string和bool的转换</a><span>（9021）</span></li>
+                 
+                 <li><a href="/muzizongheng/article/details/9717385">wpf中为DataGrid添加checkbox支持多选全选</a><span>（8392）</span></li>
+                 
+                 <li><a href="/muzizongheng/article/details/46795243">Http报头Accept与Content-Type的区别</a><span>（7537）</span></li>
+                 
+                 <li><a href="/muzizongheng/article/details/19404161">WPF中ToolTip的自定义</a><span>（6530）</span></li>
+                 
+                 <li><a href="/muzizongheng/article/details/5436742">VS2010 创建WCF以及SL的客户端如何调用WCF服务 教程(二): 创建调用WCF的SilverLight客户端</a><span>（6311）</span></li>
+                 
+                 <li><a href="/muzizongheng/article/details/16880715">聊聊“现在学习MFC有用吗？”</a><span>（6054）</span></li>
+                 
+                 <li><a href="/muzizongheng/article/details/51378999">WPF核心类图谱</a><span>（6048）</span></li>
+                 
+                </ul>
+              </dt>
+            </dl>
+            
+            <dl class="classify_list js_list">
+              <dt>
+                <div class="js_column_wrap"><i class="fa fa-commenting"></i><span class="column">最新评论</span></div>
+                <ul class="article_list new_comment">
+                  
+                    <li>                    
+                    <p><a href="/muzizongheng/article/details/14164445">自己写的工具：把Evernote（印象笔记）的笔记导入到博客（Blog）中</a></p>                   
+                    <p><a href="/u011924755" class="reply_name">u011924755</a><span>回复：</span></p>
+                    <p class="reply_c"><em></em><i>您好，支持附件的版本上传了吗</i></p>                    
+                  </li>      
+                 
+                    <li>                    
+                    <p><a href="/muzizongheng/article/details/46795243">Http报头Accept与Content-Type的区别</a></p>                   
+                    <p><a href="/zhoujiaketb" class="reply_name">zhoujiaketb</a><span>回复：</span></p>
+                    <p class="reply_c"><em></em><i>大神敬仰！</i></p>                    
+                  </li>      
+                 
+                    <li>                    
+                    <p><a href="/muzizongheng/article/details/9717385">wpf中为DataGrid添加checkbox支持多选全选</a></p>                   
+                    <p><a href="/muzizongheng" class="reply_name">muzizongheng</a><span>回复：</span></p>
+                    <p class="reply_c"><em></em><i>@kwy15732621629:没有， 跟着步骤来，demo肯定就出来了。blog列出了所有关键步骤...</i></p>                    
+                  </li>      
+                 
+                    <li>                    
+                    <p><a href="">wpf中为DataGrid添加checkbox支持多选全选</a></p>                   
+                    <p><a href="/kwy15732621629" class="reply_name">kwy15732621629</a><span>回复：</span></p>
+                    <p class="reply_c"><em></em><i>您好，请问这个有demo么</i></p>                    
+                  </li>      
+                 
+                    <li>                    
+                    <p><a href="">自己写的工具：把Evernote（印象笔记）的笔记导入到博客（Blog）中</a></p>                   
+                    <p><a href="/muzizongheng" class="reply_name">muzizongheng</a><span>回复：</span></p>
+                    <p class="reply_c"><em></em><i>@photonfly:下载http://download.csdn.net/detail/muziz...</i></p>                    
+                  </li>      
+                 
+                    <li>                    
+                    <p><a href="">自己写的工具：把Evernote（印象笔记）的笔记导入到博客（Blog）中</a></p>                   
+                    <p><a href="/photonfly" class="reply_name">photonfly</a><span>回复：</span></p>
+                    <p class="reply_c"><em></em><i>博主你好，我不是程序员，但是想使用这个Evernote转博客的功能，能详细讲讲怎么使用你的这个工具吗...</i></p>                    
+                  </li>      
+                 
+                    <li>                    
+                    <p><a href="/muzizongheng/article/details/51214388">答网友疑问：如何动态设置ItemControl的GroupStyle</a></p>                   
+                    <p><a href="/muzizongheng" class="reply_name">muzizongheng</a><span>回复：</span></p>
+                    <p class="reply_c"><em></em><i>下载地址：http://download.csdn.net/detail/muzizongheng/...</i></p>                    
+                  </li>      
+                 
+                    <li>                    
+                    <p><a href="/muzizongheng/article/details/9291657">如何用MEF实现Asp.Net MVC框架</a></p>                   
+                    <p><a href="/left_" class="reply_name">left_</a><span>回复：</span></p>
+                    <p class="reply_c"><em></em><i>js 和css 文件的路径如何解决？能否直接放到插件中？</i></p>                    
+                  </li>      
+                 
+                    <li>                    
+                    <p><a href="/muzizongheng/article/details/9291637">WPF TextBox PreviewTextInput handle IME (chinese)</a></p>                   
+                    <p><a href="/muzizongheng" class="reply_name">muzizongheng</a><span>回复：</span></p>
+                    <p class="reply_c"><em></em><i>@braveapple01:不客气，相会学习</i></p>                    
+                  </li>      
+                 
+                    <li>                    
+                    <p><a href="">WPF TextBox PreviewTextInput handle IME (chinese)</a></p>                   
+                    <p><a href="/braveapple01" class="reply_name">braveapple01</a><span>回复：</span></p>
+                    <p class="reply_c"><em></em><i>另外，这个作者的方法也很好http://blog.csdn.net/lee353086/articl...</i></p>                    
+                  </li>      
+                           
+                </ul>
+              </dt>
+            </dl>
+                
+
+            <!--
+           [startblogcolumn]            
+             [startsearch]   
+               <dl class="classify_list">
+                     <div class="article_search">
+                         <div class="article_search_c">
+                            <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+                                <input type="text" id="inputSearch" placeholder="文章搜索"><i class="fa fa-search" id="btnSubmit"></i>
+                            </form>
+                         </div>
+                     </div>
+               </dl>  
+            [endsearch]   
+            
+            [startspecialcolumn]        
+            <dl class="classify_list">
+              <dt><i class="fa fa-file-text"></i><a  href="/muzizongheng/blog/column" class="column">博客专栏</a> </dt>
+            </dl>  
+            [endspecialcolumn]   
+            
+             [startcategory]        
+           <dl class="classify_list js_list">
+              <dt>
+                <div class="js_column_wrap"><i class="fa fa-th"></i><span class="column">文章分类</span></div>
+                <ul id="article_list0" class="article_list">
+				  {articlecategorys}                  
+                </ul>
+              </dt>
+              <dd style="display:none"><a href="#" class="article_add"><i class="fa fa-plus"></i></a></dd>
+            </dl>
+            [endcategory]
+
+            [startarchive]
+            <dl class="classify_list js_list">
+              <dt>
+                <div class="js_column_wrap"><i class="fa fa-calendar"></i><span class="column">文章存档</span></div>
+                <ul id="article_list1" class="article_list">
+                 [startlist]
+                    <li><a href="/{0}/article/month/{1}/{2}">{1}年{2}月</a><span>({3})</span></li>
+                [endlist]
+                </ul>
+              </dt>
+            </dl>
+             [endarchive]    
+                [startviewcountarticles]    
+            <dl class="classify_list js_list">
+              <dt>
+                <div class="js_column_wrap"><i class="fa fa-eye"></i><span class="column">阅读排行</span></div>
+                <ul class="article_list">
+                [startlist]
+                 <li><a href="{columnarticleurl}">{columnarticletitle}</a><span>（{columnarticlecount}）</span></li>
+                 [endlist]
+                </ul>
+              </dt>
+            </dl>
+            [endviewcountarticles]
+                [startcommentcountarticles]
+            <dl class="classify_list js_list">
+              <dt>
+                <div class="js_column_wrap"><i class="fa fa-comments"></i><span class="column">评论排行</span></div>
+                <ul class="article_list">
+                  [startlist]
+                  <li><a href="{columnarticleurl}">{columnarticletitle}</a><span>（{columnarticlecommentcount}）</span></li>
+                  [endlist]
+                </ul>
+              </dt>
+            </dl>
+                [endcommentcountarticles]
+                [starthomepagearticles]
+            <dl class="classify_list js_list">
+              <dt>
+                <div class="js_column_wrap"><i class="fa fa-list-ol"></i><span class="column">推荐文章</span></div>
+                <ul class="article_list">
+                 {cloumcontent}
+                </ul>
+              </dt>
+            </dl>
+                  [endhomepagearticles]
+                [startnewcomments]
+            <dl class="classify_list js_list">
+              <dt>
+                <div class="js_column_wrap"><i class="fa fa-commenting"></i><span class="column">最新评论</span></div>
+                <ul class="article_list new_comment">
+                  [startlist]
+                    <li>                    
+                    <p><a href="{articleurl}">Http报头Accept与Content-Type的区别</a></p>                   
+                    <p><a href="/{commentusername}" class="reply_name">{commentusername}</a><span>回复：</span></p>
+                    <p class="reply_c"><em></em><i>{commentcontent}</i></p>                    
+                  </li>      
+                 [endlist]          
+                </ul>
+              </dt>
+            </dl>
+                [endnewcomments]
+                [startcustom]
+                   <dl class="classify_list js_list">
+                      <dt>
+                        <div class="js_column_wrap"><i class="fa fa-cube"></i><span class="column">{columntitle}</span></div>
+                        <ul class="article_list">
+                         {columcontent}
+                        </ul>
+                      </dt>
+                    </dl>
+                [endcustom]
+         [endblogcolumn]    
+            -->
+
+            <!--
+            <dl class="classify_list">
+              <dt class="rss"><i class="fa fa-rss"></i>			 
+			  <span class="column">
+			   	<a href="http://blog.csdn.net/muzizongheng/rss/list" class="column"  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])">RSS订阅</a>
+			   </span>
+			  </dt>
+            </dl>
+            -->
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="skin_right_small" class="skin_right_small">
+      <div class="skin_r_small"><i id="faNavicon" class="fa fa-navicon"></i>
+        <div class="head_small"><a href="http://my.csdn.net/muzizongheng"><img src="http://avatar.csdn.net/E/4/A/1_muzizongheng.jpg" alt="img"></a></div>
+        <ul class="rSmallList">  
+           
+            
+                  <li class="small_article js_smallArticle"><i class="fa fa-cube"></i><a href="#" class="small_column">我的其他资源</a></li>
+              
+                  <li class="small_article js_smallArticle"><i class="fa fa-cube"></i><a href="#" class="small_column">微信公众号：WPF编程之路</a></li>
+                  
+                  <li class="small_article"><i class="fa fa-file-text"></i><a href="/muzizongheng/blog/column" class="small_column">博客专栏</a></li>
+               
+                  <li class="small_article js_smallArticle"><i class="fa fa-calendar"></i><a href="#" class="small_column">文章存档</a></li>
+                
+                  <li class="small_article js_smallArticle"><i class="fa fa-eye"></i><a href="#" class="small_column">阅读排行</a></li>
+              
+                  <li class="small_article js_smallArticle"><i class="fa fa-commenting"></i><a href="#" class="small_column">最新评论</a></li>
+                      
+          <!-- 
+           [startblogcolumnsmall]   
+               [startspecialcolumn]    
+                  <li class="small_article"><i class="fa fa-file-text"></i><a href="/muzizongheng/blog/column" class="small_column">博客专栏</a></li>
+               [endspecialcolumn]  
+                [startcategory]     
+                  <li class="small_article js_smallArticle"><i class="fa fa-th"></i><a href="#" class="small_column">文章分类</a></li>
+                [endcategory]     
+              [startarchive]
+                  <li class="small_article js_smallArticle"><i class="fa fa-calendar"></i><a href="#" class="small_column">文章存档</a></li>
+              [endarchive]
+              [startviewcountarticles]  
+                  <li class="small_article js_smallArticle"><i class="fa fa-eye"></i><a href="#" class="small_column">阅读排行</a></li>
+              [endviewcountarticles]  
+              [startcommentcountarticles]
+                  <li class="small_article js_smallArticle"><i class="fa fa-comments"></i><a href="#" class="small_column">评论排行</a></li>
+              [endcommentcountarticles]
+              [starthomepagearticles]
+                  <li class="small_article js_smallArticle"><i class="fa fa-list-ol"></i><a href="#" class="small_column">推荐文章</a></li>
+              [endhomepagearticles]
+              [startnewcomments]
+                  <li class="small_article js_smallArticle"><i class="fa fa-commenting"></i><a href="#" class="small_column">最新评论</a></li>
+              [endnewcomments]
+              [startcustom]
+                  <li class="small_article js_smallArticle"><i class="fa fa-cube"></i><a href="#" class="small_column">{columntitle}</a></li>
+              [endcustom]
+          [endblogcolumnsmall]    
+          -->         
+        </ul>        
+      </div>
+    </div>
+    <div id="mask"></div>
+    <script type="text/javascript" src="http://static.blog.csdn.net/skin/skin2-template/js/apps/accordion.js"></script>
+    <script type="text/javascript" src="http://static.blog.csdn.net/skin/skin2-template/js/apps/scrollBar.js"></script>
+    <script type="text/javascript" src="http://static.blog.csdn.net/skin/skin2-template/js/apps/transition.js"></script>  
+     <script id="noticeScript" type="text/javascript" charset="utf-8" btnId="header_notice_num" wrapId="note1" count="5" subCount="5" src="http://c.csdnimg.cn/public/common/toolbar/js/notify.js"></script>  
+    <!--script( type="text/javascript" src="http://csdnimg.cn/pubfooter/js/publib_footer.js" )-->
+    <!--script( type="text/javascript" src="http://static.csdn.net/public/common/toolbar/js/toolbar.js" )-->
+    <script id="csdn-toolbar-id" btnId="header_notice_num" wrapId="note1" count="5" subCount="5" type="text/javascript" src="http://c.csdnimg.cn/public/common/toolbar/js/toolbar.js"></script>
+
+     <div id="pop_win" style="display:none ;position: absolute; z-index: 10000; border: 1px solid rgb(220, 220, 220); top: 222.5px; left: 630px; opacity: 1; background: none 0px 0px repeat scroll rgb(255, 255, 255);">
+    
+    </div>
+    <div id="report_dialog">
+    </div>
+
+    <div id="popup_mask"></div>
+    <style  type="text/css">
+        #popup_mask
+        {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            left: 0px;
+            top: 0px;
+            opacity: 0.3;
+            filter: alpha(opacity=30);
+            display: none;
+        }
+
+         .skin_list  dl dd div ol {  
+        margin-left:15px;
+            }  
+
+       .skin_list dl dd div ol li {  
+         display:list-item;list-style-type:decimal;margin-left:15px;
+            }       
+
+    </style>     
+      
+        <div id="a52b5334d" style="width: 1px; height: 1px; display: none;">
+                    <script id="adJs52b5334"></script>
+                    <script>document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();</script>
+        </div> 
+
+       <!-- 广告位开始 -->
+        <ins data-revive-zoneid="72" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+    <!-- 广告位结束 -->
+
+   <link rel="stylesheet" href="http://static.blog.csdn.net/css/blog_code.css" />
+            <script type="text/javascript" src="http://static.blog.csdn.net/scripts/saveToCode.js"></script>     
+	<script type="text/javascript" src="//csdnimg.cn/rabbit/tracking-ad/main.js?75eacd8></script>
+  </body>
+</html>
+ <script language="javascript" type="text/javascript" src="http://ads.csdn.net/js/async_new.js"></script>      
+
+<script  type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },500);
+    });
+</script>
+

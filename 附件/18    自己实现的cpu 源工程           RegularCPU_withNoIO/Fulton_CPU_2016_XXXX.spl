@@ -1,0 +1,12 @@
+[Inputs]
+clk
+reset
+[Outputs]
+nMREQ
+nRD
+nWR
+nBHE
+nBLE
+=maddrbus[15:0]=
+[BiDir]
+=mdatabus[15:0]=

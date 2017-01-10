@@ -1,0 +1,16 @@
+EN clockmanager NULL H:/RegularCPU_withNoIO/ClockManager.vhd sub00/vhpl02 1469726037
+AR fetchinstr behavioral H:/RegularCPU_withNoIO/FetchInstr.vhd sub00/vhpl01 1469726040
+EN writeback NULL H:/RegularCPU_withNoIO/WriteBack.vhd sub00/vhpl10 1469726045
+EN fetchinstr NULL H:/RegularCPU_withNoIO/FetchInstr.vhd sub00/vhpl00 1469726039
+EN memoryaccessscontrol NULL "C:/Users/Fulton/ISE Project/RegularCPU/MemoryAccesssControl.vhd" sub00/vhpl05 1469340064
+EN memoryaccesscontrol NULL H:/RegularCPU_withNoIO/MemoryAccesssControl.vhd sub00/vhpl12 1469726047
+AR storagemanager behavioral H:/RegularCPU_withNoIO/StorageManager.vhd sub00/vhpl09 1469726044
+AR fulton_cpu_2016_xxxx behavioral H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.vhd sub00/vhpl15 1469726050
+AR clockmanager behavioral H:/RegularCPU_withNoIO/ClockManager.vhd sub00/vhpl03 1469726038
+EN fulton_cpu_2016_xxxx NULL H:/RegularCPU_withNoIO/Fulton_CPU_2016_XXXX.vhd sub00/vhpl14 1469726049
+AR memoryaccessscontrol behavioral "C:/Users/Fulton/ISE Project/RegularCPU/MemoryAccesssControl.vhd" sub00/vhpl06 1469340065
+AR alu behavioral H:/RegularCPU_withNoIO/ALU.vhd sub00/vhpl07 1469726042
+AR memoryaccesscontrol behavioral H:/RegularCPU_withNoIO/MemoryAccesssControl.vhd sub00/vhpl13 1469726048
+EN storagemanager NULL H:/RegularCPU_withNoIO/StorageManager.vhd sub00/vhpl08 1469726043
+AR writeback behavioral H:/RegularCPU_withNoIO/WriteBack.vhd sub00/vhpl11 1469726046
+EN alu NULL H:/RegularCPU_withNoIO/ALU.vhd sub00/vhpl04 1469726041

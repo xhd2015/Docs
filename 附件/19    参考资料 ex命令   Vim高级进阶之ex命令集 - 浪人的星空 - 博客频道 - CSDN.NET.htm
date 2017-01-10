@@ -1,0 +1,1288 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+     
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    
+<head>   
+   
+
+    <script type="text/javascript" src="http://c.csdnimg.cn/pubfooter/js/tracking.js" charset="utf-8"></script>  
+
+    <script type="text/javascript">
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </script>
+
+  
+ <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+
+    <title>Vim高级进阶之ex命令集 - 浪人的星空
+        - 博客频道 - CSDN.NET</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="【原创作品， 欢迎转载，转载请在明显处注明！ 谢谢。&#160;&#160;&#160;&#160;&#160;&#160;&#160; 原文地址：http://blog.csdn.net/comeontom/article/details/7933692】这些天被cocos2dx如何读取xml困惑着，现在总结总结，如有错误，欢迎指正！先新建一个cocos2dx的工程HelloWorldScene.cpp中的代码如下：" />
+    <script src="http://static.blog.csdn.net/scripts/jquery.js" type="text/javascript"></script>
+      <script type="text/javascript" src="http://static.blog.csdn.net/scripts/jquery-version.js"></script>
+    <script type="text/javascript" src="http://static.blog.csdn.net/scripts/ad.js?v=1.1"></script>
+        <!--new top-->
+               <link rel="stylesheet" href="http://c.csdnimg.cn/public/common/toolbar/css/index.css">        <!--new top-->
+    
+      <!-- ad begin -->
+         <script language="javascript" type="text/javascript" src="http://ads.csdn.net/js/tracking.js"></script>
+    <!-- ad end-->
+
+    <link rel="Stylesheet" type="text/css" href="http://static.blog.csdn.net/skin/default/css/style.css?v=1.1" />
+    <link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="/hitlion2008/rss/list" />
+    <link rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/blue_green.css" />
+ 
+
+
+</head>
+<body>
+    <!-- 广告位开始 -->
+        <ins data-revive-zoneid="149" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+    <!-- 广告位结束 -->
+
+    
+   
+      <!--new top-->
+    <script id="toolbar-tpl-scriptId" fixed="true" prod="blog" skin="black" src="http://c.csdnimg.cn/public/common/toolbar/js/html.js" type="text/javascript"></script>
+     <!--new top-->
+    <div id="container">
+        <div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h2>
+                <a href="http://blog.csdn.net/hitlion2008">浪人的星空</a></h2>
+            <h3>十年磨一剑，历练出锋芒，求知路漫漫，需不断探索之！</h3>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg">
+    </div>
+    <div class="navigator">
+        <ul>
+            
+                <li id="btnContents"><a href="http://blog.csdn.net/hitlion2008?viewmode=contents"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])">
+                    <img src="http://static.blog.csdn.net/images/ico_list.gif">目录视图</span></a></li>
+                <li id="btnView"><a href="http://blog.csdn.net/hitlion2008?viewmode=list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])">
+                    <img src="http://static.blog.csdn.net/images/ico_summary.gif">摘要视图</span></a></li>
+                <li id="btnRss"><a href="http://blog.csdn.net/hitlion2008/rss/list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])">
+                    <img src="http://static.blog.csdn.net/images/ico_rss.gif">订阅</span></a></li>                
+            
+
+            </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "hitlion2008";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/hitlion2008";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</script>
+
+        <div id="body">
+            <div id="main">
+                <div class="main">
+                        <div class="ad_class">
+<div class="notice tracking-ad" data-mod='popu_3' > 
+
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/51919935">
+<font color=blue>【公告】博客系统优化升级</font></a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://lib.csdn.net/base/html5/resource">
+<font color=red>【收藏】Html5 精品资源汇集
+</font></a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://geek.csdn.net/news/detail/86516">
+<font color=blue>我们为什么选择Java
+</font></a>
+&nbsp;&nbsp;&nbsp;
+
+</font></a>
+</div>                        </div>
+                        
+
+
+
+<!-- 广告位开始 -->
+<ins data-revive-zoneid="72" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+<!-- 广告位结束 -->
+
+  
+<link href="http://static.blog.csdn.net/css/comment1.css" type="text/css" rel="stylesheet" />
+<link href="http://static.blog.csdn.net/css/style1.css" type="text/css" rel="stylesheet" />
+<script language='JavaScript' type='text/javascript' src='http://download.csdn.net/js/jquery.cookie.js'></script>
+<script type="text/javascript" src="http://c.csdnimg.cn/rabbit/search-service/main.js"></script>
+<link rel="stylesheet" href="http://static.blog.csdn.net/public/res-min/markdown_views.css?v=1.0" />
+<link rel="stylesheet" href="http://static.blog.csdn.net/css/category.css?v=1.0" />
+<script type="text/javascript" src="http://static.blog.csdn.net/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/web-storage-cache.min.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/replace.min.js"></script>
+
+
+
+
+  <script type="text/ecmascript">
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </script>
+<div id="article_details" class="details">
+    <div class="article_title">   
+         <span class="ico ico_type_Original"></span>
+
+
+    <h1>
+        <span class="link_title"><a href="/hitlion2008/article/details/8799327">
+        Vim高级进阶之ex命令集            
+        </a></span>
+    </h1>
+</div>
+
+   
+
+        <div class="article_manage clearfix">
+        <div class="article_r">
+            <span class="link_postdate">2013-04-14 11:35</span>
+            <span class="link_view" title="阅读次数">4375人阅读</span>
+            <span class="link_comments" title="评论次数"> <a href="#comments" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])">评论</a>(0)</span>
+            <span class="link_collect tracking-ad" data-mod="popu_171"> <a href="javascript:void(0);" onclick="javascript:collectArticle('Vim高级进阶之ex命令集','8799327');return false;" title="收藏">收藏</a></span>
+             <span class="link_report"> <a href="#report" onclick="javascript:report(8799327,2);return false;" title="举报">举报</a></span>
+
+        </div>
+    </div>
+    <div class="embody"  style="display:none" id="embody">
+        <span class="embody_t">本文章已收录于：</span>
+        <div class="embody_c" id="lib" value="{&quot;err&quot;:0,&quot;msg&quot;:&quot;ok&quot;,&quot;data&quot;:[]}"></div>
+    </div>
+    <style type="text/css">        
+            .embody{
+                padding:10px 10px 10px;
+                margin:0 -20px;
+                border-bottom:solid 1px #ededed;                
+            }
+            .embody_b{
+                margin:0 ;
+                padding:10px 0;
+            }
+            .embody .embody_t,.embody .embody_c{
+                display: inline-block;
+                margin-right:10px;
+            }
+            .embody_t{
+                font-size: 12px;
+                color:#999;
+            }
+            .embody_c{
+                font-size: 12px;
+            }
+            .embody_c img,.embody_c em{
+                display: inline-block;
+                vertical-align: middle;               
+            }
+             .embody_c img{               
+                width:30px;
+                height:30px;
+            }
+            .embody_c em{
+                margin: 0 20px 0 10px;
+                color:#333;
+                font-style: normal;
+            }
+    </style>
+    <script  type="text/javascript">
+        $(function () {
+            try
+            {
+                var lib = eval("("+$("#lib").attr("value")+")");
+                var html = "";
+                if (lib.err == 0) {
+                    $.each(lib.data, function (i) {
+                        var obj = lib.data[i];
+                        //html += '<img src="' + obj.logo + '"/>' + obj.name + "&nbsp;&nbsp;";
+                        html += ' <a href="' + obj.url + '" target="_blank">';
+                        html += ' <img src="' + obj.logo + '">';
+                        html += ' <em><b>' + obj.name + '</b></em>';
+                        html += ' </a>';
+                    });
+                    if (html != "") {
+                        setTimeout(function () {
+                            $("#lib").html(html);                      
+                            $("#embody").show();
+                        }, 100);
+                    }
+                }      
+            } catch (err)
+            { }
+            
+        });
+    </script>
+      <div class="category clearfix">
+        <div class="category_l">
+           <img src="http://static.blog.csdn.net/images/category_icon.jpg">
+            <span>分类：</span>
+        </div>
+        <div class="category_r">
+                    <label  onclick="GetCategoryArticles('750169','hitlion2008','top','8799327');">
+                        <span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">Linux/Unix<em>（10）</em></span>
+                      <img class="arrow-down" src="http://static.blog.csdn.net/images/arrow_triangle _down.jpg" style="display:inline;">
+                      <img class="arrow-up" src="http://static.blog.csdn.net/images/arrow_triangle_up.jpg" style="display:none;">
+                        <div class="subItem">
+                            <div class="subItem_t"><a  href="http://blog.csdn.net/hitlion2008/article/category/750169"  target="_blank">作者同类文章</a><i class="J_close">X</i></div>
+                            <ul class="subItem_l" id="top_750169">                            
+                            </ul>
+                        </div>
+                    </label>                    
+                    <label  onclick="GetCategoryArticles('1125789','hitlion2008','top','8799327');">
+                        <span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">Productive Programmer Toolbox<em>（6）</em></span>
+                      <img class="arrow-down" src="http://static.blog.csdn.net/images/arrow_triangle _down.jpg" style="display:inline;">
+                      <img class="arrow-up" src="http://static.blog.csdn.net/images/arrow_triangle_up.jpg" style="display:none;">
+                        <div class="subItem">
+                            <div class="subItem_t"><a  href="http://blog.csdn.net/hitlion2008/article/category/1125789"  target="_blank">作者同类文章</a><i class="J_close">X</i></div>
+                            <ul class="subItem_l" id="top_1125789">                            
+                            </ul>
+                        </div>
+                    </label>                    
+        </div>
+    </div>
+    <script   type="text/javascript" src="http://static.blog.csdn.net/scripts/category.js"></script>  
+        <div   class="bog_copyright">         
+            <p  class="copyright_p" >版权声明：本文为博主原创文章，未经博主允许不得转载。</p>
+        </div>
+
+  
+
+  
+  
+     
+
+<div id="article_content" class="article_content">
+
+<span style="font-size:14px">ex是Vim对行编辑器ed的支持.ed是一个面向行的编辑器.在远古时代,还是黑白终端的时代,有一个流行的面向行的编辑器ed,也即把文件一行一行的读入,一次只显示一行,然后编辑这行.所以Vim中的ex命令都是ed编辑器所支持的命令,现代所用的流编辑器sed中的命令是ed命令的扩展.所以掌握了Vim中的ex编辑命令,稍加变通就连sed也一起搞定了.<br>
+</span>
+<p><span style="font-size:14px">Vim是全屏编辑器,因此不会像ed那样只显示一行,对于Vim,ed命令编辑的一般都是当前行,这就相当于ed中所显示的那行,实际上也是文件的当前行.</span></p>
+<p><span style="font-size:14px"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Vimlogo.svg/605px-Vimlogo.svg.png" width="320" height="240" alt=""><br>
+</span></p>
+<h2><span style="font-size:14px">命令常识</span></h2>
+<span style="font-size:14px">在Vim中所有的ex编辑命令都是以:(冒号)开头<br>
+启动方式就是在命令模式下输入冒号,然后输入具体命令<br>
+在Vim的状态行(通常为屏幕最下面的一行),会显示你所输入的命令,同时也会用于显示命令的输出结果.<br>
+由于是面向行的编辑命令,所以基本单位是行,比如拷贝和剪切都是以行为单位(也即最少为一行).<br>
+</span>
+<h2><span style="font-size:14px">命令&#26684;式</span></h2>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><pre name="code" class="plain">:[range] cmd args</pre></blockquote>
+<h2><span style="font-size:14px">杂项命令</span></h2>
+<span style="font-size:14px">这些命令跟具体的文本编辑无关,但是也非常的常用<br>
+</span>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px">
+<ul>
+<li><span style="font-size:14px"><strong>:=</strong> -- 打印文件的总行数</span></li><li><span style="font-size:14px"><strong>:/pattern/=</strong> -- 打印匹配pattern的行号</span></li><li><span style="font-size:14px"><strong>:w</strong> -- 把当前buffer写入文件,也就是说进行保存动作</span></li><li><span style="font-size:14px"><strong>:w!</strong> -- 强制保存,如果是只读文件也能进行保存动作</span></li><li><span style="font-size:14px"><strong>:q</strong> -- 退出当前文件,前提是已经保存过了,如果没有保存Vim会提醒你的.</span></li><li><span style="font-size:14px"><strong>:q!</strong> -- 强行退出,也就是说无论已经保存过与否都退出,可能会丢失所做的修改</span></li><li><span style="font-size:14px"><strong>:wq</strong> -- 保存并退出.</span></li><li><span style="font-size:14px"><strong>:wa</strong> -- 把所有的buffer写入文件,也即保存所有的文件(如果你打开了多个文件的话).</span></li><li><span style="font-size:14px"><strong>:x</strong> -- 保存并退出,程序员最应该使用的命令.它与:wq的区别在于,如果文件没有修改:x是不会修改文件的时间戳,因此就不需要重新编译.而:wq命令,即使文件未修改也会修改时间戳,也即会触发重新编译.</span></li><li><span style="font-size:14px"><strong>:xa</strong> -- 保存并退出所有的文件,如果打开了多个文件话.</span></li><li><span style="font-size:14px"><strong>:w</strong> <em>a-new-file</em> -- 另存为a-new-file</span></li><li><span style="font-size:14px"><strong>:[range] w</strong><em> a-new-file</em> -- 把[range]所指定的范围的内容另存为a-new-file</span></li><li><span style="font-size:14px"><strong>:[range] w &gt;&gt;</strong> <em>another-file</em> -- 把[range]所指定的范围的内容追加到another-file中</span></li><li><span style="font-size:14px"><strong>:r</strong> <em>file</em> or<strong> :read</strong>
+<em>file</em> -- 把file文件中的内容读出来放到当前行下面.细节是打开file,拷贝其中的内容然后粘贴到当前行下面.</span></li><li><span style="font-size:14px"><strong>:n r</strong> <em>file</em> -- 把file中的拷贝到第n行下面</span></li><li><span style="font-size:14px"><strong>:/pattern/ r</strong> <em>file</em> -- 把file中的内容拷贝到第一个匹配pattern的行下面</span></li><li><span style="font-size:14px"><strong>:e </strong><em>another-file</em> -- 把another-file读入内存并开始编辑</span></li><li><span style="font-size:14px"><strong>:e! </strong>-- 舍弃所有的未保存的修改,回到上一次文件所保存的状态</span></li></ul>
+</blockquote>
+<h2><span style="font-size:14px">如何指定范围[range]</span></h2>
+<span style="font-size:14px">很多命令都需要指定范围和行号,如何做呢?<br>
+</span>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px">0. 不指定行号则通常代表当前行<br>
+</span><span style="font-size:14px">1. 具体的绝对的行号,行号是从1开始到第x行,x为文件总行数.<br>
+</span></blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px">
+<ul>
+<li><span style="font-size:14px"><strong>:n, m</strong> -- 文件的第n行到第m行,包含n和m</span></li></ul>
+</blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px">如:2, 10则是第2行到第10行<br>
+</span><span style="font-size:14px">如果n=0或n=-1则n自动转成1；如果m大于x则转成x<br>
+</span><span style="font-size:14px">特殊的行号<br>
+</span></blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px">
+<ul>
+<li><span style="font-size:14px"><strong>.</strong>(句点) -- 当前行</span></li><li><span style="font-size:14px"><strong>$ </strong>-- 最后一行</span></li></ul>
+</blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px">如<strong>:.,$</strong>则表示文件中的所有行<br>
+</span></blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px">
+<ul>
+<li><span style="font-size:14px"><strong>%</strong> -- 所有行等同于:1,x和:.,$</span></li></ul>
+</blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px">2. 相对于当前行和相对行号<br>
+</span></blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px">
+<ul>
+<li><span style="font-size:14px"><strong>&#43;/-n</strong> -- &#43;表示从当前向第n行；-表示当前行向前减n行</span></li><li><span style="font-size:14px"><strong>&#43;/-</strong> -- 前一行或后一行</span></li></ul>
+</blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px">如<strong>:-,&#43; d</strong> -- 删除当前行,上一行和下一行,共三行；<strong>:-2,&#43;2 d</strong>删除当前行,前二行后二行,共五行<br>
+</span><span style="font-size:14px">用搜索匹配来指定行<br>
+</span></blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px">
+<ul>
+<li><span style="font-size:14px"><strong>/pattern/</strong> -- 指定的是匹配pattern的下一行,也即当前行后面的第一个匹配pattern的行.这个只能指定一行</span></li><li><span style="font-size:14px"><strong>/pattern/, /pattern2/</strong> -- 第一个含有pattern的行到第一个含有pattern2的行.</span></li></ul>
+</blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px">注意,如果指定范围时后面的行号小于前面的行号,那么Vim会提示你[range]边界指示反了,要不要swap一下.<br>
+</span><span style="font-size:14px">重新指定当前行<br>
+</span>
+<ul>
+<li><strong>n; m</strong> -- 把第n行视为当前行.默认情况下光标所在为当前行.这个命令能快速指定当前行,可以省不少的力气</li></ul>
+<span style="font-size:14px">如:<br>
+</span>
+<ul>
+<li><strong>:40; &#43;50 d </strong>-- 删除第40行到第50行.这相当于:40跳到40行,然后执行&#43;50 d.</li><li><strong>:/old/; &#43;10 d</strong> -- 删除从含有old的行到其下面的10行.这相当于然后搜索到含有old的行:/old/,然后执行:&#43;10 d</li></ul>
+</blockquote>
+<h2><span style="font-size:14px">编辑命令解析</span></h2>
+<span style="font-size:14px"></span>
+<ul>
+<li><strong>:[range] d </strong>-- 删除.如:1, 20 d删除第1到第20行</li><li><strong>:[range] mv target</strong> -- 后面需要加上移动的目的地.剪切[range]指定的部分粘贴到target所指定的位置.</li><li><strong>:[range] co/t target </strong>-- 把[range]指定的部分拷贝到target位置</li><li><strong>:[range] y/ya</strong> -- 复制[range]到剪切板中</li><li><strong>:[range] y</strong> <em>name</em> -- 复制[range]到剪切板中,并且命名为a,这样就可以同时操作多个拷贝</li><li><strong>:n pu </strong>-- 把剪切板中的内容粘贴到第n行下面</li><li><strong>:n pu</strong> <em>name</em> -- 把剪切板中名字为name的拷贝粘贴到第n行下面</li></ul>
+<h2><span style="font-size:14px">命令行启动命令</span></h2>
+<p><span style="font-size:14px">就是打开后进行一些操作</span></p>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px">
+<p><span style="font-size:14px"></span></p>
+<pre name="code" class="plain">$vim +n file -- 打开file文件后跳到第n行
+$vim + file -- 打开file文件后跳到最后一行
+$vim +/pattern file -- 打开file文件后跳到含有pattern的那行</pre><br>
+<p></p>
+</blockquote>
+<span style="font-size:14px">如,<strong>$vim &#43;/&quot;your life&quot; file</strong> -- 打开后跳到&quot;your life&quot;的那行<br>
+</span>
+<h2><span style="font-size:14px">编辑多个文件</span></h2>
+<span style="font-size:14px">命令,模式和buffer会在多个文件和多个窗口之前共享.所以如果同时编辑多个文件会提升一些效率<br>
+</span>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px">1. 命令行启动多个文件<br>
+</span></blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px">
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px"></span><pre name="code" class="plain">$vim a.txt b.txt c.txt</pre><br>
+</blockquote>
+</blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px">2. 已经在编辑一个文件时,可以用:e命令开始编辑另外一个文件<br>
+</span>
+<ul>
+<li><strong>:e </strong><em>another-file</em></li></ul>
+<span style="font-size:14px">3. args -- 显示所有的文件列表,当前的文件会以[filename]形式标出<br>
+</span></blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px">
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px"></span><pre name="code" class="plain">$vim a.txt b.txt c.txt
+:args  -----&gt;&gt;&gt;&gt;
+[a.txt] b.txt c.txt
+:n     -----&gt;&gt;&gt;&gt;
+a.txt [b.txt] c.txt</pre><br>
+</blockquote>
+</blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px">4. 在文件之间进行切换<br>
+</span>
+<ul>
+<li><strong>:p[rev] </strong>-- 前一个文件</li><li><strong>:n[ext] </strong>-- 下一个文件</li><li><strong>:last </strong>&nbsp;-- 最后一个文件</li></ul>
+</blockquote>
+<h2><span style="font-size:14px">双文件模式</span></h2>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px">1. 启动方式:当编辑一个文件的时候,用e命令读入并编辑另外一个文件就进入了双文件模式<br>
+</span><span style="font-size:14px">2. 二个文件速记符,相当于字符串宏,内容就是所编辑的二个文件名<br>
+</span>
+<ul>
+<li><strong>% </strong>-- 当前文件名</li><li><strong>#</strong> -- 前一个文件</li></ul>
+<span style="font-size:14px">3. 示例<br>
+</span></blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px">
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px"></span><pre name="code" class="plain">$vim a.txt
+:w -- 保存修改
+:e b.txt -- 开始编辑另外一个文件b.txt
+:e # -- 开始编辑前一个文件,也就是文件a.txt
+:e # -- 开始编辑前一个文件,这时是b.txt
+:w %.bak -- 另存当前文件为b.txt.bak(此时当前文件%为b.txt)
+:r # -- 拷贝a.txt的内容到b.txt当前行下
+:split # -- 在新窗口中打开a.txt
+:e! # -- 舍弃当前文件修改,并开始编辑a.txt</pre><br>
+</blockquote>
+</blockquote>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"></blockquote>
+<h2><span style="font-size:14px">组合命令</span></h2>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"></blockquote>
+<span style="font-size:14px">可以用|来把几个命令组合在一起使用,与用;来组合Shell命令是一样的.</span><br>
+<p><span style="font-size:14px">如</span></p>
+<p></p>
+<ul>
+<li><span style="font-size:14px"><strong>:1, 3 d | s/their/they</strong> -- 删除1到3行然后在当前行把their替换为they</span></li></ul>
+<p></p>
+<h2><span style="font-size:14px">获得帮助</span></h2>
+<span style="font-size:14px">对于任意一个命令都可以用<br>
+</span>
+<ul>
+<li><strong>:help</strong> <em>cmd</em> -- 来获取帮助文档</li></ul>
+<h2><span style="font-size:14px">执行Shell命令</span></h2>
+<span style="font-size:14px"></span>
+<ul>
+<li><strong>:!cmd</strong> -- 执行Shell命令,会跳到Terminal以显示命令的结果</li></ul>
+对于大部分Shell命令可以通过内部来执行<br>
+<ul>
+<li><strong>:cmd</strong> -- 执行命令,其操作结果显示在状态行里.</li></ul>
+如<strong>:cd</strong> -- 切换当前目录；<strong>:ls</strong>遍历目录内容；<strong>:pwd</strong> -- 查看当前工作目录<br>
+<h2><span style="font-size:14px">临时性的进入Shell</span></h2>
+<span style="font-size:14px">有时候想到到Shell终端进行某些操作,然后还要回来编辑文件.可以这么做:<br>
+</span>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px"></span><pre name="code" class="plain">:x -- 保存并退出到终端；做想做的事情
+$do all stuff you want
+$vim file -- 再次打开并编辑文件</pre><br>
+</blockquote>
+这是一个很常用的场景,所以就有了更快捷与方便的方法,可以shell或sh命令来做相同的事情<br>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px"></span><pre name="code" class="plain">:sh -- 回到终端
+$ do you stuff
+$exit -- 当完事后用exit命令就会退出终端然后回到编辑器.</pre><br>
+</blockquote>
+sh命令很实用.比如常见的编辑编译运行调试例行,编译后就可以用:sh命令退出到Shell进行测试和调试,然后再exit到编辑中.<br>
+<h2><span style="font-size:14px">Quickfix让编辑编译都不用离开Vim</span></h2>
+<h3><span style="font-size:14px">如何编译</span></h3>
+<span style="font-size:14px">最简单的方法当然是直接运行gcc命令:<br>
+</span>
+<ul>
+<li><strong>:!gcc -o list list.c -std=c99 -Wall -lm</strong></li></ul>
+这绝对可行,但这很麻烦<br>
+Vim中可以使用make命令<br>
+<ul>
+<li><strong>:make list</strong> -- 编译list.c</li></ul>
+但是这只会使用make的默认隐匿规则,相当弱,比如没有额外的选项,想指定如Wall或std都是不行的.<br>
+当然你可以写一个makefile,然后就可以开心的直接运行:make就可以了.<br>
+<p><span style="font-size:14px">但如果没有makefile怎么办呢,特别是某些单个文件之类的.每个文件的编译目标和源码都不一样,这时就可以写一个简单的makefile,不指定具体的编译目标和源码文件,而只是定义一些简单的编译选项和规则:</span></p>
+<p></p>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px">
+<p></p>
+<pre name="code" class="plain">#makefile
+LDLIBS= -lm
+CFLAGS= -g -std=c99 -Wall -Werror</pre><br>
+<p></p>
+</blockquote>
+<p></p>
+<span style="font-size:14px">这样,在Vim中:<br>
+</span>
+<ul>
+<li><strong>:make list</strong> -- 用makefile中定义的规则来编译list.c</li><li><strong>:make hello</strong> -- 用makefile中定义的规则来编译hello.c</li></ul>
+还可以用makeprg命令来指定编译的目标和规则,但是这个命令不好用,而且每换一个新文件就要跟着一起改,不如makefile来的方便.<br>
+<h3><span style="font-size:14px">用Quickfix快速修改编译错误</span></h3>
+<span style="font-size:14px">运行了make命令编译之后,如果有编译错误Vim会以列表形式把编译错误列出,并eQuickfix工具快速帮你定位出错的行<br>
+</span>
+<ul>
+<li><strong>:cc </strong>-- 显示编译错误的详细信息,这些信息显示在状态行里</li><li><strong>:cn </strong>-- 下一个编译错误</li><li><strong>:cp</strong> -- 前一个编译错误</li><li><strong>:cw</strong> -- 打开Quickfix窗口.这会在屏幕下面打开一个新窗口,里面的内容就是一个编译错误列表</li><li><strong>:cl</strong> -- 列出所有的编译错误</li></ul>
+Quickfix实际上就是一个编译错误列表,每个Quickfix列表能显示10个错误,所以想看其他的错误(如果多于10的话)<br>
+<ul>
+<li><strong>:col</strong> -- 前一个列表</li><li><strong>:cnew</strong> -- 后一个列表</li></ul>
+<h3><span style="font-size:14px">示例:一个单文件的编辑编译运行和调试:</span></h3>
+<blockquote style="margin:0 0 0 40px; border:none; padding:0px"><span style="font-size:14px"><strong>$vim hello.c</strong><br>
+</span><span style="font-size:14px">edit edit<br>
+</span><span style="font-size:14px"><strong>:make hello</strong> -- 编译hello<br>
+</span><span style="font-size:14px"><strong>:cc </strong>-- 显示编译错误信息<br>
+</span><span style="font-size:14px"><strong>:cn </strong>-- 下一个<br>
+</span><span style="font-size:14px"><strong>:cn </strong>-- 下一个<br>
+</span><span style="font-size:14px"><strong>:make hello</strong> -- 编译 ... Okay<br>
+</span><span style="font-size:14px"><strong>:sh</strong> -- 进入Shell<br>
+</span><span style="font-size:14px"><strong>$./hello</strong> -- 运行并测试程序, 有Bug<br>
+</span><span style="font-size:14px"><strong>$gdb hello</strong> -- 调试 ... 找到了问题<br>
+</span><span style="font-size:14px"><strong>$exit</strong><br>
+</span><span style="font-size:14px">修复运行时问题<br>
+</span><strong><span style="font-size:14px">:make hello<br>
+</span><span style="font-size:14px">:sh<br>
+</span><span style="font-size:14px">$./hello<br>
+</span></strong><span style="font-size:14px"><strong>$exit</strong> -- 回到编辑器</span></blockquote>
+<h2><span style="font-size:14px">在Vim中使用强大的搜索神器grep</span></h2>
+<span style="font-size:14px">搜索匹配神器grep也可以在Vim中使用,使用方式<br>
+</span>
+<ul>
+<li><strong>:gr/grep [opt] <em>pattern files</em></strong> -- 在files中搜索匹配pattern,与Shell命令中的grep的使用方式是一样的.</li></ul>
+结果是以Quickfix列表形式给出的,因此Quickfix的命令这里也适用:<br>
+<ul>
+<li><strong>:cn</strong> -- 下一处匹配</li><li><strong>:cp</strong> -- 前一处匹配&nbsp;</li><li><strong>:cw</strong> -- 打开Quickfix列表,里面是超链接,点击后可以直接进入那个匹配</li><li><strong>:cl </strong>-- 相看所有的匹配</li></ul>
+这些命令会从一个匹配跳到下一个或上一个匹配.如果超出了这个文件则会进入另外的文件.所以能在不同文件之间跳来跳去.很是强大.<br>
+更多的内容请查询帮助<strong>:help grep</strong><br>
+<h2><span style="font-size:14px">全局搜索和替换</span></h2>
+<span style="font-size:14px">这也是用ex命令,因为比较多可以单独写一篇,请看<a href="http://blog.csdn.net/hitlion2008/article/details/7964811" target="_blank">这篇文章</a></span>
+   
+</div>
+
+
+
+
+<!-- Baidu Button BEGIN -->
+
+
+
+
+<div class="bdsharebuttonbox tracking-ad" style="float: right;" data-mod="popu_172">
+<a href="#" class="bds_more" data-cmd="more" style="background-position:0 0 !important; background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important"></a>
+<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"  style="background-position:0 -52px !important"></a>
+<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"style="background-position:0 -104px !important"></a>
+<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"style="background-position:0 -260px !important"></a>
+<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"style="background-position:0 -208px !important"></a>
+<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"style="background-position:0 -1612px !important" ></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<!-- Baidu Button END -->
+
+   <link rel="stylesheet" href="http://static.blog.csdn.net/css/blog_detail.css" />
+
+    
+<!--172.16.140.14-->
+
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1536434" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+
+ 
+
+        <div id="digg" ArticleId="8799327" >
+            <dl id="btnDigg" class="digg digg_disable"  onclick="btndigga();">
+               
+                 <dt>顶</dt>
+                <dd>1</dd>
+            </dl>
+           
+              
+            <dl id="btnBury" class="digg digg_disable"  onclick="btnburya();">
+              
+                  <dt>踩</dt>
+                <dd>0</dd>               
+            </dl>
+            
+        </div>
+     <div class="tracking-ad" data-mod="popu_222"><a href="javascript:void(0);" >&nbsp;</a>   </div>
+    <div class="tracking-ad" data-mod="popu_223"> <a href="javascript:void(0);" >&nbsp;</a></div>
+    <script type="text/javascript">
+                function btndigga() {
+                    $(".tracking-ad[data-mod='popu_222'] a").click();
+                }
+                function btnburya() {
+                    $(".tracking-ad[data-mod='popu_223'] a").click();
+                }
+            </script>
+
+   <ul class="article_next_prev">
+                <li class="prev_article"><span  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/hitlion2008/article/details/8765231';">上一篇</span><a href="/hitlion2008/article/details/8765231" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])">五年专业编程的14个经验</a></li>
+                <li class="next_article"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/hitlion2008/article/details/9132743';">下一篇</span><a href="/hitlion2008/article/details/9132743" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])">Android实战技巧: ExpandableListView滑动时会变黑</a></li>
+    </ul>
+
+    <div style="clear:both; height:10px;"></div>
+
+
+        <div class="similar_article"  style="display:none">
+                <h4>我的同类文章</h4>
+                <div class="similar_c"style="margin:20px 0px 0px 0px">
+                    <div class="similar_c_t">
+                                <label class="similar_cur">
+                                    <span  style="cursor:pointer"  onclick="GetCategoryArticles('750169','hitlion2008','foot','8799327');">Linux/Unix<em>（10）</em></span>
+                                </label>
+                                <label class="">
+                                    <span  style="cursor:pointer"  onclick="GetCategoryArticles('1125789','hitlion2008','foot','8799327');">Productive Programmer Toolbox<em>（6）</em></span>
+                                </label>
+                    </div>
+                   
+                    <div class="similar_wrap tracking-ad" data-mod="popu_141"  style="max-height:195px;">
+                        <a href="http://blog.csdn.net" style="display:none">http://blog.csdn.net</a>
+                        <ul class="similar_list fl">                          
+                        </ul>
+
+                        <ul class="similar_list fr">                           
+                        </ul>
+                    </div>
+                </div>
+            </div>    
+    <script  type="text/javascript">
+        $(function () {
+            GetCategoryArticles('750169', 'hitlion2008','foot','8799327');
+        });
+    </script>
+      
+</div>
+<div id="suggest"></div>
+         <script  language="javascript" type='text/javascript'>     
+             $(function(){
+                 $.get("/hitlion2008/svc/GetSuggestContent/8799327",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </script>  
+
+
+<style>
+.blog-ass-articl dd {
+color: #369;
+width: 99%; /*修改行*/
+float: left;
+overflow: hidden;
+font: normal normal 12px/23px "SimSun";
+height: 23px;
+margin: 0;
+padding: 0 0 0 10px;
+margin-right: 30px;
+background: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;
+}
+</style>
+
+ <link rel="stylesheet" href="http://static.blog.csdn.net/css/replace.css"/>
+<div id="relate" data-mod="popu_218"  class="tracking-ad">
+        <div class="relate_t">
+            <h3><span>参考知识库</span></h3>
+        </div>
+        <div class="relate_c">
+        </div>
+</div>
+ 
+
+<dl class="blog-ass-articl" id="res-relatived" > 
+    <div class="embody embody_b" id="libkeyparent"  style="display:none">
+            <span class="embody_t">更多资料请参考：</span>
+            <div class="embody_c" id="libkey"></div>
+    </div>
+
+
+     <dt><span>猜你在找</span></dt>    
+
+
+   
+
+
+    <div id="adCollege" style="width: 42%;float: left;"> 
+        <script src="http://csdnimg.cn/jobreco/job_reco.js" type="text/javascript"></script> 
+        <script type="text/javascript">
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "8799327",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </script> 
+    </div>  
+
+    
+     <div id="res"  data-mod="popu_36"  class="tracking-ad" style="width: 42%;float: left;margin-right: 30px;"></div>
+   
+</dl>
+
+
+<script type="text/javascript">
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = 'Vim高级进阶之ex命令集' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </script>  
+
+    <div id="ad_cen">        
+<!-- 广告位开始 -->
+<ins data-revive-zoneid="71" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+<!-- 广告位结束 -->    </div>  
+
+<div class="comment_class">
+    <div id="comment_title" class="panel_head">
+        <span class="see_comment">查看评论</span><a name="comments"></a></div>
+    <div id="comment_list">
+    </div>
+    <div id="comment_bar">
+    </div>
+    <div id="comment_form">
+    </div>
+    <div class="announce">
+        * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+</div>
+
+<script type="text/javascript">
+    var fileName = '8799327';
+    var commentscount = 0;
+    var islock = false
+</script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/comment.js"></script>
+    <div id="ad_bot">
+    </div>
+<div id="report_dialog">
+</div>
+
+<div id="d-top"  style="bottom:60px;">
+        <a id="quick-reply" class="btn btn-top q-reply" title="快速回复" style="display:none;">
+            <img src="http://static.blog.csdn.net/images/blog-icon-reply.png" alt="快速回复">
+        </a>    
+
+    <a id="d-top-a" class="btn btn-top backtop"  style="display: none;" title="返回顶部" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])" style="">         
+         <img src="http://static.blog.csdn.net/images/top.png" alt="TOP">
+    </a>
+</div>
+<script type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</script>
+<style type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</style>
+
+
+<div class="tag_list" style="display:none"></div>
+  <script  language="javascript" type='text/javascript'>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/hitlion2008/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </script> 
+
+
+<div id="pop_win" style="display:none ;position: absolute; z-index: 10000; border: 1px solid rgb(220, 220, 220); top: 222.5px; left: 630px; opacity: 1; background: none 0px 0px repeat scroll rgb(255, 255, 255);">
+    
+</div>
+<div id="popup_mask"></div>
+<style>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+</style>
+
+
+
+
+<script type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });         
+
+        },200);  
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },5000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },10000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },15000);
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }   
+
+</script>
+ <script language="javascript" type="text/javascript" src="http://ads.csdn.net/js/async_new.js"></script>      
+
+
+                        <div class="clear">
+                        </div>
+                    </div>                   
+                
+            </div>
+                   
+           <div id="side">
+    <div class="side">
+<div id="panel_Profile" class="panel">
+<ul class="panel_head"><span>个人资料</span></ul>
+<ul class="panel_body profile">
+<div id="blog_userface">
+    <a href="http://my.csdn.net/hitlion2008" target="_blank">
+    <img src="http://avatar.csdn.net/6/A/5/1_hitlion2008.jpg" title="访问我的空间" style="max-width:90%"/>
+    </a>
+    <br />
+    <span><a href="http://my.csdn.net/hitlion2008" class="user_name" target="_blank">hitlion2008</a></span>
+</div>
+<div class="interact">
+
+    <a href="javascript:void(0);" class="attent" id="span_add_follow" title="[加关注]"></a>
+
+ <a href="javascript:void(0);" class="letter"  title="[发私信]" onclick="window.open('http://msg.csdn.net/letters/model?receiver=hitlion2008','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])"></a>  
+</div>
+<div id="blog_medal">
+                       <div class="ico_expert"  onclick="javascript:location='http://blog.csdn.net/experts/rule.html'" title="CSDN认证专家" style="cursor:pointer;width:60px;height:60px;background:url('http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/bokezhuanjiamiddle.png') no-repeat" ></div>
+                <div id="bms_box">
+               </div>
+</div>
+<ul id="blog_rank">
+    <li>访问：<span>1320118次</span></li>
+    <li>积分：<span>14540</span> </li>    
+    <li >等级： <span style="position:relative;display:inline-block;z-index:1" >
+            <img src="http://c.csdnimg.cn/jifen/images/xunzhang/jianzhang/blog7.png" alt="" style="vertical-align: middle;" id="leveImg">
+            <div id="smallTittle" style=" position: absolute;  left: -24px;  top: 25px;  text-align: center;  width: 101px;  height: 32px;  background-color: #fff;  line-height: 32px;  border: 2px #DDDDDD solid;  box-shadow: 0px 2px 2px rgba (0,0,0,0.1);  display: none;   z-index: 999;">
+            <div style="left: 42%;  top: -8px;  position: absolute;  width: 0;  height: 0;  border-left: 10px solid transparent;  border-right: 10px solid transparent;  border-bottom: 8px solid #EAEAEA;"></div>
+            积分：14540 </div>
+        </span>  </li>
+    <li>排名：<span>第500名</span></li>
+</ul>
+<ul id="blog_statistics">
+    <li>原创：<span>208篇</span></li>
+    <li>转载：<span>38篇</span></li>
+    <li>译文：<span>10篇</span></li>
+    <li>评论：<span>694条</span></li>
+</ul>
+</ul>
+</div>
+
+
+
+
+<div id="custom_column_8745367" class="panel">
+<ul class="panel_head"><span>公告栏</span></ul>
+<ul class="panel_body">
+
+欢迎访问并收藏新的博客地址：<a href="http://toughcoder.net/" target="_blank" style="font-size:14px; font-family:monospace">http://toughcoder.net/</a>
+
+</ul>
+</div><div class="panel" id="panel_Search">
+    <ul class="panel_head"><span>文章搜索</span></ul>
+    <ul class="panel_body">
+        <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+        <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字" /></span>
+        <input id="btnSubmit" type="button" value="搜索" title="search in blog" />
+        <input type="hidden" name="q" id="inputQ" />
+        <input type="hidden" name="t" value="blog" />
+        <a id="btnSearchBlog" target="_blank"></a>
+        </form>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</script><div id="panel_Category" class="panel">
+<ul class="panel_head"><span>文章分类</span></ul>
+<ul class="panel_body">    
+                 <li>
+                    <a href="/hitlion2008/article/category/664350" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Android</a><span>(103)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/1125789" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Productive Programmer Toolbox</a><span>(7)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/660940" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Java</a><span>(14)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/945580" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Android Mms专题研究</a><span>(11)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/1140762" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Android Webkit专题研究</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/660941" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">C/C++</a><span>(15)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/750169" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Linux/Unix</a><span>(11)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/773484" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">学习方法</a><span>(14)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/777359" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">经验与总结</a><span>(16)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/661539" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">编程方法</a><span>(19)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/1355018" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">SMS/MMS</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/1358563" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Tizen 开发</a><span>(3)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/627045" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">生活在职场</a><span>(30)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/845531" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">杂谈</a><span>(23)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/1494997" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Python</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/3171415" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">前端</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/hitlion2008/article/category/667763" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">健身</a><span>(4)</span>
+                </li>
+</ul>
+</div><div id="panel_Archive" class="panel">
+<ul class="panel_head"><span>文章存档</span></ul>
+<ul class="panel_body">
+<div id="archive_list">
+<!--归档统计-->
+<li><a href="/hitlion2008/article/month/2016/02">2016年02月</a><span>(1)</span></li><li><a href="/hitlion2008/article/month/2015/12">2015年12月</a><span>(2)</span></li><li><a href="/hitlion2008/article/month/2015/11">2015年11月</a><span>(1)</span></li><li><a href="/hitlion2008/article/month/2015/10">2015年10月</a><span>(5)</span></li><li><a href="/hitlion2008/article/month/2015/05">2015年05月</a><span>(3)</span></li><li><a href="/hitlion2008/article/month/2015/04">2015年04月</a><span>(3)</span></li><li><a href="/hitlion2008/article/month/2015/01">2015年01月</a><span>(2)</span></li><li><a href="/hitlion2008/article/month/2014/11">2014年11月</a><span>(2)</span></li><li><a href="/hitlion2008/article/month/2014/10">2014年10月</a><span>(6)</span></li><li><a href="/hitlion2008/article/month/2014/04">2014年04月</a><span>(1)</span></li><li><a href="/hitlion2008/article/month/2013/12">2013年12月</a><span>(1)</span></li><li><a href="/hitlion2008/article/month/2013/10">2013年10月</a><span>(1)</span></li><li><a href="/hitlion2008/article/month/2013/08">2013年08月</a><span>(3)</span></li><li><a href="/hitlion2008/article/month/2013/07">2013年07月</a><span>(3)</span></li><li><a href="/hitlion2008/article/month/2013/06">2013年06月</a><span>(3)</span></li><li><a href="/hitlion2008/article/month/2013/04">2013年04月</a><span>(2)</span></li><li><a href="/hitlion2008/article/month/2013/03">2013年03月</a><span>(8)</span></li><li><a href="/hitlion2008/article/month/2013/02">2013年02月</a><span>(5)</span></li><li><a href="/hitlion2008/article/month/2012/12">2012年12月</a><span>(1)</span></li><li><a href="/hitlion2008/article/month/2012/11">2012年11月</a><span>(2)</span></li><li><a href="/hitlion2008/article/month/2012/10">2012年10月</a><span>(2)</span></li><li><a href="/hitlion2008/article/month/2012/09">2012年09月</a><span>(6)</span></li><li><a href="/hitlion2008/article/month/2012/08">2012年08月</a><span>(1)</span></li><li><a href="/hitlion2008/article/month/2012/07">2012年07月</a><span>(2)</span></li><li><a href="/hitlion2008/article/month/2012/06">2012年06月</a><span>(6)</span></li><li><a href="/hitlion2008/article/month/2012/05">2012年05月</a><span>(14)</span></li><li><a href="/hitlion2008/article/month/2012/04">2012年04月</a><span>(5)</span></li><li><a href="/hitlion2008/article/month/2012/03">2012年03月</a><span>(9)</span></li><li><a href="/hitlion2008/article/month/2012/02">2012年02月</a><span>(9)</span></li><li><a href="/hitlion2008/article/month/2012/01">2012年01月</a><span>(2)</span></li><li><a href="/hitlion2008/article/month/2011/12">2011年12月</a><span>(8)</span></li><li><a href="/hitlion2008/article/month/2011/11">2011年11月</a><span>(6)</span></li><li><a href="/hitlion2008/article/month/2011/10">2011年10月</a><span>(11)</span></li><li><a href="/hitlion2008/article/month/2011/09">2011年09月</a><span>(8)</span></li><li><a href="/hitlion2008/article/month/2011/08">2011年08月</a><span>(4)</span></li><li><a href="/hitlion2008/article/month/2011/07">2011年07月</a><span>(33)</span></li><li><a href="/hitlion2008/article/month/2011/06">2011年06月</a><span>(2)</span></li><li><a href="/hitlion2008/article/month/2011/05">2011年05月</a><span>(4)</span></li><li><a href="/hitlion2008/article/month/2011/04">2011年04月</a><span>(1)</span></li><li><a href="/hitlion2008/article/month/2011/03">2011年03月</a><span>(1)</span></li><li><a href="/hitlion2008/article/month/2011/02">2011年02月</a><span>(1)</span></li><li><a href="/hitlion2008/article/month/2011/01">2011年01月</a><span>(10)</span></li><li><a href="/hitlion2008/article/month/2010/11">2010年11月</a><span>(2)</span></li><li><a href="/hitlion2008/article/month/2010/09">2010年09月</a><span>(1)</span></li><li><a href="/hitlion2008/article/month/2010/03">2010年03月</a><span>(27)</span></li><li><a href="/hitlion2008/article/month/2010/02">2010年02月</a><span>(2)</span></li><li><a href="/hitlion2008/article/month/2010/01">2010年01月</a><span>(8)</span></li><li><a href="/hitlion2008/article/month/2009/12">2009年12月</a><span>(7)</span></li><li><a href="/hitlion2008/article/month/2009/11">2009年11月</a><span>(6)</span></li><li><a href="/hitlion2008/article/month/2009/05">2009年05月</a><span>(3)</span></li><li><a href="/hitlion2008/article/month/2008/09">2008年09月</a><span>(1)</span></li>
+</div>
+</ul>
+</div>
+<div id="hotarticls" class="panel">
+<ul class="panel_head">
+    <span>       
+阅读排行    </span>
+</ul>
+
+<ul class="panel_body itemlist">
+<li>
+<a href="/hitlion2008/article/details/9285785" title="老鸟的Python入门教程">老鸟的Python入门教程</a><span>(101470)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/6737459" title="Android实战技巧：如何在ScrollView中嵌套ListView">Android实战技巧：如何在ScrollView中嵌套ListView</a><span>(96998)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/6737537" title="Android实战技巧：ViewStub的应用">Android实战技巧：ViewStub的应用</a><span>(93724)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/7983449" title="Android实战技巧：深入解析AsyncTask">Android实战技巧：深入解析AsyncTask</a><span>(73996)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/6856780" title="Android实战技巧：用TextView实现Rich Text---在同一个TextView中设置不同的字体风格">Android实战技巧：用TextView实现Rich Text---在同一个TextView中设置不同的字体风格</a><span>(28965)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/9200135" title="Android实战技术: 用Dimension解决多屏幕适配的问题">Android实战技术: 用Dimension解决多屏幕适配的问题</a><span>(24361)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/7969016" title="Android实战技术：Splash的实现">Android实战技术：Splash的实现</a><span>(18608)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/7560878" title="Android实战技巧：多线程AsyncTask">Android实战技巧：多线程AsyncTask</a><span>(17137)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/7166075" title="Android Mms专题之：接收信息流程">Android Mms专题之：接收信息流程</a><span>(14646)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/7467252" title="深入浅出Windows BATCH">深入浅出Windows BATCH</a><span>(14490)</span>
+</li>
+</ul>
+</div>
+<div id="homepageArticles" class="panel tracking-ad" data-mod="popu_4">
+<ul class="panel_head"><span>推荐文章</span></ul>
+<ul class="panel_body" id="ad_commend">
+<ul>
+<li><a href="http://blog.csdn.net/mackkill/article/details/51752687" target="_blank">*Android RocooFix 热修复框架</a></li>
+<li><a href="http://blog.csdn.net/yangzhihuiguming/article/details/51800227" 
+target="_blank">* android6.0源码分析之Camera API2.0下的初始化流程分析</a></li>
+<li><a href="http://blog.csdn.net/y22222ly/article/details/51462674" 
+target="_blank">*Android_GestureDetector手势滑动使用</a></li>
+<li><a href="http://blog.csdn.net/jackingzheng/article/details/51838755" target="_blank">*Android MaterialList源码解析</a></li>
+<li><a 
+
+href="http://blog.csdn.net/strive_for_tomorrow/article/details/51762486"target="_blank">*Android开源框架Universal-Image-Loader基本介绍及使用</a></li>
+<li><a href="http://blog.csdn.net/sahadev_/article/details/51865900" 
+target="_blank">*Android官方开发文档Training系列课程中文版：创建自定义View之View的创建</a></li>
+
+
+</ul></ul>
+</div>
+
+
+<div id="newcomments" class="panel">
+<ul class="panel_head"><span>最新评论</span></ul>
+<ul class="panel_body itemlist">
+    <li>
+   
+         <a href="/hitlion2008/article/details/6737537#comments">Android实战技巧：ViewStub的应用</a>
+    <p style="margin:0px;"><a href="/FinalLiangZai" class="user_name">FinalLiangZai</a>:
+@u013015029:View stub的缺陷就是不支持 merge标签
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hitlion2008/article/details/9285785#comments">老鸟的Python入门教程</a>
+    <p style="margin:0px;"><a href="/sinat_33424169" class="user_name">sinat_33424169</a>:
+666666
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hitlion2008/article/details/9285785#comments">老鸟的Python入门教程</a>
+    <p style="margin:0px;"><a href="/sharon686" class="user_name">sharon686</a>:
+赞！快速入门很好！
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hitlion2008/article/details/9285785#comments">Android实战技巧：ViewStub的应用</a>
+    <p style="margin:0px;"><a href="/u010583599" class="user_name">u010583599</a>:
+转载了，会注明出处的！
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hitlion2008/article/details/9285785#comments">Android实战技巧：ViewStub的应用</a>
+    <p style="margin:0px;"><a href="/yy_451686712" class="user_name">yy_451686712</a>:
+mark
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hitlion2008/article/details/8143741#comments">如何更有效的进行面试</a>
+    <p style="margin:0px;"><a href="/Amazing7" class="user_name">Amazing7</a>:
+@hitlion2008:我10，(*^__^*) 嘻嘻……
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hitlion2008/article/details/8143741#comments">如何更有效的进行面试</a>
+    <p style="margin:0px;"><a href="/hitlion2008" class="user_name">hitlion2008</a>:
+@Amazing7:05级啊
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hitlion2008/article/details/8143741#comments">如何更有效的进行面试</a>
+    <p style="margin:0px;"><a href="/Amazing7" class="user_name">Amazing7</a>:
+大哥，校友啊！ 你那一届的啊
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hitlion2008/article/details/9200135#comments">Android实战技术: 用Dimension解决多屏幕适配的问题</a>
+    <p style="margin:0px;"><a href="/lovexieyuan520" class="user_name">lovexieyuan520</a>:
+@blackcushion:不知道您老人家为什么一年多回，说的好像也不对哦，怎么不能用wrap_co...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hitlion2008/article/details/9200135#comments">Android实战技术: 用Dimension解决多屏幕适配的问题</a>
+    <p style="margin:0px;"><a href="/blackcushion" class="user_name">blackcushion</a>:
+@lovexieyuan520:可以只用一套素材, 但是有几个要求:1, 布局图片需要用dp做单位定...
+    </p>
+    </li>
+</ul>
+</div>
+<div id="hotarticls2" class="panel">
+<ul class="panel_head"><span>评论排行</span></ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="/hitlion2008/article/details/7983449" title="Android实战技巧：深入解析AsyncTask">Android实战技巧：深入解析AsyncTask</a><span>(90)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/6737537" title="Android实战技巧：ViewStub的应用">Android实战技巧：ViewStub的应用</a><span>(52)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/6737459" title="Android实战技巧：如何在ScrollView中嵌套ListView">Android实战技巧：如何在ScrollView中嵌套ListView</a><span>(52)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/7060486" title="这一年，我所感悟到的">这一年，我所感悟到的</a><span>(48)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/6950493" title="写技术博客的注意事项">写技术博客的注意事项</a><span>(42)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/6856780" title="Android实战技巧：用TextView实现Rich Text---在同一个TextView中设置不同的字体风格">Android实战技巧：用TextView实现Rich Text---在同一个TextView中设置不同的字体风格</a><span>(37)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/7055025" title="Android Mms专题之：Mms源码结构">Android Mms专题之：Mms源码结构</a><span>(31)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/9285785" title="老鸟的Python入门教程">老鸟的Python入门教程</a><span>(30)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/7235492" title="杂谈：后台进程对Android性能的影响">杂谈：后台进程对Android性能的影响</a><span>(27)</span>
+</li>
+<li>
+<a href="/hitlion2008/article/details/7252339" title="再论：如何解Bug">再论：如何解Bug</a><span>(11)</span>
+</li>
+</ul>
+</div>
+    </div>
+    <div class="clear">
+    </div>
+ </div>   
+            <div class="clear">
+            </div>
+        </div>
+
+        
+
+<script type="text/javascript" src="http://c.csdnimg.cn/rabbit/cnick/cnick.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/newblog.min.js"></script>
+
+
+<script type="text/javascript" src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=423774"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/JavaScript1.js"></script>
+
+    <script type="text/javascript" src="http://passport.csdn.net/content/loginbox/login.js"></script>
+<script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</script>
+<script type="text/javascript" src="http://www.csdn.net/ui/scripts/Csdn/counter.js"></script>
+<script type="text/javascript" src="http://ad.csdn.net/scripts/ad-blog.js"></script>
+<script type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</script>
+
+
+
+
+    </div>
+      <!--new top-->
+    
+    <script id="csdn-toolbar-id" btnId="header_notice_num" wrapId="note1" count="5" subCount="5" type="text/javascript" src="http://c.csdnimg.cn/public/common/toolbar/js/toolbar.js"></script>     <!--new top-->
+   
+    <link href="http://c.csdnimg.cn/comm_ask/css/ask_float_block.css" type="text/css" rel="stylesheet" />
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/wmd.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/showdown.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/prettify.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/apps/ask_float_block.js'></script>
+   
+
+  <div id="a52b5334d" style="width: 1px; height: 1px; display: none;">
+                    <script id="adJs52b5334"></script>
+                    <script>document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();</script>
+   </div>
+
+    <link rel="stylesheet" href="http://static.blog.csdn.net/css/blog_code.css" />
+    <script type="text/javascript" src="http://static.blog.csdn.net/scripts/saveToCode.js"></script>
+      <script type="text/javascript" src="//csdnimg.cn/rabbit/tracking-ad/main.js?75eacd8"></script>
+</body>
+</html>   
+ 

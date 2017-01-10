@@ -1,0 +1,29 @@
+leverage 行使..
+germination  萌芽
+comprise 组成
+Intuitively  直觉上的
+denote 表明
+imperative 势在必行的
+marginal 边缘的,临街的
+incur 引起
+pigeon 鸽子
+formulate 阐述,公式化
+notation (数学)符号
+orthogonal 正交的(不相干的)
+discrete 分立的,不相关联的
+intractable 难缠的,顽固的
+mitigate 缓解
+heuristic 启发式
+discount打折
+propagation 扩展
+cascade 串联,瀑布
+w.r.t=with regard to关于
+arbitrary任意的
+brevity 短暂
+aforementioned 前述的
+terminology 术语
+
+短语
+adopt approach 采用此种方法
+
+linux set: set -x设置x  set +x取消x

@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<generated_project xmlns="http://www.xilinx.com/XMLSchema" xmlns:xil_pn="http://www.xilinx.com/XMLSchema">
+
+  <!--                                                          -->
+
+  <!--             For tool use only. Do not edit.              -->
+
+  <!--                                                          -->
+
+  <!-- ProjectNavigator created generated project file.         -->
+
+  <!-- For use in tracking generated file and other information -->
+
+  <!-- allowing preservation of process status.                 -->
+
+  <!--                                                          -->
+
+  <!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved. -->
+
+  <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
+
+  <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="RegularCPU.xise"/>
+
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name=".lso"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ALU.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="ALU.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="ALU.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ClockManager.prj"/>
+    <file xil_pn:fileType="FILE_SPL" xil_pn:name="ClockManager.spl"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="ClockManager.stx"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="ClockManager.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="ClockManager.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ClockManager_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="FetchInstr.prj"/>
+    <file xil_pn:fileType="FILE_SPL" xil_pn:name="FetchInstr.spl"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="FetchInstr.stx"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="FetchInstr.sym" xil_pn:origination="imported"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="FetchInstr.xst"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="FetchInstr_isim_beh.exe"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="Fulton_CPU_2016_XXXX.bld"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="Fulton_CPU_2016_XXXX.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="Fulton_CPU_2016_XXXX.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="Fulton_CPU_2016_XXXX.ncd" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="Fulton_CPU_2016_XXXX.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGD" xil_pn:name="Fulton_CPU_2016_XXXX.ngd"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="Fulton_CPU_2016_XXXX.ngr"/>
+    <file xil_pn:fileType="FILE_PAD_MISC" xil_pn:name="Fulton_CPU_2016_XXXX.pad"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAR_REPORT" xil_pn:name="Fulton_CPU_2016_XXXX.par" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PCF" xil_pn:name="Fulton_CPU_2016_XXXX.pcf" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Fulton_CPU_2016_XXXX.prj"/>
+    <file xil_pn:fileType="FILE_TRCE_MISC" xil_pn:name="Fulton_CPU_2016_XXXX.ptwx"/>
+    <file xil_pn:fileType="FILE_SPL" xil_pn:name="Fulton_CPU_2016_XXXX.spl"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="Fulton_CPU_2016_XXXX.stx"/>
+    <file xil_pn:fileType="FILE_SYMBOL" xil_pn:name="Fulton_CPU_2016_XXXX.sym" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="Fulton_CPU_2016_XXXX.syr"/>
+    <file xil_pn:fileType="FILE_VERILOG_INSTTEMPLATE" xil_pn:name="Fulton_CPU_2016_XXXX.tfi"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_TXT_REPORT" xil_pn:name="Fulton_CPU_2016_XXXX.twr" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_XML_REPORT" xil_pn:name="Fulton_CPU_2016_XXXX.twx" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_UNROUTES" xil_pn:name="Fulton_CPU_2016_XXXX.unroutes" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="Fulton_CPU_2016_XXXX.ut" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:fileType="FILE_XPI" xil_pn:name="Fulton_CPU_2016_XXXX.xpi"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="Fulton_CPU_2016_XXXX.xst"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Fulton_CPU_2016_XXXX_beh.prj"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="Fulton_CPU_2016_XXXX_envsettings.html"/>
+    <file xil_pn:fileType="FILE_NCD" xil_pn:name="Fulton_CPU_2016_XXXX_guide.ncd" xil_pn:origination="imported"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="Fulton_CPU_2016_XXXX_map.map" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="Fulton_CPU_2016_XXXX_map.mrp" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="Fulton_CPU_2016_XXXX_map.ncd" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGM" xil_pn:name="Fulton_CPU_2016_XXXX_map.ngm" xil_pn:subbranch="Map"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Fulton_CPU_2016_XXXX_map.xrpt"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Fulton_CPU_2016_XXXX_ngdbuild.xrpt"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_EXCEL_REPORT" xil_pn:name="Fulton_CPU_2016_XXXX_pad.csv" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_TXT_REPORT" xil_pn:name="Fulton_CPU_2016_XXXX_pad.txt" xil_pn:subbranch="Par"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Fulton_CPU_2016_XXXX_par.xrpt"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="Fulton_CPU_2016_XXXX_summary.html"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="Fulton_CPU_2016_XXXX_summary.xml"/>
+    <file xil_pn:fileType="FILE_WEBTALK" xil_pn:name="Fulton_CPU_2016_XXXX_usage.xml"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Fulton_CPU_2016_XXXX_vhdl.prj"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Fulton_CPU_2016_XXXX_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="MemoryAccesssControl.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="MemoryAccesssControl.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="MemoryAccesssControl.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="TestALU_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="TestALU_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="TestALU_isim_beh.wdb"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="TestClockManager_isim_beh.exe"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="TestFetchInstr_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="TestFetchInstr_stx_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="TestFulton_CPU_2016_XXXX_isim_beh.exe"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="TestMemoryAccessControl_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="TestMemoryAccessControl_stx_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="TestStorageManager_isim_beh.exe"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="TestWriteBack_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/bitgen.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/map.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/par.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/trce.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="fulton_cpu_2016_xxxx.bgn" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BIT" xil_pn:name="fulton_cpu_2016_xxxx.bit" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_DRC" xil_pn:name="fulton_cpu_2016_xxxx.drc" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="usage_statistics_webtalk.html"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="webtalk.log"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
+  </files>
+
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1469195941" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1469195941">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1469725786" xil_pn:in_ck="8651090807951120181" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1469725785">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="ALU.vhd"/>
+      <outfile xil_pn:name="ClockManager.vhd"/>
+      <outfile xil_pn:name="FetchInstr.vhd"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.vhd"/>
+      <outfile xil_pn:name="MemoryAccesssControl.vhd"/>
+      <outfile xil_pn:name="StorageManager.vhd"/>
+      <outfile xil_pn:name="TestALU.vhd"/>
+      <outfile xil_pn:name="TestClockManager.vhd"/>
+      <outfile xil_pn:name="TestFetchInstr.vhd"/>
+      <outfile xil_pn:name="TestFulton_CPU_2016_XXXX.vhd"/>
+      <outfile xil_pn:name="TestMemoryAccessControl.vhd"/>
+      <outfile xil_pn:name="TestStorageManager.vhd"/>
+      <outfile xil_pn:name="TestWriteBack.vhd"/>
+      <outfile xil_pn:name="WriteBack.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1469774695" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="8895972730609837218" xil_pn:start_ts="1469774695">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1469774695" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="3608414308569137508" xil_pn:start_ts="1469774695">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1469340217" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="5793880933424134901" xil_pn:start_ts="1469340217">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1469725786" xil_pn:in_ck="8651090807951120181" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1469725786">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="ALU.vhd"/>
+      <outfile xil_pn:name="ClockManager.vhd"/>
+      <outfile xil_pn:name="FetchInstr.vhd"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.vhd"/>
+      <outfile xil_pn:name="MemoryAccesssControl.vhd"/>
+      <outfile xil_pn:name="StorageManager.vhd"/>
+      <outfile xil_pn:name="TestALU.vhd"/>
+      <outfile xil_pn:name="TestClockManager.vhd"/>
+      <outfile xil_pn:name="TestFetchInstr.vhd"/>
+      <outfile xil_pn:name="TestFulton_CPU_2016_XXXX.vhd"/>
+      <outfile xil_pn:name="TestMemoryAccessControl.vhd"/>
+      <outfile xil_pn:name="TestStorageManager.vhd"/>
+      <outfile xil_pn:name="TestWriteBack.vhd"/>
+      <outfile xil_pn:name="WriteBack.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1469774699" xil_pn:in_ck="8651090807951120181" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="2050039414341649372" xil_pn:start_ts="1469774695">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="TestALU_beh.prj"/>
+      <outfile xil_pn:name="TestALU_isim_beh.exe"/>
+      <outfile xil_pn:name="fuse.log"/>
+      <outfile xil_pn:name="isim"/>
+      <outfile xil_pn:name="isim.log"/>
+      <outfile xil_pn:name="xilinxsim.ini"/>
+    </transform>
+    <transform xil_pn:end_ts="1469774699" xil_pn:in_ck="6717309973849719699" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3716640679091546431" xil_pn:start_ts="1469774699">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="TestALU_isim_beh.wdb"/>
+      <outfile xil_pn:name="isim.cmd"/>
+      <outfile xil_pn:name="isim.log"/>
+    </transform>
+    <transform xil_pn:end_ts="1469429841" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1469429841">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1469429841" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-6098737151569484939" xil_pn:start_ts="1469429841">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1469429841" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="5793880933424134901" xil_pn:start_ts="1469429841">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1469429841" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1469429841">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1469429842" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="-6704389881312621325" xil_pn:start_ts="1469429841">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1469429842" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="-3893270297145852409" xil_pn:start_ts="1469429842">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1469429842" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="1905310947300887615" xil_pn:start_ts="1469429842">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1469726085" xil_pn:in_ck="2123328340893393860" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="9012951322692509448" xil_pn:start_ts="1469726011">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name=".lso"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.lso"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.ngc"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.ngr"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.prj"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.stx"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.syr"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.xst"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_beh.prj"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_vhdl.prj"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_xst.xrpt"/>
+      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+      <outfile xil_pn:name="xst"/>
+    </transform>
+    <transform xil_pn:end_ts="1469690450" xil_pn:in_ck="112481647050" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="2980615046937731870" xil_pn:start_ts="1469690450">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1469697741" xil_pn:in_ck="5703217785817197206" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-2939945270481392168" xil_pn:start_ts="1469697736">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.bld"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.ngd"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_ngdbuild.xrpt"/>
+      <outfile xil_pn:name="_ngo"/>
+      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+    </transform>
+    <transform xil_pn:end_ts="1469697745" xil_pn:in_ck="5703217828435640183" xil_pn:name="TRANEXT_map_spartan3" xil_pn:prop_ck="5880003210255087717" xil_pn:start_ts="1469697741">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.pcf"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_map.map"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_map.mrp"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_map.ncd"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_map.ngm"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_map.xrpt"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_summary.xml"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_usage.xml"/>
+      <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
+    </transform>
+    <transform xil_pn:end_ts="1469697777" xil_pn:in_ck="-2710936273581930768" xil_pn:name="TRANEXT_par_spartan3" xil_pn:prop_ck="-5563652517805085498" xil_pn:start_ts="1469697745">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.ncd"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.pad"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.par"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.ptwx"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.unroutes"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.xpi"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_pad.csv"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_pad.txt"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX_par.xrpt"/>
+      <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
+    </transform>
+    <transform xil_pn:end_ts="1469697784" xil_pn:in_ck="6026552017654889929" xil_pn:name="TRANEXT_bitFile_spartan3e" xil_pn:prop_ck="-7817169320884990698" xil_pn:start_ts="1469697777">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.ut"/>
+      <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
+      <outfile xil_pn:name="fulton_cpu_2016_xxxx.bgn"/>
+      <outfile xil_pn:name="fulton_cpu_2016_xxxx.bit"/>
+      <outfile xil_pn:name="fulton_cpu_2016_xxxx.drc"/>
+      <outfile xil_pn:name="usage_statistics_webtalk.html"/>
+      <outfile xil_pn:name="webtalk.log"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+    </transform>
+    <transform xil_pn:end_ts="1469590133" xil_pn:in_ck="4171371103276725395" xil_pn:name="TRAN_impactProgrammingTool" xil_pn:prop_ck="1890673188639090495" xil_pn:start_ts="1469590133">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputChanged"/>
+    </transform>
+    <transform xil_pn:end_ts="1469531557" xil_pn:in_ck="4171371103276725395" xil_pn:name="TRAN_genImpactFile" xil_pn:prop_ck="7121392639749839438" xil_pn:start_ts="1469531553">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputChanged"/>
+    </transform>
+    <transform xil_pn:end_ts="1469697777" xil_pn:in_ck="5703212202801167219" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416187" xil_pn:start_ts="1469697774">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.twr"/>
+      <outfile xil_pn:name="Fulton_CPU_2016_XXXX.twx"/>
+      <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
+    </transform>
+    <transform xil_pn:name="TRAN_postSynthesisSimModel">
+      <status xil_pn:value="AbortedRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputChanged"/>
+    </transform>
+  </transforms>
+
+</generated_project>

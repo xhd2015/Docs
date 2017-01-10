@@ -1,0 +1,63 @@
+	
+	NET "clk" LOC="P75";
+	NET "reset" LOC="P51";  #k47 Ϊreset
+	NET "reset" CLOCK_DEDICATED_ROUTE = FALSE;
+	NET "maddrbus<15>" LOC="P145";
+	NET "maddrbus<14>" LOC="P144";
+	NET "maddrbus<13>" LOC="P140";
+	NET "maddrbus<12>" LOC="P119";
+	NET "maddrbus<11>" LOC="P116";
+	NET "maddrbus<10>" LOC="P115";
+	NET "maddrbus<9>" LOC="P113";
+	NET "maddrbus<8>" LOC="P146";
+	NET "maddrbus<7>" LOC="P147";
+	NET "maddrbus<6>" LOC="P150";
+	NET "maddrbus<5>" LOC="P151";
+	NET "maddrbus<4>" LOC="P171";
+	NET "maddrbus<3>" LOC="P172";
+	NET "maddrbus<2>" LOC="P177";
+	NET "maddrbus<1>" LOC="P178";
+	NET "maddrbus<0>" LOC="P179";
+
+
+	NET "mdatabus<15>" LOC="P135";
+	NET "mdatabus<14>" LOC="P134";
+	NET "mdatabus<13>" LOC="P133";
+	NET "mdatabus<12>" LOC="P132";
+	NET "mdatabus<11>" LOC="P128";
+	NET "mdatabus<10>" LOC="P123";
+	NET "mdatabus<9>" LOC="P122";
+	NET "mdatabus<8>" LOC="P120";
+	NET "mdatabus<7>" LOC="P153";
+	NET "mdatabus<6>" LOC="P160";
+	NET "mdatabus<5>" LOC="P161";
+	NET "mdatabus<4>" LOC="P162";
+	NET "mdatabus<3>" LOC="P163";
+	NET "mdatabus<2>" LOC="P164";
+	NET "mdatabus<1>" LOC="P165";
+	NET "mdatabus<0>" LOC="P167";
+
+	NET "nMREQ" LOC="P168";
+	NET "nRD" LOC="P139";
+	NET "nWR" LOC="P152";
+	NET "nBHE" LOC="P138";
+	NET "nBLE" LOC="P137";
+	
+	 NET "fakeIOdatain<7>" LOC="P110";
+	 NET "fakeIOdatain<6>" LOC="P118";
+	 NET "fakeIOdatain<5>" LOC="P124";
+	 NET "fakeIOdatain<4>" LOC="P130";
+	 NET "fakeIOdatain<3>" LOC="P136";
+	 NET "fakeIOdatain<2>" LOC="P142";
+	 NET "fakeIOdatain<1>" LOC="P148";
+	 NET "fakeIOdatain<0>" LOC="P154";
+
+		
+	 NET "fakeIOdataout<7>" LOC="P185";
+	 NET "fakeIOdataout<6>" LOC="P77";
+	 NET "fakeIOdataout<5>" LOC="P82";
+	 NET "fakeIOdataout<4>" LOC="P83";
+	 NET "fakeIOdataout<3>" LOC="P98";
+	 NET "fakeIOdataout<2>" LOC="P99";
+	 NET "fakeIOdataout<1>" LOC="P100";
+	 NET "fakeIOdataout<0>" LOC="P102";

@@ -1,0 +1,2 @@
+vhdtdtfi -lib work ClockManager.vhd -prj RegularCPU -o ClockManager.spl -module ClockManager -template D:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3e ClockManager.spl {C:/Users/Fulton/ISE Project/RegularCPU/ClockManager.sym} 

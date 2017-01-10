@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="http://zengrong.net/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="http://zengrong.net/wp-content/themes/twentyfifteen/js/html5.js"></script>
+	<![endif]-->
+	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>Bash的=~正则表达式匹配～旧文章害死人啊 | zrong&#039;s blog</title>
+
+<!-- All in One SEO Pack 2.3.4.2 by Michael Torbert of Semper Fi Web Design[490,545] -->
+<meta name="description" itemprop="description" content="很简单的一个匹配ip地址的测试，死活就是匹配不了： newip=&#39;192.168.1.100&#39; if {1,3}\.){3}{1,3}$&#39; ]];then echo &#39;找到了ip地址&#39" />
+
+<meta name="keywords" itemprop="keywords" content="bash,linux,regexp,技术" />
+
+<link rel="canonical" href="http://zengrong.net/post/1563.htm" />
+<!-- /all in one seo pack -->
+<link rel="alternate" type="application/rss+xml" title="zrong&#039;s blog &raquo; Feed" href="http://zengrong.net/feed" />
+<link rel="alternate" type="application/rss+xml" title="zrong&#039;s blog &raquo; 评论Feed" href="http://zengrong.net/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="zrong&#039;s blog &raquo; Bash的=~正则表达式匹配～旧文章害死人啊评论Feed" href="http://zengrong.net/post/1563.htm/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/zengrong.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.5.3"}};
+			!function(a,b,c){function d(a){var c,d,e,f=b.createElement("canvas"),g=f.getContext&&f.getContext("2d"),h=String.fromCharCode;if(!g||!g.fillText)return!1;switch(g.textBaseline="top",g.font="600 32px Arial",a){case"flag":return g.fillText(h(55356,56806,55356,56826),0,0),f.toDataURL().length>3e3;case"diversity":return g.fillText(h(55356,57221),0,0),c=g.getImageData(16,16,1,1).data,d=c[0]+","+c[1]+","+c[2]+","+c[3],g.fillText(h(55356,57221,55356,57343),0,0),c=g.getImageData(16,16,1,1).data,e=c[0]+","+c[1]+","+c[2]+","+c[3],d!==e;case"simple":return g.fillText(h(55357,56835),0,0),0!==g.getImageData(16,16,1,1).data[0];case"unicode8":return g.fillText(h(55356,57135),0,0),0!==g.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='yarppWidgetCss-css'  href='http://zengrong.net/wp-content/plugins/yet-another-related-posts-plugin/style/widget.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='http://zengrong.net/wp-content/themes/twentyfifteen/genericons/genericons.css?ver=3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfifteen-style-css'  href='http://zengrong.net/wp-content/themes/twentyfifteen_child/style.css?ver=4.5.3' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfifteen-ie-css'  href='http://zengrong.net/wp-content/themes/twentyfifteen/css/ie.css?ver=20141010' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='twentyfifteen-ie7-css'  href='http://zengrong.net/wp-content/themes/twentyfifteen/css/ie7.css?ver=20141010' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='wp-downloadmanager-css'  href='http://zengrong.net/wp-content/plugins/wp-downloadmanager/download-css.css?ver=1.68.1' type='text/css' media='all' />
+<script type='text/javascript' src='http://zengrong.net/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://zengrong.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='http://zengrong.net/wp-includes/js/swfobject.js?ver=2.2-20120417'></script>
+
+<script type="text/javascript" charset="utf-8">
+	(function(){
+		try {
+			// Disabling SWFObject's Autohide feature
+			if (typeof swfobject.switchOffAutoHideShow === "function") {
+				swfobject.switchOffAutoHideShow();
+			}
+		} catch(e) {}
+	})();
+</script>
+<link rel='https://api.w.org/' href='http://zengrong.net/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://zengrong.net/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://zengrong.net/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='【转】程序员技术练级攻略' href='http://zengrong.net/post/1561.htm' />
+<link rel='next' title='pacman升级到4.0之后的错误处理' href='http://zengrong.net/post/1564.htm' />
+<meta name="generator" content="WordPress 4.5.3" />
+<link rel='shortlink' href='http://zengrong.net/?p=1563' />
+<link rel="alternate" type="application/json+oembed" href="http://zengrong.net/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fzengrong.net%2Fpost%2F1563.htm" />
+<link rel="alternate" type="text/xml+oembed" href="http://zengrong.net/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fzengrong.net%2Fpost%2F1563.htm&#038;format=xml" />
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+			<!-- 2015-11-15 zrong added start -->
+	<!-- for baidu -->
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?8159b7b98721e2fa296611608732c888";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	<!-- for google -->
+	<meta name="google-translate-customization" content="12139d2c6a42beab-30d8a30048fd4991-g5b72f1cb88b7f1b8-c"></meta>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+	  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+	  _gaq.push(['_setAccount', 'UA-178999-3']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+	<!-- 2015-11-15 zrong added end -->
+</head>
+
+<body class="single single-post postid-1563 single-format-standard">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">跳至内容</a>
+
+	<div id="sidebar" class="sidebar">
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-branding">
+										<p class="site-title"><a href="http://zengrong.net/" rel="home">zrong&#039;s blog</a></p>
+											<p class="site-description">可能是一个程序员</p>
+									<button class="secondary-toggle">菜单和挂件</button>
+			</div><!-- .site-branding -->
+		</header><!-- .site-header -->
+
+			<div id="secondary" class="secondary">
+
+					<nav id="site-navigation" class="main-navigation" role="navigation">
+				<div class="menu-%e4%b8%bb%e8%8f%9c%e5%8d%95-container"><ul id="menu-%e4%b8%bb%e8%8f%9c%e5%8d%95" class="nav-menu"><li id="menu-item-2388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2388"><a href="http://zengrong.net/project">我的项目</a>
+<ul class="sub-menu">
+	<li id="menu-item-2322" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2322"><a href="http://zengrong.net/wpcmd">WPCMD</a></li>
+	<li id="menu-item-1404" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1404"><a href="http://zengrong.net/sprite_sheet_editor">Sprite Sheet Editor</a></li>
+	<li id="menu-item-1907" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1907"><a href="http://zengrong.net/platform-anes">Platform ANEs</a></li>
+	<li id="menu-item-1627" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1627"><a href="http://zengrong.net/anetoolkit">ANE Toolkit</a></li>
+	<li id="menu-item-2279" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2279"><a href="http://zengrong.net/cocos2d-x-filters">cocos2d-x-filters</a></li>
+	<li id="menu-item-2253" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2253"><a href="http://github.com/zrong/as3">AS3 Lib</a></li>
+	<li id="menu-item-2254" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2254"><a href="http://github.com/zrong/rookout">rookout</a></li>
+	<li id="menu-item-2255" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2255"><a href="http://github.com/zrong/lua">Lua Lib</a></li>
+</ul>
+</li>
+<li id="menu-item-2390" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2390"><a href="http://zengrong.net/keyarticle">重点文章</a>
+<ul class="sub-menu">
+	<li id="menu-item-2393" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2393"><a href="http://zengrong.net/howtoask">提问的智慧</a></li>
+	<li id="menu-item-2392" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2392"><a href="http://zengrong.net/flashassistant">Flash＆Flex大全</a></li>
+	<li id="menu-item-2391" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2391"><a href="http://zengrong.net/21-days">【转】十年学会程序设计</a></li>
+</ul>
+</li>
+<li id="menu-item-2394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2394"><a href="http://zengrong.net/read">阅读</a></li>
+</ul></div>			</nav><!-- .main-navigation -->
+		
+					<nav id="social-navigation" class="social-navigation" role="navigation">
+				<div class="menu-%e9%9d%99%e6%80%81%e9%93%be%e6%8e%a5-container"><ul id="menu-%e9%9d%99%e6%80%81%e9%93%be%e6%8e%a5" class="menu"><li id="menu-item-2246" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2246"><a title="_blank" href="https://github.com/zrong"><span class="screen-reader-text">zrong@github</span></a></li>
+</ul></div>			</nav><!-- .social-navigation -->
+		
+					<div id="widget-area" class="widget-area" role="complementary">
+				<aside id="search-4" class="widget widget_search"><form role="search" method="get" class="search-form" action="http://zengrong.net/">
+				<label>
+					<span class="screen-reader-text">搜索：</span>
+					<input type="search" class="search-field" placeholder="搜索&hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit screen-reader-text" value="搜索" />
+			</form></aside><aside id="text-8" class="widget widget_text"><h2 class="widget-title">联系我</h2>			<div class="textwidget"><img src="http://file.zengrong.net/blog/jacky_icon_258x258.jpg">
+<img src="/zrongzrong.png">
+<h3 style="text-align:center;padding-top:1em;">黑斑马团队</h3>
+<img src="http://file.zengrong.net/blog/qrcode_zero_zebra_258.jpg">
+<h3 style="text-align:center;padding-top:1em;">曾嵘胡扯的地方</h3>
+<img src="http://file.zengrong.net/blog/qrcode_zrong.jpg"></div>
+		</aside><aside id="text-6" class="widget widget_text"><h2 class="widget-title">订阅</h2>			<div class="textwidget"><!--以下是QQ邮件列表订阅嵌入代码--><script >var nId = "d9b9d5ea984c4640558febcd58a2ab50662af7385f6d2a7a",nWidth="auto",sColor="light",sText="订阅zrong's blog更新" ;</script><script src="http://list.qq.com/zh_CN/htmledition/js/qf/page/qfcode.js" charset="gb18030"></script>
+<br>
+RSS订阅：<a href="http://zengrong.net/feed">http://zengrong.net/feed</a>
+<p><a href="https://github.com/zrong/blog" target="_blank">FORK THIS BLOG</a></p></div>
+		</aside><aside id="text-12" class="widget widget_text"><h2 class="widget-title">Green</h2>			<div class="textwidget"><a href="http://gjsq.me/14428164" target="blank"><img src="https://www.jsqgreen.com/aff/banners/03.gif"></a></div>
+		</aside><aside id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">标签</h2><div class="tagcloud"><a href='http://zengrong.net/post/tag/3d' class='tag-link-211 tag-link-position-1' title='11个话题' style='font-size: 9.1428571428571pt;'>3D</a>
+<a href='http://zengrong.net/post/tag/actionscript' class='tag-link-24 tag-link-position-2' title='42个话题' style='font-size: 17pt;'>ActionScript</a>
+<a href='http://zengrong.net/post/tag/adobe' class='tag-link-83 tag-link-position-3' title='26个话题' style='font-size: 14.142857142857pt;'>Adobe</a>
+<a href='http://zengrong.net/post/tag/air' class='tag-link-138 tag-link-position-4' title='80个话题' style='font-size: 21pt;'>AIR</a>
+<a href='http://zengrong.net/post/tag/android' class='tag-link-189 tag-link-position-5' title='33个话题' style='font-size: 15.571428571429pt;'>Android</a>
+<a href='http://zengrong.net/post/tag/ane' class='tag-link-248 tag-link-position-6' title='12个话题' style='font-size: 9.5714285714286pt;'>ANE</a>
+<a href='http://zengrong.net/post/tag/as3' class='tag-link-30 tag-link-position-7' title='94个话题' style='font-size: 22pt;'>AS3</a>
+<a href='http://zengrong.net/post/tag/bash' class='tag-link-222 tag-link-position-8' title='13个话题' style='font-size: 10.142857142857pt;'>bash</a>
+<a href='http://zengrong.net/post/tag/bitmapdata' class='tag-link-39 tag-link-position-9' title='17个话题' style='font-size: 11.714285714286pt;'>BitmapData</a>
+<a href='http://zengrong.net/post/tag/cpp' class='tag-link-264 tag-link-position-10' title='35个话题' style='font-size: 16pt;'>C++</a>
+<a href='http://zengrong.net/post/tag/cms' class='tag-link-10 tag-link-position-11' title='10个话题' style='font-size: 8.5714285714286pt;'>CMS</a>
+<a href='http://zengrong.net/post/tag/cocos2d-x' class='tag-link-263 tag-link-position-12' title='48个话题' style='font-size: 17.857142857143pt;'>cocos2d-x</a>
+<a href='http://zengrong.net/post/tag/cygwin' class='tag-link-239 tag-link-position-13' title='19个话题' style='font-size: 12.285714285714pt;'>cygwin</a>
+<a href='http://zengrong.net/post/tag/flash' class='tag-link-3 tag-link-position-14' title='63个话题' style='font-size: 19.571428571429pt;'>Flash</a>
+<a href='http://zengrong.net/post/tag/flashbuilder' class='tag-link-172 tag-link-position-15' title='23个话题' style='font-size: 13.428571428571pt;'>FlashBuilder</a>
+<a href='http://zengrong.net/post/tag/flashplayer' class='tag-link-135 tag-link-position-16' title='43个话题' style='font-size: 17.142857142857pt;'>FlashPlayer</a>
+<a href='http://zengrong.net/post/tag/flex' class='tag-link-23 tag-link-position-17' title='64个话题' style='font-size: 19.571428571429pt;'>Flex</a>
+<a href='http://zengrong.net/post/tag/fms' class='tag-link-123 tag-link-position-18' title='21个话题' style='font-size: 12.857142857143pt;'>FMS</a>
+<a href='http://zengrong.net/post/tag/game' class='tag-link-196 tag-link-position-19' title='13个话题' style='font-size: 10.142857142857pt;'>game</a>
+<a href='http://zengrong.net/post/tag/git' class='tag-link-199 tag-link-position-20' title='20个话题' style='font-size: 12.571428571429pt;'>git</a>
+<a href='http://zengrong.net/post/tag/google' class='tag-link-28 tag-link-position-21' title='15个话题' style='font-size: 10.857142857143pt;'>google</a>
+<a href='http://zengrong.net/post/tag/http' class='tag-link-193 tag-link-position-22' title='11个话题' style='font-size: 9.1428571428571pt;'>HTTP</a>
+<a href='http://zengrong.net/post/tag/ios' class='tag-link-249 tag-link-position-23' title='19个话题' style='font-size: 12.285714285714pt;'>iOS</a>
+<a href='http://zengrong.net/post/tag/java' class='tag-link-195 tag-link-position-24' title='17个话题' style='font-size: 11.714285714286pt;'>JAVA</a>
+<a href='http://zengrong.net/post/tag/javascript' class='tag-link-161 tag-link-position-25' title='11个话题' style='font-size: 9.1428571428571pt;'>javascript</a>
+<a href='http://zengrong.net/post/tag/linux' class='tag-link-166 tag-link-position-26' title='63个话题' style='font-size: 19.571428571429pt;'>Linux</a>
+<a href='http://zengrong.net/post/tag/lua' class='tag-link-267 tag-link-position-27' title='26个话题' style='font-size: 14.142857142857pt;'>Lua</a>
+<a href='http://zengrong.net/post/tag/management' class='tag-link-303 tag-link-position-28' title='10个话题' style='font-size: 8.5714285714286pt;'>management</a>
+<a href='http://zengrong.net/post/tag/mobile' class='tag-link-91 tag-link-position-29' title='13个话题' style='font-size: 10.142857142857pt;'>Mobile</a>
+<a href='http://zengrong.net/post/tag/office' class='tag-link-13 tag-link-position-30' title='9个话题' style='font-size: 8pt;'>Office</a>
+<a href='http://zengrong.net/post/tag/php' class='tag-link-27 tag-link-position-31' title='14个话题' style='font-size: 10.571428571429pt;'>PHP</a>
+<a href='http://zengrong.net/post/tag/python' class='tag-link-224 tag-link-position-32' title='27个话题' style='font-size: 14.428571428571pt;'>Python</a>
+<a href='http://zengrong.net/post/tag/server' class='tag-link-117 tag-link-position-33' title='10个话题' style='font-size: 8.5714285714286pt;'>Server</a>
+<a href='http://zengrong.net/post/tag/software' class='tag-link-63 tag-link-position-34' title='17个话题' style='font-size: 11.714285714286pt;'>software</a>
+<a href='http://zengrong.net/post/tag/spritesheet' class='tag-link-220 tag-link-position-35' title='18个话题' style='font-size: 12pt;'>SpriteSheet</a>
+<a href='http://zengrong.net/post/tag/study' class='tag-link-243 tag-link-position-36' title='31个话题' style='font-size: 15.285714285714pt;'>study</a>
+<a href='http://zengrong.net/post/tag/tipsandtricks' class='tag-link-175 tag-link-position-37' title='12个话题' style='font-size: 9.5714285714286pt;'>TipsAndTricks</a>
+<a href='http://zengrong.net/post/tag/ubuntu' class='tag-link-165 tag-link-position-38' title='15个话题' style='font-size: 10.857142857143pt;'>ubuntu</a>
+<a href='http://zengrong.net/post/tag/vim' class='tag-link-43 tag-link-position-39' title='17个话题' style='font-size: 11.714285714286pt;'>Vim</a>
+<a href='http://zengrong.net/post/tag/windows' class='tag-link-84 tag-link-position-40' title='12个话题' style='font-size: 9.5714285714286pt;'>Windows</a>
+<a href='http://zengrong.net/post/tag/wordpress' class='tag-link-33 tag-link-position-41' title='21个话题' style='font-size: 12.857142857143pt;'>WordPress</a>
+<a href='http://zengrong.net/post/tag/training' class='tag-link-75 tag-link-position-42' title='10个话题' style='font-size: 8.5714285714286pt;'>培训</a>
+<a href='http://zengrong.net/post/tag/plugin' class='tag-link-34 tag-link-position-43' title='13个话题' style='font-size: 10.142857142857pt;'>插件</a>
+<a href='http://zengrong.net/post/tag/journey' class='tag-link-150 tag-link-position-44' title='12个话题' style='font-size: 9.5714285714286pt;'>旅游</a>
+<a href='http://zengrong.net/post/tag/reading' class='tag-link-65 tag-link-position-45' title='13个话题' style='font-size: 10.142857142857pt;'>读书</a></div>
+</aside><aside id="categories-4" class="widget widget_categories"><h2 class="widget-title">分类目录</h2>		<ul>
+	<li class="cat-item cat-item-8"><a href="http://zengrong.net/post/category/others" title="什么都有">乱弹</a> (87)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://zengrong.net/post/category/news" title="听到的消息和要说消息，某些转载的文章也在这里">听说</a> (73)
+</li>
+	<li class="cat-item cat-item-18"><a href="http://zengrong.net/post/category/tutorial" title="培训相关信息">培训</a> (12)
+</li>
+	<li class="cat-item cat-item-12"><a href="http://zengrong.net/post/category/use" title="应用技巧">应用</a> (55)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://zengrong.net/post/category/impressions" >感悟</a> (73)
+</li>
+	<li class="cat-item cat-item-22"><a href="http://zengrong.net/post/category/technology" title="技术文章">技术</a> (515)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://zengrong.net/post/category/web" title="与网站相关的程序、CMS系统、技巧、内容">网站</a> (54)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://zengrong.net/post/category/design" >设计</a> (8)
+</li>
+		</ul>
+</aside><aside id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widget-title">近期评论</h2><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href='http://zengrong.net/post/2553.htm' rel='external nofollow' class='url'>Homebrew 安装的 MySQL 在 EI Capitan 上无法启动 | zrong&#039;s blog</a></span>发表在《<a href="http://zengrong.net/post/2127.htm/comment-page-1#comment-19998">在 Mac OS X 上安装lighttpd</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href='http://zengrong.net/post/2545.htm' rel='external nofollow' class='url'>MacBook Pro Retina 睡眠耗电现象深究 | zrong&#039;s blog</a></span>发表在《<a href="http://zengrong.net/post/2551.htm/comment-page-1#comment-19997">OS X 中使用命令行来管理网络</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href='http://zengrong.net/post/2551.htm' rel='external nofollow' class='url'>OS X 中使用命令行来管理网络 | zrong&#039;s blog</a></span>发表在《<a href="http://zengrong.net/post/2545.htm/comment-page-1#comment-19996">MacBook Pro Retina 睡眠耗电现象深究</a>》</li><li class="recentcomments"><span class="comment-author-link">zrong</span>发表在《<a href="http://zengrong.net/post/2350.htm/comment-page-1#comment-19992">Python2/3 在Windows 下的共存</a>》</li><li class="recentcomments"><span class="comment-author-link">白熊</span>发表在《<a href="http://zengrong.net/post/2350.htm/comment-page-1#comment-19993">Python2/3 在Windows 下的共存</a>》</li></ul></aside><aside id="views-2" class="widget widget_views"><h2 class="widget-title">最多访问</h2><ul>
+<li><a href="http://zengrong.net/post/1746.htm"  title="Git查看、删除、重命名远程分支和tag">Git查看、删除、重命名远程分支和tag</a> - 248,837 views</li><li><a href="http://zengrong.net/post/2152.htm"  title="在 iOS 7 中获取唯一标识符（UDID/UUID）">在 iOS 7 中获取唯一标识符（UDID/UUID）</a> - 54,489 views</li><li><a href="http://zengrong.net/flashassistant"  title="Flash＆Flex大全">Flash＆Flex大全</a> - 46,781 views</li><li><a href="http://zengrong.net/post/1722.htm"  title="使用Git、Git GUI和TortoiseGit">使用Git、Git GUI和TortoiseGit</a> - 46,513 views</li><li><a href="http://zengrong.net/post/1911.htm"  title="在cocos2d-x中使用CCArmature实现骨骼动画">在cocos2d-x中使用CCArmature实现骨骼动画</a> - 39,588 views</li><li><a href="http://zengrong.net/post/30.htm"  title="突破一切网络封锁Google Secure Access">突破一切网络封锁Google Secure Access</a> - 38,300 views</li><li><a href="http://zengrong.net/post/196.htm"  title="No input file specified.错误的解决">No input file specified.错误的解决</a> - 37,460 views</li><li><a href="http://zengrong.net/post/1801.htm"  title="在中国大陆调试Android In-app-billing">在中国大陆调试Android In-app-billing</a> - 30,517 views</li><li><a href="http://zengrong.net/post/1318.htm"  title="Flash Builder 4.5 插件版的安装方法">Flash Builder 4.5 插件版的安装方法</a> - 25,666 views</li><li><a href="http://zengrong.net/post/1249.htm"  title="git乱码解决方案汇总">git乱码解决方案汇总</a> - 24,277 views</li></ul>
+</aside><aside id="archives-4" class="widget widget_archive"><h2 class="widget-title">文章归档</h2>		<label class="screen-reader-text" for="archives-dropdown-4">文章归档</label>
+		<select id="archives-dropdown-4" name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'>
+			
+			<option value="">选择月份</option>
+				<option value='http://zengrong.net/post/date/2016/06'> 2016年六月 &nbsp;(2)</option>
+	<option value='http://zengrong.net/post/date/2016/05'> 2016年五月 &nbsp;(2)</option>
+	<option value='http://zengrong.net/post/date/2016/04'> 2016年四月 &nbsp;(9)</option>
+	<option value='http://zengrong.net/post/date/2016/03'> 2016年三月 &nbsp;(6)</option>
+	<option value='http://zengrong.net/post/date/2016/02'> 2016年二月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2016/01'> 2016年一月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2015/12'> 2015年十二月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2015/11'> 2015年十一月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2015/10'> 2015年十月 &nbsp;(2)</option>
+	<option value='http://zengrong.net/post/date/2015/09'> 2015年九月 &nbsp;(5)</option>
+	<option value='http://zengrong.net/post/date/2015/08'> 2015年八月 &nbsp;(2)</option>
+	<option value='http://zengrong.net/post/date/2015/07'> 2015年七月 &nbsp;(6)</option>
+	<option value='http://zengrong.net/post/date/2015/06'> 2015年六月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2015/05'> 2015年五月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2015/04'> 2015年四月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2015/03'> 2015年三月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2015/02'> 2015年二月 &nbsp;(2)</option>
+	<option value='http://zengrong.net/post/date/2015/01'> 2015年一月 &nbsp;(6)</option>
+	<option value='http://zengrong.net/post/date/2014/12'> 2014年十二月 &nbsp;(6)</option>
+	<option value='http://zengrong.net/post/date/2014/11'> 2014年十一月 &nbsp;(11)</option>
+	<option value='http://zengrong.net/post/date/2014/10'> 2014年十月 &nbsp;(5)</option>
+	<option value='http://zengrong.net/post/date/2014/09'> 2014年九月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2014/08'> 2014年八月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2014/07'> 2014年七月 &nbsp;(5)</option>
+	<option value='http://zengrong.net/post/date/2014/06'> 2014年六月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2014/05'> 2014年五月 &nbsp;(2)</option>
+	<option value='http://zengrong.net/post/date/2014/04'> 2014年四月 &nbsp;(11)</option>
+	<option value='http://zengrong.net/post/date/2014/03'> 2014年三月 &nbsp;(7)</option>
+	<option value='http://zengrong.net/post/date/2014/02'> 2014年二月 &nbsp;(5)</option>
+	<option value='http://zengrong.net/post/date/2014/01'> 2014年一月 &nbsp;(5)</option>
+	<option value='http://zengrong.net/post/date/2013/12'> 2013年十二月 &nbsp;(7)</option>
+	<option value='http://zengrong.net/post/date/2013/11'> 2013年十一月 &nbsp;(6)</option>
+	<option value='http://zengrong.net/post/date/2013/10'> 2013年十月 &nbsp;(7)</option>
+	<option value='http://zengrong.net/post/date/2013/09'> 2013年九月 &nbsp;(8)</option>
+	<option value='http://zengrong.net/post/date/2013/08'> 2013年八月 &nbsp;(7)</option>
+	<option value='http://zengrong.net/post/date/2013/06'> 2013年六月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2013/05'> 2013年五月 &nbsp;(11)</option>
+	<option value='http://zengrong.net/post/date/2013/04'> 2013年四月 &nbsp;(5)</option>
+	<option value='http://zengrong.net/post/date/2013/03'> 2013年三月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2013/02'> 2013年二月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2013/01'> 2013年一月 &nbsp;(12)</option>
+	<option value='http://zengrong.net/post/date/2012/12'> 2012年十二月 &nbsp;(11)</option>
+	<option value='http://zengrong.net/post/date/2012/11'> 2012年十一月 &nbsp;(9)</option>
+	<option value='http://zengrong.net/post/date/2012/10'> 2012年十月 &nbsp;(6)</option>
+	<option value='http://zengrong.net/post/date/2012/09'> 2012年九月 &nbsp;(6)</option>
+	<option value='http://zengrong.net/post/date/2012/08'> 2012年八月 &nbsp;(13)</option>
+	<option value='http://zengrong.net/post/date/2012/07'> 2012年七月 &nbsp;(5)</option>
+	<option value='http://zengrong.net/post/date/2012/06'> 2012年六月 &nbsp;(2)</option>
+	<option value='http://zengrong.net/post/date/2012/05'> 2012年五月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2012/04'> 2012年四月 &nbsp;(11)</option>
+	<option value='http://zengrong.net/post/date/2012/03'> 2012年三月 &nbsp;(12)</option>
+	<option value='http://zengrong.net/post/date/2012/02'> 2012年二月 &nbsp;(15)</option>
+	<option value='http://zengrong.net/post/date/2012/01'> 2012年一月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2011/12'> 2011年十二月 &nbsp;(7)</option>
+	<option value='http://zengrong.net/post/date/2011/11'> 2011年十一月 &nbsp;(9)</option>
+	<option value='http://zengrong.net/post/date/2011/10'> 2011年十月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2011/09'> 2011年九月 &nbsp;(9)</option>
+	<option value='http://zengrong.net/post/date/2011/08'> 2011年八月 &nbsp;(9)</option>
+	<option value='http://zengrong.net/post/date/2011/07'> 2011年七月 &nbsp;(10)</option>
+	<option value='http://zengrong.net/post/date/2011/06'> 2011年六月 &nbsp;(9)</option>
+	<option value='http://zengrong.net/post/date/2011/05'> 2011年五月 &nbsp;(5)</option>
+	<option value='http://zengrong.net/post/date/2011/04'> 2011年四月 &nbsp;(7)</option>
+	<option value='http://zengrong.net/post/date/2011/03'> 2011年三月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2011/02'> 2011年二月 &nbsp;(15)</option>
+	<option value='http://zengrong.net/post/date/2011/01'> 2011年一月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2010/12'> 2010年十二月 &nbsp;(14)</option>
+	<option value='http://zengrong.net/post/date/2010/11'> 2010年十一月 &nbsp;(6)</option>
+	<option value='http://zengrong.net/post/date/2010/10'> 2010年十月 &nbsp;(2)</option>
+	<option value='http://zengrong.net/post/date/2010/09'> 2010年九月 &nbsp;(7)</option>
+	<option value='http://zengrong.net/post/date/2010/08'> 2010年八月 &nbsp;(16)</option>
+	<option value='http://zengrong.net/post/date/2010/07'> 2010年七月 &nbsp;(11)</option>
+	<option value='http://zengrong.net/post/date/2010/06'> 2010年六月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2010/05'> 2010年五月 &nbsp;(15)</option>
+	<option value='http://zengrong.net/post/date/2010/04'> 2010年四月 &nbsp;(2)</option>
+	<option value='http://zengrong.net/post/date/2010/03'> 2010年三月 &nbsp;(1)</option>
+	<option value='http://zengrong.net/post/date/2010/02'> 2010年二月 &nbsp;(1)</option>
+	<option value='http://zengrong.net/post/date/2010/01'> 2010年一月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2009/12'> 2009年十二月 &nbsp;(7)</option>
+	<option value='http://zengrong.net/post/date/2009/11'> 2009年十一月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2009/10'> 2009年十月 &nbsp;(1)</option>
+	<option value='http://zengrong.net/post/date/2009/09'> 2009年九月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2009/08'> 2009年八月 &nbsp;(5)</option>
+	<option value='http://zengrong.net/post/date/2009/07'> 2009年七月 &nbsp;(1)</option>
+	<option value='http://zengrong.net/post/date/2009/06'> 2009年六月 &nbsp;(1)</option>
+	<option value='http://zengrong.net/post/date/2009/03'> 2009年三月 &nbsp;(10)</option>
+	<option value='http://zengrong.net/post/date/2009/02'> 2009年二月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2008/11'> 2008年十一月 &nbsp;(2)</option>
+	<option value='http://zengrong.net/post/date/2008/10'> 2008年十月 &nbsp;(1)</option>
+	<option value='http://zengrong.net/post/date/2008/08'> 2008年八月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2008/07'> 2008年七月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2008/06'> 2008年六月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2008/05'> 2008年五月 &nbsp;(1)</option>
+	<option value='http://zengrong.net/post/date/2008/04'> 2008年四月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2008/03'> 2008年三月 &nbsp;(7)</option>
+	<option value='http://zengrong.net/post/date/2008/02'> 2008年二月 &nbsp;(5)</option>
+	<option value='http://zengrong.net/post/date/2008/01'> 2008年一月 &nbsp;(1)</option>
+	<option value='http://zengrong.net/post/date/2007/12'> 2007年十二月 &nbsp;(6)</option>
+	<option value='http://zengrong.net/post/date/2007/11'> 2007年十一月 &nbsp;(7)</option>
+	<option value='http://zengrong.net/post/date/2007/10'> 2007年十月 &nbsp;(1)</option>
+	<option value='http://zengrong.net/post/date/2007/09'> 2007年九月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2007/08'> 2007年八月 &nbsp;(6)</option>
+	<option value='http://zengrong.net/post/date/2007/07'> 2007年七月 &nbsp;(6)</option>
+	<option value='http://zengrong.net/post/date/2007/06'> 2007年六月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2007/05'> 2007年五月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2007/03'> 2007年三月 &nbsp;(3)</option>
+	<option value='http://zengrong.net/post/date/2007/02'> 2007年二月 &nbsp;(10)</option>
+	<option value='http://zengrong.net/post/date/2007/01'> 2007年一月 &nbsp;(12)</option>
+	<option value='http://zengrong.net/post/date/2006/12'> 2006年十二月 &nbsp;(9)</option>
+	<option value='http://zengrong.net/post/date/2006/11'> 2006年十一月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2006/10'> 2006年十月 &nbsp;(11)</option>
+	<option value='http://zengrong.net/post/date/2006/09'> 2006年九月 &nbsp;(10)</option>
+	<option value='http://zengrong.net/post/date/2006/08'> 2006年八月 &nbsp;(9)</option>
+	<option value='http://zengrong.net/post/date/2006/07'> 2006年七月 &nbsp;(9)</option>
+	<option value='http://zengrong.net/post/date/2006/06'> 2006年六月 &nbsp;(11)</option>
+	<option value='http://zengrong.net/post/date/2006/05'> 2006年五月 &nbsp;(15)</option>
+	<option value='http://zengrong.net/post/date/2006/04'> 2006年四月 &nbsp;(6)</option>
+	<option value='http://zengrong.net/post/date/2006/03'> 2006年三月 &nbsp;(16)</option>
+	<option value='http://zengrong.net/post/date/2006/02'> 2006年二月 &nbsp;(15)</option>
+	<option value='http://zengrong.net/post/date/2006/01'> 2006年一月 &nbsp;(4)</option>
+	<option value='http://zengrong.net/post/date/2005/11'> 2005年十一月 &nbsp;(14)</option>
+	<option value='http://zengrong.net/post/date/2005/10'> 2005年十月 &nbsp;(10)</option>
+	<option value='http://zengrong.net/post/date/2005/09'> 2005年九月 &nbsp;(7)</option>
+	<option value='http://zengrong.net/post/date/2005/08'> 2005年八月 &nbsp;(2)</option>
+	<option value='http://zengrong.net/post/date/2005/07'> 2005年七月 &nbsp;(10)</option>
+	<option value='http://zengrong.net/post/date/2005/06'> 2005年六月 &nbsp;(5)</option>
+	<option value='http://zengrong.net/post/date/2005/05'> 2005年五月 &nbsp;(11)</option>
+	<option value='http://zengrong.net/post/date/2005/04'> 2005年四月 &nbsp;(3)</option>
+
+		</select>
+		</aside><aside id="text-9" class="widget widget_text"><h2 class="widget-title">在读</h2>			<div class="textwidget"><script type="text/javascript" src="http://www.douban.com/service/badge/zrong/?selection=latest&amp;picsize=medium&amp;hideself=on&amp;show=dolist&amp;n=4&amp;hidelogo=on&amp;cat=book&amp;columns=2"></script></div>
+		</aside><aside id="text-10" class="widget widget_text"><h2 class="widget-title">读过</h2>			<div class="textwidget"><script type="text/javascript" src="http://www.douban.com/service/badge/zrong/?selection=lastest&amp;picsize=medium&amp;hideself=on&amp;show=collection&amp;n=6&amp;hidelogo=on&amp;cat=book&amp;columns=6"></script></div>
+		</aside><aside id="linkcat-19" class="widget widget_links"><h2 class="widget-title">友情链接</h2>
+	<ul class='xoxo blogroll'>
+<li><a href="http://blog.sina.com.cn/wonderxhd" rel="friend" target="_blank">wonder的BLOG</a></li>
+<li><a href="http://www.coolcode.org" rel="met" target="_blank">CoolCode.Org</a></li>
+<li><a href="http://aoxuis.me/" target="_blank">XA技术不宅</a></li>
+<li><a href="http://www.findspace.name/" rel="contact" target="_blank">findspace</a></li>
+<li><a href="http://www.shadowkong.com/" rel="contact" target="_blank">Rect`s Blog</a></li>
+<li><a href="http://www.fmser.cn/" title="专注于Flash+FMS开发，拥有丰富的开发经验" target="_blank">西部秋虫</a></li>
+<li><a href="http://www.smithfox.com/" rel="contact" target="_blank">Smith &amp; Fox&#039;s Blog</a></li>
+<li><a href="http://ciniao.me" rel="acquaintance co-worker co-resident" title="如果不记录人生的风景，那么活着的唯一意义就是等死……" target="_blank">{ CiNiao&#039;s blog }</a></li>
+<li><a href="http://unityas.com/" target="_blank">unityas</a></li>
+<li><a href="http://blog.zinewow.com/" target="_blank">古树悬叶的博客</a></li>
+<li><a href="http://blog.lyphp.com/" rel="friend" title="Just a PHPer" target="_blank">Lyndon</a></li>
+<li><a href="http://jxyi.org/" target="_blank">探索即是乐趣！</a></li>
+<li><a href="http://reloading.blogbus.com" rel="met" title="文字记录时间的痕迹！" target="_blank">追忆似水年华◆我心思→念</a></li>
+
+	</ul>
+</aside>
+<aside id="linkcat-20" class="widget widget_links"><h2 class="widget-title">推荐网站</h2>
+	<ul class='xoxo blogroll'>
+<li><a href="http://gjsq.me/14428164" target="_blank">Green推广</a></li>
+<li><a href="http://www.flashvideofaq.com/" title="列举了各种码率，各种压缩方式的Flash Video质量" target="_blank">比较各种编码方式的Flash Video质量</a></li>
+
+	</ul>
+</aside>
+<aside id="linkcat-21" class="widget widget_links"><h2 class="widget-title">推荐项目</h2>
+	<ul class='xoxo blogroll'>
+<li><a href="http://lulala.com" target="_blank">噜啦啦</a></li>
+<li><a href="http://sanguo.us" rel="me" title="一段最熟悉的故事，一个不一样的三国" target="_blank">卧龙传</a></li>
+
+	</ul>
+</aside>
+<aside id="text-7" class="widget widget_text"><h2 class="widget-title">又拍云</h2>			<div class="textwidget">静态文件存储由<a href="https://www.upyun.com/?md=zengrong" target="_blank">又拍云存储</a>提供</div>
+		</aside><aside id="text-11" class="widget widget_text"><h2 class="widget-title">CC</h2>			<div class="textwidget"><a href="http://creativecommons.org/licenses/by-nc-sa/3.0" target="_blank"><img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="CC BY-NC-SA" width="88" height="31" /></a>
+<br>
+CC BY-NC-SA<br>
+署名-非商业性使用-相同方式共享</div>
+		</aside>			</div><!-- .widget-area -->
+		
+	</div><!-- .secondary -->
+
+	</div><!-- .sidebar -->
+
+	<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+<article id="post-1563" class="post-1563 post type-post status-publish format-standard hentry category-technology tag-bash tag-linux tag-regexp">
+	
+	<header class="entry-header">
+		<h1 class="entry-title">Bash的=~正则表达式匹配～旧文章害死人啊</h1>	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<div style="margin-top: 15px;color:#FF0000;">
+<ul>
+<li><strong>本站文章除注明转载外，均为本站原创或者翻译。</strong></li>
+<li>本站文章欢迎各种形式的转载，但请18岁以上的转载者注明文章出处，尊重我的劳动，也尊重你的智商；</li>
+<li>本站部分原创和翻译文章提供markdown格式源码，欢迎使用<a href="https://github.com/zrong/blog" target="_blank">文章源码</a>进行转载；</li>
+<li>本博客采用 <a href="http://zengrong.net/wpcmd" target="_blank">WPCMD</a> 维护；</li>
+<li>本文标题：Bash的=~正则表达式匹配～旧文章害死人啊</li>
+<li>本文链接：<a href="http://zengrong.net/post/1563.htm">http://zengrong.net/post/1563.htm</a></li>
+</div>
+<hr />
+
+<p>很简单的一个匹配ip地址的测试，死活就是匹配不了：</p>
+<div class="codehilite">
+<pre><span class="nv">newip</span><span class="o">=</span><span class="s1">&#39;192.168.1.100&#39;</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$newip</span><span class="s2">&quot;</span> <span class="o">=</span>~ <span class="s1">&#39;^([0-9]{1,3}\.){3}[0-9]{1,3}$&#39;</span> <span class="o">]]</span><span class="p">;</span><span class="k">then</span>
+    <span class="nb">echo</span> <span class="s1">&#39;找到了ip地址&#39;</span>
+<span class="k">fi</span>
+</pre>
+</div>
+<p>翻遍了google中的中文资料，都没发现问题。最后终于用英文搜到<a href="http://tldp.org/LDP/abs/html/bashver3.html">《Advanced Bash-Scripting Guide》中的一篇介绍Bash版本的文章</a>，其中写道：<span id="more-1563"></span></p>
+<blockquote>
+<p>The =~ Regular Expression match operator no longer requires quoting<br />
+of the pattern within [[ &#8230; ]].</p>
+</blockquote>
+<p>天哪，这不坑爹么…… google上那些文章中的代码都是在正则周围加了引号的啊！！！</p>
+<p>把测试条件换成下面这样就成功了。</p>
+<div class="codehilite">
+<pre><span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$newip</span><span class="s2">&quot;</span> <span class="o">=</span>~ ^<span class="o">([</span>0-9<span class="o">]{</span>1,3<span class="o">}</span>.<span class="o">){</span>3<span class="o">}[</span>0-9<span class="o">]{</span>1,3<span class="o">}</span><span class="nv">$ </span><span class="o">]]</span><span class="p">;</span><span class="k">then</span>
+    ....
+<span class="k">fi</span>
+</pre>
+</div>
+<p>使用变量的时候，是可以使用引号的：</p>
+<div class="codehilite">
+<pre><span class="nv">newip</span><span class="o">=</span><span class="s1">&#39;192.168.1.100&#39;</span>
+<span class="nv">reg</span><span class="o">=</span><span class="s1">&#39;^([0-9]{1,3}.){3}[0-9]{1,3}$&#39;</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$newip</span><span class="s2">&quot;</span> <span class="o">=</span>~ <span class="nv">$reg</span> <span class="o">]]</span><span class="p">;</span><span class="k">then</span>
+    <span class="nb">echo</span> <span class="s1">&#39;找到了ip地址&#39;</span>
+<span class="k">fi</span>
+</pre>
+</div>
+<p>但是，对于 <code>$reg</code> 这个变量，在 <code>[[]]</code> 操作符中，就不能加上双引号，否则也会不匹配。</p>
+<p><strong>旧文章害死人啊</strong></p>
+<div class='yarpp-related'>
+<hr /><div class="add-info"><h3>关联文章</h3><ol>
+<li><a href="http://zengrong.net/post/347.htm" rel="bookmark" title="ActionScript3正则表达式测试器">ActionScript3正则表达式测试器 </a></li>
+<li><a href="http://zengrong.net/post/1518.htm" rel="bookmark" title="Bash数组操作教程">Bash数组操作教程 </a></li>
+<li><a href="http://zengrong.net/post/1256.htm" rel="bookmark" title="【转】shell总结">【转】shell总结 </a></li>
+<li><a href="http://zengrong.net/post/1254.htm" rel="bookmark" title="【转】Bash命令行历史权威指南">【转】Bash命令行历史权威指南 </a></li>
+</ol></div>
+</div>
+	</div><!-- .entry-content -->
+
+	
+	<footer class="entry-footer">
+		<span class="posted-on"><span class="screen-reader-text">发布于 </span><a href="http://zengrong.net/post/1563.htm" rel="bookmark"><time class="entry-date published" datetime="2012-03-11T00:02:49+00:00">03/11/2012</time><time class="updated" datetime="2015-10-24T21:28:12+00:00">10/24/2015</time></a></span><span class="byline"><span class="author vcard"><span class="screen-reader-text">作者 </span><a class="url fn n" href="http://zengrong.net/post/author/zrong">zrong</a></span></span><span class="cat-links"><span class="screen-reader-text">分类 </span><a href="http://zengrong.net/post/category/technology" rel="category tag">技术</a></span><span class="tags-links"><span class="screen-reader-text">标签 </span><a href="http://zengrong.net/post/tag/bash" rel="tag">bash</a>、<a href="http://zengrong.net/post/tag/linux" rel="tag">Linux</a>、<a href="http://zengrong.net/post/tag/regexp" rel="tag">RegExp</a></span>				<!-- 2015-11-15 zrong added start -->
+		<span class="the_views">9,438 次查看</span>
+		<!-- 2015-11-15 zrong added end -->
+	</footer><!-- .entry-footer -->
+
+</article><!-- #post-## -->
+<a name="comments"></a>
+<div id="SOHUCS" sid="1563"></div> 
+<script type="text/javascript"> 
+(function(){ 
+    var appid = 'cyrpy0Ose'; 
+    var conf = 'prod_73c235677a4c8e62e31453be11834285'; 
+    var width = window.innerWidth || document.documentElement.clientWidth; 
+    if (width < 960) { 
+        window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); 
+    } else { 
+        var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); 
+    }})(); 
+</script>            
+<div id="ds-ssr" style="display:none">
+		            <ol id="commentlist">
+                		<li class="comment even thread-even depth-1" id="li-comment-19973">
+			<article id="comment-19973" class="comment">
+				<footer class="comment-meta">
+					<cite class="comment-author vcard">
+						<span class="fn">Caterpillar</span> on <a rel="nofollow" href="http://zengrong.net/post/1563.htm#comment-19973"><time pubdate datetime="2016-04-23T15:17:14+00:00">04/23/2016 at 15:17</time></a> <span class="says">said:</span>					</cite>
+				</footer>
+	
+				<div class="comment-content"><p>man bash中，有关&#8221;=~&#8221;的注解：</p>
+<p>Any part of the pattern may be quoted to force the quoted portion to be matched as a string.</p>
+</div>
+				
+			</article>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-15946">
+			<article id="comment-15946" class="comment">
+				<footer class="comment-meta">
+					<cite class="comment-author vcard">
+						<span class="fn"><a href='http://yzs.me' rel='external nofollow' class='url'>★Extreme★</a></span> on <a rel="nofollow" href="http://zengrong.net/post/1563.htm#comment-15946"><time pubdate datetime="2014-01-22T12:01:06+00:00">01/22/2014 at 12:01</time></a> <span class="says">said:</span>					</cite>
+				</footer>
+	
+				<div class="comment-content"><p>好吧，原来如此，习惯加上双引号了，结果刚刚折腾了好久，一个劲不行，原来正则表达式放在[[]]不能加引号！谢了哈！</p>
+</div>
+				
+			</article>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="li-comment-15337">
+			<article id="comment-15337" class="comment">
+				<footer class="comment-meta">
+					<cite class="comment-author vcard">
+						<span class="fn"><a href='http://haiquan.sinaapp.com' rel='external nofollow' class='url'>haiquan</a></span> on <a rel="nofollow" href="http://zengrong.net/post/1563.htm#comment-15337"><time pubdate datetime="2013-07-16T18:20:08+00:00">07/16/2013 at 18:20</time></a> <span class="says">said:</span>					</cite>
+				</footer>
+	
+				<div class="comment-content"><p>顶你，问题搞定了，嘿嘿。</p>
+</div>
+				
+			</article>
+		</li><!-- #comment-## -->
+            </ol>
+
+		    </div>
+
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">文章导航</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="http://zengrong.net/post/1561.htm" rel="prev"><span class="meta-nav" aria-hidden="true">上一</span> <span class="screen-reader-text">上篇文章：</span> <span class="post-title">【转】程序员技术练级攻略</span></a></div><div class="nav-next"><a href="http://zengrong.net/post/1564.htm" rel="next"><span class="meta-nav" aria-hidden="true">下一</span> <span class="screen-reader-text">下篇文章：</span> <span class="post-title">pacman升级到4.0之后的错误处理</span></a></div></div>
+	</nav>
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
+
+
+	</div><!-- .site-content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+					</div><!-- .site-info -->
+	</footer><!-- .site-footer -->
+
+</div><!-- .site -->
+
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+var cf = document.getElementById("commentform");
+if(cf){
+	var msghtml = "<strong>NOTICE:</strong> You should type some Chinese word (like “信曾哥，得永生”) in your comment to pass the spam-check, thanks for your patience!";
+	if(cf.insertAdjacentHTML){
+		cf.insertAdjacentHTML("afterEnd", msghtml);
+	}else{/* FireFox */
+		var range = cf.ownerDocument.createRange();
+		range.setStartAfter(cf);
+		var frag = range.createContextualFragment(msghtml);
+		cf.parentNode.insertBefore(frag, cf.nextSibling);
+	}
+}
+//--><!]]></script><link rel='stylesheet' id='yarppRelatedCss-css'  href='http://zengrong.net/wp-content/plugins/yet-another-related-posts-plugin/style/related.css?ver=4.5.3' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var viewsCacheL10n = {"admin_ajax_url":"http:\/\/zengrong.net\/wp-admin\/admin-ajax.php","post_id":"1563"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://zengrong.net/wp-content/plugins/wp-postviews/postviews-cache.js?ver=1.68'></script>
+<script type='text/javascript' src='http://zengrong.net/wp-content/themes/twentyfifteen/js/skip-link-focus-fix.js?ver=20141010'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var screenReaderText = {"expand":"<span class=\"screen-reader-text\">\u5c55\u5f00\u5b50\u83dc\u5355<\/span>","collapse":"<span class=\"screen-reader-text\">\u6298\u53e0\u5b50\u83dc\u5355<\/span>"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://zengrong.net/wp-content/themes/twentyfifteen/js/functions.js?ver=20150330'></script>
+<script type='text/javascript' src='http://zengrong.net/wp-includes/js/wp-embed.min.js?ver=4.5.3'></script>
+
+</body>
+</html>

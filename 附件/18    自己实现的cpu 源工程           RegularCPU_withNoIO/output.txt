@@ -1,0 +1,10 @@
+Storage Target: Non-Volatile Spartan3AN
+xc3s50an               [131072]
+FF
+Untitled
+H:\RegularCPU_withNoIO\
+
+MCS
+No
+1
+No

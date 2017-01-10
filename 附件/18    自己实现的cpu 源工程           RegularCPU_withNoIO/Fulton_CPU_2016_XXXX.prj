@@ -1,0 +1,7 @@
+vhdl work "WriteBack.vhd"
+vhdl work "StorageManager.vhd"
+vhdl work "MemoryAccesssControl.vhd"
+vhdl work "FetchInstr.vhd"
+vhdl work "ClockManager.vhd"
+vhdl work "ALU.vhd"
+vhdl work "Fulton_CPU_2016_XXXX.vhd"

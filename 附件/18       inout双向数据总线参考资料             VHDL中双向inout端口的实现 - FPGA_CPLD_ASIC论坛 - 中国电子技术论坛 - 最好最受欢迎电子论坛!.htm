@@ -1,0 +1,2051 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit"><!--强制360使用极速模式-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>VHDL中双向inout端口的实现 - FPGA|CPLD|ASIC论坛 -  中国电子技术论坛 -  最好最受欢迎电子论坛!</title>
+<meta name="generator" content="Discuz! X2" /><link href="http://bbs.elecfans.com/jishu_222923_1_1.html" rel="canonical" />
+<meta name="keywords" content="VHDL中双向inout端口的实现" />
+<meta name="description" content=" VHDL中双向inout端口的实现 ,欢迎来中国电子技术论坛交流讨论。" />
+<meta name="generator" content="Discuz! X3.2" />
+<meta name="author" content="Discuz! Team and Comsenz UI Team" />
+<meta name="copyright" content="2001-2013 Comsenz Inc." />
+<meta name="MSSmartTagsPreventParsing" content="True" />
+<meta http-equiv="MSThemeCompatible" content="Yes" />
+<base href="http://bbs.elecfans.com/" /><link rel="stylesheet" type="text/css" href="data/cache/style_19_common.css?kZP" /><link rel="stylesheet" type="text/css" href="data/cache/style_19_forum_viewthread.css?kZP" /><script type="text/javascript">var STYLEID = '19', STATICURL = 'static/', IMGDIR = 'static/image/common', VERHASH = 'kZP', charset = 'utf-8', discuz_uid = '0', cookiepre = 'rlhx_e495_', cookiedomain = '.elecfans.com', cookiepath = '/', showusercard = '1', attackevasive = '0', disallowfloat = 'login|newthread', creditnotice = '1|威望|点,3|积分|分', defaultstyle = '', REPORTURL = 'aHR0cDovL2Jicy5lbGVjZmFucy5jb20vamlzaHVfMjIyOTIzXzFfMS5odG1s', SITEURL = 'http://bbs.elecfans.com/', JSPATH = 'static/js/', CSSPATH = 'data/cache/style_', DYNAMICURL = '';</script>
+<script src="static/js/common.js?kZP" type="text/javascript"></script>
+<script type="text/javascript">
+var userNavShow = false;
+var uid = 0;
+</script>
+<meta name="application-name" content="中国电子技术论坛" />
+<meta name="msapplication-tooltip" content="中国电子技术论坛" />
+<meta name="msapplication-task" content="name=工程师社区;action-uri=http://bbs.elecfans.com/portal.php;icon-uri=http://bbs.elecfans.com/static/image/common/portal.ico" /><meta name="msapplication-task" content="name=论坛;action-uri=http://bbs.elecfans.com/forum.php;icon-uri=http://bbs.elecfans.com/static/image/common/bbs.ico" />
+<meta name="msapplication-task" content="name=群组;action-uri=http://bbs.elecfans.com/group.php;icon-uri=http://bbs.elecfans.com/static/image/common/group.ico" /><meta name="msapplication-task" content="name=家园;action-uri=http://bbs.elecfans.com/home.php;icon-uri=http://bbs.elecfans.com/static/image/common/home.ico" /><link rel="archives" title="中国电子技术论坛" href="http://bbs.elecfans.com/archiver/" />
+<script src="static/js/forum.js?kZP" type="text/javascript"></script>
+<script type="text/javascript">
+var ga_fid = "70";
+</script>
+</head>
+
+<body id="nv_forum" class="pg_viewthread" onkeydown="if(event.keyCode==27) return false;">
+<div id="append_parent"></div><div id="ajaxwaitid"></div>
+<div id="qmenu_menu" class="p_pop blk" style="display: none;">
+<div class="ptm pbw hm">
+请 <a href="javascript:;" class="xi2" onclick="lsSubmit()"><strong>登录</strong></a> 后使用快捷导航<br />没有帐号？<a href="member.php?mod=reg" class="xi2 xw1">注册</a>
+</div>
+<div id="fjump_menu" class="btda"></div></div>
+        <!-- 头部 --><div id="hd">
+<div class="hdc">
+<div class="wp cl"><a class="logo" href="http://bbs.elecfans.com/" title="中国电子技术论坛"><img src="static/image/common/logo_new.png" alt="中国电子技术论坛" border="0" /></a>
+<ul class="top_nav float_l">
+<li><a href="http://www.elecfans.com/" target="_blank">首页</a></li>
+<li id="pull_nav" class="forum_cur" style="position:relative;">
+<a class="forum_dot" title="点击查看全部版块" href="/">版块</a>
+<div id="forum_nav">
+<div class="sub_dis_wrap">
+<h3 class="disTitle"><a href="/forum.php?gid=3" target="_blank">嵌入式开发</a></h3>
+<ul class="disList">
+<li><a href="/zhuti_mcu_1.html" target="_blank">单片机</a></li>
+<li><a href="/zhuti_stm32_1.html" target="_blank">STM32</a></li>
+<li><a href="/zhuti_msp430_1.html" target="_blank">MSP430</a></li>
+<li><a href="/zhuti_freescale_1.html" target="_blank">飞思卡尔</a></li>
+</ul>
+<ul class="disList" style="margin-right: 0;">
+<li><a href="/zhuti_arm_1.html" target="_blank">ARM</a></li>
+<li><a href="/zhuti_Linux_1.html" target="_blank">Linux</a></li>
+<li><a href="/zhuti_fpga_1.html" target="_blank">FPGA</a></li>
+<li><a href="/zhuti_DSP_1.html" target="_blank">DSP</a></li>
+</ul>
+</div>
+<div class="sub_dis_wrap">
+<h3 class="disTitle"><a href="/forum.php?gid=48" target="_blank">硬件设计论坛</a></h3>
+<ul class="disList">
+<li><a href="/zhuti_power_1.html" target="_blank">电源技术</a></li>
+<li><a href="/zhuti_dianlu_1.html" target="_blank">电路设计</a></li>
+<li><a href="/zhuti_yuanjian_1.html" target="_blank">电子元器件</a></li>
+</ul>
+</div>
+<div class="sub_dis_wrap">
+<h3 class="disTitle"><a href="/forum.php?gid=1" target="_blank">EDA设计论坛</a></h3>
+<ul class="disList">
+<li><a href="/zhuti_protel_1.html" target="_blank">Protel</a></li>
+<li><a href="/zhuti_830_1.html" target="_blank">PCB设计</a></li>
+<li><a href="/zhuti_multisim_1.html" target="_blank">Multisim</a></li>
+</ul>
+<ul class="disList" style="margin-right: 0;">
+<li><a href="/zhuti_proteus_1.html" target="_blank">Proteus</a></li>
+<li><a href="/zhuti_easyeda_1.html" target="_blank">easyeda</a></li>
+</ul>									
+</div>
+<div class="sub_dis_wrap">
+<h3 class="disTitle"><a href="/forum.php?gid=32" target="_blank">测试测量</a></h3>
+<ul class="disList">
+<li><a href="/zhuti_labview_1.html" target="_blank">Labview</a></li>
+<li><a href="/zhuti_matlab_1.html" target="_blank">matlab</a></li>
+<li><a href="/zhuti_celiang_1.html" target="_blank">测量</a></li>
+</ul>
+</div>
+<div class="sub_dis_wrap">
+<h3 class="disTitle"><a href="/forum.php?gid=639" target="_blank">开源硬件</a></h3>
+<ul class="disList">
+<li><a href="/zhuti_shumeipai_1.html" target="_blank">树莓派</a></li>
+<li><a href="/zhuti_arduino_1.html" target="_blank">Arduino</a></li>
+<li><a href="/zhuti_jiqiren_1.html" target="_blank">机器人</a></li>
+</ul>
+<ul class="disList" style="margin-right: 0;">
+<li><a href="/zhuti_640_1.html" target="_blank">智能硬件</a></li>
+<li><a href="/zhuti_831_1.html" target="_blank">NanoPi</a></li>
+</ul>									
+</div>
+<div class="sub_dis_wrap" style="border:0;">
+<h3 class="disTitle"><a href="/forum.php?gid=345" target="_blank">行业应用</a></h3>
+<ul class="disList">
+<li><a href="/zhuti_wireless_1.html" target="_blank">无线通信</a></li>
+<li><a href="/zhuti_dianji_1.html" target="_blank">电机驱动</a></li>
+<li><a href="/zhuti_rf_1.html" target="_blank">天线射频技术</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="home_cur"><a href="/default.php" target="_self">最新帖子</a></li>
+<li class="try_cur"><a href="/try.html" target="_blank">开发板试用</a></li>
+<li class="eetalk parent_li active"><a href="http://z.elecfans.com/" target="_blank">众筹</a></li>
+<li class="jifen_cur"><a href="http://jifen.elecfans.com/" target="_blank">积分商城</a></li>
+<li class="download_cur"><a href="http://www.elecfans.com/soft/" target="_blank">下载</a></li>
+<li id="drag_nav" class="discovery_cur" style="position:relative;">
+<a class="discovery_dot" title="查看更多内容资源" href="/">发现</a>
+<div id="discovery_nav">
+<div class="sub_dis_wrap">
+<h3 class="disTitle"><a href="http://www.elecfans.com/" target="_blank">电子发烧友</a></h3>
+<ul class="disList">
+<li><a href="http://www.elecfans.com/news/hangye/" target="_blank">电子新闻</a></li>
+<li><a href="http://www.elecfans.com/soft/" target="_blank">资料下载</a></li>
+<li><a href="http://www.elecfans.com/dianlutu/" target="_blank">电子电路</a></li>
+<li><a href="http://www.elecfans.com/article/interview/" target="_blank">高端访谈</a></li>
+</ul>
+<ul class="disList">
+<li><a href="http://www.elecfans.com/technical/all/" target="_blank">设计技术</a></li>
+<li><a href="http://www.elecfans.com/application/" target="_blank">行业应用</a></li>
+<li><a href="http://www.elecfans.com/tags/" target="_blank">电子标签</a></li>
+<li><a href="http://www.elecfans.com/tekan/" target="_blank">电子特刊</a></li>
+</ul>
+<ul class="disList" style="margin-right: 0;">
+<li><a href="http://bbs.elecfans.com/forum.php" target="_blank">工程师社区</a></li>
+<li><a href="http://event.elecfans.com/index/seminar.html" target="_blank">技术研讨会</a></li>
+<li><a href="http://webinar.elecfans.com/" target="_blank">在线研讨会</a></li>
+<li><a href="http://www.elecfans.com/yuanqijian/" target="_blank">电子元器件</a></li>
+</ul>
+</div>
+<div class="sub_dis_wrap">
+<h3 class="disTitle"><a>特色服务</a></h3>
+<ul class="disList">
+<li><a href="http://bbs.elecfans.com/try.html" target="_blank">开发板试用</a></li>
+<li><a href="http://z.elecfans.com/" target="_blank">聚丰众筹</a></li>
+<li><a href="http://d.elecfans.com/" target="_blank">电子说</a></li>
+<li><a href="http://www.elecfans.com/tools/" target="_blank">在线工具</a></li>
+</ul>
+<ul class="disList" style="margin-right: 0;">
+<li><a href="http://t.elecfans.com/" target="_blank">发烧友学院</a></li>
+<li><a href="http://e.elecfans.com/" target="_blank">聚丰硬件</a></li>
+<li><a href="http://pdf.elecfans.com/" target="_blank">Datasheet查询</a></li>
+<li><a href="http://bbs.elecfans.com/forum.php" target="_blank">电子问答</a></li>
+</ul>
+</div>
+<div class="sub_dis_wrap">
+<h3 class="disTitle"><a href="http://www.hqpcb.com/" target="_blank">华强PCB</a></h3>
+<ul class="disList" style="margin-right: 0;">
+<li><a href="http://www.hqpcb.com/online.html" target="_blank">在线算价</a></li>
+<li><a href="http://www.hqpcb.com/pay.html" target="_blank">付款方式</a></li>
+<li><a href="http://www.hqpcb.com/orderstep.html" target="_blank">下单流程</a></li>
+<li><a href="http://www.hqpcb.com/product.html" target="_blank">产品展示</a></li>
+</ul>
+</div>
+<div class="sub_dis_wrap" style="border-right: 0;">
+<h3 class="disTitle"><a href="http://www.hqchip.com/" target="_blank">华强芯城</a></h3>
+<ul class="disList">
+<li><a href="http://www.hqchip.com/" target="_blank">元器件搜索</a></li>
+<li><a href="http://www.hqchip.com/fangan/" target="_blank">方案中心</a></li>
+<li><a href="http://www.hqchip.com/mozu/" target="_blank">模组专区</a></li>
+<li><a href="http://www.hqchip.com/promote/" target="_blank">现货库存</a></li>
+</ul>
+<ul class="disList" style="margin-right: 0;">
+<li><a href="http://www.hqchip.com/glist/all_cate.html" target="_blank">元器件分类</a></li>
+<li><a href="http://www.hqchip.com/kaifaban/" target="_blank">开发板专区</a></li>
+<li><a href="http://www.hqchip.com/bom/" target="_blank">BOM服务</a></li>
+<li><a href="http://bbs.elecfans.com/forum.php?gid=263" target="_blank">原厂专区</a></li>
+</ul>
+</div>
+</div>
+</li>
+<!-- <li class="eetalk parent_li active"><a href="/EEtalk/">EEtalk</a></li> -->
+</ul>
+<div class="float_r">
+<div class="float_l"><div id="scbar" class="scbar_narrow ">
+<form id="scbar_form" method="get" autocomplete="off" onsubmit="searchFocus($('scbar_txt'))" action="http://s.elecfans.com/cse/search" target="_blank">
+
+        <div class="s-area">
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td class="scbar_txt_td">
+<input type="text" name="q" id="scbar_txt" value="请输入搜索内容" autocomplete="off" x-webkit-speech speech />
+<input name="s" value="6298135183618923127" type="hidden">
+<input name="nsid" value="2" type="hidden">
+</td>
+<td class="scbar_btn_td"><button type="submit" id="scbar_btn" sc="1" value="true">帖子</button></td>
+<td class="scbar_hot_td">
+</td>
+</tr>
+</table>
+        </div>
+</form>
+</div>
+<ul id="scbar_type_menu" class="p_pop" style="display: none;"><li><a href="javascript:;" rel="curforum" fid="70" >本版</a></li><li><a href="javascript:;" rel="forum" class="curtype">帖子</a></li><li><a href="javascript:;" rel="user">用户</a></li></ul>
+<script type="text/javascript">
+initSearchmenu('scbar', '');
+</script>
+</div>
+<!-- 电子产业链 -->
+<!-- 						<div class="indusLinks z">
+<div class="industHover cl"><a href="http://www.elecfans.com/"><span>发烧友首页&nbsp;</span></a></div>
+<div class="industShow">
+        		<a target="_blank" href="http://www.hqdoc.com"><img src="/template/elecfans_2015/images/hqdoc.png"></a><a target="_blank" href="http://www.hqpcb.com"><img src="/template/elecfans_2015/images/hqpcb.png"></a><a target="_blank" href="http://www.hqchip.com"><img src="/template/elecfans_2015/images/hqchip.png"></a><a target="_blank" href="http://www.elecfans.com"><img src="/template/elecfans_2015/images/elecfans.png"></a>
+        	</div>
+</div> -->
+<div class="float_l"><script src="static/js/logging.js?kZP" type="text/javascript"></script>
+<form method="post" autocomplete="off" id="lsform" action="member.php?mod=logging&amp;action=login&amp;loginsubmit=yes&amp;infloat=yes&amp;lssubmit=yes" onsubmit="return lsSubmit();">
+<div class="fastlg cl">
+<span id="return_ls" style="display:none"></span>
+<div class="pns">
+<ul class="top_nav float_l" style="margin-left:20px;">
+<li><a href="member.php?mod=logging&amp;action=login" >登录</a></li>
+<li><span class="sp"></span></li>
+<li><a href="member.php?mod=reg" >注册</a></li>
+</ul>
+<input type="hidden" name="quickforward" value="yes" />
+<input type="hidden" name="handlekey" value="ls" />
+</div>
+<!--//-->
+</div>
+</form>
+
+</div>
+<!-- 						<span class="v-icon" title="VIP会员" alt="VIP会员"></span>
+<a class="vip-icon" href="http://vip.elecfans.com/" target="_blank" title="每天只需1块钱，玩转电子界人脉圈！" alt="每天只需1块钱，玩转电子界人脉圈！"></a> -->
+<style type="text/css">
+/* 增加vip会员样式 */
+.v-icon{ *float:left;*margin-top:4px;padding-right:14px;background:url(/template/elecfans_2015/images/v-icon.png) no-repeat 2px 1px; }
+.vip-icon { *float:left;*margin-top:4px;padding-right:30px;background:url(/template/elecfans_2015/images/vip-icon.png) no-repeat 5px 1px; }
+</style>
+            </div>
+                </div>
+</div>
+<div class="nv">
+<ul class="p_pop h_pop" id="plugin_menu" style="display: none">  <li><a href="plugin.php?id=dsu_paulsign:sign" id="mn_plink_sign">每日签到</a></li>
+ </ul>
+<div class="p_pop h_pop" id="mn_userapp_menu" style="display: none"></div></div>
+</div>
+<div id="wp" class="wp">
+<style type="text/css">
+body { background: #f3f3f3; }
+#pt  { height: 60px; margin: 0; line-height: 60px; }
+#pt .z a { height: 60px; }
+#wp, #ft { background: none; padding: 0; overflow: visible; }
+.breadNav { font-size: 13px; color: #333; }
+.w720 { max-width: 720px; overflow: hidden; }
+#nv_forum #ct { width: 1198px; margin: 0 auto; border: 1px solid #efefef; }
+/*@media screen and (min-width: 1260px) { #nv_forum #ct { width: 1198px !important; } }*/
+.authi { margin-left: 30px; }
+.authi a { font-size: 15px; font-weight: bold; }
+.bar_tip { font-size: 13px; color: #999; width: 100%; }
+.bar_tip .newbd{line-height: normal;margin-top: 5px;padding: 4px 10px;border: 1px solid #efefef;border-radius: 3px;}
+.line { color: #e4e4e4; display: inline-block; margin-right: 16px; }
+.glance,.reply { display: inline-block; margin-right: 16px; }
+.reply { color: #4083A9; }
+.pil { display: none; }
+.pls .user_team { color: #999; padding-top: 12px; border-top: 1px dashed #e4e4e4; margin:12px 30px; }
+.info_num a { color: #DE533C; font-size: 13px; }
+.info_num th{ border-right: 1px dashed #e4e4e4; color: #7A7A7A; }
+.info_num { width: 150px; }
+.twin_dots { position: absolute; right: -4px; bottom: -3px; width: 18px; height: 8px; }
+.posts:last-child .plhin { border-bottom: 0 !important; }
+.posts:last-child .twin_dots { display: none !important; }
+#postlist #p_btn a { font-family: "微软雅黑"; }
+.pob em .fastre { padding-left: 23px; background: url(/template/elecfans_2015/images/bar_icons.png) no-repeat 0 -40px; color: #A22328;; }
+.bor_t .bbda { border-bottom: 0; color: #333; font-size: 13px; }
+.about_post { padding: 2%; border: 1px dashed #e4e4e4; background: #ffffe9; }
+.about_post li { width: 47%; color: #ccc; }
+.about_post li a { color: #666; display: inline-block; margin-left: 6px; }
+
+.floor { margin-bottom: 10px; }
+.floor a { color: #999; font-size: 15px; }
+#floatlayout_reply .quote { margin-left: 0; background: #f9f9f9; padding: 9px 12px; margin: 0 0 5px 0; }
+#floatlayout_reply .tedt {width: 100%; }
+.advert { margin-top: 5px; }
+.advert_diy { width: 465px; height: 88px; border: 1px solid #e4e4e4; background: #fff; }
+
+#pt .z em{margin:15px 2px 0 4px;}
+/*浮动页码*/
+#footerPage { display: none; width: 100%; height: 54px; border-top: 1px solid #f2f2f2; border-bottom: 1px solid #f2f2f2; box-shadow: 0 -2px 3px #fafafa; position: fixed; bottom: 0; left: 0; z-index: 99; background: #fff; color: #333; font-size: 13px; }
+.backPre { display: inline-block; padding-left: 33px; color: #999; background: url(/template/elecfans_2015/images/backPre.jpg) no-repeat; }
+.backTop { background: #4a4a4a url(/template/elecfans_2015/images/backTop.png) no-repeat 11px 12px; width: 46px; height: 40px; border-radius: 3px; margin-top: 8px; display: block; cursor: pointer; }
+
+/*最佳答案*/
+.best_aws a { display: block; width: 91px; height: 30px; font: 13px/30px "微软雅黑"; color: #60bd6c; border: 1px solid #60bd6c; border-radius: 3px; padding-left: 32px; margin-bottom: 12px; background: url("/static/image/common/best_aws.png") no-repeat 9px 6px; }
+
+/*2015-07-30*/
+#bbs-top-ad{position: relative;width: 100%;height: 90px;overflow: hidden;}
+#bbs-ad-wrap{position: absolute;width: 100%;top: 0;left: 0;}
+#bbs-ad-wrap1 li div{height: 28px;border: 1px solid #fff;background-color: #f9f9f9;}
+
+/*2015-08-14 发表新帖 zhc*/
+.new-arc{height: 34px;margin-bottom: 10px;}
+.new-arc .disinline{display: inline-block;zoom: 1;*display: inline;}
+.new-arc .new-page, .new-arc .top-ad{vertical-align: top;}
+.new-arc .new-page{height: 34px;line-height: 34px;padding: 0 16px;background: url("/template/elecfans_201508/images/post_icon1.png") no-repeat 14px 9px #d22222;color: #fff;font-size: 13px;font-weight: bold;text-indent: 20px;text-align: left;border-radius: 2px;}
+.new-arc .top-ad{width: 890px;margin-left: 200px;text-align: right;}
+.new-arc .top-ad div{height: 34px;line-height: 34px;margin-left: 35px;color: #4183c4;font-size: 13px;}
+.newtags{font-size: 13px;}
+.newtags span{margin-right: 9px;}
+.newtags a{display: inline-block;zoom: 1;*display: inline;padding: 3px 10px;border: 1px solid #fff;color: #4183c4;}
+.newtags a:hover{border-color:#5daeff;background-color: #dfefff;}
+.bor_t .newpg-list{float: left;margin-right: 19px;padding-bottom: 18px;font-family: "microsoft yahei";}
+.bor_t .mrright0{margin-right: 0;}
+.bor_t .newpg-list h3{position: relative;width: 334px;height: 46px;line-height: 46px;border-width: 1px 1px 0 1px;border-style: solid;border-color: #3da3ea #3da3ea transparent #f2f2f2;background-color: #f7f7f7;color: #666;font-size: 16px;font-weight: normal;text-indent: 14px;z-index: 5;}
+.bor_t .newpg-list .blue-sqr, .bor_t .newpg-list .grey-sqr{position: absolute;display: block;width: 7px;height: 7px;left: -4px;background-image: url(/static/image/diy/circle-bgimg.jpg);z-index: 1;}
+.bor_t .newpg-list .blue-sqr{top: -4px;background-position: 0 0;}
+.bor_t .newpg-list .grey-sqr{bottom: -4px;background-position: 0 -7px;}
+.bor_t .newpg-list ul{width: 334px;padding: 10px 0;border-width: 0px 1px 1px 1px;border-style: solid;border-color: transparent #3da3ea #e4e4e4 #e4e4e4;background-color: #fff;}
+.bor_t .newpg-list li{line-height: 28px;margin-left: 14px;padding-left: 20px;background: url(/static/image/diy/pglist-bgimg.png) no-repeat 0 6px;}
+.bor_t .newpg-list li a{display: block;color: #4183c4;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.newpg-title{padding: 12px 0;border-bottom: 1px solid #e4e4e4;text-indent: 2em;}
+/*左侧整体宽度*/
+#postlist{float: left;width: 882px;margin-right: 8px;border-right: 1px solid #e4e4e4;background-color: #fff;}
+#postlist img{max-width: 690px;}
+/*左侧用户头像及信息展示宽度*/
+#postlist .pls, #f_pst .pls{width: 149px;}
+.plc{padding: 12px 20px;}
+.pls .avatar{margin: 20px 25px 10px;}
+.authi{margin-left: 25px;}
+.pls .user_team{margin: 12px 25px;}
+.pls .tns{padding: 0;}
+/*右侧广告*/
+.detail-rigad{float: left;width: 300px;}
+.detail-rigad div{width: 300px;margin-top: 10px;}
+#det-rigad1{height: 250px;border-radius: 3px;}
+#det-rigad3{height: 600px;}
+/*分页按钮样式*/
+#pageNum{padding-left: 160px;}
+#pageNum .pg{float: none;}
+/*隐藏右侧导航及新导航样式*/
+.new-wrapper{border: 1px solid #e4e4e4;}
+#scrolltop{display: none;}
+#scrolltop-new {display: none;position: absolute;width: 48px;top: 200px;background: #fff;border: 1px #d7d7d7 solid;border-top: 0;cursor: pointer;}
+#scrolltop-new:hover {text-decoration: none;}
+#scrolltop-new a {display: block;width: 48px;height: 44px;line-height: 12px;text-align: center;color: #787878;text-decoration: none;background: url(../../static/image/common/scrolltop.png) no-repeat 4px 8px;border-top: 1px #cdcdcd solid;}
+#scrolltop-new a b {visibility: hidden;font-weight: normal;}
+a.nscrolltopa:hover{background-position: -36px 8px !important;}
+a.nreplyfast {background-position: 4px -22px !important;}
+a.nreplyfast:hover {background-position: -36px -22px !important;}
+a.nreturnlist, a.nreturnboard {background-position: 4px -54px !important;}
+a.nreturnlist:hover, a.nreturnboard:hover {background-position: -36px -54px !important;}
+/*分页样式*/
+.pg a, .pgb a, .pg label, .pg a.nxt, .pg a.prev{background-color: #fff;}
+.pg a, .pg strong, .pgb a{padding: 7px 12px;}
+.pgb a:hover{padding: 7px 12px;}
+.pg label{padding: 2px 8px;}
+.pg a.nxt, .pg a.nxt:hover{padding: 7px 24px 6px 12px;background-position: 63px -131px;}
+.pg a.prev, .pg a.prev:hover{padding: 7px 12px 6px 24px;background-position: 12px -85px;}
+
+</style>
+<script type="text/javascript">var fid = parseInt('70'), tid = parseInt('222923');</script>
+
+<script src="static/js/forum_viewthread.js?kZP" type="text/javascript"></script>
+<script type="text/javascript">zoomstatus = parseInt(1);var imagemaxwidth = '590';var aimgcount = new Array();</script>
+
+<!-- 广告 -->
+<div class="advert cl">
+    <div class="float_l" id="BbsLeaderboard"></div>
+    <div class="float_r advert_diy">
+        <!--滚动广告区域-->
+        <div id="bbs-top-ad">
+        	<ul id="bbs-ad-wrap">
+                <li>
+        			<div id="ad292"></div>
+        			<div id="ad293"></div>
+        			<div id="ad294"></div>
+        		</li>
+        		<li>
+        			<div id="ad317"></div>
+        			<div id="ad318"></div>
+        			<div id="ad319"></div>
+        		</li>
+        	</ul>
+        </div>
+        <!--滚动广告区域 end-->
+    </div>
+</div>
+
+<!-- 面包屑导航 -->
+<div>
+<ul class="bread_nav cl" id="details_nav">
+        <li><img src="/template/elecfans_201508/images/bread_img.png" alt="bread"><a href="http://bbs.elecfans.com/forum.php">电子发烧友论坛</a><span>/</span></li>
+    <li class="drop_nav">
+        <a href="http://bbs.elecfans.com/forum.php?gid=3">嵌入式论坛</a><span>/</span>
+        <ul class="sec_nav">
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=23" title="电子论坛综合区">电子论坛综合区</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=3" title="嵌入式论坛">嵌入式论坛</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=752" title="电源技术论坛">电源技术论坛</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=48" title="硬件设计论坛">硬件设计论坛</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=32" title="测试测量论坛">测试测量论坛</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=777" title="检测技术与质量">检测技术与质量</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=1" title="EDA设计论坛">EDA设计论坛</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=345" title="综合技术与应用">综合技术与应用</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=639" title="开源硬件">开源硬件</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=8" title="IC设计论坛">IC设计论坛</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=7" title="消费电子论坛">消费电子论坛</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=6" title="无线通信论坛">无线通信论坛</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=753" title="个人版区">个人版区</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=263" title="厂商专区">厂商专区</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=19" title="论坛服务区">论坛服务区</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=645" title="高校联盟">高校联盟</a></li>
+            <li><a href="http://bbs.elecfans.com/forum.php?gid=27" title="供求信息发布">供求信息发布</a></li>
+        </ul>
+    </li>
+    <li class="drop_nav non_nav">
+        <a href="http://bbs.elecfans.com/zhuti_fpga_1.html">FPGA|CPLD|ASIC论坛</a>                    <ul class="sec_nav">
+                            <li><a href="http://bbs.elecfans.com/zhuti_mcu_1.html" title="单片机论坛">单片机论坛</a></li>
+                            <li><a href="http://bbs.elecfans.com/zhuti_DSP_1.html" title="DSP论坛">DSP论坛</a></li>
+                            <li><a href="http://bbs.elecfans.com/zhuti_emb_1.html" title="嵌入式系统论坛">嵌入式系统论坛</a></li>
+                        </ul>
+            </li>
+        <li>
+        <span>/</span>
+        <a href="http://bbs.elecfans.com/jishu_222923_1_1.html" class="curNav" >VHDL中双向inout端口的实现</a>
+        <div class="bread_tip">
+            <img src="/template/elecfans_201508/images/bread_tip.png" alt="关闭提示">
+            <div class="closeTip"></div>
+        </div>
+    </li>
+    </ul>
+</div>
+<!--发表新帖区域+顶部分页显示-->
+<div class="cl">
+<!--发表新帖区域 开始 zhc-->
+<div class="new-arc ml10 z">
+<a class="disinline new-page"  href="forum.php?mod=post&amp;action=newthread&amp;fid=70" target="_blank">发表新帖</a>
+</div>
+<!--发表新帖区域 结束 zhc-->
+<div class="pgs mtm mbm y" id="pageNum" style="margin-top: 2px !important;">
+        <!--<span class="pgb"><a href="http://bbs.elecfans.com/zhuti_fpga_1.html">返回列表</a></span>-->
+</div>
+<!--diy广告区-->
+<div class="new-arc cl">
+    <div class="disinline top-ad">
+        <!--<div class="disinline">• 使用六合一示波器，事半功倍</div><div class="disinline">• 提供最完美的电子系统“心脏”电源</div><div class="disinline">• 瑞萨 采用RL78内核的系列微控制器</div>-->
+        <div class="disinline">
+            <!--[diy=detailpg1]--><div id="detailpg1" class="area"></div><!--[/diy]-->
+        </div>
+        <div class="disinline">
+            <!--[diy=detailpg2]--><div id="detailpg2" class="area"></div><!--[/diy]-->
+        </div>
+        <div class="disinline">
+            <!--[diy=detailpg3]--><div id="detailpg3" class="area"></div><!--[/diy]-->
+        </div>
+    </div>
+</div>
+<!--diy广告区 end-->
+</div>
+<!--发表新帖区域+顶部分页显示 end-->
+
+<!--[diy=diyDetails]--><div id="diyDetails" class="area"></div><!--[/diy]-->
+
+<style id="diy_style" type="text/css"></style>
+
+<div id="ct" class="cl" style="clear:both;">
+
+
+
+<div class="new-wrapper cl">
+<div id="postlist" class="pl">
+    
+    
+                        <div id="post_678981" class="posts" >
+            
+<!--顶部标题成为单独的一行 zhc-->
+<div class="newpg-title">
+<h1 class="ts">
+        	        		        			<a href="http://bbs.elecfans.com/forum.php?mod=forumdisplay&amp;fid=70&amp;filter=typeid&amp;typeid=246">[资料]</a>
+        		        	        	        	<span id="thread_subject">VHDL中双向inout端口的实现</span>
+        </h1>
+        <span class="xg1">
+        	        	        	        	        	        	<a href="http://bbs.elecfans.com/jishu_222923_1_1.html" onclick="return copyThreadUrl(this, '中国电子技术论坛')" >[复制链接]</a>
+        </span>
+</div>
+<table id="pid678981" class="plhin" summary="pid678981" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar678981" class="pls favatar">
+ 
+<div class="p_pop blk bui card_gender_" id="userinfo678981" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo678981_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="http://bbs.elecfans.com/space-uid-234325.html" target="_blank" class="xi2">wxwt2003</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>经验</dt><dd><a href="http://bbs.elecfans.com/home.php?mod=space&uid=234325&do=profile" target="_blank" class="xi2">4</a></dd>
+</dl><div class="imicn">
+<a href="http://bbs.elecfans.com/home.php?mod=space&amp;uid=234325&amp;do=profile" target="_blank" title="查看详细资料"><img src="static/image/common/userinfo.gif" alt="查看详细资料" /></a>
+<a href="http://bbs.elecfans.com/home.php?mod=magic&amp;mid=showip&amp;idtype=user&amp;id=wxwt2003" id="a_showip_li_678981" class="xi2" onclick="showWindow(this.id, this.href)"><img src="static//image/magic/showip.small.gif" alt="" /> 窥视卡</a>
+<a href="http://bbs.elecfans.com/home.php?mod=magic&amp;mid=checkonline&amp;idtype=user&amp;id=wxwt2003" id="a_repent_678981" class="xi2" onclick="showWindow(this.id, this.href)"><img src="static//image/magic/checkonline.small.gif" alt="" /> 雷达卡</a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="http://bbs.elecfans.com/space-uid-234325.html" class="avtm" target="_blank"><img src="http://bbs.elecfans.com/uc_server/data/avatar/000/23/43/25_avatar_middle.jpg" onerror="this.onerror=null;this.src='http://bbs.elecfans.com/uc_server/images/noavatar_middle.gif'" /></a></div>
+</div>
+<div class="authi">
+<a href="http://bbs.elecfans.com/space-uid-234325.html" target="_blank" class="xw1">wxwt2003</a>
+</div>
+    <p class="user_team">实习生</p>
+ 
+
+
+</div>
+</td>
+	
+<td class="plc">
+
+<!--占位 开始--><!--标题顶部单独占一行 zhc--><!--占位 结束-->
+
+    <div class="pi">
+<div class="pti cl">
+<div class="pdbt float_l">
+</div>
+<div class="bar_tip float_l">
+<em id="authorposton678981">发表于 2012-4-1 18:18:14　　</em>
+<span class="glance">2632&nbsp;查看</span>
+<a class="reply" href="forum.php?mod=viewthread&amp;tid=222923&amp;extra=page%3D1#comment_top">1&nbsp;回复</a>
+<!--<span class="line">|</span>-->
+					
+
+                     
+                                            <a class="y ml15 f12 newbd" style="color:#999;" href="forum.php?mod=viewthread&amp;tid=222923&amp;page=1&amp;authorid=234325" rel="nofollow" >只看该作者</a>
+                                    
+                                                            <a class="y f12 newbd" style="color:#999;" href="forum.php?mod=viewthread&amp;tid=222923&amp;extra=page%3D1&amp;ordertype=1">倒序浏览</a>
+                    <div class="bdsharebuttonbox y"><span style="float: left; margin-right: 10px">分享</span><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_more" data-cmd="more"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<style type="text/css">
+.bdshare-button-style0-16 a, .bdshare-button-style0-16 .bds_more { background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=91362611.png) !important; margin: 12px 6px 6px 0 !important; }
+.bdshare-button-style0-16 .bds_qzone { background-position: 0 -52px !important; }
+.bdshare-button-style0-16 .bds_tsina { background-position: 0 -104px !important; }
+.bdshare-button-style0-16 .bds_more { background-position: 0 0 !important; margin-right: 10px !important; }
+</style>
+
+                
+                </div>
+</div>
+</div>
+                <!-- 操作 -->
+                        <!-- 操作 -->
+        <div class="pct"><style type="text/css">.pcb{margin-right:0}</style><div class="pcb">
+ 
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_678981">
+2010-04-24 11:47引自 EDN博客 博主jiangyi_love 的同名博文 <br />
+最近在用VHDL设计简易CPU，想用总线式的，这就要求端口模式必须是INOUT，之前没接触过。在网上搜到了博主jiangyi_love 的一篇文章，转载过来，我们大家共同学习。<br />
+<br />
+在工程应用中,双向电路是设计者不得不面对的问题.在实际应用中,数据总线往往是双向的.如何正确处理数据总线是进行时序逻辑电路设计的基础.在程序设计过程中,关键技术在于:实体部分必须对端口属性进行申明,端口属性必须为inout类型,在构造体需要对输出信号进行有条件的高阻控制.在双向电路的处理问题上,常用的处理方式有两种,在介绍双向电路的处理方式之前,先看看双向电路的基本格式:<br />
+<br />
+ENTITY bidir_pin IS<br />
+(<br />
+bidir : INOUT std_logic;<br />
+oe, clk, from_core : IN std_logic;<br />
+to_core : OUT std_logic;<br />
+……<br />
+END bidir_pin;<br />
+<br />
+ARCHITECTURE behavior OF bidir_pin IS<br />
+BEGIN<br />
+bidir &lt;= from_core WHEN oe=‘1’ ELSE “ZZZZ”;<br />
+to_core &lt;= bidir;<br />
+END behavior;<br />
+<br />
+该程序揭示了双向电路的处理技巧,首先在实体部分bidir属于双向信号,在端口定义时,端口属性为inout类型,即把bidir信号作为输入三态输出. 语句“bidir &lt;= from_core WHEN oe=‘1’ ELSE “ZZZZ”;”表示bidir信号三态输出,语句”to_core &lt;= bidir;”把bidir信号作为输入信号.<br />
+由此可见,双向电路在程序设计中,didir输入当着普通的in类型,而在输出时,需要加一定的控制条件,三态输出.问题的关键在于:如何确定这个条件?<br />
+<br />
+1)双向信号作一个信号的输入,作另一信号的输出<br />
+<br />
+ENTITY bidir IS<br />
+PORT(<br />
+bidir : INOUT STD_LOGIC_VECTOR (7 DOWNTO 0);<br />
+oe, clk : IN STD_LOGIC;<br />
+from_core : IN STD_LOGIC_VECTOR (7 DOWNTO 0);<br />
+to_core : OUT STD_LOGIC_VECTOR (7 DOWNTO 0)<br />
+);<br />
+END bidir;<br />
+<br />
+ARCHITECTURE logic OF bidir IS<br />
+SIGNAL a : STD_LOGIC_VECTOR (7 DOWNTO 0);<br />
+SIGNAL b : STD_LOGIC_VECTOR (7 DOWNTO 0);<br />
+BEGIN<br />
+PROCESS (clk)<br />
+BEGIN<br />
+IF clk = '1' AND clk'EVENT THEN<br />
+a &lt;= from_core;<br />
+to_core &lt;= b;<br />
+END IF;<br />
+END PROCESS;<br />
+<br />
+PROCESS (oe, bidir)<br />
+BEGIN<br />
+IF( oe = '0') THEN<br />
+bidir &lt;= &quot;ZZZZZZZZ&quot;;<br />
+b &lt;= bidir;<br />
+ELSE<br />
+bidir &lt;= a;<br />
+b &lt;= bidir;<br />
+END IF;<br />
+END PROCESS;<br />
+END logic;<br />
+<br />
+这种设计方式叫做寄存双向信号的方法.本设计中bidir为双向信号,from_core为数据输入端,to_core为数据输出端,oe为三态输出使能,clk为读写数据的时钟.在程序设计中,需要定义两个signal a和b信号.a信号用于输入数据from_core的寄存器,b用于输出数据to_core的寄存器.采用寄存器的方法需要设计两个进程,一个进程把a,b信号在时钟的控制下负责端口的输入信号from_core和端口输出信号to_core的连接,这一步实现了寄存双向的功能.另外一个进程则负责信号a,b和双向口之间的赋值关系.本设计只揭示了简单的双向信号操作方式,即bidir既可以作为from_core的输出,又可以作为to_core的输入<br />
+<br />
+2)双向信号既做输出又做输出<br />
+<br />
+上例是最简单的双向信号应用的特例.在实际的工程中,双向信号既做信号的输入,又做信号的输出,常见的数据总线就是这种操作模式.<br />
+<br />
+library IEEE;<br />
+use IEEE.STD_LOGIC_1164.all;<br />
+<br />
+entity dir_data is<br />
+port(<br />
+clk : in STD_LOGIC;<br />
+rst : in STD_LOGIC;<br />
+rw : in STD_LOGIC;<br />
+address : in STD_LOGIC_VECTOR(1 downto 0);<br />
+data : inout STD_LOGIC_VECTOR(7 downto 0)<br />
+);<br />
+end dir_data;<br />
+<br />
+architecture arc_dir of dir_data is <br />
+<br />
+signal data_in : STD_LOGIC_VECTOR(7 downto 0);<br />
+signal data_out: STD_LOGIC_VECTOR(7 downto 0);<br />
+signal reg_a: STD_LOGIC_VECTOR(7 downto 0);<br />
+signal reg_b: STD_LOGIC_VECTOR(7 downto 0);<br />
+<br />
+begin <br />
+<br />
+data_in&lt;=data;<br />
+<br />
+d1:process(clk,rst,rw)<br />
+begin<br />
+if rst='1' then<br />
+reg_a&lt;= (others=&gt;'0');<br />
+reg_b&lt;= (others=&gt;'0');<br />
+elsif clk'event and clk='1' then<br />
+if rw='1' then<br />
+if address=&quot;00&quot; then <br />
+reg_a&lt;=data_in;<br />
+elsif address=&quot;01&quot; then<br />
+reg_b&lt;=data_in;<br />
+else null;<br />
+end if;<br />
+else null;<br />
+end if;<br />
+else null;<br />
+end if;<br />
+end process d1;<br />
+<br />
+d2:process(clk,rw,reg_a,reg_b) <br />
+begin<br />
+if clk'event and clk='1' then<br />
+if rw='0' then<br />
+if address=&quot;00&quot; then<br />
+data_out&lt;=reg_a;<br />
+elsif address=&quot;01&quot; then<br />
+data_out&lt;=reg_b;<br />
+else null;<br />
+end if;<br />
+else null;<br />
+end if;<br />
+else null;<br />
+end if;<br />
+end process d2; <br />
+<br />
+data&lt;=data_out when (rw='0' and address(1)='0') else<br />
+(others=&gt;'Z');<br />
+<br />
+end arc_dir;<br />
+<br />
+<br />
+针对这个程序，我编了一个仿真波形，仅供参考！<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+在程序设计中,首先需要定义data_in, data_out, reg_a, reg_b四个signal,我们把data_in叫做输入寄存器,它是从双向信号data接收数据的寄存器,data_out叫做输出寄存器,它是向双向信号data发送信号的寄存器,reg_a和reg_b叫做操作寄存器,它们是在一定的时序控制下把data_in数据送给reg_a,reg_b,在一定的时序控制下从reg_a和reg_b读出数据的.这样的处理方式必须有两个进程,因为在architecture arc_dir of dir_data is和begin之间定义了data_in, data_out, reg_a, reg_b四个signal,它在同一进程内不支持既赋值,又调用,也就是说它不支持在d1进程中对信号reg_a, reg_b赋值,又在d1进程中又调用reg_a, reg_b.首先有语句”data_in&lt;=data;”它表示输入寄存器无条件的接收双先信号的数据.在d1进程中,首先在rst信号有效时,对操作寄存器reg_a,和reg_b进行清零操作,然后在时钟(clk)的控制下,在写(rw)信号有效的情况下,对reg_a, reg_b寄存器在不同的地址控制下写入不同的data_in值.在d2进程中,在时钟(clk)的控制下,在读(rw)信号有效的时候,把不同地址的reg_a, reg_b的值送进data_out中.最关键的是最后一句:“data&lt;=data_out when (rw='0' and address(1)='0') else (others=&gt;'Z');”它表示双向信号的三态输出,而最最关键的是when后面的条件,如果条件限制太宽,就会错误占用双向信号总线,引起总线的误操作,如果条件限制太窄,输出寄存器的数据就不能够正确的送到数据总线上去,会引起数据的丢失.也就是说,只有正确的限制了when语句后面的条件,才能够把输出寄存器的数据正确地送到数据总线上去.仔细查看此条件,有如下的规律:when语句后的条件是操作寄存器写入输出寄存器的条件的公共条件.如:rw=’0’是操作寄存器的数据写入输出寄存器的读使能信号,address(1)是地址线的公共部分.在实际工程应用中,需要设计者在分配地址总线的时候掌握一定的技巧,尽量从地址的低位到到高位,保证地址总线有更多位的公共部分,比如只对四个寄存器操作时,地址线分配为”100”,”010”,”110”,”001”是不科学的,而”000”,”001”,”010”和”011”则是理想的.两者不同的是前者地址线没有公共部分,这样的设计无法用when语句对条件进行直接的控制,如果置之不理,由于列举不全,在逻辑综合时,电路会利用器件的乘积项和查找表的资源形成一个Latch, Latch不仅会把电路的时序变得复杂,而且电路存在潜在的危险性.虽然when语句后的条件不能够对条件进行直接的控制,但是可以使用枚举法一一把用到的地址线罗列出来,表示只有在这样的地址线的情况下才会用到数据总线,否则其他状态对数据总线送高阻,表示不占用数据总线.<br />
+总而言之,双向信号是程序设计中尤其重要的基础,设计者在设计程序的时候,要尤其注意,何时会占用数据总线,何时不占用数据总线。<br />
+ <br />
+</td></tr></table>
+
+
+</div>
+<div id="comment_678981" class="cm">
+</div>
+
+<div id="post_rate_div_678981"></div>
+</div>
+</div>
+
+</td></tr>
+
+<tr><td class="plc plm" style="padding-bottom:0px">
+<div id="p_btn" class="mtw mbm hm cl">
+      	<a id="postReply" class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=70&amp;tid=222923&amp;reppost=678981&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+      	<a href="http://bbs.elecfans.com/home.php?mod=spacecp&amp;ac=favorite&amp;type=thread&amp;id=222923&amp;formhash=3395352c" id="k_favorite" onclick="showWindow(this.id, this.href, 'get', 0);" onmouseover="this.title = $('favoritenumber').innerHTML + ' 人收藏'" title="收藏本帖">收藏<span id="favoritenumber" style="display:none">0</span></a>
+
+                </div>
+
+<!--标签移动到相关帖子外部 zhc-->
+
+<div class="bor_t cl">
+
+<!--相关帖子和楼主热帖 样式修改 zhc-->
+<div class="newpg-list">
+</div>
+
+<div class="newpg-list mrright0">
+<h3 class="tab_post">本版新帖<span class="blue-sqr"></span><span class="grey-sqr"></span></h3>
+<ul><li><a href="http://bbs.elecfans.com/jishu_919785_1_1.html" target="_blank">xilinx，ddrmig文件中管脚分配</a></li>
+<li><a href="http://bbs.elecfans.com/jishu_919756_1_1.html" target="_blank">求大神看看哪里有错误，帮帮菜鸟吧  o_TxD 通过示波器看看左 ...</a></li>
+<li><a href="http://bbs.elecfans.com/jishu_919621_1_1.html" target="_blank">请问有基于Xtensa内核的FPGA测试板或者开发板吗？ ...</a></li>
+<li><a href="http://bbs.elecfans.com/jishu_919493_1_1.html" target="_blank">求一个测量各种波形（方波，三角波，正弦波）的代码，如果有 ...</a></li>
+<li><a href="http://bbs.elecfans.com/jishu_919485_1_1.html" target="_blank">大神帮忙看看，为什么我的开发板无法用电脑进行配置 ...</a></li>
+</ul>
+    </div>
+
+
+</div>
+
+
+<!-- 选为最佳答案 -->
+        <div class="a_pb"><a href="http://bbs.elecfans.com/try_MM32F103.html?tiezipic" target="_blank" ><font color="#0000FF"><h2>【点击免费领取】本土MCU—MM32F103</h2></font></a></div></td>
+</tr>
+<tr id="_postposition678981"></tr>
+
+<tr class="ad">
+<td class="pls">
+</td>
+    <td class="plc" style="padding:0px 30px;">
+            <img id="comment_top" class="twin_dots" src="./template/elecfans_201508/images/dots.png">
+    </td>
+</tr>
+</table>
+        </div>
+                                    <div id="post_1592493" class="posts" >
+            
+<!--顶部标题成为单独的一行 zhc-->
+<table id="pid1592493" class="plhin" summary="pid1592493" cellspacing="0" cellpadding="0">
+<tr>
+<td class="pls" rowspan="2">
+<div id="favatar1592493" class="pls favatar">
+ <a name="lastpost"></a>
+<div class="p_pop blk bui card_gender_" id="userinfo1592493" style="display: none; margin-top: -11px;">
+<div class="m z">
+<div id="userinfo1592493_ma"></div>
+</div>
+<div class="i y">
+<div>
+<strong><a href="http://bbs.elecfans.com/space-uid-960774.html" target="_blank" class="xi2">菩提wei</a></strong>
+<em>当前离线</em>
+</div><dl class="cl">
+<dt>经验</dt><dd><a href="http://bbs.elecfans.com/home.php?mod=space&uid=960774&do=profile" target="_blank" class="xi2">205</a></dd>
+</dl><div class="imicn">
+<a href="http://bbs.elecfans.com/home.php?mod=space&amp;uid=960774&amp;do=profile" target="_blank" title="查看详细资料"><img src="static/image/common/userinfo.gif" alt="查看详细资料" /></a>
+<a href="http://bbs.elecfans.com/home.php?mod=magic&amp;mid=showip&amp;idtype=user&amp;id=%E8%8F%A9%E6%8F%90wei" id="a_showip_li_1592493" class="xi2" onclick="showWindow(this.id, this.href)"><img src="static//image/magic/showip.small.gif" alt="" /> 窥视卡</a>
+<a href="http://bbs.elecfans.com/home.php?mod=magic&amp;mid=checkonline&amp;idtype=user&amp;id=%E8%8F%A9%E6%8F%90wei" id="a_repent_1592493" class="xi2" onclick="showWindow(this.id, this.href)"><img src="static//image/magic/checkonline.small.gif" alt="" /> 雷达卡</a>
+</div>
+<div id="avatarfeed"><span id="threadsortswait"></span></div>
+</div>
+</div>
+<div>
+<div class="avatar"><a href="http://bbs.elecfans.com/space-uid-960774.html" class="avtm" target="_blank"><img src="http://bbs.elecfans.com/uc_server/data/avatar/000/96/07/74_avatar_middle.jpg" onerror="this.onerror=null;this.src='http://bbs.elecfans.com/uc_server/images/noavatar_middle.gif'" /></a></div>
+</div>
+<div class="authi">
+<a href="http://bbs.elecfans.com/space-uid-960774.html" target="_blank" class="xw1">菩提wei</a>
+</div>
+     <p class="grey9" style="margin: 2px 30px;">技术员</p>
+ 
+
+
+</div>
+</td>
+	
+<td class="plc">
+
+<!--占位 开始--><!--标题顶部单独占一行 zhc--><!--占位 结束-->
+
+            <div class="cl">
+        <div class="pti cl">
+<div class="pdbt float_l">
+</div>
+<div class="bar_tip float_l">
+<em id="authorposton1592493">发表于 2013-3-6 15:56:27　　</em>
+					
+
+    </div>
+                <div class="float_r floor">
+                    <a href="http://bbs.elecfans.com/forum.php?mod=redirect&goto=findpost&ptid=222923&pid=1592493"   id="postnum1592493" onclick="setCopy(this.href, '帖子地址复制成功');return false;">
+                                                                                                        沙发                                                                                            </a>
+                </div>    
+                </div>
+</div>
+        <div class="pct"><div class="pcb">
+<div class="t_fsz">
+<table cellspacing="0" cellpadding="0"><tr><td class="t_f" id="postmessage_1592493">
+顶一个 很好的东东</td></tr></table>
+
+
+</div>
+<div id="comment_1592493" class="cm">
+</div>
+
+<div id="post_rate_div_1592493"></div>
+</div>
+</div>
+
+</td></tr>
+
+<tr><td class="plc plm" style="padding-bottom:0px">
+
+<!--标签移动到相关帖子外部 zhc-->
+
+<div class="bor_t cl">
+
+<!--相关帖子和楼主热帖 样式修改 zhc-->
+<div class="newpg-list">
+</div>
+
+
+
+</div>
+
+
+<!-- 选为最佳答案 -->
+        <div class="best_aws">				
+</div>
+<div class="a_pb"><a href="http://z.elecfans.com" target="_blank" ><b><font color="#FF0000">聚丰众筹：工程师自己的众筹平台<br></font></b></a></div></td>
+</tr>
+<tr id="_postposition1592493"></tr>
+<tr>
+<td class="pls"></td>
+<td class="plc" style="overflow:visible;padding:0px 30px 10px; ">
+<div class="po hin">
+<div class="pob cl">
+<em class="bar_item mt8 z">
+<a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=70&amp;tid=222923&amp;repquote=1592493&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+
+</em>
+                <!--点评一排结束-->
+
+<p class="bar_item y">
+
+</p>
+
+<ul id="mgc_post_1592493_menu" class="p_pop mgcmn" style="display: none;">
+<li><a href="http://bbs.elecfans.com/home.php?mod=magic&amp;mid=namepost&amp;idtype=pid&amp;id=1592493:222923" id="a_namepost_1592493" onclick="showWindow(this.id, this.href)"><img src="static/image/magic/namepost.small.gif" />显身卡</a><li>
+</ul>
+<script type="text/javascript" reload="1">checkmgcmn('post_1592493')</script>
+</div>
+</div>
+</td>
+</tr>
+
+<tr class="ad">
+<td class="pls">
+</td>
+    <td class="plc" style="padding:0px 30px;">
+        <img class="twin_dots" src="./template/elecfans_201508/images/dots.png">
+</td>
+</tr>
+</table>
+        </div>
+                        <div id="postlistreply" class="pl"><div id="post_new" class="viewthread_table" style="display: none"></div></div>
+    
+    <!--底部页码显示-->
+    <div class="cl mt10 mr30">
+        <div class="pgs mtm mbm y" id="pageNum">
+                        <!--<span class="pgb"><a href="http://bbs.elecfans.com/zhuti_fpga_1.html">返回列表</a></span>-->
+        </div>
+    </div>
+    <!--底部页码显示 end-->
+
+    <!--快速回复移动后位置开始 zhc-->
+            <script type="text/javascript">
+
+var postminchars = parseInt('20');
+
+var postmaxchars = parseInt('50000');
+
+var disablepostctrl = parseInt('0');
+
+</script>
+
+<div id="f_pst" class="pl bm bmw">
+
+<form method="post" autocomplete="off" id="fastpostform" action="forum.php?mod=post&amp;action=reply&amp;fid=70&amp;tid=222923&amp;extra=page%3D1&amp;replysubmit=yes&amp;infloat=yes&amp;handlekey=fastpost" onSubmit="return fastpostvalidate(this)">
+
+
+<table cellspacing="0" cellpadding="0">
+
+<tr>
+
+<td class="pls">
+
+
+
+
+</td>
+<td class="plc">
+
+
+
+
+
+
+<style type="text/css">
+.kl3w_guisepost { padding: 0px 5px;}
+</style>
+<span id="fastpostreturn"></span>
+
+
+
+
+
+
+<div class="cl">
+
+<div class="hasfsl" id="fastposteditor">
+
+<!-- <div class="arrow">
+
+<em></em>
+
+<span></span>
+
+</div> -->
+
+<div class="tedt mtn">
+
+<div class="bar">
+
+<span class="y">
+
+
+<a href="http://bbs.elecfans.com/forum.php?mod=post&amp;action=reply&amp;fid=70&amp;tid=222923" onclick="return switchAdvanceMode(this.href)" style="color:#878787">高级模式</a>
+
+</span><script src="static/js/seditor.js?kZP" type="text/javascript"></script>
+<style>
+.fpd a, .fpd div  { float: left;}	
+</style>
+<div class="fpd">
+<a href="javascript:;" title="文字加粗" class="fbld">B</a>
+<a href="javascript:;" title="设置文字颜色" class="fclr" id="fastpostforecolor">Color</a>
+<div> </div>
+<div>&nbsp; </div>
+<a id="fastposturl" href="javascript:;" title="添加链接" class="flnk">Link</a>
+<a id="fastpostquote" href="javascript:;" title="引用" class="fqt">Quote</a>
+<a id="fastpostcode" href="javascript:;" title="代码" class="fcd">Code</a>
+<a href="javascript:;" class="fsml" id="fastpostsml">Smilies</a>
+</div></div>
+
+<div class="area">
+
+
+<div class="pt hm">
+
+
+您需要登录后才可以回帖 <a href="member.php?mod=logging&amp;action=login" onclick="showWindow('login', this.href)" class="xi2">登录</a> | <a href="member.php?mod=reg" class="xi2">注册</a>
+
+
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="seccheck_fastpost">
+
+
+</div>
+
+
+<input type="hidden" name="formhash" value="3395352c" />
+<input type="hidden" name="usesig" value="" />
+<input type="hidden" name="subject" value="  " />
+<p class="ptm pnpost">
+<!-- <a href="http://bbs.elecfans.com/home.php?mod=spacecp&amp;ac=credit&amp;op=rule&amp;fid=70" class="y" target="_blank" style="margin-top:10px;">本版积分规则</a> -->
+
+<button type="button" onclick="showWindow('login', 'member.php?mod=logging&action=login&guestmessage=yes')" onmouseover="checkpostrule('seccheck_fastpost', 'ac=reply');this.onmouseover=null" name="replysubmit" id="fastpostsubmit" class="btn-reg" value="replysubmit" tabindex="5" >回 帖</button>
+
+
+
+<!-- <label class="lb"><input type="checkbox" name="adddynamic" class="pc" value="1"/>回帖并转播</label> -->
+
+
+<!-- <label for="fastpostrefresh"><input id="fastpostrefresh" type="checkbox" class="pc"/> <span style="color:#878787">回帖后跳转到最后一页</span></label> -->
+
+<!-- <script type="text/javascript">if(getcookie('fastpostrefresh') == 1) {$('fastpostrefresh').checked=true;}</script>-->
+
+
+</p>
+
+
+</td>
+
+</tr>
+
+</table>
+</form>
+</div>
+
+        <!--快速回复移动后位置结束 zhc-->
+
+</div>
+<!--详情页添加右侧边栏 zhc-->
+<div class="detail-rigad">
+<div id="det-rigad1"></div>
+<!--[diy=diyrightside1]--><div id="diyrightside1" class="area"><div id="frame1ScWy1" class="frame move-span cl frame-1"><div class="title frame-title"><span class="titletext">本周热门帖</span></div><div id="frame1ScWy1_left" class="column frame-1-c"><div id="frame1ScWy1_left_temp" class="move-span temp"></div><div id="portal_block_2380" class="block move-span"><div id="portal_block_2380_content" class="dxb_bc"><div class="module cl xl xl1">
+<ul><li><a href="http://bbs.elecfans.com/jishu_914062_1_1.html" title="知道为什么不能打断正在工作的程序员吗？" target="_blank">知道为什么不能打断正在工作的程序员吗？</a></li><li><a href="http://bbs.elecfans.com/jishu_914023_1_1.html" title="灶台大战微波炉！！biubiubiu~~~" target="_blank">灶台大战微波炉！！biubiubiu~~~</a></li><li><a href="http://bbs.elecfans.com/jishu_919662_1_1.html" title="关爱|身体才是本钱，攻城狮们如何养生？" target="_blank">关爱|身体才是本钱，攻城狮们如何养生？</a></li><li><a href="http://bbs.elecfans.com/jishu_914046_1_1.html" title="一周搞定系列之模电全集 超清 赠PPT" target="_blank">一周搞定系列之模电全集 超清 赠PPT</a></li><li><a href="http://bbs.elecfans.com/jishu_914029_1_1.html" title="开车啦~嘟嘟嘟→_→然后就尴尬了" target="_blank">开车啦~嘟嘟嘟→_→然后就尴尬了</a></li><li><a href="http://bbs.elecfans.com/jishu_914273_1_1.html" title="【要的手快】开关电源研发--经验总结①--整理版（未完待续）" target="_blank">【要的手快】开关电源研发--经验总结①--整</a></li><li><a href="http://bbs.elecfans.com/jishu_914120_1_1.html" title="浏览器的酒吧Style，Chrome好海量！" target="_blank">浏览器的酒吧Style，Chrome好海量！</a></li><li><a href="http://bbs.elecfans.com/jishu_914152_1_1.html" title="七大类型电子电路，实用资料" target="_blank">七大类型电子电路，实用资料</a></li><li><a href="http://bbs.elecfans.com/jishu_919681_1_1.html" title="小伙伴们！想死你们啦！" target="_blank">小伙伴们！想死你们啦！</a></li><li><a href="http://bbs.elecfans.com/jishu_919727_1_1.html" title="通俗易懂之电子称开发硬件篇" target="_blank">通俗易懂之电子称开发硬件篇</a></li></ul>
+</div></div></div></div></div></div><!--[/diy]-->
+<div id="det-rigad3"></div>
+<!--[diy=diyrightside2]--><div id="diyrightside2" class="area"></div><!--[/diy]-->
+</div>
+
+<!--右侧边栏导航 zhc-->
+<div id="scrolltop-new">
+<span><a href="http://bbs.elecfans.com/forum.php?mod=post&amp;action=reply&amp;fid=70&amp;tid=222923&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)" class="nreplyfast" title="快速回复"><b>快速回复</b></a></span>
+<span hidefocus="true"><a title="返回顶部" onclick="window.scrollTo('0','0')" class="nscrolltopa" ><b>返回顶部</b></a></span>
+<span>
+<a href="http://bbs.elecfans.com/zhuti_fpga_1.html" hidefocus="true" class="nreturnlist" title="返回列表"><b>返回列表</b></a>
+</span>
+</div>
+
+</div>
+
+
+<form method="post" autocomplete="off" name="modactions" id="modactions">
+    <input type="hidden" name="formhash" value="3395352c" />
+    <input type="hidden" name="optgroup" />
+    <input type="hidden" name="operation" />
+    <input type="hidden" name="listextra" value="page%3D1" />
+    <input type="hidden" name="page" value="1" />
+</form>
+
+
+<!--[diy=diyfastposttop]--><div id="diyfastposttop" class="area"></div><!--[/diy]-->
+<!--原快速回复位置开始 zhc-->
+<!--原快速回复位置结束 zhc-->
+
+
+    <script type="text/javascript">
+    new lazyload();
+    </script>
+    <script type="text/javascript">document.onkeyup = function(e){keyPageScroll(e, 0, 0, 'forum.php?mod=viewthread&tid=222923', 1);}</script>
+</div>
+
+<div class="wp mtn">
+    <!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+
+<div id="footerPage">
+    <div class="wp cl">
+        <div class="z" style="padding-top: 19px;">
+            <a href="http://bbs.elecfans.com/zhuti_fpga_1.html"><span class="backPre">返回&nbsp;&nbsp;</span>FPGA|CPLD|ASIC论坛</a>
+        </div>
+        <div class="y">
+            <div class="z" style="padding-top: 14px;"></div>
+            <div class="y">
+                                    <a class="z footReply" href="forum.php?mod=post&amp;action=reply&amp;fid=70&amp;tid=222923&amp;reppost=1592493&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)">回复</a>
+                                <a title="返回顶部" onclick="window.scrollTo('0','0')" class="backTop z"></a>
+            </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">
+        var relatedlink = [];
+                relatedlink[0] = {'sname':'众筹', 'surl':'http://z.elecfans.com/'};
+                relatedlink[1] = {'sname':'开发板', 'surl':'http://bbs.elecfans.com/try.html'};
+                relatedlink[2] = {'sname':'PCB设计', 'surl':'http://www.hqpcb.com/146'};
+                relatedlink[3] = {'sname':'FPGA', 'surl':'http://bbs.elecfans.com/zhuti_fpga_1.html'};
+                relatedlink[4] = {'sname':'NFC', 'surl':'http://bbs.elecfans.com/topic-nfc.html'};
+                relatedlink[5] = {'sname':'ARM', 'surl':'http://bbs.elecfans.com/zhuti_arm_1.html'};
+                relatedlink[6] = {'sname':'通信', 'surl':'http://bbs.elecfans.com/zhuti_wireless_1.html'};
+                relatedlink[7] = {'sname':'PCB', 'surl':'http://bbs.elecfans.com/zhuti_pads_1.html'};
+                relatedlink[8] = {'sname':'嵌入式', 'surl':'http://bbs.elecfans.com/forum.php?gid=3'};
+                relatedlink[9] = {'sname':'元器件', 'surl':'http://bbs.elecfans.com/zhuti_yuanjian_1.html'};
+                relatedlink[10] = {'sname':'pads', 'surl':'http://bbs.elecfans.com/zhuti_pads_1.html'};
+                relatedlink[11] = {'sname':'半导体', 'surl':'http://bbs.elecfans.com/zhuti_bandaoti_1.html'};
+                relatedlink[12] = {'sname':'芯片', 'surl':'http://www.hqchip.com/?u=999'};
+                relatedlink[13] = {'sname':'手机', 'surl':'http://bbs.elecfans.com/zhuti_tel_1.html'};
+                relatedlink[14] = {'sname':'电路', 'surl':'http://bbs.elecfans.com/zhuti_dianlu_1.html'};
+                relatedlink[15] = {'sname':'门户', 'surl':'http://bbs.elecfans.com/portal.php'};
+                relatedlink[16] = {'sname':'元件', 'surl':'http://bbs.elecfans.com/zhuti_yuanjian_1.html'};
+                relatedlink[17] = {'sname':'电源', 'surl':'http://bbs.elecfans.com/zhuti_power_1.html'};
+                relatedlink[18] = {'sname':'matlab', 'surl':'http://bbs.elecfans.com/zhuti_matlab_1.html'};
+                relatedlink[19] = {'sname':'labview', 'surl':'http://bbs.elecfans.com/zhuti_labview_1.html'};
+                relatedlink[20] = {'sname':'仿真', 'surl':'http://bbs.elecfans.com/zhuti_proteus_1.html'};
+                relatedlink[21] = {'sname':'proteus', 'surl':'http://bbs.elecfans.com/zhuti_proteus_1.html'};
+                relatedlink[22] = {'sname':'protel', 'surl':'http://bbs.elecfans.com/zhuti_protel_1.html'};
+                relatedlink[23] = {'sname':'封装', 'surl':'http://bbs.elecfans.com/zhuti_packaging_1.html'};
+                relatedlink[24] = {'sname':'单片机', 'surl':'http://bbs.elecfans.com/zhuti_mcu_1.html'};
+                relatedlink[25] = {'sname':'论坛', 'surl':'http://bbs.elecfans.com'};
+                relatedlink[26] = {'sname':'电子', 'surl':'http://bbs.elecfans.com/'};
+                                        relatedlink[27] = {'sname':'', 'surl':''};
+                relatedlinks('postmessage_678981');
+    </script>
+
+<script type="text/javascript">
+function succeedhandle_followmod(url, msg, values) {
+    var fObj = $('followmod_'+values['fuid']);
+    if(values['type'] == 'add') {
+        fObj.innerHTML = '不收听';
+        fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&fuid='+values['fuid'];
+    } else if(values['type'] == 'del') {
+        fObj.innerHTML = '收听TA';
+        fObj.href = 'home.php?mod=spacecp&ac=follow&op=add&hash=3395352c&fuid='+values['fuid'];
+    }
+}
+fixed_avatar([678981,1592493], 1);
+</script></div>
+                                <div class="focus" id="sitefocus">
+            <div class="bm">
+                <div class="bm_h cl">
+                    <a href="javascript:;" onclick="setcookie('nofocus_forum', 1, 0*3600);$('sitefocus').style.display='none'" class="y" title="关闭">关闭</a>
+                    <h2>
+                        站长推荐                        <span id="focus_ctrl" class="fctrl"><img src="static/image/common/pic_nv_prev.gif" alt="上一条" title="上一条" id="focusprev" class="cur1" onclick="showfocus('prev');" /> <em><span id="focuscur"></span>/6</em> <img src="static/image/common/pic_nv_next.gif" alt="下一条" title="下一条" id="focusnext" class="cur1" onclick="showfocus('next')" /></span>
+                    </h2>
+                </div>
+                <div class="bm_c" id="focus_con">
+                </div>
+            </div>
+        </div>
+                                <div class="bm_c" style="display: none" id="focus_0">
+                    <dl class="xld cl bbda">
+                        <dt><a href="http://t.elecfans.com/" class="xi2" target="_blank">电子发烧友学院开课啦 免费课程任你学</a></dt>
+                                                <dd><a href="http://t.elecfans.com/" target=“_blank”>电子发烧友学院上线开课啦，嵌入式、fpga、单片机、Linux、编程、ARM...等电子行业精品课程已陆续上线开课 在线与大神一起学习一起进步  立即学习。</a></dd>
+                    </dl>
+                    <p class="ptn cl"><a href="http://t.elecfans.com/" class="xi2 y" target="_blank">查看 &raquo;</a></p>
+                </div>
+                                <div class="bm_c" style="display: none" id="focus_1">
+                    <dl class="xld cl bbda">
+                        <dt><a href="http://e.elecfans.com/hicc/gzmeeting.html?elecfans_trackid=zhanzhangtuijian" class="xi2" target="_blank"> 2016中硬创大赛广州培训会火热报名！</a></dt>
+                                                <dd><a href="http://e.elecfans.com/hicc/gzmeeting.html?elecfans_trackid=zhanzhangtuijian
+" target="a_blank">7月29日，广州·五号空间创意园斩获2亿融资，国内云服务行业最强独角兽——机智云亲临现场，副总裁刑雁女士分享“智能硬件零成本开发秘籍”科技部特聘金牌讲师、知名天使投资人杨海涛先生，解读最新智能硬件投资逻辑（我为什么不投你）>>活动详情
+</a></dd>
+                    </dl>
+                    <p class="ptn cl"><a href="http://e.elecfans.com/hicc/gzmeeting.html?elecfans_trackid=zhanzhangtuijian" class="xi2 y" target="_blank">查看 &raquo;</a></p>
+                </div>
+                                <div class="bm_c" style="display: none" id="focus_2">
+                    <dl class="xld cl bbda">
+                        <dt><a href="http://bbs.elecfans.com/try_gokit3.html?zztj" class="xi2" target="_blank">【点击领取】RedBear Duo WiFi/BLE物联网开发板</a></dt>
+                                                <dd><a href="http://bbs.elecfans.com/try_redbear.html?zztj" target=“_blank”>
+RedBear Duo 是由红熊电子（深圳）有限公司（RedBear）研发的一款只有拇指般大小的面向物联网应用的开发板。 它集成了强大的 ARM Cortext-M3 主控芯片、蓝牙双模（同时支持传统蓝牙和蓝牙4.1）与 Wi-Fi 一体化的无线模块， 以及 RGB，LED，按键，2MB SPI Flash，高速USB接口。》点击免费试用</a>
+
+</dd>
+                    </dl>
+                    <p class="ptn cl"><a href="http://bbs.elecfans.com/try_gokit3.html?zztj" class="xi2 y" target="_blank">查看 &raquo;</a></p>
+                </div>
+                                <div class="bm_c" style="display: none" id="focus_3">
+                    <dl class="xld cl bbda">
+                        <dt><a href="http://bbs.elecfans.com/try_dragonboard410c.html?zztj" class="xi2" target="_blank">【点击领取】DragonBoard 410c开发套件</a></dt>
+                                                <dd><a href="http://bbs.elecfans.com/try_dragonboard410c.html?zztj "  target="_blank">DragonBoard 410c是首款基于Qualcomm Snapdragon 400 系列处理器的开发板。它有许多高级特性，强大的处理器，Wi-Fi和蓝牙连接，支持GPS。所有这些先进的功能都集成在仅有信用卡大小的一张开发板中。>>>了解详情</a></dd>
+                    </dl>
+                    <p class="ptn cl"><a href="http://bbs.elecfans.com/try_dragonboard410c.html?zztj" class="xi2 y" target="_blank">查看 &raquo;</a></p>
+                </div>
+                                <div class="bm_c" style="display: none" id="focus_4">
+                    <dl class="xld cl bbda">
+                        <dt><a href="http://bbs.elecfans.com/jishu_712977_1_1.html" class="xi2" target="_blank"> 平板电脑显示屏幕改造电视——连续更新中</a></dt>
+                                                <dd><a href="http://bbs.elecfans.com/jishu_712977_1_1.html">自己有一台艾诺英雄四核的平板电脑，玩久了无味，而且手机性能完败这货。这货买的时候一千二百，卖出去的话也就值几十元钱了，最新想看看新闻，但是电脑看直播总是卡，所以突发奇想想把这货的屏幕搞下来做成小电视,在这发一个帖子，记录我改造这个平板的一些步骤和经验，方便以后又其他朋友参考！>>
+</a></dd>
+                    </dl>
+                    <p class="ptn cl"><a href="http://bbs.elecfans.com/jishu_712977_1_1.html" class="xi2 y" target="_blank">查看 &raquo;</a></p>
+                </div>
+                                <div class="bm_c" style="display: none" id="focus_5">
+                    <dl class="xld cl bbda">
+                        <dt><a href="http://bbs.elecfans.com/eetalk/3.html?zztj" class="xi2" target="_blank">【EE TALK】11年经验老师傅传授PCB设计精髓技艺！！想学赶紧来！！ ...</a></dt>
+                                                <dd><a href="http://bbs.elecfans.com/eetalk/3.html/?zztj "  target="_blank">常言道：十年树木，百年树人。覃纲固老师坚持从事PCB设计11年，早已是PCB设计行业中的长青树。他对PADS,ALLEGRO等PCB设计软件应用驾轻就熟，精通PCB设计十八般武艺。你可想从老师傅身上学到关于PCB设计的独门绝技。本期EE-TALK嘉宾覃纲固亲述PCB设计设计经验，赶快来交流吧！！>>></a></dd>
+                    </dl>
+                    <p class="ptn cl"><a href="http://bbs.elecfans.com/eetalk/3.html?zztj" class="xi2 y" target="_blank">查看 &raquo;</a></p>
+                </div>
+                        <script type="text/javascript">
+            var focusnum = 6;
+            if(focusnum < 2) {
+                $('focus_ctrl').style.display = 'none';
+            }
+            if(!$('focuscur').innerHTML) {
+                var randomnum = parseInt(Math.round(Math.random() * focusnum));
+                $('focuscur').innerHTML = Math.max(1, randomnum);
+            }
+            showfocus();
+            var focusautoshow = window.setInterval('showfocus(\'next\', 1);', 5000);
+        </script>
+        
+                        <div id="ft" class="wp cl">
+        <div style="padding: 0 10px;">
+            <div id="flk" class="y">
+                <p>
+                                        <a href="http://bbs.elecfans.com/forum.php?mod=misc&action=showdarkroom" >小黑屋</a><span class="pipe">|</span><a href="http://bbs.elecfans.com/forum.php?mobile=yes" >手机版</a><span class="pipe">|</span><a href="http://bbs.elecfans.com/archiver/" >Archiver</a><span class="pipe">|</span>                            <strong><a href="http://bbs.elecfans.com/" target="_blank">电子发烧友</a></strong>
+                    ( <a href="javascript:;" target="_self" id="bbs-beianhao">粤ICP备14022951号-2</a> )                    &nbsp;<img src="static/image/common/security.png" title="防水墙保卫网站远离侵害">                    &nbsp;&nbsp;<span id="tcss"></span><script type="text/javascript" src="http://tcss.qq.com/ping.js?v=1VERHASH" charset="utf-8"></script><script type="text/javascript" reload="1">pgvMain({"discuzParams":{"r2":"7385441","ui":0,"rt":"forum","md":"viewthread","fi":"70","ti":"222923","pn":1,"qq":"000"},"extraParams":""});</script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    var _hmt = _hmt || [];
+    var GACName = '0';
+    if (typeof(ga_fid) != 'undefined') {
+        if (typeof(tid) != 'undefined') {
+            GACName = ga_fid+'_tiezi';
+        } else {
+            GACName = ga_fid;
+        }
+    }
+    //// google 统计
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-25599667-1', 'elecfans.com');
+    ga('send', 'pageview');
+    ////百度统计
+    _hmt.push(['_setCustomVar', 1, 'ChannelID', GACName, 3]);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'hm.baidu.com/h.js?5e568854ed60ccf3b533106b98711ff5';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    //home.elecfans.com百度统计
+    if (document.location.host == 'home.elecfans.com') {
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?335fe553945bacb951558fddbdf6d89d";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    }
+
+</script>
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=0&amp;mini=1&amp;pos=right&amp;uid=452202" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+var bds_config={"bdTop":149};
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</script>
+<!-- Baidu Button END -->                </p>
+                <p class="xs0">
+                    GMT+8, 2016-7-19 20:35                    <span id="debuginfo">
+                    , Processed in 0.209227 second(s), 26 queries
+                        .
+                                        </span>
+                </p>
+            </div>
+            <div id="frt">
+                <p>Powered by <strong><a href="http://bbs.elecfans.com" target="_blank">电子发烧友网</a></strong></p>
+                <p class="xs0">&copy; 2015 <a href="http://bbs.elecfans.com" target="_blank">bbs.elecfans.com</a></p>
+            </div>
+            <div class="small-wx">
+                <img src="static/image/common/small-wx.jpg" alt="微信扫描" />
+            </div>
+                                </div>
+    </div>
+    
+    
+        <script src="home.php?mod=misc&ac=sendmail&rand=1468931715" type="text/javascript"></script>
+    
+    <div id="scrolltop">
+    <span><a class="Posting" onclick="showWindow('nav', this.href, 'get', 0)" href="forum.php?mod=misc&amp;action=nav" title="快速发帖"></a></span>
+        <span><a href="http://bbs.elecfans.com/forum.php?mod=post&amp;action=reply&amp;fid=70&amp;tid=222923&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)" class="replyfast" title="快速回复"><b>快速回复</b></a></span>
+        <span hidefocus="true"><a title="返回顶部" onclick="window.scrollTo('0','0')" class="scrolltopa" ><b>返回顶部</b></a></span>
+        <span>
+                <a href="http://bbs.elecfans.com/zhuti_fpga_1.html" hidefocus="true" class="returnlist" title="返回列表"><b>返回列表</b></a>
+            </span>
+    </div>
+<script type="text/javascript">_attachEvent(window, 'scroll', function () { showTopLink(); });checkBlind();</script>
+<script src="/static/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="http://www.elecfans.com/skin-2012/js/jquery-bxslider-min.js" type="text/javascript"></script>
+<script src="/static/js/jQuery.mouseDelay.min.js" type="text/javascript"></script>
+<script src="/static/js/ad_common.js" type="text/javascript"></script>
+<script type="text/javascript">
+    jq('#drag_nav').hover(function(){
+        jq('#discovery_nav').show();
+    },function(){
+        jq('#discovery_nav').hide();
+    })
+</script>
+<!-- TI在线设计工具 start 2015-06-18 -->
+<script src="http://www.elecfans.com/topic/webench/js/com.ti.webench.panel.main-min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery('#ti-webench-panel').TIwebenchPanel({'lang':'zh_CN','navBGColor':'#5e5e5e','defaultTab':'0'});
+</script>
+<!-- TI在线设计工具 end --><div id="leftNav">
+<div class="left-fix-nav">
+    <ul class="topic_nav">
+    	<li><img src="/template/elecfans_201508/images/time.png" alt="time"><a target="_blank" href="default.php?view=default">最新主题</a></li>
+<li><img src="/template/elecfans_201508/images/zan.png" alt="recommend"><a target="_blank" href="default.php?view=recommend">推荐主题</a></li>
+<li><img src="/template/elecfans_201508/images/re.png" alt="hot"><a target="_blank" href="default.php?view=hot">热门主题</a></li>
+<li>
+<img src="/template/elecfans_201508/images/me.png" alt="post">
+<a target="_blank" href="member.php?mod=logging&amp;action=login">我的帖子</a>
+</li>
+    </ul>
+    <div class="left-fix-nav-wrap">
+    <div class="auto">
+   		 <dl class=" left-nav-dl" id="lf_829">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=829" title="推荐专区">推荐专区</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_857_1.html" title="技术干货集中营">技术干货集中营</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_832_1.html" title="我的提问">我的提问</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_288_1.html" title="工程师创意">工程师创意</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_efdc_1.html" title="论坛电子赛事">论坛电子赛事</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_online_1.html" title="社区活动专版">社区活动专版</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_jf_1.html" title="聚丰供应链">聚丰供应链</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_3">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=3" title="嵌入式论坛">嵌入式论坛</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_mcu_1.html" title="单片机论坛">单片机论坛</a>
+</h3>
+<h3 class="bdl_a">
+<a href="http://bbs.elecfans.com/zhuti_fpga_1.html" title="FPGA|CPLD|ASIC论坛">FPGA|CPLD|ASIC论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_DSP_1.html" title="DSP论坛">DSP论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_emb_1.html" title="嵌入式系统论坛">嵌入式系统论坛</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_752">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=752" title="电源技术论坛">电源技术论坛</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_power_1.html" title="电源技术论坛">电源技术论坛</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_48">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=48" title="硬件设计论坛">硬件设计论坛</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_dianlu_1.html" title="电路设计论坛">电路设计论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_yuanjian_1.html" title="电子元器件论坛">电子元器件论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_control_1.html" title="控制|传感">控制|传感</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_drive_1.html" title="总线技术|接口技术">总线技术|接口技术</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_32">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=32" title="测试测量论坛">测试测量论坛</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_labview_1.html" title="LabVIEW论坛">LabVIEW论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_matlab_1.html" title="Matlab论坛">Matlab论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_celiang_1.html" title="测试测量技术专区">测试测量技术专区</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_instrument_1.html" title="仪器仪表技术专区">仪器仪表技术专区</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_1">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=1" title="EDA设计论坛">EDA设计论坛</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_multisim_1.html" title="multisim论坛">multisim论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_830_1.html" title="PCB设计论坛">PCB设计论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_proteus_1.html" title="proteus论坛|仿真论坛">proteus论坛|仿真论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_easyeda_1.html" title="EasyEDA-中国人自已的EDA工具">EasyEDA-中国人自已的EDA工具</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_345">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=345" title="综合技术与应用">综合技术与应用</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_dianji_1.html" title="电机控制">电机控制</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_spg_1.html" title="智能电网">智能电网</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_guangdian_1.html" title="光电及显示">光电及显示</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_xsolutions_1.html" title="参考设计中心">参考设计中心</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_car_1.html" title="汽车电子技术论坛">汽车电子技术论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_medical_1.html" title="医疗电子论坛">医疗电子论坛</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_639">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=639" title="开源硬件">开源硬件</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_shumeipai_1.html" title="树莓派论坛">树莓派论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_640_1.html" title="智能硬件论坛">智能硬件论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_848_1.html" title="开发快智能硬件开发平台">开发快智能硬件开发平台</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_863_1.html" title="Intel物联网开发者专区">Intel物联网开发者专区</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_852_1.html" title="Waveshare">Waveshare</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_banana_1.html" title="乐美客SBC专区">乐美客SBC专区</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_arduino_1.html" title="Arduino论坛">Arduino论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_beaglebond_1.html" title="BeagleBone论坛">BeagleBone论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_jiqiren_1.html" title="机器人论坛">机器人论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_831_1.html" title="创客神器NanoPi">创客神器NanoPi</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_849_1.html" title="小钢炮CANNON">小钢炮CANNON</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_859_1.html" title="比派科技banana pi专区">比派科技banana pi专区</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_6">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=6" title="无线通信论坛">无线通信论坛</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_wireless_1.html" title="无线通信技术专区">无线通信技术专区</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_rf_1.html" title="天线|RF射频|微波|雷达技术">天线|RF射频|微波|雷达技术</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_8">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=8" title="IC设计论坛">IC设计论坛</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_277_1.html" title="芯片测试与失效分析">芯片测试与失效分析</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_ic_1.html" title="Mixed Signal/SOC[数模混合芯片设计]">Mixed Signal/SOC[数模混合芯片设计]</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_analog_1.html" title="Analog/RF IC设计">Analog/RF IC设计</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_craft_1.html" title="设计与制造封装测试">设计与制造封装测试</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_packaging_1.html" title="元件封装交流区">元件封装交流区</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_753">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=753" title="个人版区">个人版区</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_378_1.html" title="阿东Verilog技术专版">阿东Verilog技术专版</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_755_1.html" title="直流马达驱动电路设计">直流马达驱动电路设计</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_labviewpro_1.html" title="LabVIEW英雄联盟">LabVIEW英雄联盟</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_784_1.html" title="特权同学FPGA专区">特权同学FPGA专区</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_263">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=263" title="厂商专区">厂商专区</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_864_1.html" title="灵动微电子 MM32">灵动微电子 MM32</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_854_1.html" title="盈鹏飞嵌入式">盈鹏飞嵌入式</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_715_1.html" title="TI论坛">TI论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_775_1.html" title="TI Deyisupport社区">TI Deyisupport社区</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_sinlinx_1.html" title="芯灵思嵌入式论坛">芯灵思嵌入式论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_tisan_1.html" title="Tisan">Tisan</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_726_1.html" title="米尔科技">米尔科技</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_mxchip_1.html" title="庆科社区">庆科社区</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_wiznet_1.html" title="WIZnet技术专区">WIZnet技术专区</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_cypress_1.html" title="Cypress技术论坛">Cypress技术论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_forlinx_1.html" title="飞凌嵌入式">飞凌嵌入式</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_qualcomm_1.html" title="Qualcomm技术论坛">Qualcomm技术论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_861_1.html" title="英创嵌入式">英创嵌入式</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_gokit_1.html" title="机智云GoKit论坛">机智云GoKit论坛</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_777">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=777" title="检测技术与质量">检测技术与质量</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_emc_1.html" title="电磁兼容(EMC)设计与整改">电磁兼容(EMC)设计与整改</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_776_1.html" title="检测与认证">检测与认证</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_778_1.html" title="实验室及机构">实验室及机构</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_803_1.html" title="质量工程师职场生活">质量工程师职场生活</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_7">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=7" title="消费电子论坛">消费电子论坛</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_tel_1.html" title="手机技术论坛">手机技术论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_pingban_1.html" title="平板电脑/mid论坛">平板电脑/mid论坛</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_video_1.html" title="音视/视频/机顶盒论坛">音视/视频/机顶盒论坛</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_23">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=23" title="电子论坛综合区">电子论坛综合区</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_20_1.html" title="新人报道区">新人报道区</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_lecture_1.html" title="工程师杂谈">工程师杂谈</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_fenxi_1.html" title="工程师职场">工程师职场</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_19">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=19" title="论坛服务区">论坛服务区</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_853_1.html" title="聚丰众筹官方社区">聚丰众筹官方社区</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_757_1.html" title="吐槽论坛产品经理">吐槽论坛产品经理</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_220_1.html" title="电子发烧友网发展建议┃举报┃咨询">电子发烧友网发展建议┃举报┃咨询</a>
+</h3>
+</dd>
+</dl>
+<dl class=" left-nav-dl" id="lf_27">
+<dt class="dt-menu-sub"><b class="mt-indicator">-</b><h2><a href="http://bbs.elecfans.com/forum.php?gid=27" title="供求信息发布">供求信息发布</a></h2></dt>
+<dd class="dd-Sec-nav"><h3>
+<a href="http://bbs.elecfans.com/zhuti_319_1.html" title="资源互换区">资源互换区</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_hqbdaigou_1.html" title="华强北代购">华强北代购</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_28_1.html" title="供需广告">供需广告</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_44_1.html" title="招聘┃求职发布区">招聘┃求职发布区</a>
+</h3>
+<h3>
+<a href="http://bbs.elecfans.com/zhuti_85_1.html" title="电子展览展会专区">电子展览展会专区</a>
+</h3>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="nav_fold_btn">
+<div class="tipCon">
+<img src="/template/elecfans_201508/images/time.png" alt="time">
+<img src="/template/elecfans_201508/images/zan.png" alt="recommend">
+<img src="/template/elecfans_201508/images/re.png" alt="hot">
+<img src="/template/elecfans_201508/images/me.png" alt="post">
+</div>
+<div class="nav_line">—<br>—<br>—<br></div>版<br>块<br>导<br>航<br>
+</div>
+<link rel="stylesheet" type="text/css" href="/template/elecfans_201508/common/perfect-scrollbar.css">
+<script src="/template/elecfans_201508/try/try_details/js/jquery.mousewheel.js" type="text/javascript"></script>
+<script src="/template/elecfans_201508/try/try_details/js/perfect-scrollbar.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+// ====================左边浮动导航===================
+    var jq = jQuery.noConflict(),
+        navHeight = parseInt(jq('.left-fix-nav').outerHeight()),
+        topicNavHeight = parseInt(jq('.topic_nav').outerHeight()),   
+        wrapNavHeight = navHeight - topicNavHeight,
+        speed = 300;
+
+        jq('.left-fix-nav-wrap').css({'height': wrapNavHeight+'px'});
+
+    //实时调整版块导航高度 
+    if(jq('#forumleftside').length > 0){
+
+    }else{
+    	jq(window).resize(function() {
+    var winHeight = jq(this).height(),
+        topicHeight = parseInt(jq('.topic_nav').outerHeight()),
+        wrapHeight = winHeight - topicHeight -12;
+
+    jq('.left-fix-nav-wrap').css({'height': wrapHeight+'px'});
+});
+    }
+
+// 导航滚动条的调用
+jq(function ($) {
+    "use strict";
+    jq('.left-fix-nav-wrap').perfectScrollbar();	
+});
+
+    jq(window).bind('scroll', function() {
+var scrollTop=document.documentElement.scrollTop+document.body.scrollTop;
+if(scrollTop>50){
+jq("#leftNav").addClass('curTop');
+jq('.nav_fold_btn').addClass('curTop');
+}else{
+jq("#leftNav").removeClass('curTop');
+jq(".nav_fold_btn").removeClass('curTop');
+}
+});
+
+    //存储状态到数据库
+    function logNavStatus(uid,navShow){
+if (uid>0) {
+jq.ajax({
+    type:'get',
+        url:'/misc.php?mod=nav&action=nav',
+        data:{navnum:navShow}     //把数据存到后台
+});
+} else {
+            localStorage.setItem("shownum",navShow); //将TAB选中状态存储到本地 
+       }
+    }
+
+    // 记住用户展开了哪些版块
+var show = 0,  //定义默认展示的是第一个TAB选中状态 
+    navDl = jq(".left-fix-nav-wrap .left-nav-dl");
+   
+if (window.localStorage || uid>0){   //如果浏览器支持localStorage 
+var navShow;
+if (userNavShow !== false) {  //如果登录了，去后台存储的数据（ 同个账户在不同电脑登陆，展开的版块一致）
+navShow = userNavShow;
+} else {                     //未登录用户，记住当前电脑+浏览器的展开了哪些版块。
+
+    navShowStr = localStorage.getItem("shownum"); //获取客户端TAB状态 
+
+if(navShowStr == null){ //如果为空，即第一次打开 
+        //将默认的第一个TAB设置为选中状态并显示与其对应的二级导航
+            navDl.eq(0).children('.dd-Sec-nav').addClass('dd-Sec-nav1');
+            navDl.eq(1).children('.dd-Sec-nav').addClass('dd-Sec-nav2');
+            navDl.eq(2).children('.dd-Sec-nav').addClass('dd-Sec-nav3');
+
+        navDl.eq(show).addClass("cur").siblings().removeClass("cur"); 
+        navDl.eq(show).children('.dt-menu-sub').addClass("cur").siblings('.dd-Sec-nav').css({'display': 'block'});
+        navShow = false;
+    }else {
+    navShow = navShowStr.split(',');
+}
+}
+
+if (navShow[12] == 1) {
+//展开
+jq("#leftNav").css({left:'-1px'});
+} else {
+//折叠
+jq("#leftNav").css({left:'-200px'});
+}
+
+    navDl.each(function(index){ //遍历每个TAB 
+        var thisNav = jq(this); 
+        if(jq(this).children('.dt-menu-sub').hasClass('collect')){
+        jq(this).children('.dt-menu-sub').siblings('.dd-Sec-nav').css({'display': 'block'});
+        }else{
+            show = thisNav.hasClass("cur")==true?index:show; //如果当前TAB被点击选中，则将show值设为当前的索引值 
+        if(navShow[index] == 1){                         //如果当前索引值与存储的TAB状态值一致 
+            thisNav.toggleClass("cur");                  //设置为选中状态样式 
+            navDl.eq(index).children('.dt-menu-sub').toggleClass("cur").siblings('.dd-Sec-nav').css({'display': 'block'}); //显示对应的二级导航
+        }
+        	thisNav.find('.mt-indicator').click(function(){      //当单击当前TAB时 
+            thisNav.toggleClass("cur");//设置为选中状态样式 
+                
+            // 点击三角形展开二级导航
+            var menuSubItem = thisNav.children('.dt-menu-sub');
+            menuSubItem.toggleClass("cur");
+menuSubItem.next(".dd-Sec-nav").slideToggle("fast");
+
+if (!navShow || navShow.length != 13) {
+navShow = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+}
+if (thisNav.hasClass('cur')) {
+        	navShow[index] = 1;
+} else {
+navShow[index] = 0;
+}
+logNavStatus(uid,navShow);
+        }); 
+        }
+    }); 
+}
+
+var winWidth = document.documentElement.clientWidth;
+
+if(winWidth > 1700){
+jq("#leftNav").css({left:'-1px'});  //宽屏直接显示导航
+}else{
+//点击展开左侧导航
+jq(".nav_fold_btn").mouseenter(function(){
+if(!jq("#leftNav").is(":animated")){
+jq("#leftNav").animate({left:'-1px'},speed);
+
+navShow[12] = 1;
+logNavStatus(uid,navShow);
+}
+});
+
+// 鼠标离开导航，导航隐藏
+    jq("#leftNav").mouseleave(function(){
+    	if(!jq("#leftNav").is(":animated")){
+jq("#leftNav").animate({left:'-200px'},speed);
+
+navShow[12] = 0;
+logNavStatus(uid,navShow);
+}
+    });
+}
+
+    // 点击导航链接新页面显示当前导航链接状态
+jq(window).load(function (){
+        var thisHost = window.location.host,
+            thisURL = window.location.href;
+
+jq(".left-fix-nav-wrap").find("a").each(function(){
+
+var turl = jq(this).attr("href"),
+    allURL = 'http://' + thisHost + '/'  +turl;
+
+if (thisURL == allURL) {
+jq(this).addClass("cur");
+var cur = jq(".dd-Sec-nav").find(".cur");
+if (cur.length > 0) {
+jq(".cur").parents(".left-nav-dl").addClass("cur");
+jq(".cur").parents(".dd-Sec-nav").show();
+};
+return false;
+};
+});
+});
+// ================== 左边浮动导航 end ========================
+</script><script type="text/javascript">
+    var jq = jQuery.noConflict();
+    //add by liuping 2014年10月11日 广告最后加载
+    function openX_ad(posterid,htmlid,width,height){
+
+
+        if(jq(htmlid).length > 0){
+            var randomnumber = Math.random();
+            var ga = document.createElement('iframe');
+            ga.src = 'http://www1.elecfans.com/www/delivery/myafr.php?target=_blank&cb='+randomnumber+'&zoneid='+posterid;
+            ga.width = width;
+            ga.height = height;
+            ga.frameBorder = 0;
+            ga.scrolling = 'no';
+            var s = jq(htmlid).append(ga);
+        }
+    }
+    if (jq('#BbsLeaderboard').length > 0) {
+        openX_ad(223, '#BbsLeaderboard', 728, 90);
+    }
+    // 侧边栏广告添加 2015-5-6 by cqm
+    if (jq('#advert221').length > 0) {
+        openX_ad(221,'#advert221',300,270);
+    }
+    if (jq('#advert222').length > 0) {
+        openX_ad(222,'#advert222',300,270);
+    }
+    if (jq('#advert224').length > 0) {
+        openX_ad(224,'#advert224',300,620);
+    }
+    if (jq('#advert242').length > 0) {
+        openX_ad(242,'#advert242',300,270);
+    }
+    if (jq('#advert307').length > 0) {
+        openX_ad(307,'#advert307',300,250);
+    }
+    if (jq('#det-rigad1').length > 0) {
+        openX_ad(242,'#det-rigad1',300,250);
+    }
+    if (jq('#det-rigad3').length > 0) {
+        openX_ad(224,'#det-rigad3',300,600);
+    }
+
+// *侧边栏广告添加  2016-05-16 by lichen	
+jq("[data-zoneid]").each(function(index, element) {
+var getZoneid=jq(element).attr("data-zoneid"),//获得广告设置的zoneid
+getWidth=jq(element).attr("data-width"),//获得广告位宽度
+getHeight=jq(element).attr("data-height");//获得广告位高度
+var setHtmlID="openX_ad_"+getZoneid;
+jq(element).attr("id",setHtmlID);
+//设置广告
+openX_ad(getZoneid,"#"+setHtmlID,getWidth,getHeight);		
+    });
+// #侧边栏广告添加  2016-05-16 by lichen
+
+    // 头部滚动广告
+    if (jq('#ad292').length) {
+        openX_ad(292,'#ad292',350,28);
+    }
+    if (jq('#ad293').length) {
+        openX_ad(293,'#ad293',350,28);
+    }
+    if (jq('#ad294').length) {
+        openX_ad(294,'#ad294',350,28);
+    }
+    if (jq('#ad317').length) {
+        openX_ad(317,'#ad317',350,28);
+    }
+    if (jq('#ad318').length) {
+        openX_ad(318,'#ad318',350,28);
+    }
+    if (jq('#ad319').length) {
+        openX_ad(319,'#ad319',350,28);
+    }
+    //广告最后加载 end=========================
+
+    // 头部滚动广告js 2015-07-27
+    var zheight = jq("#bbs-ad-wrap li").height(),
+        zindex = 0,
+        ztimer,
+        zlength = jq("#bbs-ad-wrap li").length;
+    if(zlength > 1){
+        ztimer = setInterval("slide()", 5000);
+        jq("#bbs-ad-wrap").hover(function(){
+            clearInterval(ztimer);
+        }, function(){
+            ztimer = setInterval("slide()", 5000);
+        });
+    }
+    function slide(){
+        ++zindex;
+        if(zindex > zlength - 1){
+            zindex = 0;
+        }
+        move(zindex);
+    }
+    function move(index){
+        var top = -(index * zheight);
+        jq("#bbs-ad-wrap").animate({"top" : top}, 300);
+    }
+
+    ;(function($){
+        $(function(){
+            if($('#scrolltop-new').length){
+                $(window).scroll(function(){
+                    var pgtop = document.documentElement.scrollTop+document.body.scrollTop;
+                    if(pgtop > 300){
+                        $('#scrolltop-new').css({
+                            'top': pgtop + 490,
+                            'left': $('.new-wrapper').offset().left + 1208
+                        }).show();
+                    }else{
+                        $('#scrolltop-new').hide();
+                    }
+                });
+            }
+        });
+    })(jQuery);
+
+    // 左侧边栏导航链接，添加Google点击事件跟踪代码
+    jq(window).load(function (){
+        jq('#leftNav,#forumleftside').on('click','a',function(){
+            var href = jq(this).attr('href');
+            if (href != '') {
+                ga('send', 'event', 'bbs_leftnav', 'click', href, 1);
+            }
+        });
+    });
+</script>
+<script src="/static/js/slider_diy.js" type="text/javascript"></script>
+<script src="/static/js/pop_ads.js" type="text/javascript"></script>
+
+<!--设置单点登录JS-->
+<script type="text/javascript" >
+function loadSSOLogin(name){
+    /*
+     * jQuery postMessage - v0.5 - 9/11/2009
+     * 修复jquery1.9版本以上报错
+     * Created by lc on 2016-03-07.
+     * Copyright 2016 lc. All rights reserved.
+     */
+    ;(function(d){var e,k,n=1,f,g=this,l,m=g.postMessage&&!/opera/.test(navigator.userAgent.toLowerCase());d.postMessage=function(b,a,c){a&&(b="string"===typeof b?b:d.param(b),c=c||parent,m?c.postMessage(b,a.replace(/([^:]+:\/\/[^\/]+).*/,"$1")):a&&(c.location=a.replace(/#.*$/,"")+"#"+ +new Date+n++ +"&"+b))};d.receiveMessage=l=function(b,a,c){if(m)if(b&&(f&&l(),f=function(h){if("string"===typeof a&&h.origin!==a||d.isFunction(a)&&!1===a(h.origin))return!1;b(h)}),g.addEventListener)g[b?"addEventListener":
+    "removeEventListener"]("message",f,!1);else g[b?"attachEvent":"detachEvent"]("onmessage",f);else e&&clearInterval(e),e=null,b&&(e=setInterval(function(){var a=document.location.hash,c=/^#?\d+&/;a!==k&&c.test(a)&&(k=a,b({data:a.replace(c,"")}))},"number"===typeof a?a:"number"===typeof c?c:100))}})(jQuery);
+    if(name=='changeaccount'){
+        //修改帐户信息
+        var setChangeAccountSrc= "http://passport.elecfans.com/user/account?siteid=4&referer=#"+encodeURIComponent(location.href);
+        var iframeHtml = '<iframe src='+ setChangeAccountSrc +' scrolling="no" frameborder="0" style="width:300px;"></iframe>';
+        var iframe = jq(iframeHtml).appendTo("#changeaccount-fm-box");
+
+        // 接受数据
+        jq.receiveMessage(function(msg){
+            // 接收到纯数字时设置iframe的高度
+            if(jq.isNumeric(msg.data)){
+                iframe.attr("height",msg.data);
+
+            }else if(typeof(msg.data)=="string"){
+                jq.ajax({
+                    type : "get",
+                    url : decodeURIComponent(msg.data),
+                    success : function(msg){
+                        jq.postMessage( msg, src, iframe[0].contentWindow );
+                    }
+                });
+            }
+        }, "http://passport.elecfans.com" );
+
+
+    }
+    else if (name == 'changepwd') {
+        // 修改密码JS
+        var setChangepwdSrc = "http://passport.elecfans.com/password/changepwd?siteid=4#"+encodeURIComponent(location.href);
+        var getChangepwdIframe=jq("iframe[name='sso-ChangepwdIframe']");//获得容器
+        getChangepwdIframe.attr("src",setChangepwdSrc);
+        //跨域接收iframe传过来的参数
+        jq.receiveMessage(function(msg) {
+            // 接收到纯数字时设置iframe的高度
+            if(jq.isNumeric(msg.data)){
+                getChangepwdIframe.css("height",msg.data+"px");
+            }else if(typeof(msg.data)=="string") {
+                // 已登录状态下才能修改密码，所以本站点不用再登录
+                jq.postMessage( "success", setChangepwdSrc, getChangepwdIframe.get(0).contentWindow );
+            }
+        }, "http://passport.elecfans.com");
+    } else {
+        //用户单点登录JS
+        if (name == 'ajaxlogin') {
+            var src = "http://passport.elecfans.com/login?referer="+encodeURIComponent(location.href)+"&siteid=4#"+encodeURIComponent(location.href);
+        } else {
+            var src = "http://passport.elecfans.com/login?referer=http%3A%2F%2Fbbs.elecfans.com%2Fforum.php&siteid=4#"+encodeURIComponent(location.href);
+        }
+
+        var iframeHtml = '<iframe src='+ src +' scrolling="no" frameborder="0" ></iframe>';
+        var iframe = jq(iframeHtml).appendTo("#login-fm-box");
+
+        // 接受数据
+        jq.receiveMessage(function(msg){
+            // 接收到纯数字时设置iframe的高度
+            if(jq.isNumeric(msg.data)){
+                iframe.attr("height",msg.data);
+
+            }else if(typeof(msg.data)=="string"){
+                jq.ajax({
+                    type : "get",
+                    url : decodeURIComponent(msg.data),
+                    success : function(msg){
+                        jq.postMessage( msg, src, iframe[0].contentWindow );
+                    }
+                })
+            }
+        }, "http://passport.elecfans.com" );
+    }
+
+}
+if(jq("#login-fm-box").length>0){
+    loadSSOLogin('login');
+}
+
+if (jq("#changepwd-fm-box").length>0) {
+    loadSSOLogin('changepwd');
+}
+
+if(jq("#changeaccount-fm-box").length>0){
+    loadSSOLogin('changeaccount');
+}
+
+</script>
+<!--用户完善资料弹窗插件-->
+<script src="/static/js/organizing/js/organizing.js?t=20160414" type="text/javascript" ></script>			<div id="discuz_tips" style="display:none;"></div>
+			<script type="text/javascript">
+				var tipsinfo = '7385441|X3.2|0.6||0||0|7|1468931715|1e38cdccf687b368e1c9488e953d96e3|2';
+			</script>
+			<script src="http://discuz.gtimg.cn/cloud/scripts/discuz_tips.js?v=1" type="text/javascript" charset="UTF-8"></script><script type="text/javascript">document.getElementById("debuginfo").innerHTML = " Updated at 20:35:15, Processed in  second(s),  Queries";</script>

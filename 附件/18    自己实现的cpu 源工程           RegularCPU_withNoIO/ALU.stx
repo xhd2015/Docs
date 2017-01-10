@@ -1,0 +1,36 @@
+Release 14.3 - xst P.40xd (nt)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to G:/RegularCPU_withNoIO/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.41 secs
+ 
+--> Parameter xsthdpdir set to G:/RegularCPU_withNoIO/xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.41 secs
+ 
+--> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+WARNING:HDLParsers:3607 - Unit work/ALU is now defined in a different file.  It was defined in "H:/RegularCPU_withNoIO/ALU.vhd", and is now defined in "G:/RegularCPU_withNoIO/ALU.vhd".
+WARNING:HDLParsers:3607 - Unit work/ALU/Behavioral is now defined in a different file.  It was defined in "H:/RegularCPU_withNoIO/ALU.vhd", and is now defined in "G:/RegularCPU_withNoIO/ALU.vhd".
+Compiling vhdl file "G:/RegularCPU_withNoIO/ALU.vhd" in Library work.
+Architecture behavioral of Entity alu is up to date.
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.58 secs
+ 
+--> 
+
+Total memory usage is 130280 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    3 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+
