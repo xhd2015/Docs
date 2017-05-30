@@ -1,0 +1,14 @@
+127.0.0.1	www.demaxiya.com
+127.0.0.1	m.demaxiya.com
+127.0.0.1	www.huya.com
+127.0.0.1	m.huya.com
+127.0.0.1	www.douyutv.com
+127.0.0.1	m.douyutv.com
+127.0.0.1	www.yy.com
+127.0.0.1	www.douyu.com
+127.0.0.1	www.pornhub.com
+127.0.0.1	m.pornhub.com
+127.0.0.1	www.xvideos.com
+127.0.0.1	m.xvidees.com
+127.0.0.1	101.qq.com
+127.0.0.1	lpl.qq.com
